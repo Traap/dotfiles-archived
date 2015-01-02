@@ -1,15 +1,47 @@
-[alias]
-	logg = log --graph --oneline --all
-[user]
-	name = Gary A. Howard
-	email = gahoward@amgen.com
-[credential]
-	helper = store
-[core]
-	excludesfile = /Users/Gary/.gitignore_global
-[push]
-	default = simple
-[color]
-	ui = true
-[code]
-	pager = cat
+#!/bin/bash
+#----------------------------------------------------------------------
+# Don't do anything when not running interactively
+#----------------------------------------------------------------------
+[ -z "$PS1" ] && return
+
+#-------------------------------------------------------------------------------
+# Personal aliases  
+#-------------------------------------------------------------------------------
+alias cj='source ~/.bash_profile'
+alias ll='ls -lahG'
+alias h='history'
+alias cls='clear'
+
+#-------------------------------------------------------------------------------
+# File & String related functions 
+#-------------------------------------------------------------------------------
+function ff() { find . -type f -iname ${1}  -print ; }
+function ffl() { find . -type f -iname ${1} -ls ; }
+function ffr() { find . -name ${1} -exec rm -rf {} ; }
+
+#-------------------------------------------------------------------------------
+# Prompt
+#-------------------------------------------------------------------------------
+export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ '
+
+#----------------------------------------------------------------------
+# Load RVM into a shell session *as a function*
+#----------------------------------------------------------------------
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+#----------------------------------------------------------------------
+# /usr/local/bin has precedence 
+#----------------------------------------------------------------------
+PATH=/usr/local/bin:$PATH
+PATH=$PATH:/Users/Gary/Library/Haskell/bin
+
+#----------------------------------------------------------------------
+# Stop Microsoft Agent
+#----------------------------------------------------------------------
+function msa() { Launchctl remove com.microsoft.SyncServicesAgent ; }
+
+#----------------------------------------------------------------------
+# Set terminal title.
+#----------------------------------------------------------------------
+function title() { echo -n -e "\033]0;$1\007"; }

@@ -1,15 +1,10 @@
 "Settings
-set autoindent
 set autoread
 set autowrite
 set backspace=indent,eol,start
-set backup
-set backupdir=~/.vim/tmp/backup//
-set backupskip=/tmp/*,/private/tmp/*"
 set colorcolumn=+1
 set complete=.,w,b,u,t
 set completeopt=longest,menuone,preview
-set directory=~/.vim/tmp/swap//
 set encoding=utf-8
 set expandtab
 set formatoptions=qrn1j
@@ -52,7 +47,6 @@ set title
 set ttimeout
 set ttimeoutlen=10
 set ttyfast
-set undodir=~/.vim/tmp/undo//
 set undofile
 set undoreload=10000
 set virtualedit+=block
