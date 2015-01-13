@@ -114,3 +114,6 @@ nnoremap <left>  :cprev<cr>zvzz
 nnoremap <right> :cnext<cr>zvzz
 nnoremap <up>    :lprev<cr>zvzz
 nnoremap <down>  :lnext<cr>zvzz
+
+" Display help in vertical buffer.
+nnoremap <leader>h :silent vert bo help<cr>
