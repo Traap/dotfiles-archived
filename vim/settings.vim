@@ -7,7 +7,7 @@ set complete=.,w,b,u,t
 set completeopt=longest,menuone,preview
 set encoding=utf-8
 set expandtab
-set formatoptions=qrn1j
+set formatoptions=qrn1
 set gdefault
 set hidden
 set history=1000
