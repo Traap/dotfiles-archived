@@ -10,15 +10,15 @@ augroup line_return
 augroup END
 
 " Backup folders
-if !isdirectory(expand(&undodir))
-    call mkdir(expand(&undodir), "p")
-endif
-if !isdirectory(expand(&backupdir))
-    call mkdir(expand(&backupdir), "p")
-endif
-if !isdirectory(expand(&directory))
-    call mkdir(expand(&directory), "p")
-endif
+"if !isdirectory(expand(&undodir))
+"    call mkdir(expand(&undodir), "p")
+"endif
+"if !isdirectory(expand(&backupdir))
+"    call mkdir(expand(&backupdir), "p")
+"endif
+"if !isdirectory(expand(&directory))
+"    call mkdir(expand(&directory), "p")
+"endif
 
 " Jumping to tags.
 "
