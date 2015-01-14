@@ -20,20 +20,8 @@ dotfiles =
 -- | Let's move some files around.
 main :: IO ExitCode 
 main = do 
-  safelyRemoveVimDirectory
   mapM_ Main.copyFile dotfiles
-  copyVimFolder
   runVimGetBundles
-
--- | Safely remove .vim folder and all contents.
-safelyRemoveVimDirectory :: IO ()
-safelyRemoveVimDirectory = do 
-  dir <- getHomeDirectory
-  let vdir = dir ++ "/.vim"
-  b <- doesDirectoryExist vdir
-  case b of
-    True  -> removeDirectoryRecursive vdir
-    False -> return ()
 
 -- | copy a file
 -- ex vimrc ~/.vimrc
@@ -43,18 +31,11 @@ copyFile file = do
   let cmd = "cp -av " ++ file ++ " " ++ dir ++ "/." ++ file
   system cmd
 
--- | copy .vim folder 
-copyVimFolder :: IO ExitCode 
-copyVimFolder = do
-  dir <- getHomeDirectory
-  let cmd = "cp -av vim " ++ dir ++ "/.vim"
-  system cmd
-
 -- | run my getbundles.hs program
 runVimGetBundles :: IO ExitCode
 runVimGetBundles = do
-  dir <- getHomeDirectory
-  let vdir = dir ++ "/.vim"
+  dir <- getCurrentDirectory
+  let vdir = dir ++ "/vim"
   setCurrentDirectory vdir
   let cmd = "runhaskell getbundles.hs"
   system cmd

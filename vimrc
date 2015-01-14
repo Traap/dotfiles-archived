@@ -13,7 +13,7 @@
 "    Tim Pope
 "      https://github.com/tpope/
 "
-let s:vim_home = '~/.vim/'
+let s:vim_home = '~/git/dotfiles/vim/'
 
 let config_list = [ 
   \ 'base.vim',
