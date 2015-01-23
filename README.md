@@ -11,11 +11,14 @@ studied how others have organized their dotfiles.  And decided to jump in.
 My installation instructions are geared toward Haskell and OSX. 
 * git clone https://github.com/Traap/dotfiles.git
 * cd dotfiles
-* runhaskell toosx.hs
+* runhaskell setup.hs
 
 
-## TODO
-* Write tolunix.hs if toosx.hs doesn't work on Linux Mint.
-* Write towin.hs
+## Note:
+setup.hs creates symbolic links to files in my git/dotfile folde, and then
+clones Vim bundles into my git/dotfiles/vim/bundles folder.  I have found
+this strategy useful to manage my source files a sinle location versus copying
+them to my home directory.
+
 
 Traap
