@@ -58,3 +58,4 @@ runVimGetBundles = do
   setCurrentDirectory vdir
   let cmd = "runhaskell getbundles.hs"
   system cmd
+

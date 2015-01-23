@@ -2,7 +2,8 @@
 
 set nocompatible
 
-runtime bundle/vim-pathogen/autoload/pathogen.vim
+source  ~/git/dotfiles/vim/bundle/vim-pathogen/autoload/pathogen.vim
+runtime ~/git/dotfiles/vim/bundle/vim-pathogen/autoload/pathogen.vim
 
 filetype off
 

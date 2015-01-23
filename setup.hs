@@ -19,9 +19,10 @@ dotfiles =
   ]
 
 -- | Let's move some files around.
-main :: IO ()
+main :: IO ExitCode
 main = do 
   mapM_ makeSymbolicLink dotfiles
+  runVimGetBundles
 
 -- | makeSymoblicLink
 makeSymbolicLink :: String -> IO ExitCode 
@@ -32,3 +33,10 @@ makeSymbolicLink f = do
   let sfile = c ++ "/" ++ f
   system $ "rm -rf " ++ tfile
   system $ "ln -vs " ++ sfile ++ " " ++ tfile
+
+-- | run my getbundles.hs program
+runVimGetBundles :: IO ExitCode
+runVimGetBundles = do
+  setCurrentDirectory "vim"
+  system $ "runhaskell getbundles.hs"
+
