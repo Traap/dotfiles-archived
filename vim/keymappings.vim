@@ -117,3 +117,14 @@ nnoremap <down>  :lnext<cr>zvzz
 
 " Display help in vertical buffer.
 nnoremap <leader>h :silent vert bo help<cr>
+
+"Bbye (Buffer Bye) for Vim
+nnoremap <leader>q :Bdelete<cr>
+nnoremap <leader>Q :bufdo :Bdelete<cr>
+
+"Delete all buffer"
+nnoremap <leader>X :bdelete<cr>
+
+"NERDTree
+nnoremap <C-n> :NERDTreeToggle<cr>
+

@@ -12,10 +12,16 @@ import System.Process
 
 -- | The bundles I am using.
 bundles =
-  ["git clone https://github.com/tpope/vim-fugitive.git"
+  ["git clone https://github.com/bling/vim-airline.git"
+  ,"git clone https://github.com/godlygeek/tabular.git"
+  ,"git clone https://github.com/majutsushi/tagbar.git"
+  ,"git clone https://github.com/moll/vim-bbye.git"
+  ,"git clone https://github.com/raichoo/haskell-vim"
+  ,"git clone https://github.com/scrooloose/nerdtree.git"
+  ,"git clone https://github.com/scrooloose/syntastic.git"
+  ,"git clone https://github.com/tpope/vim-commentary.git"
+  ,"git clone https://github.com/tpope/vim-fugitive.git"
   ,"git clone https://github.com/tpope/vim-pathogen.git"
-  ,"git clone https://github.com/tpope/vim-scriptease.git"
-  ,"git clone https://github.com/tpope/vim-sensible.git"
   ]
 
 -- | The bundle path relative to ~/.vim
@@ -44,5 +50,5 @@ safelyRemoveBundleDirectory fpath = do
 
 -- | Clone Vim bundles I am interested in using.
 cloneBundles :: [String] -> IO ()
-cloneBundles bundle = do 
+cloneBundles bundle = do
   mapM_ system bundle
