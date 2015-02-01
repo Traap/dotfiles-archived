@@ -135,7 +135,10 @@ nnoremap <leader>X :bdelete<cr>
 nnoremap <C-n> :NERDTreeToggle<cr>
 
 "Fugitive"
+nnoremap <leader>gP :Gpush<cr>
 nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gh :silent vert bo help fugitive<cr>
 nnoremap <leader>gl :Glog<cr>
+nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gs :Gstatus<cr>
 
