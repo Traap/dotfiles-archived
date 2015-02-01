@@ -13,7 +13,7 @@ import System.Process
 -- | The bundles I am using.
 bundles =
   ["git clone https://github.com/bling/vim-airline.git"
-  ,"git clone https://github.comristoomey/vim-tmux-navigator.git"
+  ,"git clone https://github.com/cristoomey/vim-tmux-navigator.git"
   ,"git clone https://github.com/moll/vim-bbye.git"
   ,"git clone https://github.com/raichoo/haskell-vim"
   ,"git clone https://github.com/scrooloose/nerdtree.git"

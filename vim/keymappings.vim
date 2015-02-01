@@ -142,3 +142,5 @@ nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gs :Gstatus<cr>
 
+"Pathogen"
+nnoremap <leader>ph :Helptags<cr>
