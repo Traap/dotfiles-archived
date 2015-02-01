@@ -107,9 +107,15 @@ noremap <C-l> <C-w>l
 
 noremap <leader>v <C-w>v
 
-inoremap jj <ESC>
+" Escape key
+inoremap jk <ESC>
+nnoremap <Tab> <Esc>
+vnoremap <Tab> <Esc>gV
+onoremap <Tab> <Esc>
+inoremap <Tab> <Esc>`^
+inoremap <Leader><Tab> <Tab>
 
-" List 
+" List
 nnoremap <left>  :cprev<cr>zvzz
 nnoremap <right> :cnext<cr>zvzz
 nnoremap <up>    :lprev<cr>zvzz
@@ -127,4 +133,9 @@ nnoremap <leader>X :bdelete<cr>
 
 "NERDTree
 nnoremap <C-n> :NERDTreeToggle<cr>
+
+"Fugitive"
+nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gl :Glog<cr>
+nnoremap <leader>gs :Gstatus<cr>
 

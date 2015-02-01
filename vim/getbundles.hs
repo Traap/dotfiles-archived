@@ -13,8 +13,7 @@ import System.Process
 -- | The bundles I am using.
 bundles =
   ["git clone https://github.com/bling/vim-airline.git"
-  ,"git clone https://github.com/godlygeek/tabular.git"
-  ,"git clone https://github.com/majutsushi/tagbar.git"
+  ,"git clone https://github.comristoomey/vim-tmux-navigator.git"
   ,"git clone https://github.com/moll/vim-bbye.git"
   ,"git clone https://github.com/raichoo/haskell-vim"
   ,"git clone https://github.com/scrooloose/nerdtree.git"
@@ -27,14 +26,14 @@ bundles =
 -- | The bundle path relative to ~/.vim
 fpath = "bundle"
 
--- | Setup the directory and clone the Vim bundles. 
+-- | Setup the directory and clone the Vim bundles.
 main :: IO ()
 main = do
   setupBundleDirectory fpath
   cloneBundles bundles
 
 -- | Setup the bundle directory.
-setupBundleDirectory :: FilePath -> IO () 
+setupBundleDirectory :: FilePath -> IO ()
 setupBundleDirectory fpath = do
   safelyRemoveBundleDirectory fpath
   createDirectoryIfMissing True fpath
