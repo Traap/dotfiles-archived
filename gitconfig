@@ -1,5 +1,7 @@
 [alias]
 	logg = log --graph --oneline --all
+	co = checkout
+	br = branch
 [user]
 	name = Gary A. Howard
 	email = gahoward@amgen.com
