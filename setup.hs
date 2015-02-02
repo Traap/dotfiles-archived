@@ -10,8 +10,9 @@ import System.Exit
 import System.Process
 
 -- | Create a symbolic link for the following files.
-dotfiles = 
+dotfiles =
   ["bash_profile"
+  ,"bashrc"
   ,"gitconfig"
   ,"inputrc"
   ,"vim"
@@ -20,12 +21,12 @@ dotfiles =
 
 -- | Let's move some files around.
 main :: IO ExitCode
-main = do 
+main = do
   mapM_ makeSymbolicLink dotfiles
   runVimGetBundles
 
 -- | makeSymoblicLink
-makeSymbolicLink :: String -> IO ExitCode 
+makeSymbolicLink :: String -> IO ExitCode
 makeSymbolicLink f = do
   c <- getCurrentDirectory
   h <- getHomeDirectory
