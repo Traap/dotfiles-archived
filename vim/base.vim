@@ -9,8 +9,8 @@ filetype off
 
 execute pathogen#infect()
 
+syntax on
+filetype on
 filetype plugin indent on
 
 colorscheme murphy
-
-syntax on
