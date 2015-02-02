@@ -10,6 +10,8 @@
 alias ll='ls -lahG'
 alias h='history'
 alias cls='clear'
+alias ds='~/git/smart-device-sw/tools/bin/dev-shell'
+alias ci='fpbuild exec -- cabal install'
 
 #-------------------------------------------------------------------------------
 # File & String related functions 
@@ -34,6 +36,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 #----------------------------------------------------------------------
 PATH=/usr/local/bin:$PATH
 PATH=$PATH:/Users/Gary/Library/Haskell/bin
+PATH=$PATH:~/.cabal/bin
 
 #----------------------------------------------------------------------
 # Stop Microsoft Agent
