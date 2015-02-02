@@ -14,6 +14,7 @@ dotfiles =
   ["bash_profile"
   ,"bashrc"
   ,"gitconfig"
+  ,"gitignore_global"
   ,"inputrc"
   ,"vim"
   ,"vimrc"
@@ -28,11 +29,12 @@ main = do
 -- | makeSymoblicLink
 makeSymbolicLink :: String -> IO ExitCode
 makeSymbolicLink f = do
-  c <- getCurrentDirectory
   h <- getHomeDirectory
   let tfile = h ++ "/." ++ f
-  let sfile = c ++ "/" ++ f
   system $ "rm -rf " ++ tfile
+  
+  c <- getCurrentDirectory
+  let sfile = c ++ "/" ++ f
   system $ "ln -vs " ++ sfile ++ " " ++ tfile
 
 -- | run my getbundles.hs program
