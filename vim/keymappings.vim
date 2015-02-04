@@ -109,11 +109,6 @@ noremap <leader>v <C-w>v
 
 " Escape key
 inoremap jk <ESC>
-nnoremap <Tab> <Esc>
-vnoremap <Tab> <Esc>gV
-onoremap <Tab> <Esc>
-inoremap <Tab> <Esc>`^
-inoremap <Leader><Tab> <Tab>
 
 " List
 nnoremap <left>  :cprev<cr>zvzz

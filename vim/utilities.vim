@@ -14,8 +14,3 @@ nnoremap <leader>ea :vsplit ~/git/dotfiles/alias_and_functions<cr>
 nnoremap <leader>eg :vsplit ~/git/dotfiles/gitconfig<cr>
 nnoremap <leader>eS :vsplit ~/git/dotfiles/setup.hs<cr>
 nnoremap <leader>eB :vsplit ~/git/dotfiles/vim/getbundles.hs<cr>
-
-"NERD Tree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif

@@ -40,4 +40,5 @@ Thumbs.db
 # Editor temporary files #
 ##########################
 *.un~
-*.*#
+*.*
+*vim/bundle/*
