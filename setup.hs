@@ -16,6 +16,7 @@ dotfiles =
   ,"gitconfig"
   ,"gitignore_global"
   ,"inputrc"
+  ,"tmux.conf"
   ,"vim"
   ,"vimrc"
   ]

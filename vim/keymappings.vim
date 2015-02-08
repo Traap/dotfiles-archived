@@ -138,4 +138,5 @@ nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gs :Gstatus<cr>
 
 "Pathogen"
-nnoremap <leader>ph :Helptags<cr>
+noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
+
