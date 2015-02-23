@@ -16,6 +16,7 @@ bundles =
   ,"git clone https://github.com/christoomey/vim-tmux-navigator.git"
   ,"git clone https://github.com/edkolev/tmuxline.vim.git"
   ,"git clone https://github.com/moll/vim-bbye.git"
+  ,"git clone https://github.com/neilagabriel/vim-geeknote.git"
   ,"git clone https://github.com/raichoo/haskell-vim"
   ,"git clone https://github.com/scrooloose/nerdtree.git"
   ,"git clone https://github.com/scrooloose/syntastic.git"
@@ -50,5 +51,5 @@ safelyRemoveBundleDirectory fpath = do
 
 -- | Clone Vim bundles I am interested in using.
 cloneBundles :: [String] -> IO ()
-cloneBundles bundle = do
+cloneBundles bundle
   mapM_ system bundle
