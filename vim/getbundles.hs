@@ -51,5 +51,5 @@ safelyRemoveBundleDirectory fpath = do
 
 -- | Clone Vim bundles I am interested in using.
 cloneBundles :: [String] -> IO ()
-cloneBundles bundle
+cloneBundles bundle do =
   mapM_ system bundle
