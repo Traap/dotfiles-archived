@@ -50,9 +50,10 @@ PATH=$PATH:/Users/Gary/Library/Haskell/bin
 PATH=$PATH:~/.cabal/bin
 
 #----------------------------------------------------------------------
-# Stop Microsoft Agent
+# Disable featrues / programs running on OSX.
 #----------------------------------------------------------------------
 function msa() { Launchctl remove com.microsoft.SyncServicesAgent ; }
+function pah() { defaults write -g ApplePressAndHoldEnable -bool false ; }
 
 #----------------------------------------------------------------------
 # Set terminal title.

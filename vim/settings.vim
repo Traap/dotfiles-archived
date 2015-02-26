@@ -37,6 +37,7 @@ set showmode
 set sidescroll=1
 set sidescrolloff=10
 set smartcase
+set smarttab
 set softtabstop=4
 set splitbelow
 set splitright
