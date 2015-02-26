@@ -23,6 +23,9 @@ alias h='history'
 alias cls='clear'
 alias ds='~/git/smart-device-sw/tools/bin/dev-shell'
 alias ci='fpbuild exec -- cabal install'
+alias et='emacsclient -t'
+alias ec='emacsclient -c'
+alias ed='emacs --daemon'
 
 #-------------------------------------------------------------------------------
 # File & String related functions

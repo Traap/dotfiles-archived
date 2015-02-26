@@ -140,3 +140,10 @@ nnoremap <leader>gs :Gstatus<cr>
 "Pathogen"
 noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
 
+"vim-geeknote"
+noremap <F8> :Geeknote<cr>
+let g:GeeknoteFormat="markdown"
+let g:GeeknoteMaxExplorerWidth=40
+let g:GeeknoteExplorer=70
+let g:GeeknoteExplorerNodeClosed = '+'
+let g:GeeknoteExplorerNodeOpened = '-'
