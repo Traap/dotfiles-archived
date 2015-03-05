@@ -41,4 +41,5 @@ Thumbs.db
 ##########################
 *.un~
 *vim/bundle/*
-*/emacs.d/
+*emacs.d/
+*vim/tmp/*
