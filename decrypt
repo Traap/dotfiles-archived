@@ -1,0 +1,4 @@
+#!/bin/bash
+rm -vf $1
+gpg -v --output $1 --decrypt $1.gpg
+rm -rf $1.gpg
