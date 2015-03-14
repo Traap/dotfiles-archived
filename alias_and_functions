@@ -25,8 +25,8 @@ alias ds='~/git/smart-device-sw/tools/bin/dev-shell'
 alias ci='fpbuild exec -- cabal install'
 alias et='emacsclient -t'
 alias ec='emacsclient -c'
-alias encrypt='~/dotfiles/encrypt'
-alias decrypt='~/dotfiles/decrypt'
+alias encrypt='~/git/dotfiles/encrypt'
+alias decrypt='~/git/dotfiles/decrypt'
 #-------------------------------------------------------------------------------
 # File & String related functions
 #-------------------------------------------------------------------------------
