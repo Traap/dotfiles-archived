@@ -15,3 +15,6 @@
 	ui = true
 [code]
 	pager = cat
+[url "https://"]
+	insteadOf = git://
+
