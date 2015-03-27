@@ -8,10 +8,13 @@
 [credential]
 	helper = store
 [core]
-	excludesfile = /Users/Gary/git/dotfiles/gitignore_global
+	excludesfile = ~/.gitignore_global
 [push]
 	default = simple
 [color]
 	ui = true
 [code]
 	pager = cat
+[url "https://"]
+	insteadOf = git://
+
