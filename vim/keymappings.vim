@@ -128,6 +128,7 @@ nnoremap <leader>X :bdelete<cr>
 
 "NERDTree
 nnoremap <C-n> :NERDTreeToggle<cr>
+noremap <leader>nt  :NERDTreeToggle<cr>
 
 "Fugitive"
 nnoremap <leader>gP :Gpush<cr>
