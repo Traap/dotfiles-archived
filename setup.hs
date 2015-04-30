@@ -18,6 +18,7 @@ dotfiles =
   ,"inputrc"
   ,"tmux.conf"
   ,"vim"
+  ,"vimoutlinerrc"
   ,"vimrc"
   ]
 

@@ -8,7 +8,7 @@
 # http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
 #-------------------------------------------------------------------------------
 export CLICOLOR=1
-export LSCOLORS=GxFxBxDxCxegedabagacad:
+export LSCOLORS=GxFxBxDxCxegedabagacad
 
 #-------------------------------------------------------------------------------
 # Use vim keybinds
@@ -18,7 +18,11 @@ export LSCOLORS=GxFxBxDxCxegedabagacad:
 #-------------------------------------------------------------------------------
 # Personal aliases
 #-------------------------------------------------------------------------------
+# ls
+alias la='ls -A'
 alias ll='ls -lahG'
+
+# General
 alias h='history'
 alias cls='clear'
 alias ds='~/git/smart-device-sw/tools/bin/dev-shell'
@@ -27,6 +31,11 @@ alias et='emacsclient -t'
 alias ec='emacsclient -c'
 alias encrypt='~/git/dotfiles/encrypt'
 alias decrypt='~/git/dotfiles/decrypt'
+
+# Grep.
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
 #-------------------------------------------------------------------------------
 # File & String related functions
 #-------------------------------------------------------------------------------
