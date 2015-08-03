@@ -16,7 +16,7 @@ github = "git clone http://github.com/"
 gitex = ".git"
 
 -- | The bundles I am using.
-bundles :: String -> [String]
+bundles :: String -> String -> [String]
 bundles s x =
   [s ++ "bling/vim-airline"
   ,s ++ "chriskempson/base16-vim"

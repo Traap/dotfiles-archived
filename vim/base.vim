@@ -12,4 +12,5 @@ execute pathogen#infect()
 filetype on
 filetype plugin indent on
 syntax on
+let base16colorspace=256
 colorscheme koehler
