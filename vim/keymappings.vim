@@ -8,7 +8,7 @@ inoremap <F1> <esc>:checktime<cr>
 nnoremap <f9> mzggg?G`z
 
 " Toggle line numbers
-nnoremap <leader>n :setlocal number!<cr>
+nnoremap <leader>n :set invnumber<cr>
 
 " Sort lines
 nnoremap <leader>s vip:!sort<cr>

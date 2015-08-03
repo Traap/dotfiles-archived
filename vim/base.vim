@@ -12,5 +12,4 @@ execute pathogen#infect()
 filetype on
 filetype plugin indent on
 syntax on
-
-colorscheme murphy
+colorscheme koehler

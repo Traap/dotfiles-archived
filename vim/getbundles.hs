@@ -13,22 +13,25 @@ import System.Process
 -- | A string representing git clone and github url.
 -- github is prepended to all git repos in bundles.
 github = "git clone http://github.com/"
+gitex = ".git"
 
 -- | The bundles I am using.
 bundles :: String -> [String]
-bundles s =
-  [s ++ "bling/vim-airline.git"
-  ,s ++ "christoomey/vim-tmux-navigator.git"
-  ,s ++ "edkolev/tmuxline.vim.git"
-  ,s ++ "moll/vim-bbye.git"
-  ,s ++ "raichoo/haskell-vim"
-  ,s ++ "scrooloose/nerdtree.git"
-  ,s ++ "scrooloose/syntastic.git"
-  ,s ++ "tpope/vim-commentary.git"
-  ,s ++ "tpope/vim-fugitive.git"
-  ,s ++ "tpope/vim-pathogen.git"
-  ,s ++ "vim-scripts/bufexplorer.zip.git"
-  ,s ++ "vimoutliner/vimoutliner.git"
+bundles s x =
+  [s ++ "bling/vim-airline"
+  ,s ++ "chriskempson/base16-vim"
+  ,s ++ "christoomey/vim-tmux-navigator"
+  ,s ++ "edkolev/tmuxline.vim"
+  ,s ++ "moll/vim-bbye"
+  ,s ++ "neovimhaskell/haskell-vim"
+  ,s ++ "scrooloose/nerdtree"
+  ,s ++ "scrooloose/syntastic"
+  ,s ++ "tpope/vim-commentary"
+  ,s ++ "tpope/vim-dispatch"
+  ,s ++ "tpope/vim-fugitive"
+  ,s ++ "tpope/vim-pathogen"
+  ,s ++ "vim-scripts/bufexplorer.zip"
+  ,s ++ "vimoutliner/vimoutliner"
   ]
 
 -- | The bundle path relative to ~/.vim
@@ -38,7 +41,7 @@ fpath = "bundle"
 main :: IO ()
 main = do
   setupBundleDirectory fpath
-  cloneBundles (bundles github)
+  cloneBundles (bundles github gitex)
 
 -- | Setup the bundle directory.
 setupBundleDirectory :: FilePath -> IO ()
