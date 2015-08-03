@@ -9,7 +9,9 @@
 #-------------------------------------------------------------------------------
 export CLICOLOR=1
 export LSCOLORS=GxFxBxDxCxegedabagacad
-
+[[ -n "$DISPLAY" && "$TERM" = "xterm" ]] && export TERM=xterm
+alias ct='~/git/dotfiles/color/base16-shell/colortest'
+source ~/git/dotfiles/color/base16-shell/base16-shapeshifter.dark.sh
 #-------------------------------------------------------------------------------
 # Use vim keybinds
 #-------------------------------------------------------------------------------
@@ -71,8 +73,3 @@ function pah() { defaults write -g ApplePressAndHoldEnable -bool false ; }
 # Set terminal title.
 #----------------------------------------------------------------------
 function title() { echo -n -e "\033]0;$1\007"; }
-
-#----------------------------------------------------------------------
-# Set color
-#----------------------------------------------------------------------
-[[ -n "$DISPLAY" && "$TERM" = "xterm" ]] && export TERM=xterm-256color
