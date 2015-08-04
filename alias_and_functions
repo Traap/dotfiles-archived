@@ -4,13 +4,12 @@
 #----------------------------------------------------------------------
 [ -z "$PS1" ] && return
 #-------------------------------------------------------------------------------
-# Color for Dark Terminal Themes
-# http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
+# Color management 
 #-------------------------------------------------------------------------------
 export CLICOLOR=1
 export LSCOLORS=GxFxBxDxCxegedabagacad
-[[ -n "$DISPLAY" && "$TERM" = "xterm" ]] && export TERM=xterm
-alias ct='~/git/dotfiles/color/base16-shell/colortest'
+export TERM=xterm-256color
+alias ct='cd ~/git/dotfiles/color/base16-shell && ./colortest && cd -'
 source ~/git/dotfiles/color/base16-shell/base16-shapeshifter.dark.sh
 #-------------------------------------------------------------------------------
 # Use vim keybinds

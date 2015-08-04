@@ -17,7 +17,7 @@ set incsearch
 set laststatus=2
 set lazyredraw
 set linebreak
-set list
+set nolist
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set matchtime=3
 set modelines=0
