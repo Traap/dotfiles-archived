@@ -1,0 +1,33 @@
+# contents of $HOME/.ssh/config
+#
+# Host alias to GitHub
+Host GitHub
+    HostName github.com
+    User Traap
+
+# AWS: fpc 
+Host fpc 
+    HostName ec2-54-172-73-213.compute-1.amazonaws.com
+    User gary
+    IdentityFile ~/.ssh/amazon_rsa
+
+# Access to HostName when disconnected from Amgen network.
+Host stash
+    HostName stash.amgencss.fpcomplete.com
+    Port 2222
+    User gahoward
+    IdentityFile ~/.ssh/css_rsa
+
+# This alias seems is used when git access submodules from stash.
+Host stash.amgencss.fpcomplete.com
+    Port 2222
+    User gahoward
+    IdentityFile ~/.ssh/css_rsa
+
+# Acess to HostNmae when connected to Amgen network.
+Host s2 
+    HostName 52.8.106.215
+    Port 7999 
+    User gahoward
+    IdentityFile ~/.ssh/css_rsa
+
