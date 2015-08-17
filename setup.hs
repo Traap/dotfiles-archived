@@ -12,12 +12,14 @@ import System.Process
 
 -- | Create a symbolic link for the following files.
 dotfiles =
-  ["ssh/config"
-  ,"bash_profile"
+  ["bash_profile"
   ,"bashrc"
+  ,"emacs"
+  ,"emacs.d"
   ,"gitconfig"
   ,"gitignore_global"
   ,"inputrc"
+  ,"ssh/config"
   ,"tmux.conf"
   ,"vim"
   ,"vimoutlinerrc"

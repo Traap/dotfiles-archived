@@ -31,3 +31,9 @@ Host s2
     User gahoward
     IdentityFile ~/.ssh/css_rsa
 
+# Acess to HostNmae when [dis]/connected to Amgen network.
+Host ray 
+    HostName 54.191.206.83
+    User gary
+    IdentityFile ~/.ssh/rayxiao-temp-aws.pem
+

@@ -1,12 +1,15 @@
-(setq default-frame-alist '(
-  (background-color . "cornsilk")
-  (width . 100)
+(dasdsetq default-frame-alist '((WIDTH . 100)
   (height . 52)
 ))
-(require 'package)
-(push '("marmalade" . "http://marmalade-repo.org/packages/")  package-archives)
-(push '("melpa"     . "http://melpa.milkbox.net/packages/")   package-archives)
 
-(add-to-list 'load-path "~/.emacs.d/elpa/evil-1.0.8")
+(require 'package)
+
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+
+(setq package-enable-at-startup nil)
+(package-initialize)
+
 (require 'evil)
-(evil-mode 1)
+(evil-mode t)
