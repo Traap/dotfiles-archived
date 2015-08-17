@@ -137,6 +137,7 @@ nnoremap <leader>gh :silent vert bo help fugitive<cr>
 nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gD :Gvdiff<cr>
 
 "Pathogen"
 noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
