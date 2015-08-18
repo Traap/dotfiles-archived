@@ -17,11 +17,10 @@ let s:vim_home = '~/git/dotfiles/vim/'
 
 let config_list = [ 
   \ 'base.vim',
-  \ 'functions.vim', 
   \ 'settings.vim', 
+  \ 'functions.vim', 
   \ 'leader.vim',  
-  \ 'keymappings.vim',
-  \ 'utilities.vim'
+  \ 'keymappings.vim'
 \]
 
 for files in config_list 

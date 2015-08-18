@@ -1,13 +1,13 @@
-"Settings
+" Set things that should come first.  Later autocmd can override the
+" result as needed.
 colorscheme koehler
-
 filetype on
 filetype plugin indent on
-
 hi colorcolumn ctermbg=blue
-
 let base16colorspace=256
+syntax on
 
+" Alphabetical listinf things I set."
 set autoread
 set autowrite
 set backspace=indent,eol,start
@@ -76,5 +76,3 @@ set wildignore+=migrations                       " Django migrations
 set wildmenu
 set wildmode=list:longest
 set wrap
-
-syntax on
