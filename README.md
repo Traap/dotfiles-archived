@@ -15,9 +15,10 @@ My installation instructions are geared toward Haskell and OSX.
 
 
 ## Note:
-setup.hs creates symbolic links to files in my git/dotfile folde, and then
-clones Vim bundles into my git/dotfiles/vim/bundles folder.  I have found
-this strategy useful to manage my source files a sinle location versus copying
+setup.hs creates symbolic links to files in my git/dotfiles folder, and then
+clones Vim bundles into my git/dotfiles/vim/bundles folder, finally it clones
+base16 colors into my git/dotfiles/color folder.  I have found this strategy 
+useful to manage my source files a single location versus copying
 them to my home directory.
 
 
