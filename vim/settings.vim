@@ -1,4 +1,13 @@
 "Settings
+colorscheme koehler
+
+filetype on
+filetype plugin indent on
+
+hi colorcolumn ctermbg=blue
+
+let base16colorspace=256
+
 set autoread
 set autowrite
 set backspace=indent,eol,start
@@ -17,15 +26,16 @@ set incsearch
 set laststatus=2
 set lazyredraw
 set linebreak
-set nolist
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set matchtime=3
 set modelines=0
 set nocompatible
+set nolist
 set norelativenumber
 set noswapfile
 set notimeout
 set number
+set numberwidth=1
 set ruler
 set scrolloff=3
 set shiftround
@@ -40,10 +50,10 @@ set smartcase
 set smarttab
 set softtabstop=4
 set splitbelow
-set splitright
+set splitright                                   " New windows open to the right ot the current one
 set synmaxcol=800
 set tabstop=8
-set textwidth=80
+set textwidth=74
 set title
 set ttimeout
 set ttimeoutlen=10
@@ -66,3 +76,5 @@ set wildignore+=migrations                       " Django migrations
 set wildmenu
 set wildmode=list:longest
 set wrap
+
+syntax on
