@@ -11,13 +11,17 @@ if [[ $OSTYPE =~ "darwin" ]]; then
     export CLICOLOR=1
     export LSCOLORS=GxFxBxDxCxegedabagacad
     export TERM=xterm-256color
-    source ~/git/dotfiles/color/base16-shell/base16-shapeshifter.dark.sh
+    source ~/git/dotfiles/color/base16-shell/base16-atelierdune.dark.sh
     alias me='source ~/.bash_profile'
     alias la='ls -A'
     alias ll='ls -lahG'
+    alias vim='mvim -v'
+    function mom() {
+      source ~/git/dotfiles/color/base16-shell/base16-$1.dark.sh
+    } 
 elif [[ $OSTYPE =~ "linux" ]]; then
     export TERM=xterm
-    source ~/git/dotfiles/color/base16-gnome-terminal/base16-shapeshifter.dark.sh
+    source ~/git/dotfiles/color/base16-gnome-terminal/base16-atelierdune.dark.sh
     alias me='source ~/.bashrc'
     alias la='ls -A --color'
     alias ll='ls -lahG --color'

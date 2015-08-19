@@ -43,14 +43,6 @@ endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
 
-" Backup files
-set backup                        " enable backups
-set noswapfile                    " it's 2013, Vim.
-
-set undodir=~/.vim/tmp/undo       " undo files
-set backupdir=~/.vim/tmp/backup   " backups
-set directory=~/.vim/tmp/swap     " swap files
-
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
    call mkdir(expand(&undodir), "p")
