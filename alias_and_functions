@@ -42,6 +42,7 @@ alias cls='clear'
 alias ct='cd ~/git/dotfiles/color/base16-shell && ./colortest && cd -'
 alias ds='~/git/smart-device-sw/tools/bin/dev-shell'
 alias ci='fpbuild exec -- cabal install'
+alias dot='cd ~/git/dotfiles/'
 alias et='emacsclient -t'
 alias ec='emacsclient -c'
 alias encrypt='~/git/dotfiles/encrypt'
@@ -54,9 +55,9 @@ alias grep='grep --color=auto'
 #-------------------------------------------------------------------------------
 # File & String related functions
 #-------------------------------------------------------------------------------
-function ff() { find . -type f -iname ${1}  -print ; }
+function ff()  { find . -type f -iname ${1} -print ; }
 function ffl() { find . -type f -iname ${1} -ls ; }
-function ffr() { find . -name ${1} -exec rm -rf {} ; }
+function ffr() { find . -name  ${1} -exec rm -rf {} ; }
 
 #-------------------------------------------------------------------------------
 # Prompt
