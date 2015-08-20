@@ -37,17 +37,18 @@ fi
 # Personal aliases
 #-------------------------------------------------------------------------------
 # General
-alias h='history'
-alias cls='clear'
-alias ct='cd ~/git/dotfiles/color/base16-shell && ./colortest && cd -'
-alias ds='~/git/smart-device-sw/tools/bin/dev-shell'
+alias atf='cd ~/git/smart-device-sw/doc/automated-test'
 alias ci='cabal install'
 alias cif='cabal install --force-reinstalls'
+alias cls='clear'
+alias ct='cd ~/git/dotfiles/color/base16-shell && ./colortest && cd -'
+alias decrypt='~/git/dotfiles/decrypt'
 alias dot='cd ~/git/dotfiles/'
-alias et='emacsclient -t'
+alias ds='~/git/smart-device-sw/tools/bin/dev-shell'
 alias ec='emacsclient -c'
 alias encrypt='~/git/dotfiles/encrypt'
-alias decrypt='~/git/dotfiles/decrypt'
+alias et='emacsclient -t'
+alias h='history'
 
 # Grep.
 alias egrep='egrep --color=auto'
@@ -56,10 +57,8 @@ alias grep='grep --color=auto'
 #-------------------------------------------------------------------------------
 # File & String related functions
 #-------------------------------------------------------------------------------
-function ff()  { find . -type f -iname ${1} -print ; }
-function ffl() { find . -type f -iname ${1} -ls ; }
-function ffr() { find . -name  ${1} -exec rm -rf {} ; }
-
+function ff()  { find . -type f -iname "$1" -print ; }
+function ffr() { find . -name "$1" -exec bash -c 'rm -rf' \;; }
 #-------------------------------------------------------------------------------
 # Prompt
 #-------------------------------------------------------------------------------
