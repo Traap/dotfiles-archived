@@ -52,7 +52,7 @@ set splitbelow
 set splitright                                   " New windows open to the right ot the current one
 set synmaxcol=800
 set tabstop=8
-set textwidth=74
+set textwidth=80
 set title
 set ttimeout
 set ttimeoutlen=10

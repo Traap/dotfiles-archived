@@ -74,8 +74,8 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 # /usr/local/bin has precedence
 #----------------------------------------------------------------------
 PATH=/usr/local/bin:$PATH
-PATH=$PATH:/Users/Gary/Library/Haskell/bin
-PATH=$PATH:~/.cabal/bin
+PATH=/Users/Gary/Library/Haskell/bin:$PATH
+PATH=~/.cabal/bin:$PATH
 
 #----------------------------------------------------------------------
 # Disable featrues / programs running on OSX.
