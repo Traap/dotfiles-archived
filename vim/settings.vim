@@ -83,7 +83,7 @@ set wildmode=list:longest
 
 " Tabs, spaces and wrapping {{{
 set expandtab
-set formatoptions=qrn1j
+set formatoptions=qrn1
 set shiftround
 set shiftwidth=3
 set smarttab
