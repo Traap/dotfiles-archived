@@ -1,67 +1,71 @@
+" First things ... {{{
 " Set things that should come first.  Later autocmd can override the
 " result as needed.
 filetype on
 filetype plugin indent on
+" }}}
 
-" Alphabetical listinf things I set."
-set autoread
-set autowrite
-set backspace=indent,eol,start
-set backup
-set backupdir=~/.vim/tmp/backup                  " Backups.
-set colorcolumn=+1
-set complete=.,w,b,u,t
-set completeopt=longest,menuone,preview
-set directory=~/.vim/tmp/backup                  " Swap files 
+" Alphabetical listinf things I set. {{{
 set encoding=utf-8
-set expandtab
-set formatoptions=qrn1
 set gdefault
 set hidden
 set history=1000
-set hlsearch
-set ignorecase
-set incsearch
-set laststatus=2
-set lazyredraw
-set linebreak
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set matchtime=3
 set modelines=0
 set nocompatible
 set nolist
 set norelativenumber
-set noswapfile
 set notimeout
+set ttimeout
+set ttimeoutlen=10
+set ttyfast
+" }}}
+
+" Buffer visualization settings {{{
+set backspace=indent,eol,start
+set colorcolumn=+1
+set foldmethod=marker
+set laststatus=2
+set lazyredraw
+set linebreak
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set number
 set numberwidth=1
 set ruler
 set scrolloff=3
-set shiftround
-set shiftwidth=4
 set showbreak=↪
 set showcmd
 set showmatch
 set showmode
 set sidescroll=1
 set sidescrolloff=10
-set smartcase
-set smarttab
-set softtabstop=4
 set splitbelow
-set splitright                                   " New windows open to the right ot the current one
 set synmaxcol=800
-set tabstop=8
-set textwidth=74
 set title
-set ttimeout
-set ttimeoutlen=10
-set ttyfast
+set virtualedit+=block
+set visualbell
+" }}}
+
+" Searching {{{
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+" }}}
+
+" Temporary file locations and file handling {{{
+set autoread
+set autowrite
+set backup
+set backupdir=~/.vim/tmp/backup                  " Backups.
+set directory=~/.vim/tmp/backup                  " Swap files 
+set noswapfile
 set undodir=~/.vim/tmp/backup                    " Swap files 
 set undofile
 set undoreload=10000
-set virtualedit+=block
-set visualbell
+" }}}
+
+" The wild, wild, west {{{
 set wildignore+=*.DS_Store                       " OSX 
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
@@ -75,11 +79,28 @@ set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=migrations                       " Django migrations
 set wildmenu
 set wildmode=list:longest
-set wrap
+"}}}
 
-" Last words...
+" Tabs, spaces and wrapping {{{
+set expandtab
+set formatoptions=qrn1j
+set shiftround
+set shiftwidth=3
+set smarttab
+set softtabstop=3
+set tabstop=3
+set textwidth=80
+set wrap
+" }}}
+
+" Colors I like using... {{{
 let base16colorspace=256
 colorscheme desert
 syntax on
 hi colorcolumn ctermbg=blue
+" }}}
 
+" Candidates for removal {{{
+set complete=.,w,b,u,t
+set completeopt=longest,menuone,preview
+" }}}
