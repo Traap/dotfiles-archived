@@ -46,7 +46,7 @@ bundles s x =
   [s ++ "bling/vim-airline"
   ,s ++ "chriskempson/base16-vim"
   ,s ++ "christoomey/vim-tmux-navigator"
-  ,s ++ "christmomey/vim-tmux-runner"
+  ,s ++ "christoomey/vim-tmux-runner"
   ,s ++ "edkolev/tmuxline.vim"
   ,s ++ "moll/vim-bbye"
   ,s ++ "neovimhaskell/haskell-vim"
