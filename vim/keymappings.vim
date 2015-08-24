@@ -126,10 +126,6 @@ nnoremap <leader>Q :bufdo :Bdelete<cr>
 "Delete all buffer"
 nnoremap <leader>X :bdelete<cr>
 
-"NERDTree
-nnoremap <C-n> :NERDTreeToggle<cr>
-noremap <leader>nt  :NERDTreeToggle<cr>
-
 "Fugitive"
 nnoremap <leader>gP :Gpush<cr>
 nnoremap <leader>gc :Gcommit<cr>
@@ -141,6 +137,21 @@ nnoremap <leader>gD :Gvdiff<cr>
 
 "Pathogen"
 noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
+
+"Vim Tmux Runner"
+nnoremap <leader>rr  :VtrResizeRunner<cr>
+nnoremap <leader>ror :VtrReorientRunner<cr>
+nnoremap <leader>sc  :VtrSendCommandToRunner<cr>
+nnoremap <leader>sf  :VtrSendFile!<cr>
+nnoremap <leader>sl  :VtrSendLineToRunner<cr> 
+nnoremap <leader>or  :VtrOpenRunner<cr>
+nnoremap <leader>kr  :VtrKillRunner<cr>
+nnoremap <leader>fr  :VtrFocusRunner<cr>
+nnoremap <leader>dr  :VtrDetachRunner<cr>
+nnoremap <leader>ar  :VtrReattachRunner<cr>
+nnoremap <leader>cr  :VtrClearRunner<cr>
+nnoremap <leader>fc  :VtrFlushCommand<cr>
+
 
 " Quick editing
 nnoremap <leader>ev :e $MYVIMRC<cr>

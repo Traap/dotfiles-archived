@@ -109,6 +109,13 @@ iab retrun   return
 iab teh      the
 " }}}
 
+" vim-tmux-runner setting {{
+  let g:vtr_filetype_runner_overrides = {
+        \ 'haskell': 'runhaskell {file}'
+        \ }
+  let g:VtrOrientation = "h"
+" }}}
+
 " Candidates for removal {{{
 set complete=.,w,b,u,t
 set completeopt=longest,menuone,preview
