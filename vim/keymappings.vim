@@ -99,6 +99,9 @@ noremap k gk
 noremap gj j
 noremap gk k
 
+" execut the current line of text as a shell command.
+noremap <leader>E !!$SHELL<cr>
+
 " Easy buffer navigation
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
@@ -106,9 +109,6 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
 noremap <leader>v <C-w>v
-
-" Escape key
-inoremap jk <ESC>
 
 " List
 nnoremap <left>  :cprev<cr>zvzz
@@ -155,3 +155,22 @@ nnoremap <leader>ea :e ~/git/dotfiles/alias_and_functions<cr>
 nnoremap <leader>eg :e ~/git/dotfiles/gitconfig<cr>
 nnoremap <leader>eS :e ~/git/dotfiles/setup.hs<cr>
 nnoremap <leader>.  :e.<cr>
+
+" Escape key
+inoremap <tab> <ESC>
+
+" Quicker access to Ex commands
+nmap ; :
+
+
+" Drag virtual blocks {{{
+vmap  <expr>  <LEFT>   DVB_Drag('left')
+vmap  <expr>  <RIGHT>  DVB_Drag('right')
+vmap  <expr>  <DOWN>   DVB_Drag('down')
+vmap  <expr>  <UP>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
+
+"Remove any introduced trailing whitespace after moving
+let g:DVB_TrimWS = 1
+" }}}
+

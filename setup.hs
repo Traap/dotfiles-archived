@@ -49,7 +49,6 @@ bundles s x =
   ,s ++ "edkolev/tmuxline.vim"
   ,s ++ "moll/vim-bbye"
   ,s ++ "neovimhaskell/haskell-vim"
-  ,s ++ "scrooloose/nerdtree"
   ,s ++ "scrooloose/syntastic"
   ,s ++ "tpope/vim-commentary"
   ,s ++ "tpope/vim-dispatch"
@@ -57,6 +56,7 @@ bundles s x =
   ,s ++ "tpope/vim-pathogen"
   ,s ++ "vim-scripts/bufexplorer.zip"
   ,s ++ "vimoutliner/vimoutliner"
+  ,s ++ "traap/vim-dragvisuals"
   ]
 
 -- | The colors I am using.

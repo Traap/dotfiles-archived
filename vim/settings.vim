@@ -85,10 +85,10 @@ set wildmode=list:longest
 set expandtab
 set formatoptions=qrn1
 set shiftround
-set shiftwidth=3
+set shiftwidth=2
 set smarttab
-set softtabstop=3
-set tabstop=3
+set softtabstop=2
+set tabstop=2
 set textwidth=80
 set wrap
 " }}}
@@ -98,6 +98,15 @@ let base16colorspace=256
 colorscheme desert
 syntax on
 hi colorcolumn ctermbg=blue
+" }}}
+
+" Automatic spelling corrections. {{{
+iab liek     like
+iab liekwise likewise
+iab pritn    print
+iab moer     more
+iab retrun   return
+iab teh      the
 " }}}
 
 " Candidates for removal {{{
