@@ -44,6 +44,7 @@ bpath = "vim/bundle"
 bundles :: String -> String -> [String]
 bundles s x =
   [s ++ "bling/vim-airline"
+  ,s ++ "bruno-/vim-man"
   ,s ++ "chriskempson/base16-vim"
   ,s ++ "christoomey/vim-tmux-navigator"
   ,s ++ "christoomey/vim-tmux-runner"
