@@ -18,7 +18,7 @@ let s:vim_home = '~/git/dotfiles/vim/'
 let config_list = [ 
   \ 'base.vim',
   \ 'settings.vim', 
-  \ 'functions.vim', 
+  \ 'bundles.v:wim', 
   \ 'leader.vim',  
   \ 'keymappings.vim'
 \]

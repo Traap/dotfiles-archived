@@ -1,5 +1,8 @@
 " Keymappings
-
+" 
+" I do not intend to place any keybindings in this file that are bundle 
+" specific.
+"
 " Replace help key with check time.
 noremap  <F1> :checktime<cr>
 inoremap <F1> <esc>:checktime<cr>
@@ -99,7 +102,7 @@ noremap k gk
 noremap gj j
 noremap gk k
 
-" execut the current line of text as a shell command.
+" execute the current line of text as a shell command.
 noremap <leader>E !!$SHELL<cr>
 
 " Easy buffer navigation
@@ -108,6 +111,7 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+" Virtical split
 noremap <leader>v <C-w>v
 
 " List
@@ -119,52 +123,18 @@ nnoremap <down>  :lnext<cr>zvzz
 " Display help in vertical buffer.
 nnoremap <leader>h :silent vert bo help<cr>
 
-"Bbye (Buffer Bye) for Vim
-nnoremap <leader>q :Bdelete<cr>
-nnoremap <leader>Q :bufdo :Bdelete<cr>
-
-"Delete all buffer"
-nnoremap <leader>X :bdelete<cr>
-
-"Fugitive"
-nnoremap <leader>gP :Gpush<cr>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gh :silent vert bo help fugitive<cr>
-nnoremap <leader>gl :Glog<cr>
-nnoremap <leader>gp :Gpull<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gD :Gvdiff<cr>
-
-"Pathogen"
-noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
-
-"Vim Tmux Runner"
-nnoremap <leader>rr  :VtrResizeRunner<cr>
-nnoremap <leader>ror :VtrReorientRunner<cr>
-nnoremap <leader>sc  :VtrSendCommandToRunner<cr>
-nnoremap <leader>sf  :VtrSendFile!<cr>
-nnoremap <leader>sl  :VtrSendLineToRunner<cr> 
-nnoremap <leader>or  :VtrOpenRunner<cr>
-nnoremap <leader>kr  :VtrKillRunner<cr>
-nnoremap <leader>fr  :VtrFocusRunner<cr>
-nnoremap <leader>dr  :VtrDetachRunner<cr>
-nnoremap <leader>ar  :VtrReattachRunner<cr>
-nnoremap <leader>cr  :VtrClearRunner<cr>
-nnoremap <leader>fc  :VtrFlushCommand<cr>
-
 
 " Quick editing
-nnoremap <leader>ev :e $MYVIMRC<cr>
+nnoremap <leader>eS :e ~/git/dotfiles/setup.hs<cr>
+nnoremap <leader>ea :e ~/git/dotfiles/alias_and_functions<cr>
 nnoremap <leader>eb :e ~/git/dotfiles/vim/base.vim<cr>
 nnoremap <leader>ed :e ~/git/dotfiles/vim/custom-dictionary.utf-8.add<cr>
-nnoremap <leader>ef :e ~/git/dotfiles/vim/functions.vim<cr>
+nnoremap <leader>eg :e ~/git/dotfiles/gitconfig<cr>
 nnoremap <leader>ek :e ~/git/dotfiles/vim/keymappings.vim<cr>
 nnoremap <leader>el :e ~/git/dotfiles/vim/leader.vim<cr>
+nnoremap <leader>ep :e ~/git/dotfiles/vim/bundles.vim<cr>
 nnoremap <leader>es :e ~/git/dotfiles/vim/settings.vim<cr>
-nnoremap <leader>eu :e ~/git/dotfiles/vim/utilities.vim<cr>
-nnoremap <leader>ea :e ~/git/dotfiles/alias_and_functions<cr>
-nnoremap <leader>eg :e ~/git/dotfiles/gitconfig<cr>
-nnoremap <leader>eS :e ~/git/dotfiles/setup.hs<cr>
+nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>.  :e.<cr>
 
 " Escape key
@@ -181,7 +151,7 @@ vmap  <expr>  <DOWN>   DVB_Drag('down')
 vmap  <expr>  <UP>     DVB_Drag('up')
 vmap  <expr>  D        DVB_Duplicate()
 
-"Remove any introduced trailing whitespace after moving
+" Remove any introduced trailing whitespace after moving
 let g:DVB_TrimWS = 1
 " }}}
 

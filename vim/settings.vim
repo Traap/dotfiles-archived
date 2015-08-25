@@ -1,3 +1,8 @@
+" settings.vim {{{
+" 
+" These are general settings that impact Vim as a whole.
+" }}}
+
 " First things ... {{{
 " Set things that should come first.  Later autocmd can override the
 " result as needed.
@@ -53,18 +58,6 @@ set incsearch
 set smartcase
 " }}}
 
-" Temporary file locations and file handling {{{
-set autoread
-set autowrite
-set backup
-set backupdir=~/.vim/tmp/backup                  " Backups.
-set directory=~/.vim/tmp/backup                  " Swap files 
-set noswapfile
-set undodir=~/.vim/tmp/backup                    " Swap files 
-set undofile
-set undoreload=10000
-" }}}
-
 " The wild, wild, west {{{
 set wildignore+=*.DS_Store                       " OSX 
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
@@ -107,13 +100,6 @@ iab pritn    print
 iab moer     more
 iab retrun   return
 iab teh      the
-" }}}
-
-" vim-tmux-runner setting {{
-  let g:vtr_filetype_runner_overrides = {
-        \ 'haskell': 'runhaskell {file}'
-        \ }
-  let g:VtrOrientation = "h"
 " }}}
 
 " Candidates for removal {{{
