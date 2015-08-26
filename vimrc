@@ -15,13 +15,14 @@
 "
 let s:vim_home = '~/git/dotfiles/vim/'
 
-let config_list = [ 
-  \ 'base.vim',
-  \ 'settings.vim', 
-  \ 'bundles.v:wim', 
-  \ 'leader.vim',  
-  \ 'keymappings.vim'
-\]
+let config_list = 
+  \ ['base.vim'
+  \ ,'leader.vim'  
+  \ ,'settings.vim' 
+  \ ,'functions.vim' 
+  \ ,'keymappings.vim'
+  \ ,'bundles.vim' 
+  \ ]
 
 for files in config_list 
   for f in split(glob(s:vim_home.files), '\n')
