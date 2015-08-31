@@ -64,7 +64,12 @@ function ffr() { find . -name "$1" -exec bash -c 'rm -rf' \;; }
 # Use vim to read man pages.
 #-------------------------------------------------------------------------------k
 function man() { vim -c "Man $1 $2" -c 'silent only' ; }
-
+function apdf() {
+  asciidoctor --require asciidoctor-pdf \
+              --backend pdf \
+              --out-file pdf/"$1".pdf \
+              "$1" ;
+}
 #-------------------------------------------------------------------------------
 # Prompt
 #-------------------------------------------------------------------------------

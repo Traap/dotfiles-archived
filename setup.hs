@@ -56,6 +56,7 @@ bundles s x =
   ,s ++ "tpope/vim-dispatch"
   ,s ++ "tpope/vim-fugitive"
   ,s ++ "tpope/vim-pathogen"
+  ,s ++ "tpope/vim-surround"
   ,s ++ "vim-scripts/bufexplorer.zip"
   ,s ++ "vimoutliner/vimoutliner"
   ,s ++ "traap/vim-dragvisuals"

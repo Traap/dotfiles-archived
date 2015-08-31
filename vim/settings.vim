@@ -22,6 +22,7 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 set ttyfast
+setlocal spell spelllang=en_us
 " -------------------------------------------------------------------------- }}}
 " Buffer visualization settings {{{
 set backspace=indent,eol,start
