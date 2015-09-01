@@ -1,7 +1,7 @@
 " functions.vim {{{
 "
 " This file holds non-oneline functions that do not neatly fit into
-" my keymapps file.
+" my key maps file.
 " -------------------------------------------------------------------------- }}}
 " Line Return {{{
 "

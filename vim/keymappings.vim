@@ -13,6 +13,10 @@ nnoremap <F9> mzggg?G`z
 " Toggle line numbers {{{
 nnoremap <leader>n :set invnumber<cr>
 " -------------------------------------------------------------------------- }}}
+" Toggle Spelling {{{
+nnoremap <leader>sp :set spell<cr>
+nnoremap <leader>sn :set nospell<cr>>>
+" -------------------------------------------------------------------------- }}}
 " Sort lines {{{
 nnoremap <leader>s vip:!sort<cr>
 vnoremap <leader>s :!sort<cr>

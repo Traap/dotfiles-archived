@@ -1,6 +1,6 @@
 " bundles.vim {{{
 "
-" This file holds bundle specific settings and keybindings.
+" This file holds bundle specific settings and key bindings.
 "
 " -------------------------------------------------------------------------- }}}
 " Bbye (Buffer Bye) for Vim {{{
@@ -37,8 +37,8 @@ noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
 " -------------------------------------------------------------------------- }}}
 " Tmux Runner {{{
 "
-" Below are the suggested Tmux Runner default mappings.  I decided to explicity
-" refernce them with defaults before I start changing them.
+" Below are the suggested Tmux Runner default mappings.  I decided to explicitly
+" reference them with defaults before I start changing them.
 nnoremap <leader>rr  :VtrResizeRunner<cr>
 nnoremap <leader>ror :VtrReorientRunner<cr>
 nnoremap <leader>sc  :VtrSendCommandToRunner<cr>
@@ -51,11 +51,12 @@ nnoremap <leader>dr  :VtrDetachRunner<cr>
 nnoremap <leader>ar  :VtrReattachRunner<cr>
 nnoremap <leader>cr  :VtrClearRunner<cr>
 nnoremap <leader>fc  :VtrFlushCommand<cr>
-
 let g:vtr_filetype_runner_overrides = {
-      \ 'haskell': 'runhaskell {file}'
-      \ }
+    \  'asciidoc': 'apdf {file}'
+    \ ,'haskell': 'runhaskell {file}'
+    \ }
 
 let g:VtrOrientation = "h"
+let g:VtrPercentage = 50
 " -------------------------------------------------------------------------- }}}
 

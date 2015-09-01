@@ -8,7 +8,7 @@
 filetype on
 filetype plugin indent on
 " -------------------------------------------------------------------------- }}}
-" Alphabetical listinf things I set. {{{
+" Alphabetical listing things I set. {{{
 set encoding=utf-8
 set gdefault
 set hidden
@@ -19,6 +19,7 @@ set nocompatible
 set nolist
 set norelativenumber
 set notimeout
+set spell
 set ttimeout
 set ttimeoutlen=10
 set ttyfast
@@ -71,7 +72,7 @@ set wildmode=list:longest
 " -------------------------------------------------------------------------- }}}
 " Tabs, spaces and wrapping {{{
 set expandtab
-set formatoptions=qrn1
+set formatoptions=qrn1t
 set shiftround
 set shiftwidth=2
 set smarttab

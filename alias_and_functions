@@ -1,4 +1,4 @@
-#!/bin/bash
+  #!/bin/bash
 #----------------------------------------------------------------------
 # Don't do anything when not running interactively
 #----------------------------------------------------------------------
@@ -65,9 +65,11 @@ function ffr() { find . -name "$1" -exec bash -c 'rm -rf' \;; }
 #-------------------------------------------------------------------------------k
 function man() { vim -c "Man $1 $2" -c 'silent only' ; }
 function apdf() {
+  f=$(basename "$1")
+  f="${f%.*}"
   asciidoctor --require asciidoctor-pdf \
               --backend pdf \
-              --out-file pdf/"$1".pdf \
+              --out-file pdf/"$f".pdf \
               "$1" ;
 }
 #-------------------------------------------------------------------------------
