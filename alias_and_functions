@@ -38,6 +38,7 @@ fi
 #-------------------------------------------------------------------------------
 # General
 alias atf='cd ~/git/smart-device-sw/doc/automated-test'
+alias cemacs='emacs -Q -l ~/git/emacs-haskell-config/init.el'
 alias ci='cabal install'
 alias cif='cabal install --force-reinstalls'
 alias cls='clear'
@@ -84,11 +85,16 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 #----------------------------------------------------------------------
-# /usr/local/bin has precedence
+# MYPATH will take precedence.
 #----------------------------------------------------------------------
-PATH=/usr/local/bin:$PATH
-PATH=/Users/Gary/Library/Haskell/bin:$PATH
-PATH=~/.cabal/bin:$PATH
+MYPATH=$HOME/Library/Haskell/ghc-7.8.3/lib/structured-haskell-mode-1.0.4/bin:$MYPATH
+MYPATH=$HOME/Library/Haskell/ghc-7.8.3/lib/ghci-ng-7.8.3/bin:$MYPATH
+MYPATH=$HOME/Library/Haskell/ghc-7.8.3/lib/hindent-4.0/bin:$MYPATH
+MYPATH=$HOME/Library/Haskell/ghc-7.8.3/lib/haskell-docs-4.2.2/bin:$MYPATH
+MYPATH=$HOME/Library/Haskell/bin:$MYPATH
+MYPATH=~/.cabal/bin:$MYPATH
+MYPATH=/usr/local/bin:$MYPATH
+PATH=$MYPATH:$PATH
 
 #----------------------------------------------------------------------
 # Disable featrues / programs running on OSX.

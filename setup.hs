@@ -1,4 +1,4 @@
--- | Copyright (c) Gary Allan Howard aka Traap.
+  -- | Copyright (c) Gary Allan Howard aka Traap.
 -- Distributed under the same terms as Vim itself.  See :help license.
 --
 -- This program initializes my HOME directory with symbolic link references to
@@ -51,7 +51,6 @@ bundles s x =
   ,s ++ "edkolev/tmuxline.vim"
   ,s ++ "moll/vim-bbye"
   ,s ++ "neovimhaskell/haskell-vim"
-  ,s ++ "scrooloose/syntastic"
   ,s ++ "tpope/vim-commentary"
   ,s ++ "tpope/vim-dispatch"
   ,s ++ "tpope/vim-fugitive"
