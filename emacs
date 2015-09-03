@@ -7,6 +7,3 @@
     '("melpa" . "http://melpa.org/packages/")
     t)
   (package-initialize))
-
-(require 'evil)
-(evil-mode 1)

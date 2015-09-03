@@ -9,7 +9,11 @@ filetype on
 filetype plugin indent on
 " -------------------------------------------------------------------------- }}}
 " Alphabetical listing things I set. {{{
+set autoindent
+set autoread
+set autowrite
 set encoding=utf-8
+set fileformats=unix,mac,dos
 set gdefault
 set hidden
 set history=1000
@@ -23,6 +27,7 @@ set spell
 set ttimeout
 set ttimeoutlen=10
 set ttyfast
+set virtualedit=block
 setlocal spell spelllang=en_us
 " -------------------------------------------------------------------------- }}}
 " Buffer visualization settings {{{
