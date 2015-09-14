@@ -1,4 +1,4 @@
-  #!/bin/bash
+#!/bin/bash
 #----------------------------------------------------------------------
 # Don't do anything when not running interactively
 #----------------------------------------------------------------------
@@ -54,7 +54,12 @@ alias h='history'
 # Grep.
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias grep='grep --color=auto' #------------------------------------------------------------------------------- # File & String related functions #------------------------------------------------------------------------------- function ff()  { find . -type f -iname "$1" -print ; } function ffr() { find . -name "$1" -exec bash -c 'rm -rf' \;; } 
+alias grep='grep --color=auto'
+#------------------------------------------------------------------------------- 
+# File & String related functions
+#------------------------------------------------------------------------------- 
+function ff()  { find . -type f -iname "$1" -print ; }
+function ffr() { find . -name "$1" -exec bash -c 'rm -rf' \;; } 
 #-------------------------------------------------------------------------------
 # Use vim to read man pages.
 #-------------------------------------------------------------------------------k
@@ -81,6 +86,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 #----------------------------------------------------------------------
 # MYPATH will take precedence.
 #----------------------------------------------------------------------
+HASKELL_LIB=/Library/Haskell/ghc-7.8.3/lib
 MYPATH=$HOME/Library/Haskell/ghc-7.8.3/lib/ghc-mod-5.3.0.0/bin:$MYPATH
 MYPATH=$HOME/Library/Haskell/ghc-7.8.3/lib/structured-haskell-mode-1.0.4/bin:$MYPATH
 MYPATH=$HOME/Library/Haskell/ghc-7.8.3/lib/ghci-ng-7.8.3/bin:$MYPATH
