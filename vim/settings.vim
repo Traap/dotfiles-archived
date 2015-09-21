@@ -23,7 +23,6 @@ set nocompatible
 set nolist
 set norelativenumber
 set notimeout
-set spell
 set ttimeout
 set ttimeoutlen=10
 set ttyfast
@@ -99,6 +98,7 @@ iab pritn    print
 iab moer     more
 iab retrun   return
 iab teh      the
+set nospell
 " -------------------------------------------------------------------------- }}}
 " Candidates for removal {{{
 set complete=.,w,b,u,t
