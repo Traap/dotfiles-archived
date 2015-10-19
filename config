@@ -18,7 +18,7 @@ Host stash
     User gahoward
     IdentityFile ~/.ssh/css_rsa
 
-# This alias seems is used when git access submodules from stash.
+# This alias seems to be ;wqused when git access submodules from stash.
 Host stash.amgencss.fpcomplete.com
     Port 2222
     User gahoward
@@ -37,3 +37,6 @@ Host ray
     User gary
     IdentityFile ~/.ssh/rayxiao-temp-aws.pem
 
+# Access to mHealth Pharma documentation
+Host mphd
+     HostName git-codecommit.us-east-1.amazonaws.com

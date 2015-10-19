@@ -20,7 +20,7 @@ let g:DVB_TrimWS = 1
 " Dispatch {{{
 let g:dispatch_compilers = {
      \ 'latex': 'tex',
-     \ 'haskell': 'runhaskell'
+     \ 'haskell': 'cabal install'
      \ }
 " -------------------------------------------------------------------------- }}}
 " Fugitive {{{
@@ -34,6 +34,9 @@ nnoremap <leader>gD :Gvdiff<cr>
 " -------------------------------------------------------------------------- }}}
 " Pathogen {{{
 noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
+" -------------------------------------------------------------------------- }}}
+" NERDtree {{{  
+noremap<C-n> :NERDTreeToggle<CR>
 " -------------------------------------------------------------------------- }}}
 " Tmux Runner {{{
 "
