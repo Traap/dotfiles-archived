@@ -3,20 +3,19 @@
 	co = checkout
 	br = branch
 [user]
-  name = Gary A. Howard
+	name = Gary A. Howard
 	email = gary.a.howard@mac.com
 [credential]
-	helper = !aws --profile CodeCommitProfile codecommit credential-helper $@
-	UseHttpPath = true
+	helper = store 
 [core]
 	excludesfile = ~/.gitignore_global
 [push]
-  default = simple
+	default = simple
 [color]
 	ui = true
 [code]
 	pager = cat
 [url "https://"]
-  insteadOf = git://
+	insteadOf = git://
 [url "https://git-codecommit.us-east-1.amazonaws.com/v1/repos"]
-  insteadof = mhp:
+	insteadof = mhp:
