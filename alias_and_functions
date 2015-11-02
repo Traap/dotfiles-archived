@@ -69,6 +69,7 @@ function apdf() {
   f="${f%.*}"
   asciidoctor --require asciidoctor-pdf \
               --backend pdf \
+              --attribute pdf-style=basic-theme.yml \
               --out-file pdf/"$f".pdf \
               "$1" ;
 }

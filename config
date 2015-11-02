@@ -39,4 +39,5 @@ Host ray
 
 # Access to mHealth Pharma documentation
 Host mphd
+     User ghoward
      HostName git-codecommit.us-east-1.amazonaws.com

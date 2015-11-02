@@ -51,6 +51,7 @@ bundles s x =
   ,s ++ "edkolev/tmuxline.vim"
   ,s ++ "moll/vim-bbye"
   ,s ++ "neovimhaskell/haskell-vim"
+  ,s ++ "scrooloose/nerdtree"
   ,s ++ "tpope/vim-commentary"
   ,s ++ "tpope/vim-dispatch"
   ,s ++ "tpope/vim-fugitive"

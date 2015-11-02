@@ -134,6 +134,7 @@ nnoremap <leader>ep :e ~/git/dotfiles/vim/bundles.vim<cr>
 nnoremap <leader>es :e ~/git/dotfiles/vim/settings.vim<cr>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>.  :e.<cr>
+nnoremap <leader>ad :set filetype=asciidoc<cr>
 " -------------------------------------------------------------------------- }}}
 " Escape key {{{
 inoremap <tab> <ESC>

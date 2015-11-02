@@ -3,10 +3,11 @@
 	co = checkout
 	br = branch
 [user]
-	name = Gary A. Howard
+	name = ghoward
 	email = gary.a.howard@mac.com
 [credential]
-	helper = store 
+	helper = !aws --profile CodeCommitProfile codecommit credential-helper $@
+	UseHttpPath = true
 [core]
 	excludesfile = ~/.gitignore_global
 [push]
