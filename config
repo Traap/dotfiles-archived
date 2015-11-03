@@ -7,9 +7,9 @@ Host GitHub
 
 # AWS: fpc 
 Host fpc 
-    HostName ec2-54-172-73-213.compute-1.amazonaws.com
-    User gary
-    IdentityFile ~/.ssh/amazon_rsa
+    HostName ec2-52-8-13-116.us-west-1.compute.amazonaws.com
+    User gahoward
+    IdentityFile ~/.ssh/css_rsa
 
 # Access to HostName when disconnected from Amgen network.
 Host stash
