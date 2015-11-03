@@ -44,6 +44,7 @@ alias cif='cabal install --force-reinstalls'
 alias cls='clear'
 alias ct='cd ~/git/dotfiles/color/base16-shell && ./colortest && cd -'
 alias decrypt='~/git/dotfiles/decrypt'
+alias dhf='cd ~/git/smart-device-sw/doc/dhf'
 alias dot='cd ~/git/dotfiles/'
 alias ds='~/git/smart-device-sw/tools/bin/dev-shell'
 alias ec='emacsclient -c'
@@ -69,7 +70,7 @@ function apdf() {
   f="${f%.*}"
   asciidoctor --require asciidoctor-pdf \
               --backend pdf \
-              --attribute pdf-style=basic-theme.yml \
+              --attribute pdf-style=$HOME/git/dotfiles/asciidoctor/basic-theme.yml \
               --out-file pdf/"$f".pdf \
               "$1" ;
 }
@@ -87,12 +88,12 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 #----------------------------------------------------------------------
 # MYPATH will take precedence.
 #----------------------------------------------------------------------
-HASKELL_LIB=/Library/Haskell/ghc-7.8.3/lib
-MYPATH=$HOME/Library/Haskell/ghc-7.8.3/lib/ghc-mod-5.3.0.0/bin:$MYPATH
-MYPATH=$HOME/Library/Haskell/ghc-7.8.3/lib/structured-haskell-mode-1.0.4/bin:$MYPATH
-MYPATH=$HOME/Library/Haskell/ghc-7.8.3/lib/ghci-ng-7.8.3/bin:$MYPATH
-MYPATH=$HOME/Library/Haskell/ghc-7.8.3/lib/hindent-4.0/bin:$MYPATH
-MYPATH=$HOME/Library/Haskell/ghc-7.8.3/lib/haskell-docs-4.2.2/bin:$MYPATH
+HASKELL_LIB=Library/Haskell/ghc-7.8.3/lib
+MYPATH=$HOMEHASKELL_LIB/ghc-mod-5.3.0.0/bin
+MYPATH=$HOMEHASKELL_LIB/structured-haskell-mode-1.0.4/bin:$MYPATH
+MYPATH=$HOMEHASKELL_LIB/ghci-ng-7.8.3/bin:$MYPATH
+MYPATH=$HOMEHASKELL_LIB/hindent-4.0/bin:$MYPATH
+MYPATH=$HOMEHASKELL_LIB/haskell-docs-4.2.2/bin:$MYPATH
 MYPATH=$HOME/Library/Haskell/bin:$MYPATH
 MYPATH=~/.cabal/bin:$MYPATH
 MYPATH=/usr/local/bin:$MYPATH
