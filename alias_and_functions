@@ -68,7 +68,7 @@ function man() { vim -c "Man $1 $2" -c 'silent only' ; }
 function apdf() {
   f=$(basename "$1")
   f="${f%.*}"
-  asciidoctor --require asciidoctor-pdf \
+  asciidoctor --trace --require asciidoctor-pdf \
               --backend pdf \
               --attribute pdf-style=$HOME/git/dotfiles/asciidoctor/basic-theme.yml \
               --out-file pdf/"$f".pdf \
