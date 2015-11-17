@@ -4,7 +4,7 @@
 Host GitHub
     HostName github.com
     User Traap
-    IdentityFile ~/.ssh/github_rda
+    IdentityFile ~/.ssh/css_rsa
 
 # AWS: fpc 
 Host fpc 
