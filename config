@@ -1,10 +1,10 @@
 # contents of $HOME/.ssh/config
 #
-# Host alias to GitHub
-Host github 
+# GitHub settings
+Host github.com
     HostName github.com
     User Traap
-    LogLevel DEBUG3
+    LogLevel DEBUG2
     IdentityFile ~/.ssh/css_rsa
 
 # AWS: fpc 
