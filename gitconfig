@@ -19,7 +19,7 @@
 	UseHttpPath = true
 	helper = !aws --profile CodeCommitProfile codecommit credential-helper $@
   username = ghoward
-[credential "github.com"]
+[credential "http://github.com"]
   username = Traap
 [credential]
 	helper = osxkeychain
