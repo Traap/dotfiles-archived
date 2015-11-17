@@ -31,13 +31,7 @@ Host s2
     User gahoward
     IdentityFile ~/.ssh/css_rsa
 
-# Access to HostNmae when [dis]/connected [from]/to Amgen network.
-Host ray 
-    HostName 54.191.206.83
-    User gary
-    IdentityFile ~/.ssh/rayxiao-temp-aws.pem
-
 # Access to mHealth Pharma documentation
-Host mphd
+Host mhpd
      User ghoward
      HostName git-codecommit.us-east-1.amazonaws.com
