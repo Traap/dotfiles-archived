@@ -4,7 +4,7 @@
 Host github.com
     HostName github.com
     User Traap
-    LogLevel DEBUG2
+    LogLevel DEBUG1
     IdentityFile ~/.ssh/css_rsa
 
 # AWS: fpc 
