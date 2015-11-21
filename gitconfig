@@ -1,13 +1,9 @@
 [alias]
-	logg = log --graph --oneline --all
+	logg = log --graph --oneline
 	co = checkout
 	br = branch
 [user]
-	name = ghoward
 	email = gary.a.howard@mac.com
-[credential]
-	helper = !aws --profile CodeCommitProfile codecommit credential-helper $@
-	UseHttpPath = true
 [core]
 	excludesfile = ~/.gitignore_global
 [push]
@@ -16,7 +12,13 @@
 	ui = true
 [code]
 	pager = cat
-[url "https://"]
-	insteadOf = git://
 [url "https://git-codecommit.us-east-1.amazonaws.com/v1/repos"]
 	insteadof = mhp:
+[credential "mhp:"]
+	UseHttpPath = true
+	helper = !aws --profile CodeCommitProfile codecommit credential-helper $@
+  username = ghoward
+[credential "https://github.com"]
+  username = Traap
+[credential]
+	helper = osxkeychain
