@@ -65,6 +65,9 @@ function ffr() { find . -name "$1" -exec bash -c 'rm -rf' \;; }
 # Use vim to read man pages.
 #-------------------------------------------------------------------------------k
 function man() { vim -c "Man $1 $2" -c 'silent only' ; }
+#-------------------------------------------------------------------------------k
+# Use asciidoctor to create a pdf document.
+#-------------------------------------------------------------------------------k
 function apdf() {
   f=$(basename "$1")
   f="${f%.*}"
@@ -73,6 +76,26 @@ function apdf() {
               --attribute pdf-style=$HOME/git/dotfiles/asciidoctor/basic-theme.yml \
               --out-file pdf/"$f".pdf \
               "$1" ;
+}
+#-------------------------------------------------------------------------------
+# Git helpers
+#-------------------------------------------------------------------------------
+function gce() {
+  if [[ "amgen" = $1 ]]; then
+    git config --local user.name gahoward
+    git config --local user.email gahoward@amgen.com
+  elif [[ "mhp" = $1 ]]; then
+    git config --local user.name ghoward
+    git config --local user.email gahoward@mhealthpharma.com
+  elif [[ "traap" = $1 ]]; then
+    git config --local user.name Traap
+    git config --local user.email gary.a.howard@mac.com
+  else
+    echo "Usage: gce [amgen|mhp|traap]"
+    echo "Found: " $1
+  fi
+  git config --local --get user.name
+  git config --local --get user.email
 }
 #-------------------------------------------------------------------------------
 # Prompt
