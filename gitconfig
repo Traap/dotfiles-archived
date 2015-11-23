@@ -4,8 +4,10 @@
 	br = branch
 [user]
 	email = gary.a.howard@mac.com
+  user = Traap
 [core]
 	excludesfile = ~/.gitignore_global
+	editor = vim
 [push]
 	default = simple
 [color]
