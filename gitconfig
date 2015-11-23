@@ -22,5 +22,4 @@
   username = ghoward
 [credential "https://github.com"]
   username = Traap
-[credential]
 	helper = osxkeychain
