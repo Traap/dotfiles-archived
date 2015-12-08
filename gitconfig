@@ -4,7 +4,7 @@
 	br = branch
 [user]
 	email = gary.a.howard@mac.com
-  user = Traap
+	user = Traap
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim
@@ -19,7 +19,7 @@
 [credential "mhp:"]
 	UseHttpPath = true
 	helper = !aws --profile CodeCommitProfile codecommit credential-helper $@
-  username = ghoward
+	username = ghoward
 [credential "https://github.com"]
-  username = Traap
+	username = Traap
 	helper = osxkeychain
