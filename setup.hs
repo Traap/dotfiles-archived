@@ -1,4 +1,4 @@
-  -- | Copyright (c) Gary Allan Howard aka Traap.
+-- | Copyright (c) Gary Allan Howard aka Traap.
 -- Distributed under the same terms as Vim itself.  See :help license.
 --
 -- This program initializes my HOME directory with symbolic link references to
@@ -10,15 +10,16 @@ import System.Exit
 import System.FilePath
 import System.Process
 
--- | A string representing git clone and github url.
--- github is prepended to all git repos in bundles.
+-- | A string representing git clone and Github URL.
+-- Github is perpended to all git repos in bundles.
 github :: String
 github = "git clone http://github.com/"
 
+-- | A string representing git clone URL extension.
 gitex :: String
 gitex = ".git"
 
--- | Create a symbolic link for each file name listed in dotFiles.  Files
+-- | Create a symbolic link for each file name listed in dotfiles.  Files
 -- are symlinked from $HOME to $HOME/vim.
 dotfiles :: [String]
 dotfiles =
@@ -49,6 +50,7 @@ bundles s x =
   ,s ++ "christoomey/vim-tmux-navigator"
   ,s ++ "christoomey/vim-tmux-runner"
   ,s ++ "edkolev/tmuxline.vim"
+  ,s ++ "ivalkeen/nerdtree-execute"
   ,s ++ "moll/vim-bbye"
   ,s ++ "neovimhaskell/haskell-vim"
   ,s ++ "scrooloose/nerdtree"
@@ -115,7 +117,7 @@ setDotFileDirectory = do
   let f = h ++ "/git/dotfiles"
   setCurrentDirectory f
 
--- | Safely remove the directory and all subfolders.
+-- | Safely remove the directory and all sub-folders.
 safelyRemoveDirectory :: FilePath -> IO ()
 safelyRemoveDirectory fpath = do
   b <- doesDirectoryExist fpath
