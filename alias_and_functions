@@ -3,6 +3,7 @@
 # Color management
 #-------------------------------------------------------------------------------
 echo "Operating system: " ${OSTYPE}
+export TERM=xterm-256color
 if [[ $OSTYPE =~ "darwin" ]]; then
     export CLICOLOR=1
     export LSCOLORS=GxFxBxDxCxegedabagacad
