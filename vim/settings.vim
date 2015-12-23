@@ -103,4 +103,10 @@ set nospell
 " Candidates for removal {{{
 set complete=.,w,b,u,t
 set completeopt=longest,menuone,preview
-" -------------------------------------------------------------------------- }}}
+" --------------------------------------------------------------------------
+"  }}}
+" Auto commands
+autocmd BufRead,BufNewFile *.adoc,*adoci,*.txt,*.asciidoc,README
+        \ setlocal filetype=asciidoc
+" --------------------------------------------------------------------------
+

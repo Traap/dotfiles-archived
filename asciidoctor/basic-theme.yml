@@ -21,3 +21,19 @@ link:
   font_color: #002FA7
 outline_list:
   indent: $base_font_size * 1.1
+header:
+  height: 0.75in
+    line_height 1
+  recto_content:
+    center: '{document-title}' 
+  verso_content:
+    center: $header_recto_content
+footer:
+  height: 0.75in
+    line_height 1
+  recto_content:
+    left: '{docdate} v{revnumber}' 
+    right: 'Page {page-number} of {page-count}'
+  verso_content:
+    left: '{docdate} v{revnumber}' 
+    right: 'Page {page-number} of {page-count}'
