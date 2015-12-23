@@ -1,7 +1,7 @@
 [alias]
-	logg = log --graph --oneline
-	co = checkout
 	br = branch
+	co = checkout
+  logg   = log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 [user]
 	email = gary.a.howard@mac.com
 	user = Traap
@@ -23,3 +23,7 @@
 [credential "https://github.com"]
 	username = Traap
 	helper = osxkeychain
+
+
+
+  
