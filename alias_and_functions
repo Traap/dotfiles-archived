@@ -14,6 +14,7 @@ if [[ $OSTYPE =~ "darwin" ]]; then
     function mom() {
       source ~/git/dotfiles/color/base16-shell/base16-$1.dark.sh
     }
+    export PATH="$HOME/Library/Haskell/bin:$PATH"
 elif [[ $OSTYPE =~ "linux" ]]; then
     export TERM=xterm
     source ~/git/dotfiles/color/base16-shell/base16-atelierdune.dark.sh
