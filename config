@@ -34,6 +34,16 @@ Host s2
     IdentityFile ~/.ssh/css_rsa
 
 # Access to mHealth Pharma documentation
-Host mhpd
-     User ghoward
+Host larry
      HostName git-codecommit.us-east-1.amazonaws.com
+     Port 22
+     User ghoward
+     IdentityFile ~/.ssh/css_rsa
+
+# Access to my personal Amazom Linux machine
+Host moe
+    HostName ec2-54-201-140-13.us-west-2.compute.amazonaws.com
+    Port 22
+    User ubuntu
+    IdentityFile ~/.ssh/aws_rsa
+

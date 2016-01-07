@@ -3,10 +3,11 @@
 	co = checkout
   logg   = log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 [user]
-	email = gary.a.howard@mac.com
+	email = 
 	user = Traap
+	name = 
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/gary/.gitignore_global
 	editor = vim
 [push]
 	default = simple
@@ -23,7 +24,10 @@
 [credential "https://github.com"]
 	username = Traap
 	helper = osxkeychain
-
-
-
   
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
