@@ -40,10 +40,16 @@ Host larry
      User ghoward
      IdentityFile ~/.ssh/css_rsa
 
-# Access to my personal Amazom Linux machine
+# Access to my personal Amazom Linux machines
 Host moe
     HostName ec2-54-201-140-13.us-west-2.compute.amazonaws.com
     Port 22
     User ubuntu
+    IdentityFile ~/.ssh/aws_rsa
+
+Host curly
+    HostName ec2-54-201-85-6.us-west-2.compute.amazonaws.com
+    Port 22
+    User ec2-user
     IdentityFile ~/.ssh/aws_rsa
 
