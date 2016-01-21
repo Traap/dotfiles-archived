@@ -1,0 +1,61 @@
+= My Git Notes
+Good git documentation https://git-scm.com/
+
+== Review .ssh config
+ cat ~/.ssh/config
+
+== Cloning a git repository is done normally once or to start over.
+ rm -rf git/dotfiles
+ git clone http://github.com/Traap/dotfiles.git
+
+== Determine current status.
+ git status
+
+== Navigate to git working directory.:wq
+ cd ~/git/dotfies
+
+== Check out an existing branch master.
+ git checkout master
+ git pull
+
+== Get logs from remote server
+Note:  logg is a alias I've added to my gitconfig.
+ git logg
+
+== Check out a new branch.
+ git checkout -b  foobar
+ git branch --set-upstream-to=origin/foobar foobar
+
+== Push change to remote repository 
+ git status
+
+== Add all untracked files
+ git add .
+
+== Add a single untracked file
+ git add filename
+
+== Update stage area with comments
+ git commit -m "Example comment"
+ git push
+
+== Initialize git configuration options.
+ git config  --global  user.name Traap
+ git config  --global  user.email gary.a.howard@mac.com
+ git config  --global push.default simple
+
+== Rebase a branch with master
+ cd git/dotfiles
+ git chechout foobar
+ git fetch origin
+ git rebase -i master
+
+== Assemble pdf documentation using Shake script.
+Note: Script file must be named: Shakefile.hs  Output is written to the current
+folder/pdf.
+  cd ~/git/mhp_Documentation
+  shake
+  cd pdf
+
+== Find git commands I used.      
+ history | grep "git " > Notes.txt
