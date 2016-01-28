@@ -3,9 +3,9 @@
 	co = checkout
   logg   = log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 [user]
-	email = 
+	email = "gahoward@amgen.com "
 	user = Traap
-	name = 
+	name = gahoward
 [core]
 	excludesfile = /Users/gary/.gitignore_global
 	editor = vim

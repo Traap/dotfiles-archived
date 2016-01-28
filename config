@@ -3,7 +3,6 @@ Host *
     ServerAliveInterval 300
     IdentityFile ~/.ssh/css_rsa
     
-#
 # GitHub settings
 Host github.com
     HostName github.com
