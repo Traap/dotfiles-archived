@@ -3,7 +3,6 @@ Host *
     ServerAliveInterval 300
     IdentityFile ~/.ssh/css_rsa
     
-#
 # GitHub settings
 Host github.com
     HostName github.com
@@ -26,7 +25,7 @@ Host stash.amgencss.fpcomplete.com
     Port 2222
     User gahoward
 
-# Access to HostNmae when connected to Amgen network.
+# Access to HostName when connected to Amgen network.
 Host s2 
     HostName 52.8.106.215
     Port 7999 
