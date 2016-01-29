@@ -51,9 +51,9 @@ Note:  logg is a alias I've added to my gitconfig.
  git rebase -i master
 
 == Rename local and remote branch
-git branch -m old-name new-name
-git push origin :old-name
-git push --set-upstream origin new-name
+ git branch -m old-name new-name
+ git push origin :old-name
+ git push --set-upstream origin new-name
 
 == Find git commands I used.      
  history | grep "git " > Notes.txt
