@@ -24,10 +24,11 @@
 [url "https://git-codecommit.us-east-1.amazonaws.com/v1/repos"]
 	insteadof = mhp:
 
+[credential "https://github.com"]
+	username = Traap
+
 [credential "mhp:"]
 	UseHttpPath = true
 	helper = !aws --profile CodeCommitProfile codecommit credential-helper $@
 	username = ghoward
 
-[credential "https://github.com"]
-	username = Traap
