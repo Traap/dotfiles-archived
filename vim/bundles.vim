@@ -59,7 +59,7 @@ let g:vtr_filetype_runner_overrides = {
     \ ,'haskell': 'runhaskell {file}'
     \ }
 
-let g:VtrOrientation = "v"
-let g:VtrPercentage = 25
+let g:VtrOrientation = "h"
+let g:VtrPercentage = 45
 " -------------------------------------------------------------------------- }}}
 

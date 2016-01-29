@@ -11,7 +11,7 @@ Good git documentation https://git-scm.com/
 == Determine current status.
  git status
 
-== Navigate to git working directory.:wq
+== Navigate to git working directory.
  cd ~/git/dotfies
 
 == Check out an existing branch master.
@@ -50,12 +50,10 @@ Note:  logg is a alias I've added to my gitconfig.
  git fetch origin
  git rebase -i master
 
-== Assemble pdf documentation using Shake script.
-Note: Script file must be named: Shakefile.hs  Output is written to the current
-folder/pdf.
-  cd ~/git/mhp_Documentation
-  shake
-  cd pdf
+== Rename local and remote branch
+git branch -m old-name new-name
+git push origin :old-name
+git push --set-upstream origin new-name
 
 == Find git commands I used.      
  history | grep "git " > Notes.txt
