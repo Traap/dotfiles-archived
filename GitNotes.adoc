@@ -50,12 +50,5 @@ Note:  logg is a alias I've added to my gitconfig.
  git fetch origin
  git rebase -i master
 
-== Assemble pdf documentation using Shake script.
-Note: Script file must be named: Shakefile.hs  Output is written to the current
-folder/pdf.
-  cd ~/git/mhp_Documentation
-  shake
-  cd pdf
-
 == Find git commands I used.      
  history | grep "git " > Notes.txt
