@@ -44,12 +44,22 @@ alias ct='cd ~/git/dotfiles/color/base16-shell && ./colortest && cd -'
 alias decrypt='~/git/dotfiles/decrypt'
 alias dhf='cd ~/git/smart-device-sw/doc/dhf'
 alias dot='cd ~/git/dotfiles/'
-alias ds='~/git/smart-device-sw/tools/bin/dev-shell' #alias ec='emacsclient -c' #alias encrypt='~/git/dotfiles/encrypt' #alias et='emacsclient -t' #alias h='history'
+alias ds='~/git/smart-device-sw/tools/bin/dev-shell' 
+#alias ec='emacsclient -c' 
+#alias encrypt='~/git/dotfiles/encrypt' 
+#alias et='emacsclient -t' 
+alias h='history'
 
 # Grep.
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
+#------------------------------------------------------------------------------- 
+# A function to grep my command history
+#------------------------------------------------------------------------------- 
+function hg() {
+  history | grep "$1"
+}
 #------------------------------------------------------------------------------- 
 # File & String related functions
 #------------------------------------------------------------------------------- 
