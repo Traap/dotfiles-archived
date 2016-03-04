@@ -2,32 +2,33 @@
 	br = branch
 	co = checkout
   logg   = log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+
 [user]
 	email = "gahoward@amgen.com "
 	user = Traap
 	name = gahoward
+
 [core]
 	excludesfile = /Users/gary/.gitignore_global
 	editor = vim
+
 [push]
 	default = simple
+
 [color]
 	ui = true
+
 [code]
 	pager = cat
+
 [url "https://git-codecommit.us-east-1.amazonaws.com/v1/repos"]
 	insteadof = mhp:
+
+[credential "https://github.com"]
+	username = Traap
+
 [credential "mhp:"]
 	UseHttpPath = true
 	helper = !aws --profile CodeCommitProfile codecommit credential-helper $@
 	username = ghoward
-[credential "https://github.com"]
-	username = Traap
-	helper = osxkeychain
-  
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+
