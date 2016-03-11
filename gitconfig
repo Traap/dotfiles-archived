@@ -4,9 +4,9 @@
   logg   = log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 
 [user]
-	email = "gahoward@amgen.com "
+	email = systeminformatics@amgen.com
 	user = Traap
-	name = gahoward
+	name = System Informatics
 
 [core]
 	excludesfile = /Users/gary/.gitignore_global
@@ -32,3 +32,5 @@
 	helper = !aws --profile CodeCommitProfile codecommit credential-helper $@
 	username = ghoward
 
+[credential]
+	helper = store
