@@ -7,6 +7,7 @@ Host *
 Host github.com
     HostName github.com
     User Traap
+    IdentityFile ~/.ssh/traap_rsa
     LogLevel DEBUG1
 
 # AWS: fpc 
@@ -42,11 +43,5 @@ Host moe
     HostName ec2-54-201-140-13.us-west-2.compute.amazonaws.com
     Port 22
     User ubuntu
-    IdentityFile ~/.ssh/aws_rsa
-
-Host curly
-    HostName ec2-54-201-85-6.us-west-2.compute.amazonaws.com
-    Port 22
-    User ec2-user
-    IdentityFile ~/.ssh/aws_rsa
+    IdentityFile ~/.ssh/moe_rsa
 
