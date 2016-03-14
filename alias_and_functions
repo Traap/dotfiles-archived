@@ -3,10 +3,11 @@
 # Color management
 #-------------------------------------------------------------------------------
 echo "Operating system: " ${OSTYPE}
-export TERM=xterm-256color
-if [[ $OSTYPE =~ "darwin" ]]; then
+if [[ ${OSTYPE} =~ "darwin" ]]; then
     export CLICOLOR=1
     export LSCOLORS=GxFxBxDxCxegedabagacad
+    export PATH="${HOME}/Library/Haskell/bin:${PATH}"
+    export TERM=xterm-256color
     alias me='source ~/.bash_profile'
     alias la='ls -A'
     alias ll='ls -lahG'
@@ -16,8 +17,8 @@ if [[ $OSTYPE =~ "darwin" ]]; then
     function mom() {
       source ~/git/dotfiles/color/base16-shell/base16-$1.dark.sh
     }
-    export PATH="$HOME/Library/Haskell/bin:$PATH"
-elif [[ $OSTYPE =~ "linux" ]]; then
+elif [[ ${OSTYPE} =~ "linux" ]]; then
+    export PATH="${HOME}/.cabal/bin:${PATH}"
     export TERM=xterm
     source ~/git/dotfiles/color/base16-shell/base16-atelierdune.dark.sh
     alias me='source ~/.bashrc'
