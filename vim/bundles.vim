@@ -61,5 +61,8 @@ let g:vtr_filetype_runner_overrides = {
 
 let g:VtrOrientation = "h"
 let g:VtrPercentage = 45
+
+nnoremap <leader>db  :VtrSendCommand stack build hmst-documentation && stack exec -- doc-build<cr>
+nnoremap <leader>dc  :VtrSendCommand stack exec -- doc-build clean<cr>
 " -------------------------------------------------------------------------- }}}
 

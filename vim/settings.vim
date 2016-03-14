@@ -105,8 +105,10 @@ set complete=.,w,b,u,t
 set completeopt=longest,menuone,preview
 " --------------------------------------------------------------------------
 "  }}}
-" Auto commands
+" Auto commands {{{
 autocmd BufRead,BufNewFile *.adoc,*adoci,*.txt,*.asciidoc,README
         \ setlocal filetype=asciidoc
-" --------------------------------------------------------------------------
+autocmd BufRead,BufNewFile *.tex,*.bbl,*.bib
+        \ setlocal filetype=tex
+" -------------------------------------------------------------------------- }}}
 
