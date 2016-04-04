@@ -87,9 +87,9 @@ set wrap
 " ---------------------------------------------------------------------------}}}
 " Colors I like using... {{{
 let base16colorspace=256
-colorscheme desert
+"set background=dark
+"colorscheme base16-paraiso
 syntax on
-hi colorcolumn ctermbg=blue
 " -------------------------------------------------------------------------- }}}
 " Automatic spelling corrections. {{{
 iab liek     like
