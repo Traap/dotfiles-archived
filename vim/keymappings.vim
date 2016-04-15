@@ -136,8 +136,9 @@ nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>.  :e.<cr>
 nnoremap <leader>ad :set filetype=asciidoc<cr>
 " -------------------------------------------------------------------------- }}}
-" Escape key {{{
+" Escape key and dd {{{
 inoremap <tab> <ESC>
+map - dd
 " -------------------------------------------------------------------------- }}}
 " Quicker access to Ex commands {{{
 nmap ; :

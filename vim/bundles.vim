@@ -59,8 +59,8 @@ let g:vtr_filetype_runner_overrides = {
     \ ,'haskell': 'runhaskell {file}'
     \ }
 
-let g:VtrOrientation = "h"
-let g:VtrPercentage = 45
+let g:VtrOrientation = "v"
+let g:VtrPercentage = 15
 
 nnoremap <leader>db  :VtrSendCommand stack build hmst-documentation && stack exec -- doc-build<cr>
 nnoremap <leader>dc  :VtrSendCommand stack exec -- doc-build clean<cr>

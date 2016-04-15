@@ -8,7 +8,6 @@ Host github.com
     HostName github.com
     User Traap
     IdentityFile ~/.ssh/traap_rsa
-    LogLevel DEBUG1
 
 # AWS: fpc 
 Host fpc 
