@@ -4,9 +4,9 @@
   logg   = log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 
 [user]
-	email = systeminformatics@amgen.com
+	email = gary.a.howard@mac.com
 	user = Traap
-	name = System Informatics
+	name = Traap
 
 [core]
 	excludesfile = ~/.gitignore_global

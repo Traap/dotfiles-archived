@@ -15,8 +15,9 @@ function base16Color() {
   source ~/git/dotfiles/color/base16-shell/base16-$1.$2.sh
   echo "Base16 color: " $1 $2
 }
+mom paraiso
 #-------------------------------------------------------------------------------
-# Color management
+# Operating system specif settings.
 #-------------------------------------------------------------------------------
 echo "Operating system: " ${OSTYPE}
 if [[ ${OSTYPE} =~ "darwin" ]]; then
@@ -39,49 +40,59 @@ elif [[ ${OSTYPE} =~ "linux" ]]; then
 else
     echo "Unknown operating system:" ${OSTYPE}
 fi
-mom paraiso
 #-------------------------------------------------------------------------------
 # Use vim keybinds
 #-------------------------------------------------------------------------------
 #set -o vi
 
 #-------------------------------------------------------------------------------
-# Personal aliases
+# Haskell and Cabal
 #-------------------------------------------------------------------------------
-# General
-alias atf='cd ~/git/smart-device-sw/doc/automated-test'
-alias cemacs='emacs -Q -l ~/git/emacs-haskell-config/init.el'
 alias ci='cabal install'
 alias cif='cabal install --force-reinstalls'
+alias cemacs='emacs -Q -l ~/git/emacs-haskell-config/init.el'
 alias cls='clear'
-alias decrypt='~/git/dotfiles/decrypt'
-alias dhf='cd ~/git/smart-device-sw/doc/dhf'
-alias dot='cd ~/git/dotfiles/'
-alias ds='~/git/smart-device-sw/tools/bin/dev-shell' 
-#alias ec='emacsclient -c' 
-#alias encrypt='~/git/dotfiles/encrypt' 
-#alias et='emacsclient -t' 
-alias h='history'
 
-# Grep.
+#-------------------------------------------------------------------------------
+# General purpose aliases.
+#-------------------------------------------------------------------------------
+alias decrypt='~/git/dotfiles/decrypt'
+alias ec='emacsclient -c' 
 alias egrep='egrep --color=auto'
+alias encrypt='~/git/dotfiles/encrypt' 
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
+alias h='history'
+
+#-------------------------------------------------------------------------------
+# Aliases to folders within my Git root.
+#-------------------------------------------------------------------------------
+alias atf='cd ~/git/smart-device-sw/doc/automated-test'
+alias ac='cd ~/git/AllanConsulting'
+alias dhf='cd ~/git/smart-device-sw/doc/dhf'
+alias dot='cd ~/git/dotfiles/'
+alias gh='cd ~/git/GaryHoward'
+alias hh='cd ~/git/HowardHouse'
+
 #------------------------------------------------------------------------------- 
 # A function to grep my command history
 #------------------------------------------------------------------------------- 
 function hg() {
   history | grep "$1"
 }
+
 #------------------------------------------------------------------------------- 
 # File & String related functions
 #------------------------------------------------------------------------------- 
 function ff()  { find . -type f -iname "$1" -print ; }
 function ffr() { find . -name "$1" -exec bash -c 'rm -rf' \;; } 
+
 #-------------------------------------------------------------------------------
 # Use vim to read man pages.
 #-------------------------------------------------------------------------------k
-function man() { vim -c "Man $1 $2" -c 'silent only' ; }
+function man() { 
+  vim -c "Man $1 $2" -c 'silent only' ; 
+}
 #-------------------------------------------------------------------------------k
 # Use asciidoctor to create a pdf document.
 #-------------------------------------------------------------------------------k
@@ -94,6 +105,7 @@ function apdf() {
               --out-file pdf/"$f".pdf \
               "$1" ;
 }
+
 #-------------------------------------------------------------------------------
 # Git helpers
 #-------------------------------------------------------------------------------
@@ -114,6 +126,7 @@ function gce() {
   git config --local --get user.name
   git config --local --get user.email
 }
+
 #-------------------------------------------------------------------------------
 # Prompt
 #-------------------------------------------------------------------------------
