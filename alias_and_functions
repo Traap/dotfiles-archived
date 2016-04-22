@@ -143,3 +143,11 @@ function pah() { defaults write -g ApplePressAndHoldEnable -bool false ; }
 #----------------------------------------------------------------------
 function title() { echo -n -e "\033]0;$1\007"; }
 
+#----------------------------------------------------------------------
+# Docker machine
+#----------------------------------------------------------------------
+function sdm() {
+  docker-machine env
+  eval "$(docker-machine env default)"
+  docker-machine start
+}
