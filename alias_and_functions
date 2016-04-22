@@ -28,8 +28,13 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     alias me='source ~/.bash_profile'
     alias la='ls -A'
     alias ll='ls -lahG'
-    alias fpc0='sshfs fpc:git/smart-device-sw /Volumes/Larry/fpc0'
-    alias ufpc0='umount /Volumes/Larry/fpc0'
+    if [[ ${HOSTNAME} =~ "Stooges" ]]; then
+      alias fpc0='sshfs fpc:git/smart-device-sw /Volumes/Larry/fpc0'
+      alias ufpc0='umount /Volumes/Larry/fpc0'
+    else
+      alias fpc0='sshfs fpc:git/smart-device-sw ~/fpc0'
+      alias ufpc0='umount ~/fpc0'
+    fi
     alias vim='mvim -v'
 elif [[ ${OSTYPE} =~ "linux" ]]; then
     export PATH="${HOME}/.cabal/bin:${PATH}"
