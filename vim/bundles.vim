@@ -19,7 +19,7 @@ let g:DVB_TrimWS = 1
 " -------------------------------------------------------------------------- }}}
 " Dispatch {{{
 let g:dispatch_compilers = {
-     \ 'latex': 'tex',
+     \ 'pdlatex': 'tex',
      \ 'haskell': 'cabal install'
      \ }
 " -------------------------------------------------------------------------- }}}
@@ -59,10 +59,12 @@ let g:vtr_filetype_runner_overrides = {
     \ ,'haskell': 'runhaskell {file}'
     \ }
 
-let g:VtrOrientation = "v"
-let g:VtrPercentage = 15
+let g:VtrOrientation = "h"
+let g:VtrPercentage = 50
 
-nnoremap <leader>db  :VtrSendCommand stack build hmst-documentation && stack exec -- doc-build<cr>
+nnoremap <leader>db  :VtrSendCommand stack exec -- doc-build<cr>
 nnoremap <leader>dc  :VtrSendCommand stack exec -- doc-build clean<cr>
+nnoremap <leader>hb  :VtrSendCommand stack build hmst-documentation<cr>
+nnoremap <leader>mb  :VtrSendCommand stack exec -- math-build<cr>
 " -------------------------------------------------------------------------- }}}
 

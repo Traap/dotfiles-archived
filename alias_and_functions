@@ -15,7 +15,8 @@ function base16Color() {
   source ~/git/dotfiles/color/base16-shell/base16-$1.$2.sh
   echo "Base16 color: " $1 $2
 }
-mom paraiso
+#mom paraiso
+
 #-------------------------------------------------------------------------------
 # Operating system specif settings.
 #-------------------------------------------------------------------------------
@@ -156,3 +157,8 @@ function sdm() {
   eval "$(docker-machine env default)"
   docker-machine start
 }
+function docker-gc() {
+  docker ps --no-trunc -aq | xargs docker rm
+  docker images -f "dangling=true" -q | xargs docker rmi
+}
+#----------------------------------------------------------------------

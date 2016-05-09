@@ -86,7 +86,7 @@ set textwidth=80
 set wrap
 " ---------------------------------------------------------------------------}}}
 " Colors I like using... {{{
-let base16colorspace=256
+"let base16colorspace=256
 "set background=dark
 "colorscheme base16-paraiso
 syntax on
