@@ -66,5 +66,6 @@ nnoremap <leader>db  :VtrSendCommand stack exec -- doc-build<cr>
 nnoremap <leader>dc  :VtrSendCommand stack exec -- doc-build clean<cr>
 nnoremap <leader>hb  :VtrSendCommand stack build hmst-documentation<cr>
 nnoremap <leader>mb  :VtrSendCommand stack exec -- math-build<cr>
+nnoremap <leader>mc  :VtrSendCommand stack exec -- math-build clean<cr>
 " -------------------------------------------------------------------------- }}}
 
