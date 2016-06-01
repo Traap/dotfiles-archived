@@ -76,6 +76,7 @@ alias h='history'
 alias atf='cd ~/git/smart-device-sw/doc/automated-test'
 alias ac='cd ~/git/AllanConsulting'
 alias dhf='cd ~/git/smart-device-sw/doc/dhf'
+alias doc='cd ~/git/smart-device-sw/doc'
 alias dot='cd ~/git/dotfiles/'
 alias gh='cd ~/git/GaryHoward'
 alias hh='cd ~/git/HowardHouse'
@@ -111,7 +112,9 @@ function apdf() {
               --out-file pdf/"$f".pdf \
               "$1" ;
 }
-
+function a2l() {
+  asciidoctor-latex --no-header-footer --safe-mode=secure "$1" ;
+}
 #-------------------------------------------------------------------------------
 # Git helpers
 #-------------------------------------------------------------------------------

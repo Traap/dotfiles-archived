@@ -49,6 +49,7 @@ bundles s x =
   ,s ++ "chriskempson/base16-vim"
   ,s ++ "christoomey/vim-tmux-navigator"
   ,s ++ "christoomey/vim-tmux-runner"
+  ,s ++ "ctrlpvim/ctrlp.vim"
   ,s ++ "edkolev/tmuxline.vim"
   ,s ++ "ivalkeen/nerdtree-execute"
   ,s ++ "moll/vim-bbye"

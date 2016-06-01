@@ -35,8 +35,10 @@ nnoremap <leader>gD :Gvdiff<cr>
 " Pathogen {{{
 noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
 " -------------------------------------------------------------------------- }}}
-" NERDtree {{{  
-noremap<C-n> :NERDTreeToggle<CR>
+" NERDtree {{{
+noremap<C-n> :NERDTreeToggle<cr>
+let NERDTreeShowLineNumbers=1
+nnoremap <leader>nf :NERDTreeFind<cr>
 " -------------------------------------------------------------------------- }}}
 " Tmux Runner {{{
 "
