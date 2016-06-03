@@ -23,6 +23,7 @@ function base16Color() {
 echo "Operating system: " ${OSTYPE}
 if [[ ${OSTYPE} =~ "darwin" ]]; then
     export CLICOLOR=1
+    export HMST_BIN="/Users/gahoward/git/smart-device-sw/tools/bin"
     export LSCOLORS=GxFxBxDxCxegedabagacad
     export PATH="${HOME}/Library/Haskell/bin:${PATH}"
     export TERM=xterm-256color
@@ -37,12 +38,15 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
       alias ufpc0='umount ~/fpc0'
     fi
     alias vim='mvim -v'
+    alias cc='python3 ${HMST_BIN}/clean-code'
 elif [[ ${OSTYPE} =~ "linux" ]]; then
+    export HMST_BIN="/gahoward/git/smart-device-sw/tools/bin"
     export PATH="${HOME}/.cabal/bin:${PATH}"
     export TERM=xterm
     alias me='source ~/.bashrc'
     alias la='ls -A --color'
     alias ll='ls -lahG --color'
+    alias cc='python ${HMST_BIN}/clean-code'
 else
     echo "Unknown operating system:" ${OSTYPE}
 fi
@@ -69,6 +73,7 @@ alias encrypt='~/git/dotfiles/encrypt'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias h='history'
+alias ssh='ssh -A'
 
 #-------------------------------------------------------------------------------
 # Aliases to folders within my Git root.
@@ -103,17 +108,32 @@ function man() {
 #-------------------------------------------------------------------------------k
 # Use asciidoctor to create a pdf document.
 #-------------------------------------------------------------------------------k
-function apdf() {
+function adoc() {
   f=$(basename "$1")
   f="${f%.*}"
-  time asciidoctor --trace --require asciidoctor-pdf \
-              --backend pdf \
-              --attribute pdf-style=$HOME/git/dotfiles/asciidoctor/basic-theme.yml \
-              --out-file pdf/"$f".pdf \
-              "$1" ;
+  time asciidoctor \
+         --trace \
+         --require asciidoctor-pdf \
+         --backend pdf \
+         --attribute pdf-style=$HOME/git/dotfiles/asciidoctor/basic-theme.yml \
+         --out-file _pdf/"$f".pdf \
+         "$1" ;
 }
 function a2l() {
-  asciidoctor-latex --no-header-footer --safe-mode=secure "$1" ;
+  time \
+    asciidoctor-latex \
+         --no-header-footer \
+         --safe-mode=secure \
+         "$1" ;
+}
+function atex() {
+  mkdir -p _pdf
+#  time \
+    pdflatex \
+         --no-shell-escape \
+         --interaction=batchmode \
+         --output-directory _pdf \
+         "$1" ;
 }
 #-------------------------------------------------------------------------------
 # Git helpers
