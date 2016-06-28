@@ -16,7 +16,7 @@
 	default = simple
 
 [color]
-	ui = true
+	ui = always
 
 [code]
 	pager = cat

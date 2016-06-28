@@ -86,8 +86,8 @@ set textwidth=80
 set wrap
 " ---------------------------------------------------------------------------}}}
 " Colors I like using... {{{
-"let base16colorspace=256
-"set background=dark
+let base16colorspace=256
+set background=dark
 "colorscheme base16-paraiso
 syntax on
 " -------------------------------------------------------------------------- }}}
@@ -108,7 +108,7 @@ set completeopt=longest,menuone,preview
 " Auto commands {{{
 autocmd BufRead,BufNewFile *.adoc,*adoci,*.txt,*.asciidoc,README
         \ setlocal filetype=asciidoc
-autocmd BufRead,BufNewFile *.tex,*.bbl,*.bib
+autocmd BufRead,BufNewFile *.tex,*.bbl,*.bib,*.texx,*.texb
         \ setlocal filetype=tex
 " -------------------------------------------------------------------------- }}}
 

@@ -110,7 +110,8 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 " -------------------------------------------------------------------------- }}}
-" Vertical split {{{
+" Split buffer {{{
+noremap <leader>h :split<cr><cr>
 noremap <leader>v <C-w>v
 " -------------------------------------------------------------------------- }}}
 " List {{{
@@ -120,7 +121,7 @@ nnoremap <up>    :lprev<cr>zvzz
 nnoremap <down>  :lnext<cr>zvzz
 " -------------------------------------------------------------------------- }}}
 " Display help in vertical buffer. {{{
-nnoremap <leader>h :silent vert bo help<cr>
+nnoremap <leader>H :silent vert bo help<cr>
 " -------------------------------------------------------------------------- }}}
 " Quick editing of my personalization files.{{{
 nnoremap <leader>eS :e ~/git/dotfiles/setup.hs<cr>
@@ -135,6 +136,7 @@ nnoremap <leader>es :e ~/git/dotfiles/vim/settings.vim<cr>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>.  :e.<cr>
 nnoremap <leader>ad :set filetype=asciidoc<cr>
+nnoremap <leader>tw :set textwidth=0 wrapmargin=0 nowrap nogdefault relativenumber invnumber<cr>
 " -------------------------------------------------------------------------- }}}
 " Escape key and dd {{{
 inoremap <tab> <ESC>

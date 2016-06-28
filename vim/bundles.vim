@@ -70,4 +70,9 @@ nnoremap <leader>hb  :VtrSendCommand stack build hmst-documentation<cr>
 nnoremap <leader>mb  :VtrSendCommand stack exec -- math-build<cr>
 nnoremap <leader>mc  :VtrSendCommand stack exec -- math-build clean<cr>
 " -------------------------------------------------------------------------- }}}
-
+"
+" LaTex-Boxi {{{
+let g:LatexBox_latexmk_async = 0
+let g:LatexBox_quickfix = 2
+let g:LatexBox_split_length = 15
+" -------------------------------------------------------------------------- }}}

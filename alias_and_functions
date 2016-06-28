@@ -38,6 +38,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
       alias ufpc0='umount ~/fpc0'
     fi
     alias vim='mvim -v'
+    alias vimg='vim -g'
     alias cc='python3 ${HMST_BIN}/clean-code'
 elif [[ ${OSTYPE} =~ "linux" ]]; then
     export HMST_BIN="/gahoward/git/smart-device-sw/tools/bin"
@@ -85,6 +86,7 @@ alias doc='cd ~/git/smart-device-sw/doc'
 alias dot='cd ~/git/dotfiles/'
 alias gh='cd ~/git/GaryHoward'
 alias hh='cd ~/git/HowardHouse'
+alias hmst='cd ~/git/smart-device-sw'
 alias mhp='cd ~/git/mhp_Documentation'
 
 #------------------------------------------------------------------------------- 
@@ -187,8 +189,10 @@ function docker-gc() {
 }
 function dba() { doc && stack exec -- doc-build; }
 function dbc() { doc && stack exec -- doc-build clean ; }
-function dbd() { doc && stack build hmst-documentation ; }
+function dbh() { doc && stack build hmst-documentation ; }
 function dbt() { doc && stack exec -- doc-build tex ; }
+function dbti(){ doc && stack exec -- env DONT_RERUN_TEX_BUILD=1 doc-build tex;}
+function dbv() { hmst && stack build verify && stack exec verify ; }
 #----------------------------------------------------------------------
 # Highly volatile functions
 #----------------------------------------------------------------------
