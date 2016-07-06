@@ -120,6 +120,15 @@ nnoremap <right> :cnext<cr>zvzz
 nnoremap <up>    :lprev<cr>zvzz
 nnoremap <down>  :lnext<cr>zvzz
 " -------------------------------------------------------------------------- }}}
+" Yank, Delete and Paste (cut-copy-paste) to os clipboard.
+nmap <leader>y "*y
+vmap <leader>y "*y
+nmap <leader>d "*d
+vmap <leader>d "*d
+nmap <leader>p "*p
+vmap <leader>p "*y
+
+" -------------------------------------------------------------------------- }}}
 " Display help in vertical buffer. {{{
 nnoremap <leader>H :silent vert bo help<cr>
 " -------------------------------------------------------------------------- }}}

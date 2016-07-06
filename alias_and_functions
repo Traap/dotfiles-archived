@@ -68,9 +68,9 @@ alias cls='clear'
 # General purpose aliases.
 #-------------------------------------------------------------------------------
 alias decrypt='~/git/dotfiles/decrypt'
-alias ec='emacsclient -c' 
+alias ec='emacsclient -c'
 alias egrep='egrep --color=auto'
-alias encrypt='~/git/dotfiles/encrypt' 
+alias encrypt='~/git/dotfiles/encrypt'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias h='history'
@@ -89,24 +89,30 @@ alias hh='cd ~/git/HowardHouse'
 alias hmst='cd ~/git/smart-device-sw'
 alias mhp='cd ~/git/mhp_Documentation'
 
-#------------------------------------------------------------------------------- 
+#-------------------------------------------------------------------------------
 # A function to grep my command history
-#------------------------------------------------------------------------------- 
+#-------------------------------------------------------------------------------
 function hg() {
   history | grep "$1"
 }
 
-#------------------------------------------------------------------------------- 
+#-------------------------------------------------------------------------------
 # File & String related functions
-#------------------------------------------------------------------------------- 
-function ff()  { find . -type f -iname "$1" -print ; }
-function ffr() { find . -name "$1" -exec bash -c 'rm -rf' \;; } 
+#-------------------------------------------------------------------------------
+function ff()  {
+  find . -type f -iname "$1" -print ;
+}
+function ffr() { find . -name "$1" -delete ; }
+function ffw() {
+  local ext=$1 pattern=$2
+  find . -name "$ext" -type f -exec grep "$pattern" /dev/null {} +
+}
 
 #-------------------------------------------------------------------------------
 # Use vim to read man pages.
 #-------------------------------------------------------------------------------k
-function man() { 
-  vim -c "Man $1 $2" -c 'silent only' ; 
+function man() {
+  vim -c "Man $1 $2" -c 'silent only' ;
 }
 #-------------------------------------------------------------------------------k
 # Use functions to create pdf document.
@@ -187,12 +193,12 @@ function docker-gc() {
   docker ps --no-trunc -aq | xargs docker rm
   docker images -f "dangling=true" -q | xargs docker rmi
 }
-function dba() { doc && stack exec -- doc-build; }
-function dbc() { doc && stack exec -- doc-build clean ; }
-function dbh() { doc && stack build hmst-documentation ; }
-function dbt() { doc && stack exec -- doc-build tex ; }
-function dbti(){ doc && stack exec -- env DONT_RERUN_TEX_BUILD=1 doc-build tex;}
-function dbv() { hmst && stack build verify && stack exec verify ; }
+function dba() { stack exec -- doc-build; }
+function dbc() { stack exec -- doc-build clean ; }
+function dbh() { stack build hmst-documentation ; }
+function dbt() { stack exec -- doc-build tex ; }
+function dbti(){ stack exec -- env DONT_RERUN_TEX_BUILD=1 doc-build tex;}
+function dbv() { stack build verify && stack exec verify ; }
 #----------------------------------------------------------------------
 # Highly volatile functions
 #----------------------------------------------------------------------

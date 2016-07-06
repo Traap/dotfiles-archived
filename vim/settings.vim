@@ -1,5 +1,5 @@
 " settings.vim {{{
-" 
+"
 " These are general settings that impact Vim as a whole.
 " -------------------------------------------------------------------------- }}}
 " First things ... {{{
@@ -28,6 +28,7 @@ set ttimeoutlen=10
 set ttyfast
 set virtualedit=block
 setlocal spell spelllang=en_us
+nnoremap Q <no>                               " Don't allow Ex mode.
 " -------------------------------------------------------------------------- }}}
 " Buffer visualization settings {{{
 set backspace=indent,eol,start
@@ -54,13 +55,13 @@ set virtualedit+=block
 set visualbell
 " -------------------------------------------------------------------------- }}}
 " Searching {{{
-set hlsearch
-set ignorecase
-set incsearch
-set smartcase
+set hlsearch                                     " Hilight previous search
+set ignorecase                                   " Ignore case when searching
+set incsearch                                    " Incremental searching
+set smartcase                                    " Be smart about case.
 " -------------------------------------------------------------------------- }}}
 " The wild, wild, west {{{
-set wildignore+=*.DS_Store                       " OSX 
+set wildignore+=*.DS_Store                       " OSX
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
 set wildignore+=*.luac                           " Lua byte code
@@ -88,8 +89,13 @@ set wrap
 " Colors I like using... {{{
 let base16colorspace=256
 set background=dark
-"colorscheme base16-paraiso
 syntax on
+" disable Background Color Erase (BCE) so that color schemes
+" render properly when inside 256-color tmux and GNU screen.
+" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+if &term =~ '256color'
+  set t_ut=
+endif
 " -------------------------------------------------------------------------- }}}
 " Automatic spelling corrections. {{{
 iab liek     like
@@ -111,4 +117,3 @@ autocmd BufRead,BufNewFile *.adoc,*adoci,*.txt,*.asciidoc,README
 autocmd BufRead,BufNewFile *.tex,*.bbl,*.bib,*.texx,*.texb
         \ setlocal filetype=tex
 " -------------------------------------------------------------------------- }}}
-

@@ -1,8 +1,7 @@
 -- | Copyright (c) Gary Allan Howard aka Traap.
 -- Distributed under the same terms as Vim itself.  See :help license.
 --
--- This program initializes my HOME directory with symbolic link references to
--- my git/dotfiles folders.
+-- This program initializes my HOME directory with symbolic link references to -- my git/dotfiles folders.
 module Main (main) where
 
 import System.Directory
@@ -51,8 +50,11 @@ bundles s x =
   ,s ++ "christoomey/vim-tmux-runner"
   ,s ++ "ctrlpvim/ctrlp.vim"
   ,s ++ "edkolev/tmuxline.vim"
+  ,s ++ "eagletmt/ghcmod-vim"
+  ,s ++ "gletmt/neco-ghci"
   ,s ++ "ivalkeen/nerdtree-execute"
   ,s ++ "moll/vim-bbye"
+  ,s ++ "mpickering/hlint-revactor-vim"
   ,s ++ "neovimhaskell/haskell-vim"
   ,s ++ "scrooloose/nerdtree"
   ,s ++ "tpope/vim-commentary"
@@ -61,6 +63,8 @@ bundles s x =
   ,s ++ "tpope/vim-pathogen"
   ,s ++ "tpope/vim-surround"
   ,s ++ "tpope/vim-unimpaired"
+  ,s ++ "Twinside/vim-hoogle"
+  ,s ++ "Shougo/vimproc.vim"
   ,s ++ "vim-scripts/bufexplorer.zip"
   ,s ++ "vimoutliner/vimoutliner"
   ,s ++ "traap/vim-dragvisuals"
@@ -79,18 +83,18 @@ cpath :: String
 cpath = "color"
 
 -- | Let's move some files around.
-main :: IO () 
+main :: IO ()
 main = do
   -- Step 1: Setup symlinnks.
   mapM_ makeSymbolicLink dotfiles
 
   -- Step 2: Clone github repos specific to vim.
   setupDirectory bpath
-  cloneRepos (bundles github gitex)
+  cloneRepos $ bundles github gitex
 
   -- Step 3: Clone github repos specifc to base16 colors.
   setupDirectory cpath
-  cloneRepos (colors  github gitex)  
+  cloneRepos $ colors  github gitex
 
 -- | makeSymoblicLink
 makeSymbolicLink :: String -> IO ExitCode
@@ -98,7 +102,7 @@ makeSymbolicLink f = do
   h <- getHomeDirectory
   let tfile = h ++ "/." ++ f
   system $ "rm -rf " ++ tfile
-  
+
   c <- getCurrentDirectory
   let sfile = c ++ "/" ++ (takeFileName f)
   system $ "ln -vs " ++ sfile ++ " " ++ tfile
@@ -129,5 +133,5 @@ safelyRemoveDirectory fpath = do
 -- | Clone repos I am interested in using.
 cloneRepos :: [String] -> IO ()
 cloneRepos name = do
-  mapM_ system name 
+  mapM_ system name
 

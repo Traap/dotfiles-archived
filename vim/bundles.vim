@@ -36,9 +36,10 @@ nnoremap <leader>gD :Gvdiff<cr>
 noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
 " -------------------------------------------------------------------------- }}}
 " NERDtree {{{
-noremap<C-n> :NERDTreeToggle<cr>
 let NERDTreeShowLineNumbers=1
-nnoremap <leader>nf :NERDTreeFind<cr>
+nmap <silent> <leader>f  :NERDTreeToggle<cr>
+nmap <C-n>      :NERDTreeToggle<cr>
+nmap <silent> <leader>nf :NERDTreeFind<cr>
 " -------------------------------------------------------------------------- }}}
 " Tmux Runner {{{
 "
@@ -70,9 +71,35 @@ nnoremap <leader>hb  :VtrSendCommand stack build hmst-documentation<cr>
 nnoremap <leader>mb  :VtrSendCommand stack exec -- math-build<cr>
 nnoremap <leader>mc  :VtrSendCommand stack exec -- math-build clean<cr>
 " -------------------------------------------------------------------------- }}}
-"
 " LaTex-Boxi {{{
 let g:LatexBox_latexmk_async = 0
 let g:LatexBox_quickfix = 2
 let g:LatexBox_split_length = 15
+" -------------------------------------------------------------------------- }}}
+" CTRL-P {{{
+let g:ctrlp_max_files = 0
+let g:ctrlp_show_hidden=1
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
+" -------------------------------------------------------------------------- }}}
+" Neo Vim Haskell{{{
+let g:haskell_enable_quantification = 1       " Highlite forall
+let g:haskell_enable_recursivedo = 1          " Highlite mdo and rec
+let g:haskell_enable_arrowsyntax = 1          " Highlite proc
+let g:haskell_enable_pattern_synonyms = 1     " Highlite pattern
+let g:haskell_enable_typeroles = 1            " Highlite type roles
+let g:haskell_enable_static_pointers = 1      " Highlite static
+let g:haskell_indent_if = 3
+let g:haskell_indent_case = 2
+let g:haskell_indent_let = 4
+let g:haskell_indent_where = 6
+let g:haskell_indent_do = 3
+let g:haskell_indent_int = 1
+let g:haskell_indent_guard = 2
+let g:cabal_indent_selection = 2
+" -------------------------------------------------------------------------- }}}
+" neco-ghc {{{
+let g:haskell_completion_ghc = 0              " Disabled for neco-ghc
+let g:necoghc_enabled_detailed_browse = 1
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
 " -------------------------------------------------------------------------- }}}
