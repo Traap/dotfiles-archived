@@ -51,7 +51,7 @@ bundles s x =
   ,s ++ "ctrlpvim/ctrlp.vim"
   ,s ++ "edkolev/tmuxline.vim"
   ,s ++ "eagletmt/ghcmod-vim"
-  ,s ++ "gletmt/neco-ghci"
+  ,s ++ "gletmt/neco-ghc"
   ,s ++ "ivalkeen/nerdtree-execute"
   ,s ++ "moll/vim-bbye"
   ,s ++ "mpickering/hlint-revactor-vim"
