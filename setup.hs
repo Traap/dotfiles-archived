@@ -1,9 +1,11 @@
 -- | Copyright (c) Gary Allan Howard aka Traap.
 -- Distributed under the same terms as Vim itself.  See :help license.
 --
--- This program initializes my HOME directory with symbolic link references to -- my git/dotfiles folders.
+-- This program initializes my HOME directory with symbolic link references to
+-- my git/dotfiles folders.
 module Main (main) where
 
+import Control.Monad
 import System.Directory
 import System.Exit
 import System.FilePath
@@ -13,10 +15,6 @@ import System.Process
 -- Github is perpended to all git repos in bundles.
 github :: String
 github = "git clone http://github.com/"
-
--- | A string representing git clone URL extension.
-gitex :: String
-gitex = ".git"
 
 -- | Create a symbolic link for each file name listed in dotfiles.  Files
 -- are symlinked from $HOME to $HOME/vim.
@@ -41,8 +39,8 @@ bpath :: String
 bpath = "vim/bundle"
 
 -- | The vim bundles I am using.
-bundles :: String -> String -> [String]
-bundles s x =
+bundles :: String -> [String]
+bundles s =
   [s ++ "bling/vim-airline"
   ,s ++ "bruno-/vim-man"
   ,s ++ "chriskempson/base16-vim"
@@ -54,9 +52,10 @@ bundles s x =
   ,s ++ "eagletmt/neco-ghc"
   ,s ++ "ivalkeen/nerdtree-execute"
   ,s ++ "moll/vim-bbye"
-  ,s ++ "mpickering/hlint-revactor-vim"
+  ,s ++ "mpickering/hlint-refactor-vim"
   ,s ++ "neovimhaskell/haskell-vim"
   ,s ++ "scrooloose/nerdtree"
+  ,s ++ "Shougo/vimproc.vim"
   ,s ++ "tpope/vim-commentary"
   ,s ++ "tpope/vim-dispatch"
   ,s ++ "tpope/vim-fugitive"
@@ -64,15 +63,14 @@ bundles s x =
   ,s ++ "tpope/vim-surround"
   ,s ++ "tpope/vim-unimpaired"
   ,s ++ "Twinside/vim-hoogle"
-  ,s ++ "Shougo/vimproc.vim"
   ,s ++ "vim-scripts/bufexplorer.zip"
   ,s ++ "vimoutliner/vimoutliner"
   ,s ++ "traap/vim-dragvisuals"
   ]
 
 -- | The colors I am using.
-colors :: String -> String -> [String]
-colors s x =
+colors :: String -> [String]
+colors s =
   [s ++ "chriskempson/base16-gnome-terminal"
   ,s ++ "chriskempson/base16-iterm2"
   ,s ++ "chriskempson/base16-shell"
@@ -90,21 +88,21 @@ main = do
 
   -- Step 2: Clone github repos specific to vim.
   setupDirectory bpath
-  cloneRepos $ bundles github gitex
+  cloneRepos $ bundles github
 
   -- Step 3: Clone github repos specifc to base16 colors.
   setupDirectory cpath
-  cloneRepos $ colors  github gitex
+  cloneRepos $ colors  github
 
 -- | makeSymoblicLink
 makeSymbolicLink :: String -> IO ExitCode
 makeSymbolicLink f = do
   h <- getHomeDirectory
   let tfile = h ++ "/." ++ f
-  system $ "rm -rf " ++ tfile
+  _ <- system $ "rm -rf " ++ tfile
 
   c <- getCurrentDirectory
-  let sfile = c ++ "/" ++ (takeFileName f)
+  let sfile = c ++ "/" ++ takeFileName f
   system $ "ln -vs " ++ sfile ++ " " ++ tfile
 
 -- | Setup directory.
@@ -126,12 +124,8 @@ setDotFileDirectory = do
 safelyRemoveDirectory :: FilePath -> IO ()
 safelyRemoveDirectory fpath = do
   b <- doesDirectoryExist fpath
-  case b of
-    True ->  removeDirectoryRecursive fpath
-    False -> return ()
+  Control.Monad.when b $ removeDirectoryRecursive fpath
 
 -- | Clone repos I am interested in using.
 cloneRepos :: [String] -> IO ()
-cloneRepos name = do
-  mapM_ system name
-
+cloneRepos = mapM_ system
