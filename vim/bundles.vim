@@ -1,5 +1,4 @@
-" bundles.vim {{{
-"
+" bundles.vim {{{ "
 " This file holds bundle specific settings and key bindings.
 "
 " -------------------------------------------------------------------------- }}}
@@ -71,7 +70,7 @@ nnoremap <leader>hb  :VtrSendCommand stack build hmst-documentation<cr>
 nnoremap <leader>mb  :VtrSendCommand stack exec -- math-build<cr>
 nnoremap <leader>mc  :VtrSendCommand stack exec -- math-build clean<cr>
 " -------------------------------------------------------------------------- }}}
-" LaTex-Boxi {{{
+" LaTex-Box {{{
 let g:LatexBox_latexmk_async = 0
 let g:LatexBox_quickfix = 2
 let g:LatexBox_split_length = 15
@@ -81,7 +80,7 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_show_hidden=1
 let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
 " -------------------------------------------------------------------------- }}}
-" Neo Vim Haskell{{{
+" haskell-vim{{{
 let g:haskell_enable_quantification = 1       " Highlite forall
 let g:haskell_enable_recursivedo = 1          " Highlite mdo and rec
 let g:haskell_enable_arrowsyntax = 1          " Highlite proc
@@ -102,4 +101,16 @@ let g:haskell_completion_ghc = 0              " Disabled for neco-ghc
 let g:necoghc_enabled_detailed_browse = 1
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
+" -------------------------------------------------------------------------- }}}
+" neocomplete {{{
+let g:neocomplete#enable_at_startup = 0
+" -------------------------------------------------------------------------- }}}
+" ghcmod-vim {{{
+let g:ghcmod_hlint_options = ['--ignore=Redundant $']
+highlight ghcmodtype ctermbg=yellow
+let g:ghcmod_type_highlight = 'ghcmodType'
+
+autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+
+let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
 " -------------------------------------------------------------------------- }}}

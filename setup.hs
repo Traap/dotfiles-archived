@@ -41,31 +41,33 @@ bpath = "vim/bundle"
 -- | The vim bundles I am using.
 bundles :: String -> [String]
 bundles s =
-  [s ++ "bling/vim-airline"
-  ,s ++ "bruno-/vim-man"
-  ,s ++ "chriskempson/base16-vim"
-  ,s ++ "christoomey/vim-tmux-navigator"
-  ,s ++ "christoomey/vim-tmux-runner"
-  ,s ++ "ctrlpvim/ctrlp.vim"
-  ,s ++ "edkolev/tmuxline.vim"
-  ,s ++ "eagletmt/ghcmod-vim"
-  ,s ++ "eagletmt/neco-ghc"
-  ,s ++ "ivalkeen/nerdtree-execute"
-  ,s ++ "moll/vim-bbye"
-  ,s ++ "mpickering/hlint-refactor-vim"
-  ,s ++ "neovimhaskell/haskell-vim"
-  ,s ++ "scrooloose/nerdtree"
-  ,s ++ "Shougo/vimproc.vim"
-  ,s ++ "tpope/vim-commentary"
-  ,s ++ "tpope/vim-dispatch"
-  ,s ++ "tpope/vim-fugitive"
-  ,s ++ "tpope/vim-pathogen"
-  ,s ++ "tpope/vim-surround"
-  ,s ++ "tpope/vim-unimpaired"
-  ,s ++ "Twinside/vim-hoogle"
-  ,s ++ "vim-scripts/bufexplorer.zip"
-  ,s ++ "vimoutliner/vimoutliner"
-  ,s ++ "traap/vim-dragvisuals"
+  [s ++ "bling/vim-airline"                      -- Status/tabline 
+  ,s ++ "bruno-/vim-man"                         -- View man pages in vim
+  ,s ++ "chriskempson/base16-vim"                -- iTerm2 terminal themes
+  ,s ++ "christoomey/vim-tmux-navigator"         -- Navigate Tmux.
+  ,s ++ "christoomey/vim-tmux-runner"            -- Vim and Tmux integration
+  ,s ++ "ctrlpvim/ctrlp.vim"                     -- Fuzzy file find
+  ,s ++ "edkolev/tmuxline.vim"                   -- Tmux status line
+  ,s ++ "eagletmt/ghcmod-vim"                    -- Happy Haskell Programming
+  ,s ++ "eagletmt/neco-ghc"                      -- Haskell completion
+  ,s ++ "ivalkeen/nerdtree-execute"              -- NERDtree execute menu
+  ,s ++ "moll/vim-bbye"                          -- Delete buffers
+  ,s ++ "mpickering/hlint-refactor-vim"          -- Hlint refactoring
+  ,s ++ "neovimhaskell/haskell-vim"              -- Highlighting & Indentation
+  ,s ++ "scrooloose/nerdcommenter"               -- Commenting operators
+  ,s ++ "scrooloose/nerdtree"                    -- Filesystem explorer
+  ,s ++ "Shougo/neocomplete.vim"                 -- Keyword completion
+  ,s ++ "Shougo/vimproc.vim"                     -- Asynchronous execution
+  ,s ++ "tpope/vim-commentary"                   -- Lightweight commentary
+  ,s ++ "tpope/vim-dispatch"                     -- Background builds
+  ,s ++ "tpope/vim-fugitive"                     -- Git interface
+  ,s ++ "tpope/vim-pathogen"                     -- Runtime path manager
+  ,s ++ "tpope/vim-surround"                     -- Surrounding [], {}, ().
+  ,s ++ "tpope/vim-unimpaired"                   -- Complementary pair maps
+  ,s ++ "Twinside/vim-hoogle"                    -- Query hoogle
+  ,s ++ "vim-scripts/bufexplorer.zip"            -- Buffer explorer
+  ,s ++ "vim-scripts/CybleColor"                 -- Cycle through colorsheme
+  ,s ++ "traap/vim-dragvisuals"                  -- Drag or Dup visual selection
   ]
 
 -- | The colors I am using.

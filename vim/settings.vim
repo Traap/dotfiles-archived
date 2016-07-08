@@ -89,6 +89,7 @@ set wrap
 " Colors I like using... {{{
 let base16colorspace=256
 set background=dark
+highlight ColorColumn ctermbg=cyan
 syntax on
 " disable Background Color Erase (BCE) so that color schemes
 " render properly when inside 256-color tmux and GNU screen.

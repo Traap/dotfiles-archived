@@ -127,7 +127,6 @@ nmap <leader>d "*d
 vmap <leader>d "*d
 nmap <leader>p "*p
 vmap <leader>p "*y
-
 " -------------------------------------------------------------------------- }}}
 " Display help in vertical buffer. {{{
 nnoremap <leader>H :silent vert bo help<cr>
