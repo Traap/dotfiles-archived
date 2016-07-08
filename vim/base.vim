@@ -1,4 +1,4 @@
-" base.vim {{{
+" pathogen.vim {{{
 "
 " This file sets up pathogen and turns off vi compatability.
 "

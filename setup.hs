@@ -66,7 +66,7 @@ bundles s =
   ,s ++ "tpope/vim-unimpaired"                   -- Complementary pair maps
   ,s ++ "Twinside/vim-hoogle"                    -- Query hoogle
   ,s ++ "vim-scripts/bufexplorer.zip"            -- Buffer explorer
-  ,s ++ "vim-scripts/CybleColor"                 -- Cycle through colorsheme
+  ,s ++ "vim-scripts/CycleColor"                 -- Cycle through colorsheme
   ,s ++ "traap/vim-dragvisuals"                  -- Drag or Dup visual selection
   ]
 

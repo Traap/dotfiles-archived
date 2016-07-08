@@ -15,8 +15,9 @@
 "
 let s:vim_home = '~/git/dotfiles/vim/'
 
+
 let config_list = 
-  \ ['base.vim'
+  \ ['pathogen.vim'
   \ ,'leader.vim'  
   \ ,'settings.vim' 
   \ ,'functions.vim' 
