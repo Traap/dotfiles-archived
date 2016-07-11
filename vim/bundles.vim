@@ -9,11 +9,11 @@ nnoremap <leader>X :bdelete<cr>
 " -------------------------------------------------------------------------- }}}
 " Drag Visual Block {{{
 " Remove any introduced trailing whitespace after moving.
-vmap  <expr>  <LEFT>   DVB_Drag('left')
-vmap  <expr>  <RIGHT>  DVB_Drag('right')
-vmap  <expr>  <DOWN>   DVB_Drag('down')
-vmap  <expr>  <UP>     DVB_Drag('up')
-vmap  <expr>  D        DVB_Duplicate()
+vnoremap  <expr>  <LEFT>   DVB_Drag('left')
+vnoremap  <expr>  <RIGHT>  DVB_Drag('right')
+vnoremap  <expr>  <DOWN>   DVB_Drag('down')
+vnoremap  <expr>  <UP>     DVB_Drag('up')
+vnoremap  <expr>  D        DVB_Duplicate()
 let g:DVB_TrimWS = 1
 " -------------------------------------------------------------------------- }}}
 " Dispatch {{{
@@ -36,9 +36,8 @@ noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
 " -------------------------------------------------------------------------- }}}
 " NERDtree {{{
 let NERDTreeShowLineNumbers=1
-nmap <silent> <leader>f  :NERDTreeToggle<cr>
-nmap <C-n>      :NERDTreeToggle<cr>
-nmap <silent> <leader>nf :NERDTreeFind<cr>
+nnoremap <silent><leader>nf :NERDTreeFind<CR>
+nnoremap <silent><leader>N  :NERDTreeToggle<CR>
 " -------------------------------------------------------------------------- }}}
 " Tmux Runner {{{
 "
@@ -71,14 +70,17 @@ nnoremap <leader>mb  :VtrSendCommand stack exec -- math-build<cr>
 nnoremap <leader>mc  :VtrSendCommand stack exec -- math-build clean<cr>
 " -------------------------------------------------------------------------- }}}
 " LaTex-Box {{{
-let g:LatexBox_latexmk_async = 0
-let g:LatexBox_quickfix = 2
-let g:LatexBox_split_length = 15
+" 1et g:LatexBox_latexmk_async = 0
+" let g:LatexBox_quickfix = 2
+" let g:LatexBox_split_length = 15
 " -------------------------------------------------------------------------- }}}
 " CTRL-P {{{
 let g:ctrlp_max_files = 0
 let g:ctrlp_show_hidden=1
 let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
+
+nnoremap <silent> <leader>z :CtrlP<CR>
+nnoremap <silent> <leader>Z :CtrlPBuffer<CR>
 " -------------------------------------------------------------------------- }}}
 " haskell-vim{{{
 let g:haskell_enable_quantification = 1       " Highlite forall
@@ -106,11 +108,17 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 let g:neocomplete#enable_at_startup = 0
 " -------------------------------------------------------------------------- }}}
 " ghcmod-vim {{{
+let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
+
 let g:ghcmod_hlint_options = ['--ignore=Redundant $']
-highlight ghcmodtype ctermbg=yellow
 let g:ghcmod_type_highlight = 'ghcmodType'
 
-autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+highlight ghcmodtype ctermbg=yellow
 
-let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
+nnoremap <silent> tw :GhcModTypeInsert<CR>
+nnoremap <silent> ts :GhcModSplitFunCase<CR>
+nnoremap <silent> tq :GhcModType<CR>
+nnoremap <silent> te :GhcModTypeClear<CR>
+
+autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 " -------------------------------------------------------------------------- }}}

@@ -1,7 +1,7 @@
 " Keymappings {{{
 " 
-" I do not intend to place any keybindings in this file that are bundle 
-" specific.
+" I do not place any keybindings in this file that are bundle specific.  See
+" vim/bundles.vim for bundle keybindings.
 "
 " Replace help key with check time.
 noremap  <F1> :checktime<cr>
@@ -10,15 +10,15 @@ inoremap <F1> <esc>:checktime<cr>
 " Obfuscate screen contents {{{
 nnoremap <F9> mzggg?G`z
 " -------------------------------------------------------------------------- }}}
-" Toggle line numbers {{{
-nnoremap <leader>n :set invnumber<cr>
+" Let's use <leader>t as our toggle switch {{{
+nnoremap <leader>tW :set textwidth=0 wrapmargin=0 nowrap nogdefault relativenumber invnumber<cr>
+nnoremap <leader>td :diffoff!<cr>             " diff
+nnoremap <leader>tn :set invnumber<cr>        " numbers
+nnoremap <leader>tw :set wrap!<cr>
 " -------------------------------------------------------------------------- }}}
 " Sort lines {{{
 nnoremap <leader>s vip:!sort<cr>
 vnoremap <leader>s :!sort<cr>
-" -------------------------------------------------------------------------- }}}
-" Wrap {{{
-nnoremap <leader>W :set wrap!<cr>
 " -------------------------------------------------------------------------- }}}
 " Clean trailing whitespace {{{
 nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
@@ -31,7 +31,6 @@ nnoremap Vaa ggVG
 nnoremap zh mzzt10<c-u>`z
 " -------------------------------------------------------------------------- }}}
 " Diffoff {{{
-nnoremap <leader>D :diffoff!<cr>
 " -------------------------------------------------------------------------- }}}
 " Easier linewise reselection of what you just pasted. {{{
 nnoremap <leader>V V`]
@@ -40,7 +39,7 @@ nnoremap <leader>V V`]
 nnoremap <lt>> V`]<
 nnoremap ><lt> V`]>
 nnoremap =- V`]=
-" -------------------------------------------------------------------------- }}}
+" -------------------------------------------------------------------------  }}}
 " Join line {{{
 " Keep the cursor in place while joining lines
 nnoremap J mzJ`z
@@ -121,12 +120,12 @@ nnoremap <up>    :lprev<cr>zvzz
 nnoremap <down>  :lnext<cr>zvzz
 " -------------------------------------------------------------------------- }}}
 " Yank, Delete and Paste (cut-copy-paste) to os clipboard.
-nmap <leader>y "*y
-vmap <leader>y "*y
-nmap <leader>d "*d
-vmap <leader>d "*d
-nmap <leader>p "*p
-vmap <leader>p "*y
+nnoremap <leader>y "*y
+vnoremap <leader>y "*y
+nnoremap <leader>d "*d
+vnoremap <leader>d "*d
+nnoremap <leader>p "*p
+vnoremap <leader>p "*y
 " -------------------------------------------------------------------------- }}}
 " Display help in vertical buffer. {{{
 nnoremap <leader>H :silent vert bo help<cr>
@@ -134,7 +133,6 @@ nnoremap <leader>H :silent vert bo help<cr>
 " Quick editing of my personalization files.{{{
 nnoremap <leader>eS :e ~/git/dotfiles/setup.hs<cr>
 nnoremap <leader>ea :e ~/git/dotfiles/alias_and_functions<cr>
-nnoremap <leader>eb :e ~/git/dotfiles/vim/base.vim<cr>
 nnoremap <leader>ed :e ~/git/dotfiles/vim/custom-dictionary.utf-8.add<cr>
 nnoremap <leader>eg :e ~/git/dotfiles/gitconfig<cr>
 nnoremap <leader>ek :e ~/git/dotfiles/vim/keymappings.vim<cr>
@@ -144,12 +142,12 @@ nnoremap <leader>es :e ~/git/dotfiles/vim/settings.vim<cr>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>.  :e.<cr>
 nnoremap <leader>ad :set filetype=asciidoc<cr>
-nnoremap <leader>tw :set textwidth=0 wrapmargin=0 nowrap nogdefault relativenumber invnumber<cr>
 " -------------------------------------------------------------------------- }}}
 " Escape key and dd {{{
 inoremap <tab> <ESC>
 map - dd
 " -------------------------------------------------------------------------- }}}
-" Quicker access to Ex commands {{{
+" Quicker access to Ex commands and sourcing {{{
 nmap ; :
+nnoremap <leader>sv :source $MYVIMRC<CR>
 " -------------------------------------------------------------------------- }}}

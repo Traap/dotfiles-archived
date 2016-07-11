@@ -105,11 +105,6 @@ iab pritn    print
 iab moer     more
 iab retrun   return
 iab teh      the
-set nospell
-" -------------------------------------------------------------------------- }}}
-" Candidates for removal {{{
-set complete=.,w,b,u,t
-set completeopt=longest,menuone,preview
 " --------------------------------------------------------------------------
 "  }}}
 " Auto commands {{{
