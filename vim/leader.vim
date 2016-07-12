@@ -5,7 +5,6 @@
 
 let mapleader = ","
 let g:mapleader = ","
-let maplocalleader = "\\"
+let maplocalleader = ","
 set tm=2000                                   " Leader key timeout.
-
 " ---------------------------------------------------------------------------}}}

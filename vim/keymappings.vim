@@ -109,10 +109,6 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 " -------------------------------------------------------------------------- }}}
-" Split buffer {{{
-noremap <leader>h :split<cr><cr>
-noremap <leader>v <C-w>v
-" -------------------------------------------------------------------------- }}}
 " List {{{
 nnoremap <left>  :cprev<cr>zvzz
 nnoremap <right> :cnext<cr>zvzz
@@ -128,7 +124,7 @@ nnoremap <leader>p "*p
 vnoremap <leader>p "*y
 " -------------------------------------------------------------------------- }}}
 " Display help in vertical buffer. {{{
-nnoremap <leader>H :silent vert bo help<cr>
+nnoremap <leader>HH :silent vert bo help<cr>
 " -------------------------------------------------------------------------- }}}
 " Quick editing of my personalization files.{{{
 nnoremap <leader>eS :e ~/git/dotfiles/setup.hs<cr>

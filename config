@@ -2,6 +2,7 @@
 Host *
     ServerAliveInterval 300
     IdentityFile ~/.ssh/css_rsa
+    User gahoward
     
 # GitHub settings
 Host github.com
@@ -12,24 +13,21 @@ Host github.com
 # AWS: fpc 
 Host fpc 
     HostName ec2-52-8-13-116.us-west-1.compute.amazonaws.com
-    User gahoward
+    Port 22
 
-# Access to HostName when disconnected from Amgen network.
+# Access to HMST git server when disconnected from Amgen network.
 Host stash
     HostName stash.amgencss.fpcomplete.com
     Port 2222
-    User gahoward
 
-# This alias seems to be used when git access submodules from stash.
+# This alias is to be used when git access submodules from stash.
 Host stash.amgencss.fpcomplete.com
     Port 2222
-    User gahoward
 
-# Access to HostName when connected to Amgen network.
+# Access to HMST git server when connected to Amgen network.
 Host s2 
     HostName 52.8.106.215
     Port 7999 
-    User gahoward
 
 # Access to my personal Amazom Linux machines
 Host moe
@@ -38,3 +36,8 @@ Host moe
     User ubuntu
     IdentityFile ~/.ssh/moe_rsa
 
+# Access to FH Score
+Host fhs
+    HostName gitlab-dal.devops.com/gahoward
+    Port 2222
+    IdentityFile ~/.ssh/fhscore_rsa

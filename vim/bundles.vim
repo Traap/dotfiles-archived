@@ -37,7 +37,7 @@ noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
 " NERDtree {{{
 let NERDTreeShowLineNumbers=1
 nnoremap <silent><leader>nf :NERDTreeFind<CR>
-nnoremap <silent><leader>N  :NERDTreeToggle<CR>
+nnoremap <silent><C-n> :NERDTreeToggle<CR>
 " -------------------------------------------------------------------------- }}}
 " Tmux Runner {{{
 "
@@ -70,17 +70,20 @@ nnoremap <leader>mb  :VtrSendCommand stack exec -- math-build<cr>
 nnoremap <leader>mc  :VtrSendCommand stack exec -- math-build clean<cr>
 " -------------------------------------------------------------------------- }}}
 " LaTex-Box {{{
-" 1et g:LatexBox_latexmk_async = 0
-" let g:LatexBox_quickfix = 2
-" let g:LatexBox_split_length = 15
+let g:LatexBox_latexmk_async = 0
+let g:LatexBox_quickfix = 3
+let g:LatexBox_split_length = 15
+let g:LatexBox_Folding = 1
+let g:LatexBox_fold_preambel = 0
+ let g:LatexBox_latexmk_options = '-pdflatex="pdflatex -synctex=1 %O %S"'
 " -------------------------------------------------------------------------- }}}
 " CTRL-P {{{
 let g:ctrlp_max_files = 0
 let g:ctrlp_show_hidden=1
 let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
 
-nnoremap <silent> <leader>z :CtrlP<CR>
-nnoremap <silent> <leader>Z :CtrlPBuffer<CR>
+nnoremap <silent> <leader>tp :CtrlP<CR>
+nnoremap <silent> <leader>Tp :CtrlPBuffer<CR>
 " -------------------------------------------------------------------------- }}}
 " haskell-vim{{{
 let g:haskell_enable_quantification = 1       " Highlite forall
@@ -102,12 +105,12 @@ let g:cabal_indent_selection = 2
 let g:haskell_completion_ghc = 0              " Disabled for neco-ghc
 let g:necoghc_enabled_detailed_browse = 1
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
 " -------------------------------------------------------------------------- }}}
-" neocomplete {{{
+" neocomplete {{{ 
 let g:neocomplete#enable_at_startup = 0
 " -------------------------------------------------------------------------- }}}
-" ghcmod-vim {{{
+" ghcmod-vim {{{ 
+" https://github.com/eagletmt/ghcmod-vim/wiki/Customize
 let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
 
 let g:ghcmod_hlint_options = ['--ignore=Redundant $']
@@ -121,4 +124,12 @@ nnoremap <silent> tq :GhcModType<CR>
 nnoremap <silent> te :GhcModTypeClear<CR>
 
 autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+" -------------------------------------------------------------------------- }}}
+" vim-hoogle {{{ 
+let g:hoogle_search_count = 20
+let g:hoogle_search_buf_name = 'HoogleSearch'
+
+au BufNewFile,BufRead *.hs map <buffer> <leader>Hh :Hoogle<cr>
+au BufNewFile,BufRead *.hs map <buffer> <leader>Hc :Hoogle<cr>
+au BufNewFile,BufRead *.hs map <buffer> <leader>Hl :Hoogle<cr>
 " -------------------------------------------------------------------------- }}}

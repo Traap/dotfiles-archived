@@ -27,7 +27,6 @@ set ttimeout
 set ttimeoutlen=10
 set ttyfast
 set virtualedit=block
-setlocal spell spelllang=en_us
 nnoremap Q <no>                               " Don't allow Ex mode.
 " -------------------------------------------------------------------------- }}}
 " Buffer visualization settings {{{
