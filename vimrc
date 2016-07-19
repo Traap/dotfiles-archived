@@ -17,11 +17,7 @@ let s:vim_home = '~/git/dotfiles/vim/'
 
 let config_list =
   \ ['pathogen.vim'
-  \ ,'leader.vim'
   \ ,'settings.vim'
-  \ ,'functions.vim'
-  \ ,'keymappings.vim'
-  \ ,'bundles.vim'
  \ ]
 
 for files in config_list

@@ -38,6 +38,6 @@ Host moe
 
 # Access to FH Score
 Host fhs
-    HostName gitlab-dal.devops.com/gahoward
+    HostName gitlab-dal.devops.amgen.com
     Port 2222
     IdentityFile ~/.ssh/fhscore_rsa
