@@ -1,9 +1,6 @@
-" Acknowledgement
-" .vimrc
 " Author: gary.a.howard@mac.com
-" Source: https://github.com/Traap/dotfiles
 "
-" Influenced by:
+ "Influenced by:
 "    Steve Losh <steve@stevelosh.com>
 "      http://bitbucket.org/sjl/dotfiles/src/tip/vim/
 "
@@ -15,10 +12,7 @@
 "
 let s:vim_home = '~/git/dotfiles/vim/'
 
-let config_list =
-  \ ['pathogen.vim'
-  \ ,'settings.vim'
- \ ]
+let config_list = ['plugin-mgr-pathogen.vim', 'settings.vim']
 
 for files in config_list
   for f in split(glob(s:vim_home.files), '\n')

@@ -1,4 +1,6 @@
 " {{{ LEADER SECTION
+let mapleader = ","
+let g:mapleader = ","
 let maplocalleader = ","
 set tm=2000                                   " Leader key timeout.
 " LEADER SECTION END ------------------------------------------------------- }}}
@@ -329,4 +331,4 @@ au BufNewFile,BufRead *.hs map <buffer> <leader>Hh :Hoogle<cr>
 au BufNewFile,BufRead *.hs map <buffer> <leader>Hc :Hoogle<cr>
 au BufNewFile,BufRead *.hs map <buffer> <leader>Hl :Hoogle<cr>
 " -------------------------------------------------------------------------- }}}
-" BUNDLES SECTION END ------------------------------------------------------ }}}
+"i BUNDLES SECTION END ------------------------------------------------------ }}}
