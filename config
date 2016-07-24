@@ -1,11 +1,5 @@
-# contents of $HOME/.ssh/config
-Host *
-    ServerAliveInterval 300
-    IdentityFile ~/.ssh/css_rsa
-    User gahoward
-    
 # GitHub settings
-Host github.com
+Host traap
     HostName github.com
     User Traap
     IdentityFile ~/.ssh/traap_rsa
@@ -32,7 +26,6 @@ Host s2
 # Access to my personal Amazom Linux machines
 Host moe
     HostName ec2-54-201-140-13.us-west-2.compute.amazonaws.com
-    Port 22
     User ubuntu
     IdentityFile ~/.ssh/moe_rsa
 
@@ -41,3 +34,14 @@ Host fhs
     HostName gitlab-dal.devops.amgen.com
     Port 2222
     IdentityFile ~/.ssh/fhscore_rsa
+#
+Host gitlab-dal.devops.amgen.com
+    Port 2222
+    IdentityFile ~/.ssh/fhscore_rsa
+
+# All hosts
+Host *
+    ServerAliveInterval 300
+    IdentityFile ~/.ssh/css_rsa
+    User gahoward
+    Port 22

@@ -34,42 +34,13 @@ dotfiles =
   ,"vimrc"
   ]
 
--- | The bundle path relative to ~/git/dotfiles
-bpath :: String
-bpath = "vim/bundle"
+-- | The autoload path relative to ~/git/dotfiles
+apath :: String
+apath = "vim/autoload"
 
 -- | The vim bundles I am using.
 bundles :: String -> [String]
-bundles s = [
-   s ++ "LaTeX-Box-Team/LaTeX-Box"               -- Build LaTex documents
-  ,s ++ "Shougo/neocomplete.vim"                 -- Keyword completion
-  ,s ++ "Shougo/vimproc.vim"                     -- Asynchronous execution
-  ,s ++ "Twinside/vim-hoogle"                    -- Query hoogle
-  ,s ++ "bling/vim-airline"                      -- Status/tabline
-  ,s ++ "bruno-/vim-man"                         -- View man pages in vim
-  ,s ++ "chriskempson/base16-vim"                -- iTerm2 terminal themes
-  ,s ++ "christoomey/vim-tmux-navigator"         -- Navigate Tmux.
-  ,s ++ "christoomey/vim-tmux-runner"            -- Vim and Tmux integration
-  ,s ++ "ctrlpvim/ctrlp.vim"                     -- Fuzzy file find
-  ,s ++ "eagletmt/ghcmod-vim"                    -- Happy Haskell Programming
-  ,s ++ "eagletmt/neco-ghc"                      -- Haskell completion
-  ,s ++ "edkolev/tmuxline.vim"                   -- Tmux status line
-  ,s ++ "ivalkeen/nerdtree-execute"              -- NERDtree execute menu
-  ,s ++ "moll/vim-bbye"                          -- Delete buffers
-  ,s ++ "mpickering/hlint-refactor-vim"          -- Hlint refactoring
-  ,s ++ "neovimhaskell/haskell-vim"              -- Highlighting & Indentation
-  ,s ++ "scrooloose/nerdcommenter"               -- Commenting operators
-  ,s ++ "scrooloose/nerdtree"                    -- Filesystem explorer
-  ,s ++ "tpope/vim-commentary"                   -- Lightweight commentary
-  ,s ++ "tpope/vim-dispatch"                     -- Background builds
-  ,s ++ "tpope/vim-fugitive"                     -- Git interface
-  ,s ++ "tpope/vim-pathogen"                     -- Runtime path manager
-  ,s ++ "tpope/vim-surround"                     -- Surrounding
-  ,s ++ "tpope/vim-unimpaired"                   -- Complementary pair maps
-  ,s ++ "traap/vim-dragvisuals"                  -- Drag or Dup visual selectionj
-  ,s ++ "vim-scripts/CycleColor"                 -- Cycle through colorsheme
-  ,s ++ "vim-scripts/bufexplorer.zip"            -- Buffer explorer
-  ]
+bundles s = [s ++ "junegunn/vim-plug"]            -- Light weight plugin manager
 
 -- | The colors I am using.
 colors :: String -> [String]
@@ -90,7 +61,7 @@ main = do
   mapM_ makeSymbolicLink dotfiles
 
   -- Step 2: Clone github repos specific to vim.
-  setupDirectory bpath
+  setupDirectory apath
   cloneRepos $ bundles github
 
   -- Step 3: Clone github repos specifc to base16 colors.

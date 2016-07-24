@@ -200,9 +200,50 @@ function dbt() { stack exec -- doc-build tex ; }
 function dbti(){ stack exec -- env DONT_RERUN_TEX_BUILD=1 doc-build tex;}
 function dbv() { stack build verify && stack exec verify ; }
 #----------------------------------------------------------------------
+# Swapp VIM convigurations.
+#----------------------------------------------------------------------
+function setvim() {
+  echo "Changing Vim configuration."
+  VIM="${HOME}/.vim"
+  VIMRC="${HOME}/.vimrc"
+
+  HVN="${HOME}/.config/haskell-vim-now"
+  DOT="${HOME}/git/dotfiles/vim"
+
+  echo "Removing currnet Vim configuration."
+  rm -v ${VIM}
+  rm -v ${VIMRC}
+
+  if [[ "hvn" = $1 ]]; then
+    echo "Using Haskell Vim Now"
+    ln -sv ${HVN}/.vim ${VIM}
+    ln -sv ${HVN}/.vimrc ${VIMRC}
+    ln -sv ${DOT}/settings.vim ${HVN}/vimrc.local
+    ln -sv ${DOT}/plugins-hvm.vim ${HVN}/plugins.vim
+  else
+    echo "Using Traap Vim."
+    ln -sv ${HOME}/git/dotfiles/vim ${VIM}
+    ln -sv ${HOME}/git/dotfiles/vimrc ${VIMRC}
+  fi
+
+}
+#----------------------------------------------------------------------
 # Highly volatile functions
 #----------------------------------------------------------------------
 function x() {
-  clear && egrep -e "{R-|\[${1}" risk-controls-tree.tex ;
+  git config --global user.name gahoward
+  git config --global user.email gahoward@amgen
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/fhscore_rsa
+  GitProtocols
 }
 #----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+

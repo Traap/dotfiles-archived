@@ -4,7 +4,7 @@ let g:mapleader = ","
 let maplocalleader = ","
 set tm=2000                                   " Leader key timeout.
 " LEADER SECTION END ------------------------------------------------------- }}}
-" {{{ SETTINGS SECTION 
+" {{{ SETTINGS SECTION
 " First things ... {{{
 
 " Set things that should come first.  Later autocmd can override the
@@ -12,11 +12,12 @@ set tm=2000                                   " Leader key timeout.
 filetype on
 filetype plugin indent on
 " -------------------------------------------------------------------------- }}}
-" Alphabetical listing things I set. {{{
+" {{{ Alphabetical listing things I set.
 
 set autoindent
 set autoread
 set autowrite
+set cmdheight=1                               " Height of the command bar.
 set encoding=utf-8
 set fileformats=unix,mac,dos
 set gdefault
@@ -25,16 +26,23 @@ set history=1000
 set matchtime=3
 set modelines=0
 set nocompatible
-set nolist
 set norelativenumber
 set notimeout
 set ttimeout
 set ttimeoutlen=10
 set ttyfast
 set virtualedit=block
+set tm=2000                                   " Leader key timeout.
 nnoremap Q <no>                               " Don't allow Ex mode.
 " -------------------------------------------------------------------------- }}}
-" Buffer visualization settings {{{
+" {{{ Show trailing whitespaces
+
+set nolist                                    " Show trailing whitespaces
+if &listchars ==# 'eol:$'                     " But only interesting whitespace
+  set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:-,nbsp:+
+endif
+" -------------------------------------------------------------------------- }}}
+" {{{ Buffer visualization settings
 
 set backspace=indent,eol,start
 set colorcolumn=+1
@@ -42,7 +50,6 @@ set foldmethod=marker
 set laststatus=2
 set lazyredraw
 set linebreak
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set number
 set numberwidth=1
 set ruler
@@ -58,16 +65,18 @@ set synmaxcol=800
 set title
 set virtualedit+=block
 set visualbell
+syntax on
 " -------------------------------------------------------------------------- }}}
-" Searching {{{
+" {{{ Searching
 
 set hlsearch                                     " Hilight previous search
 set ignorecase                                   " Ignore case when searching
 set incsearch                                    " Incremental searching
 set smartcase                                    " Be smart about case.
 " -------------------------------------------------------------------------- }}}
-" The wild, wild, west {{{
-set wildignore+=*.DS_Store                       " OSX set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+" {{{ The wild, wild, west
+set wildignore+=*.DS_Store                       " OSX
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
 set wildignore+=*.luac                           " Lua byte code
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
@@ -77,10 +86,10 @@ set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=migrations                       " Django migrations
-set wildmenu
-set wildmode=list:longest
+set wildmenu                                     " Turn on wild ment
+set wildmode=list:longest,full                   " Tab0-complete files.
 " -------------------------------------------------------------------------- }}}
-" Tabs, spaces and wrapping {{{
+" {{{ Tabs, spaces and wrapping
 
 set expandtab
 set formatoptions=qrn1t
@@ -92,11 +101,47 @@ set tabstop=2
 set textwidth=80
 set wrap
 " ---------------------------------------------------------------------------}}}
-" Colors I like using... {{{
+" {{{ Colors I like using...
+
 let base16colorspace=256
 set background=dark
-"highlight ColorColumn ctermbg=cyan
-syntax on
+highlight ColorColumn ctermbg=cyan
+
+" Adjust signscolumn to match wombat
+hi! link SignColumn LineNr
+
+" Use pleasant but very visible search hilighting
+hi Search ctermfg=white ctermbg=173 cterm=none guifg=#ffffff guibg=#e5786d gui=none
+hi! link Visual Search
+
+" Match wombat colors in nerd tree
+hi Directory guifg=#8ac6f2
+
+" Searing red very visible cursor
+hi Cursor guibg=red
+
+" Use same color behind concealed unicode characters
+hi clear Conceal
+
+" Don't blink normal mode cursor
+set guicursor=n-v-c:block-Cursor
+set guicursor+=n-v-c:blinkon0
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+  set guioptions-=T
+  set guioptions-=e
+  set guitablabel=%M\ %t
+endif
+set t_Co=256
+
+" Set utf8 as standard encoding and en_US as the standard language
+if !has('nvim')
+  " Only set this for vim, since neovim is utf8 as default and setting it
+  " causes problems when reloading the .vimrc configuration
+  set encoding=utf8
+endif
+
 " disable Background Color Erase (BCE) so that color schemes
 " render properly when inside 256-color tmux and GNU screen.
 " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
@@ -104,7 +149,7 @@ if &term =~ '256color'
   set t_ut=
 endif
 " -------------------------------------------------------------------------- }}}
-" Automatic spelling corrections. {{{
+" {{{ Automatic spelling corrections.
 
 iab liek     like
 iab liekwise likewise
@@ -113,81 +158,92 @@ iab moer     more
 iab retrun   return
 iab teh      the
 " -------------------------------------------------------------------------  }}}
-" Auto commands {{{
+" {{{ Auto commands
 autocmd BufRead,BufNewFile *.adoc,*adoci,*.txt,*.asciidoc,README
         \ setlocal filetype=asciidoc
 autocmd BufRead,BufNewFile *.tex,*.bbl,*.bib,*.texx,*.texb
         \ setlocal filetype=tex
 " -------------------------------------------------------------------------- }}}
-" {{{ Help repaced with check time 
-"
-noremap  <F1> :checktime<cr>
-inoremap <F1> <esc>:checktime<cr>
-" -------------------------------------------------------------------------- }}}
-" Obfuscate screen contents {{{
+" {{{ Obfuscate screen contents
 nnoremap <F9> mzggg?G`z
 " -------------------------------------------------------------------------- }}}
-" Sort lines {{{
+" {{{ Escape key and dd
+inoremap <tab> <ESC>
+map - dd
+" -------------------------------------------------------------------------- }}}
+" {{{ Quicker access to Ex commands and sourcing.
+nmap ; :
+nnoremap <leader>sv :source $MYVIMRC<CR>
+" -------------------------------------------------------------------------- }}}
+" {{{ Toggle search results
+noremap <silent><leader><space> :set hlsearch!<CR>
+" -------------------------------------------------------------------------- }}}
+" {{{ Sort lines
 nnoremap <leader>s vip:!sort<cr>
 vnoremap <leader>s :!sort<cr>
 " -------------------------------------------------------------------------- }}}
-" Clean trailing whitespace {{{
+" {{{ Clean trailing whitespace
 nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 " -------------------------------------------------------------------------- }}}
-" Select entire buffer {{{
+" {{{ Select entire buffer
 nnoremap vaa ggvGg_
 nnoremap Vaa ggVG
 " -------------------------------------------------------------------------- }}}
-" zoom to head level. {{{
+" {{{ Zoom to head level.
 nnoremap zh mzzt10<c-u>`z
 " -------------------------------------------------------------------------- }}}
-" Easier linewise reselection of what you just pasted. {{{
+" {{{ Easier linewise reselection of what you just pasted.
 nnoremap <leader>V V`]
 " -------------------------------------------------------------------------- }}}
-" Indent/dedent/autoindent what you just pasted. {{{
+" {{{ Indent/dedent/autoindent what you just pasted.
 nnoremap <lt>> V`]<
 nnoremap ><lt> V`]>
 nnoremap =- V`]=
 " -------------------------------------------------------------------------  }}}
-" Join line {{{
+" {{{ Join line
 " Keep the cursor in place while joining lines
 nnoremap J mzJ`z
 
-" Join an entire paragraph 
+" Join an entire paragraph
 nnoremap <leader>J mzvipJ`z
 " -------------------------------------------------------------------------- }}}
-" Split line (sister to [J]oin lines) {{{
+" {{{ Split line (sister to [J]oin lines)
 " The normal use of S is covered by cc, so don't worry about shadowing it.
 nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
 " -------------------------------------------------------------------------- }}}
-" Source lines{{{
+" {{{ Source lines
 vnoremap <leader>S y:@"<CR>
 nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 " -------------------------------------------------------------------------- }}}
-" Marks and Quotes {{{
+" {{{ Marks and Quotes
 noremap ' `
 noremap æ '
 noremap ` <C-^>
 " -------------------------------------------------------------------------- }}}
-" Select (charwise) the contents of the current line, excluding indentation. {{{
+" {{{ Select (charwise) the contents of the current line, excluding indentation.
 nnoremap vv ^vg_
 " -------------------------------------------------------------------------- }}}
-" Sudo to write {{{
+" {{{ Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 " -------------------------------------------------------------------------- }}}
-" Toggle [i]nvisible characters {{{
+" {{{ Toggle [i]nvisible characters
 nnoremap <leader>i :set list!<cr>
 " -------------------------------------------------------------------------- }}}
-" Redraw my screen {{{
+" {{{ Redraw my screen
 nnoremap U :syntax sync fromstart<cr>:redraw!<cr>
 " -------------------------------------------------------------------------- }}}
-" execute the current line of text as a shell command. {{{
+" {{{ Insert Mode Completion
+inoremap <c-f> <c-x><c-f>
+inoremap <c-]> <c-x><c-]>
+inoremap <c-l> <c-x><c-l>
+" -------------------------------------------------------------------------- }}}
+" {{{ execute the current line of text as a shell command.
 noremap <leader>E !!$SHELL<cr>
 " -------------------------------------------------------------------------- }}}
-" Display help in vertical buffer. {{{
+" {{{ Display help in vertical buffer.
 nnoremap <leader>HH :silent vert bo help<cr>
 " -------------------------------------------------------------------------- }}}
-" Quick editing of my personalization files.{{{
+" {{{ Quick editing of my personalization files.
 nnoremap <leader>eS :e ~/git/dotfiles/setup.hs<cr>
 nnoremap <leader>ea :e ~/git/dotfiles/alias_and_functions<cr>
 nnoremap <leader>ed :e ~/git/dotfiles/vim/custom-dictionary.utf-8.add<cr>
@@ -198,13 +254,22 @@ nnoremap <leader>.  :e.<cr>
 nnoremap <leader>ad :set filetype=asciidoc<cr>
 " -------------------------------------------------------------------------- }}}
 " SETTINGS SECTION END ----------------------------------------------------- }}}
-" {{{ BUNDLES SECTION 
+" {{{ Air line
+
+if !exists('g:airline_symbols')               " Use powerline fonts for airline
+  let g:airline_symbols = {}
+endif
+
+let g:airline_powerline_fonts = 1
+let g:airline_symbols.space = "\ua0"
+" -------------------------------------------------------------------------  }}}
+" {{{ BUNDLES SECTION
 " Bbye (Buffer Bye) for Vim {{{
 nnoremap <leader>q :Bdelete<cr>
 nnoremap <leader>Q :bufdo :Bdelete<cr>
 nnoremap <leader>X :bdelete<cr>
 " -------------------------------------------------------------------------- }}}
-" Drag Visual Block {{{
+" {{{ Drag Visual Block
 " Remove any introduced trailing whitespace after moving.
 vmap  <expr>  <LEFT>   DVB_Drag('left')
 vmap  <expr>  <RIGHT>  DVB_Drag('right')
@@ -213,13 +278,13 @@ vmap  <expr>  <UP>     DVB_Drag('up')
 vmap  <expr>  D        DVB_Duplicate()
 let g:DVB_TrimWS = 1
 " -------------------------------------------------------------------------- }}}
-" Dispatch {{{
+" {{{ Dispatch
 let g:dispatch_compilers = {
      \ 'pdlatex': 'tex',
      \ 'haskell': 'cabal install'
      \ }
 " -------------------------------------------------------------------------- }}}
-" Fugitive {{{
+" {{{ Fugitive
 nnoremap <leader>gP :Gpush<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gh :silent vert bo help fugitive<cr>
@@ -228,15 +293,15 @@ nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gD :Gvdiff<cr>
 " -------------------------------------------------------------------------- }}}
-" Pathogen {{{
+" {{{ Pathogen
 noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
 " -------------------------------------------------------------------------- }}}
-" NERDtree {{{
+" {{{ NERDtree
 let NERDTreeShowLineNumbers=1
 nnoremap <silent><leader>nf :NERDTreeFind<CR>
 nnoremap <silent><C-n> :NERDTreeToggle<CR>
 " -------------------------------------------------------------------------- }}}
-" Tmux Runner {{{
+" {{{ Tmux Runner
 "
 " Below are the suggested Tmux Runner default mappings.  I decided to explicitly
 " reference them with defaults before I start changing them.
@@ -266,7 +331,7 @@ nnoremap <leader>hb  :VtrSendCommand stack build hmst-documentation<cr>
 nnoremap <leader>mb  :VtrSendCommand stack exec -- math-build<cr>
 nnoremap <leader>mc  :VtrSendCommand stack exec -- math-build clean<cr>
 " -------------------------------------------------------------------------- }}}
-" LaTex-Box {{{
+" {{{ LaTex-Box
 let g:LatexBox_latexmk_async = 0
 let g:LatexBox_quickfix = 1
 let g:LatexBox_split_length = 15
@@ -275,7 +340,7 @@ let g:LatexBox_fold_preambel = 0
 "let g:LatexBox_latexmk_options = '-pdflatex="pdflatex -synctex=1 %O %S"'
 nnoremap <leader>xo <c-x><c-o>
 " -------------------------------------------------------------------------- }}}
-" CTRL-P {{{
+" {{{ CTRL-P
 let g:ctrlp_max_files = 0
 let g:ctrlp_show_hidden=1
 let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
@@ -283,7 +348,7 @@ let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' 
 nnoremap <silent> <leader>tp :CtrlP<CR>
 nnoremap <silent> <leader>Tp :CtrlPBuffer<CR>
 " -------------------------------------------------------------------------- }}}
-" haskell-vim{{{
+" {{{ haskell-vim
 let g:haskell_enable_quantification = 1       " Highlite forall
 let g:haskell_enable_recursivedo = 1          " Highlite mdo and rec
 let g:haskell_enable_arrowsyntax = 1          " Highlite proc
@@ -299,15 +364,15 @@ let g:haskell_indent_int = 1
 let g:haskell_indent_guard = 2
 let g:cabal_indent_selection = 2
 " -------------------------------------------------------------------------- }}}
-" neco-ghc {{{
+" {{{ neco-ghc
 let g:haskell_completion_ghc = 0              " Disabled for neco-ghc
 let g:necoghc_enabled_detailed_browse = 1
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 " -------------------------------------------------------------------------- }}}
-" neocomplete {{{ 
+" {{{ neocomplete
 let g:neocomplete#enable_at_startup = 0
 " -------------------------------------------------------------------------- }}}
-" ghcmod-vim {{{ 
+" {{{ ghcmod-vim
 " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
 let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
 
@@ -323,7 +388,7 @@ nnoremap <silent> te :GhcModTypeClear<CR>
 
 autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 " -------------------------------------------------------------------------- }}}
-" vim-hoogle {{{ 
+" {{{ vim-hoogle
 let g:hoogle_search_count = 20
 let g:hoogle_search_buf_name = 'HoogleSearch'
 
@@ -331,4 +396,4 @@ au BufNewFile,BufRead *.hs map <buffer> <leader>Hh :Hoogle<cr>
 au BufNewFile,BufRead *.hs map <buffer> <leader>Hc :Hoogle<cr>
 au BufNewFile,BufRead *.hs map <buffer> <leader>Hl :Hoogle<cr>
 " -------------------------------------------------------------------------- }}}
-"i BUNDLES SECTION END ------------------------------------------------------ }}}
+" BUNDLES SECTION END ------------------------------------------------------ }}}
