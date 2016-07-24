@@ -1,3 +1,7 @@
+" Tell Vim where our plugin manager is located.
+source  ~/.vim/autoload/vim-plug/plug.vim
+runtime ~/.vim/autoload/vim-plug/plug.vim
+
 " Plugin
 call plug#begin('~/.vim/bundle')
 
