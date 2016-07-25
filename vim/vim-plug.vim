@@ -12,6 +12,7 @@ Plug 'moll/vim-bbye'
 Plug 'vim-scripts/gitignore'
 Plug 'bruno-/vim-man'
 Plug 'vim-scripts/bufexplorer.zip'
+Plug 'Traap/vim-helptags'
 
 " Git
 Plug 'int3/vim-extradite'

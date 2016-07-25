@@ -168,7 +168,7 @@ autocmd BufRead,BufNewFile *.tex,*.bbl,*.bib,*.texx,*.texb
 nnoremap <F9> mzggg?G`z
 " -------------------------------------------------------------------------- }}}
 " {{{ Escape key and dd
-inoremap <tab> <ESC>
+"inoremap <tab> <ESC>
 map - dd
 " -------------------------------------------------------------------------- }}}
 " {{{ Quicker access to Ex commands and sourcing.
@@ -243,17 +243,6 @@ noremap <leader>E !!$SHELL<cr>
 " {{{ Display help in vertical buffer.
 nnoremap <leader>HH :silent vert bo help<cr>
 " -------------------------------------------------------------------------- }}}
-" {{{ Quick editing of my personalization files.
-nnoremap <leader>eS :e ~/git/dotfiles/setup.hs<cr>
-nnoremap <leader>ea :e ~/git/dotfiles/alias_and_functions<cr>
-nnoremap <leader>ed :e ~/git/dotfiles/vim/custom-dictionary.utf-8.add<cr>
-nnoremap <leader>eg :e ~/git/dotfiles/gitconfig<cr>
-nnoremap <leader>es :e ~/git/dotfiles/vim/settings.vim<cr>
-nnoremap <leader>ev :e $MYVIMRC<cr>
-nnoremap <leader>.  :e.<cr>
-nnoremap <leader>ad :set filetype=asciidoc<cr>
-" -------------------------------------------------------------------------- }}}
-" SETTINGS SECTION END ----------------------------------------------------- }}}
 " {{{ Air line
 
 if !exists('g:airline_symbols')               " Use powerline fonts for airline
@@ -263,6 +252,18 @@ endif
 let g:airline_powerline_fonts = 1
 let g:airline_symbols.space = "\ua0"
 " -------------------------------------------------------------------------  }}}
+" {{{ Quick editing of my personalization files.
+nnoremap <leader>eS :e ~/git/dotfiles/setup.hs<cr>
+nnoremap <leader>ea :e ~/git/dotfiles/alias_and_functions<cr>
+nnoremap <leader>ed :e ~/git/dotfiles/vim/custom-dictionary.utf-8.add<cr>
+nnoremap <leader>eg :e ~/git/dotfiles/gitconfig<cr>
+nnoremap <leader>ep :e ~/git/dotfiles/vim/vim-plug.vim<cr>
+nnoremap <leader>es :e ~/git/dotfiles/vim/settings.vim<cr>
+nnoremap <leader>ev :e $MYVIMRC<cr>
+nnoremap <leader>.  :e.<cr>
+nnoremap <leader>ad :set filetype=asciidoc<cr>
+" -------------------------------------------------------------------------- }}}
+" SETTINGS SECTION END ----------------------------------------------------- }}}
 " {{{ BUNDLES SECTION
 " Bbye (Buffer Bye) for Vim {{{
 nnoremap <leader>q :Bdelete<cr>
@@ -293,7 +294,7 @@ nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gD :Gvdiff<cr>
 " -------------------------------------------------------------------------- }}}
-" {{{ Pathogen
+" {{{ Helptags
 noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
 " -------------------------------------------------------------------------- }}}
 " {{{ NERDtree
