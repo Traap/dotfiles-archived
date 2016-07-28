@@ -7,7 +7,6 @@ call plug#begin('~/.vim/bundle')
 
 " Support bundles
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'ervandew/supertab'
 Plug 'moll/vim-bbye'
 Plug 'vim-scripts/gitignore'
 Plug 'bruno-/vim-man'

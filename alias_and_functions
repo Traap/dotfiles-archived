@@ -12,7 +12,7 @@ function ct() {
   cd ~/git/dotfiles/color/base16-shell && ./colortest && cd -
 }
 function base16Color() {
-  source ~/git/dotfiles/color/base16-shell/base16-$1.$2.sh
+  source ~/git/dotfiles/color/base16-shell/scripts/base16-$1-$2.sh
   echo "Base16 color: " $1 $2
 }
 #mom paraiso
@@ -23,7 +23,7 @@ function base16Color() {
 echo "Operating system: " ${OSTYPE}
 if [[ ${OSTYPE} =~ "darwin" ]]; then
     export CLICOLOR=1
-    export HMST_BIN="/Users/gahoward/git/smart-device-sw/tools/bin"
+    export HMST_BIN="${HOME}/git/smart-device-sw/tools/bin"
     export LSCOLORS=GxFxBxDxCxegedabagacad
     export PATH="${HOME}/Library/Haskell/bin:${PATH}"
     export TERM=xterm-256color
@@ -41,7 +41,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     alias vimg='vim -g'
     alias cc='python3 ${HMST_BIN}/clean-code'
 elif [[ ${OSTYPE} =~ "linux" ]]; then
-    export HMST_BIN="/gahoward/git/smart-device-sw/tools/bin"
+    export HMST_BIN="${HOME}/git/smart-device-sw/tools/bin"
     export PATH="${HOME}/.cabal/bin:${PATH}"
     export TERM=xterm
     alias me='source ~/.bashrc'
@@ -102,7 +102,7 @@ function hg() {
 function ff()  {
   find . -type f -iname "$1" -print ;
 }
-function ffr() { find . -name "$1" -delete ; }
+function ffr() { find . -name "$1" -delete -ls ; }
 function ffw() {
   local ext=$1 pattern=$2
   find . -name "$ext" -type f -exec grep "$pattern" /dev/null {} +
@@ -112,7 +112,7 @@ function ffw() {
 # Use vim to read man pages.
 #-------------------------------------------------------------------------------k
 function man() {
-  vim -c "Man $1 $2" -c 'silent only' ;
+  vim -c "Man $1 $2" -c 'silent only' -c 'set tw=78 ts=8 colorcolumn=0 norl'
 }
 #-------------------------------------------------------------------------------k
 # Use functions to create pdf document.

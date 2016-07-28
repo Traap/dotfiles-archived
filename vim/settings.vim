@@ -108,7 +108,7 @@ set background=dark
 highlight ColorColumn ctermbg=cyan
 
 " Adjust signscolumn to match wombat
-hi! link SignColumn LineNr
+"hi! link SignColumn LineNr
 
 " Use pleasant but very visible search hilighting
 hi Search ctermfg=white ctermbg=173 cterm=none guifg=#ffffff guibg=#e5786d gui=none
@@ -118,7 +118,7 @@ hi! link Visual Search
 hi Directory guifg=#8ac6f2
 
 " Searing red very visible cursor
-hi Cursor guibg=red
+"hi Cursor guibg=red
 
 " Use same color behind concealed unicode characters
 hi clear Conceal
@@ -165,7 +165,7 @@ autocmd BufRead,BufNewFile *.tex,*.bbl,*.bib,*.texx,*.texb
         \ setlocal filetype=tex
 " -------------------------------------------------------------------------- }}}
 " {{{ Obfuscate screen contents
-nnoremap <F9> mzggg?G`z
+nnoremap <F1> mzggg?G`z
 " -------------------------------------------------------------------------- }}}
 " {{{ Escape key and dd
 "inoremap <tab> <ESC>
@@ -237,21 +237,12 @@ inoremap <c-f> <c-x><c-f>
 inoremap <c-]> <c-x><c-]>
 inoremap <c-l> <c-x><c-l>
 " -------------------------------------------------------------------------- }}}
-" {{{ execute the current line of text as a shell command.
+" {{{ Execute the current line of text as a shell command.
 noremap <leader>E !!$SHELL<cr>
 " -------------------------------------------------------------------------- }}}
 " {{{ Display help in vertical buffer.
 nnoremap <leader>HH :silent vert bo help<cr>
 " -------------------------------------------------------------------------- }}}
-" {{{ Air line
-
-if !exists('g:airline_symbols')               " Use powerline fonts for airline
-  let g:airline_symbols = {}
-endif
-
-let g:airline_powerline_fonts = 1
-let g:airline_symbols.space = "\ua0"
-" -------------------------------------------------------------------------  }}}
 " {{{ Quick editing of my personalization files.
 nnoremap <leader>eS :e ~/git/dotfiles/setup.hs<cr>
 nnoremap <leader>ea :e ~/git/dotfiles/alias_and_functions<cr>
@@ -265,10 +256,60 @@ nnoremap <leader>ad :set filetype=asciidoc<cr>
 " -------------------------------------------------------------------------- }}}
 " SETTINGS SECTION END ----------------------------------------------------- }}}
 " {{{ BUNDLES SECTION
+" {{{ Air line
+
+if !exists('g:airline_symbols')               " Use powerline fonts for airline
+  let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+
+let g:airline_powerline_fonts = 1
+let g:airline_symbols.space = "\ua0"
+
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ }
+
+" -------------------------------------------------------------------------  }}}
 " Bbye (Buffer Bye) for Vim {{{
 nnoremap <leader>q :Bdelete<cr>
 nnoremap <leader>Q :bufdo :Bdelete<cr>
 nnoremap <leader>X :bdelete<cr>
+" -------------------------------------------------------------------------- }}}
+" {{{ CTRL-P
+let g:ctrlp_max_files = 0
+let g:ctrlp_show_hidden=1
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
+
+nnoremap <silent> <leader>ff :CtrlP<CR> "Fuzzy find
 " -------------------------------------------------------------------------- }}}
 " {{{ Drag Visual Block
 " Remove any introduced trailing whitespace after moving.
@@ -294,13 +335,62 @@ nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gD :Gvdiff<cr>
 " -------------------------------------------------------------------------- }}}
+" {{{ ghcmod-vim
+" https://github.com/eagletmt/ghcmod-vim/wiki/Customize
+let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
+
+let g:ghcmod_hlint_options = ['--ignore=Redundant $']
+let g:ghcmod_type_highlight = 'ghcmodType'
+
+highlight ghcmodtype ctermbg=yellow
+
+nnoremap <silent> tw :GhcModTypeInsert<CR>
+nnoremap <silent> ts :GhcModSplitFunCase<CR>
+nnoremap <silent> tq :GhcModType<CR>
+nnoremap <silent> te :GhcModTypeClear<CR>
+
+autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+" -------------------------------------------------------------------------- }}}
+" {{{ haskell-vim
+let g:haskell_enable_quantification = 1       " Highlite forall
+let g:haskell_enable_recursivedo = 1          " Highlite mdo and rec
+let g:haskell_enable_arrowsyntax = 1          " Highlite proc
+let g:haskell_enable_pattern_synonyms = 1     " Highlite pattern
+let g:haskell_enable_typeroles = 1            " Highlite type roles
+let g:haskell_enable_static_pointers = 1      " Highlite static
+let g:haskell_indent_if = 3
+let g:haskell_indent_case = 2
+let g:haskell_indent_let = 4
+let g:haskell_indent_where = 6
+let g:haskell_indent_do = 3
+let g:haskell_indent_int = 1
+let g:haskell_indent_guard = 2
+let g:cabal_indent_selection = 2
+" -------------------------------------------------------------------------- }}}
 " {{{ Helptags
 noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
+" -------------------------------------------------------------------------- }}}
+" {{{ LaTex-Box
+let g:LatexBox_latexmk_async = 0
+let g:LatexBox_quickfix = 1
+let g:LatexBox_split_length = 15
+let g:LatexBox_Folding = 1
+let g:LatexBox_fold_preambel = 0
+"let g:LatexBox_latexmk_options = '-pdflatex="pdflatex -synctex=1 %O %S"'
+nnoremap <leader>xo <c-x><c-o>
+" -------------------------------------------------------------------------- }}}
+" {{{ neco-ghc
+let g:haskell_completion_ghc = 0              " Disabled for neco-ghc
+let g:necoghc_enabled_detailed_browse = 1
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 " -------------------------------------------------------------------------- }}}
 " {{{ NERDtree
 let NERDTreeShowLineNumbers=1
 nnoremap <silent><leader>nf :NERDTreeFind<CR>
 nnoremap <silent><C-n> :NERDTreeToggle<CR>
+" -------------------------------------------------------------------------- }}}
+" {{{ neocomplete
+let g:neocomplete#enable_at_startup = 0
 " -------------------------------------------------------------------------- }}}
 " {{{ Tmux Runner
 "
@@ -331,63 +421,6 @@ nnoremap <leader>dc  :VtrSendCommand stack exec -- doc-build clean<cr>
 nnoremap <leader>hb  :VtrSendCommand stack build hmst-documentation<cr>
 nnoremap <leader>mb  :VtrSendCommand stack exec -- math-build<cr>
 nnoremap <leader>mc  :VtrSendCommand stack exec -- math-build clean<cr>
-" -------------------------------------------------------------------------- }}}
-" {{{ LaTex-Box
-let g:LatexBox_latexmk_async = 0
-let g:LatexBox_quickfix = 1
-let g:LatexBox_split_length = 15
-let g:LatexBox_Folding = 1
-let g:LatexBox_fold_preambel = 0
-"let g:LatexBox_latexmk_options = '-pdflatex="pdflatex -synctex=1 %O %S"'
-nnoremap <leader>xo <c-x><c-o>
-" -------------------------------------------------------------------------- }}}
-" {{{ CTRL-P
-let g:ctrlp_max_files = 0
-let g:ctrlp_show_hidden=1
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
-
-nnoremap <silent> <leader>tp :CtrlP<CR>
-nnoremap <silent> <leader>Tp :CtrlPBuffer<CR>
-" -------------------------------------------------------------------------- }}}
-" {{{ haskell-vim
-let g:haskell_enable_quantification = 1       " Highlite forall
-let g:haskell_enable_recursivedo = 1          " Highlite mdo and rec
-let g:haskell_enable_arrowsyntax = 1          " Highlite proc
-let g:haskell_enable_pattern_synonyms = 1     " Highlite pattern
-let g:haskell_enable_typeroles = 1            " Highlite type roles
-let g:haskell_enable_static_pointers = 1      " Highlite static
-let g:haskell_indent_if = 3
-let g:haskell_indent_case = 2
-let g:haskell_indent_let = 4
-let g:haskell_indent_where = 6
-let g:haskell_indent_do = 3
-let g:haskell_indent_int = 1
-let g:haskell_indent_guard = 2
-let g:cabal_indent_selection = 2
-" -------------------------------------------------------------------------- }}}
-" {{{ neco-ghc
-let g:haskell_completion_ghc = 0              " Disabled for neco-ghc
-let g:necoghc_enabled_detailed_browse = 1
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-" -------------------------------------------------------------------------- }}}
-" {{{ neocomplete
-let g:neocomplete#enable_at_startup = 0
-" -------------------------------------------------------------------------- }}}
-" {{{ ghcmod-vim
-" https://github.com/eagletmt/ghcmod-vim/wiki/Customize
-let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
-
-let g:ghcmod_hlint_options = ['--ignore=Redundant $']
-let g:ghcmod_type_highlight = 'ghcmodType'
-
-highlight ghcmodtype ctermbg=yellow
-
-nnoremap <silent> tw :GhcModTypeInsert<CR>
-nnoremap <silent> ts :GhcModSplitFunCase<CR>
-nnoremap <silent> tq :GhcModType<CR>
-nnoremap <silent> te :GhcModTypeClear<CR>
-
-autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 " -------------------------------------------------------------------------- }}}
 " {{{ vim-hoogle
 let g:hoogle_search_count = 20
