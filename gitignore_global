@@ -43,6 +43,7 @@ Thumbs.db
 ##########################
 *.un~
 *#emacs#*
+vim/autoload/
 vim/bundle/
 vim/colors/
 vim/tmp/
