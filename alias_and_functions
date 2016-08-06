@@ -15,8 +15,6 @@ function base16Color() {
   source ~/git/dotfiles/color/base16-shell/scripts/base16-$1-$2.sh
   echo "Base16 color: " $1 $2
 }
-#mom paraiso
-
 #-------------------------------------------------------------------------------
 # Operating system specif settings.
 #-------------------------------------------------------------------------------
@@ -30,6 +28,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     alias me='source ~/.bash_profile'
     alias la='ls -A'
     alias ll='ls -lahG'
+    alias lw='ll "$(which $1)"'
     if [[ ${HOSTNAME} =~ "Stooges" ]]; then
       alias fpc0='sshfs fpc:git/smart-device-sw /Volumes/Larry/fpc0'
       alias ufpc0='umount /Volumes/Larry/fpc0'
@@ -40,6 +39,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     alias vim='mvim -v'
     alias vimg='vim -g'
     alias cc='python3 ${HMST_BIN}/clean-code'
+    mom default
 elif [[ ${OSTYPE} =~ "linux" ]]; then
     export HMST_BIN="${HOME}/git/smart-device-sw/tools/bin"
     export PATH="${HOME}/.cabal/bin:${PATH}"
@@ -51,6 +51,7 @@ elif [[ ${OSTYPE} =~ "linux" ]]; then
 else
     echo "Unknown operating system:" ${OSTYPE}
 fi
+alias ulo='sudo chown -R $(whoami) /usr/local'
 #-------------------------------------------------------------------------------
 # Use vim keybinds
 #-------------------------------------------------------------------------------
@@ -238,12 +239,4 @@ function x() {
   GitProtocols
 }
 #----------------------------------------------------------------------
-
-
-
-
-
-
-
-
 

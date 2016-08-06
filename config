@@ -38,10 +38,15 @@ Host fhs
     HostName gitlab-dal.devops.amgen.com
     Port 2222
     IdentityFile ~/.ssh/fhscore_rsa
-#
+# Access fhs
 Host gitlab-dal.devops.amgen.com
     Port 2222
     IdentityFile ~/.ssh/fhscore_rsa
+
+# Stooges
+Host stooges
+    HostName 192.168.0.19
+    User Gary
 
 # All hosts
 Host *
