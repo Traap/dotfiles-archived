@@ -7,15 +7,17 @@ call plug#begin('~/.vim/bundle')
 
 " Support bundles
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'moll/vim-bbye'
-Plug 'vim-scripts/gitignore'
-Plug 'bruno-/vim-man'
-Plug 'vim-scripts/bufexplorer.zip'
 Plug 'Traap/vim-helptags'
+Plug 'beloglazov/vim-online-thesaurus'
+Plug 'bruno-/vim-man'
+Plug 'moll/vim-bbye'
+Plug 'vim-scripts/bufexplorer.zip'
+Plug 'vim-scripts/gitignore'
 
 " Git
 Plug 'int3/vim-extradite'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 
 " Bars, pannels and files
 Plug 'bling/vim-airline'
@@ -28,6 +30,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'traap/vim-dragvisuals'
+Plug 'junegunn/vim-easy-align'
 
 " Allow pane movement to move between vim and tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -42,15 +45,20 @@ Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
 Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 
-" Colorscheme
+" Colors
 Plug 'chriskempson/base16-vim'
 Plug 'vim-scripts/CycleColor'
+Plug 'luochen1990/rainbow'
 
 " LaTeX
-Plug 'LaTeX-Box-Team/LaTeX-Box'
+"Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'lervag/vimtex'
 
 " Dispatchers
 Plug 'tpope/vim-dispatch'
+
+" Swift
+Plug 'keith/swift.vim'
 
 " Add plugins to runtimepath
 call plug#end()

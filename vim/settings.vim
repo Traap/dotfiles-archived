@@ -132,7 +132,7 @@ if has("gui_running")
   " Searing red very visible cursor
   "hi Cursor guibg=red
 else
-  hi search ctermfg=white ctermbg=173 cterm=none 
+  hi search ctermfg=white ctermbg=173 cterm=none
 endif
 
 
@@ -327,6 +327,13 @@ let g:dispatch_compilers = {
      \ 'haskell': 'cabal install'
      \ }
 " -------------------------------------------------------------------------- }}}
+" {{{ EasyAlign
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign in motino/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+" -------------------------------------------------------------------------- }}}
 " {{{ Fugitive
 nnoremap <leader>gP :Gpush<cr>
 nnoremap <leader>gc :Gcommit<cr>
@@ -375,9 +382,9 @@ noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
 let g:LatexBox_latexmk_async = 0
 let g:LatexBox_quickfix = 1
 let g:LatexBox_split_length = 15
-let g:LatexBox_Folding = 1
+let g:LatexBox_Folding = 0
 let g:LatexBox_fold_preambel = 0
-"let g:LatexBox_latexmk_options = '-pdflatex="pdflatex -synctex=1 %O %S"'
+let g:LatexBox_latexmk_options = "-f -pdf -pv" 
 nnoremap <leader>xo <c-x><c-o>
 " -------------------------------------------------------------------------- }}}
 " {{{ neco-ghc
@@ -392,6 +399,73 @@ nnoremap <silent><C-n> :NERDTreeToggle<CR>
 " -------------------------------------------------------------------------- }}}
 " {{{ neocomplete
 let g:neocomplete#enable_at_startup = 0
+" -------------------------------------------------------------------------- }}}
+" {{{ Rainbow
+let g:rainbow_active = 1
+
+let rainbow_conf = {
+    \   'guifgs':
+    \       ['royalblue3'
+    \       ,'darkorange3'
+    \       ,'seagreen3'
+    \       ,'firebrick'
+    \       ]
+    \,
+    \   'ctermfgs':
+    \       ['lightblue'
+    \       ,'lightyellow'
+    \       ,'lightcyan'
+    \       ,'lightmagenta'
+    \       ]
+    \,
+    \   'operators': '_,_'
+    \,
+    \   'parentheses':
+    \       ['start=/(/ end=/)/ fold'
+    \       ,'start=/\[/ end=/\]/ fold'
+    \       ,'start=/{/ end=/}/ fold'
+    \       ]
+    \,
+    \   'separately': {
+    \       '*': {}
+    \,
+    \       'tex': {
+    \           'parentheses':
+    \                ['start=/(/ end=/)/'
+    \                ,'start=/\[/ end=/\]/'
+    \                ,'start=/{/ end=/}/'
+    \                ]
+    \,
+    \       },
+    \       'lisp': {
+    \           'guifgs':
+    \                ['royalblue3'
+    \                ,'darkorange3'
+    \                ,'seagreen3'
+    \                ,'firebrick'
+    \                ,'darkorchid3'
+    \                ]
+    \,
+    \       },
+    \       'vim': {
+    \           'parentheses':
+    \                ['start=/(/ end=/)/'
+    \                ,'start=/\[/ end=/\]/'
+    \                ,'start=/{/ end=/}/ fold'
+    \                ,'start=/(/ end=/)/ containedin=vimFuncBody'
+    \                ,'start=/\[/ end=/\]/ containedin=vimFuncBody'
+    \                ,'start=/{/ end=/}/ fold containedin=vimFuncBody'
+    \                ]
+    \,
+    \       },
+    \       'html': {
+    \           'parentheses': 
+    \               ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold']
+    \,
+    \       },
+    \       'css': 0,
+    \   }
+    \}
 " -------------------------------------------------------------------------- }}}
 " {{{ Tmux Runner
 "

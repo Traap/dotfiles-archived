@@ -33,3 +33,7 @@
   username = gahoward
 	helper = store
 
+[credential "https://github.com"]
+  username = Traap 
+	helper = store
+

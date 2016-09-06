@@ -8,6 +8,11 @@ Host github.com
     User Traap
     IdentityFile ~/.ssh/traap_rsa
 
+# GitLabs settings
+Host gitlab.com
+    User Traap
+    IdentityFile ~/.ssh/gitlab_rsa
+
 # AWS: fpc 
 Host fpc 
     HostName ec2-52-8-13-116.us-west-1.compute.amazonaws.com
