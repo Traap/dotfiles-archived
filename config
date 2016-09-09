@@ -18,6 +18,10 @@ Host fpc
     HostName ec2-52-8-13-116.us-west-1.compute.amazonaws.com
     Port 22
 
+Host sci2 
+    HostName 52.40.4.22 
+    Port 22
+
 # Access to HMST git server when disconnected from Amgen network.
 Host stash
     HostName stash.amgencss.fpcomplete.com
