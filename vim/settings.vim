@@ -378,15 +378,6 @@ let g:cabal_indent_selection = 2
 " {{{ Helptags
 noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
 " -------------------------------------------------------------------------- }}}
-" {{{ LaTex-Box
-let g:LatexBox_latexmk_async = 0
-let g:LatexBox_quickfix = 1
-let g:LatexBox_split_length = 15
-let g:LatexBox_Folding = 0
-let g:LatexBox_fold_preambel = 0
-let g:LatexBox_latexmk_options = "-f -pdf -pv" 
-nnoremap <leader>xo <c-x><c-o>
-" -------------------------------------------------------------------------- }}}
 " {{{ neco-ghc
 let g:haskell_completion_ghc = 0              " Disabled for neco-ghc
 let g:necoghc_enabled_detailed_browse = 1
@@ -498,11 +489,32 @@ nnoremap <leader>mb  :VtrSendCommand stack exec -- math-build<cr>
 nnoremap <leader>mc  :VtrSendCommand stack exec -- math-build clean<cr>
 " -------------------------------------------------------------------------- }}}
 " {{{ vim-hoogle
-let g:hoogle_search_count = 20
 let g:hoogle_search_buf_name = 'HoogleSearch'
-
-au BufNewFile,BufRead *.hs map <buffer> <leader>Hh :Hoogle<cr>
+let g:hoogle_search_count = 20
 au BufNewFile,BufRead *.hs map <buffer> <leader>Hc :Hoogle<cr>
+au BufNewFile,BufRead *.hs map <buffer> <leader>Hh :Hoogle<cr>
 au BufNewFile,BufRead *.hs map <buffer> <leader>Hl :Hoogle<cr>
+" -------------------------------------------------------------------------- }}}
+" {{{ vimtex
+let g:tex_flavor = 'latex'
+let g:vimtex_complete_enabled = 1
+let g:vimtex_disable_version_warning = 1
+let g:vimtex_enable = 1
+let g:vimtex_fold_comments = 0
+let g:vimtex_fold_documentclass = 0
+let g:vimtex_fold_enabled = 1
+let g:vimtex_fold_envs = 1
+let g:vimtex_fold_levelmarker = '*'
+let g:vimtex_fold_manual = 0
+let g:vimtex_fold_preamble = 1
+let g:vimtex_fold_usepackage = 1
+let g:vimtex_format_enabled = 1
+let g:vimtex_imaps_enabled = 1
+let g:vimtex_quickfix_autojump = 0
+let g:vimtex_quickfix_ignore_all_warnings = 0
+let g:vimtex_quickfix_mode = 2
+let g:vimtex_view_enabled = 1
+let g:vimtex_latexmk_continuous = 1
+let g:vimtex_latexmk_background = 0
 " -------------------------------------------------------------------------- }}}
 " BUNDLES SECTION END ------------------------------------------------------ }}}
