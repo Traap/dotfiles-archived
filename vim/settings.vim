@@ -162,7 +162,7 @@ iab teh      the
 " {{{ Auto commands
 autocmd BufRead,BufNewFile *.adoc,*adoci,*.txt,*.asciidoc,README
         \ setlocal filetype=asciidoc
-autocmd BufRead,BufNewFile *.tex,*.bbl,*.bib,*.texx,*.texb
+autocmd BufRead,BufNewFile *.tex,*.bbl,*.bib,*.texx,*.texb,*.cls
         \ setlocal filetype=tex
 " -------------------------------------------------------------------------- }}}
 " {{{ Obfuscate screen contents
@@ -182,6 +182,7 @@ noremap <silent><leader><space> :set hlsearch!<CR>
 " {{{ Sort lines
 nnoremap <leader>s vip:!sort<cr>
 vnoremap <leader>s :!sort<cr>
+vnoremap <leader>u :sort u<cr>
 " -------------------------------------------------------------------------- }}}
 " {{{ Clean trailing whitespace
 nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
