@@ -168,8 +168,7 @@ autocmd BufRead,BufNewFile *.tex,*.bbl,*.bib,*.texx,*.texb,*.cls
 " {{{ Obfuscate screen contents
 nnoremap <F1> mzggg?G`z
 " -------------------------------------------------------------------------- }}}
-" {{{ Escape key and dd
-"inoremap <tab> <ESC>
+" {{{ Delete line 
 map - dd
 " -------------------------------------------------------------------------- }}}
 " {{{ Quicker access to Ex commands and sourcing.
@@ -495,6 +494,10 @@ let g:hoogle_search_count = 20
 au BufNewFile,BufRead *.hs map <buffer> <leader>Hc :Hoogle<cr>
 au BufNewFile,BufRead *.hs map <buffer> <leader>Hh :Hoogle<cr>
 au BufNewFile,BufRead *.hs map <buffer> <leader>Hl :Hoogle<cr>
+" -------------------------------------------------------------------------- }}}
+" {{{ vimshell
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+let g:vimshell_prompt = $USER."$ "
 " -------------------------------------------------------------------------- }}}
 " {{{ vimtex
 let g:tex_flavor = 'latex'

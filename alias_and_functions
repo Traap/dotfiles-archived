@@ -39,7 +39,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     alias vim='mvim -v'
     alias vimg='vim -g'
     alias cc='python3 ${HMST_BIN}/clean-code'
-    mom default
+    mom harmonic16 
 elif [[ ${OSTYPE} =~ "linux" ]]; then
     export HMST_BIN="${HOME}/git/smart-device-sw/tools/bin"
     export PATH="${HOME}/.cabal/bin:${PATH}"

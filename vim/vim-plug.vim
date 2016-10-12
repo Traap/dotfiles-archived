@@ -6,7 +6,9 @@ runtime ~/.vim/autoload/vim-plug/plug.vim
 call plug#begin('~/.vim/bundle')
 
 " Support bundles
+Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/vimshell.vim'
 Plug 'Traap/vim-helptags'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'bruno-/vim-man'

@@ -26,6 +26,7 @@ dotfiles =
   ,"emacs.d"
   ,"gitconfig"
   ,"gitignore_global"
+  ,"gvimrc"
   ,"inputrc"
   ,"ssh/config"
   ,"tmux.conf"
