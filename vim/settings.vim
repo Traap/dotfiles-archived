@@ -12,16 +12,13 @@ set tm=2000                                   " Leader key timeout.
 filetype on
 filetype plugin indent on
 " -------------------------------------------------------------------------- }}}
-" {{{ Alphabetical listing things I set.
-
+" {{{ Alphabetical listing of things I set.
 set autoindent
 set autoread
 set autowrite
 set cmdheight=1                               " Height of the command bar.
 set encoding=utf-8
 set fileformats=unix,mac,dos
-set gdefault
-set hidden
 set history=1000
 set matchtime=3
 set modelines=0
@@ -36,14 +33,12 @@ set tm=2000                                   " Leader key timeout.
 nnoremap Q <no>                               " Don't allow Ex mode.
 " -------------------------------------------------------------------------- }}}
 " {{{ Show trailing whitespaces
-
 set nolist                                    " Show trailing whitespaces
 if &listchars ==# 'eol:$'                     " But only interesting whitespace
   set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:-,nbsp:+
 endif
 " -------------------------------------------------------------------------- }}}
 " {{{ Buffer visualization settings
-
 set backspace=indent,eol,start
 set colorcolumn=+1
 set foldmethod=marker
@@ -68,7 +63,6 @@ set visualbell
 syntax on
 " -------------------------------------------------------------------------- }}}
 " {{{ Searching
-
 set hlsearch                                     " Hilight previous search
 set ignorecase                                   " Ignore case when searching
 set incsearch                                    " Incremental searching
@@ -90,7 +84,6 @@ set wildmenu                                     " Turn on wild ment
 set wildmode=list:longest,full                   " Tab0-complete files.
 " -------------------------------------------------------------------------- }}}
 " {{{ Tabs, spaces and wrapping
-
 set expandtab
 set formatoptions=qrn1t
 set shiftround
@@ -102,13 +95,10 @@ set textwidth=80
 set wrap
 " ---------------------------------------------------------------------------}}}
 " {{{ Colors I like using...
-
 let base16colorspace=256
 set background=dark
+colorscheme base16-harmonic16-dark
 highlight ColorColumn ctermbg=18
-
-" Adjust signscolumn to match wombat
-"hi! link SignColumn LineNr
 
 " Use same color behind concealed unicode characters
 hi clear Conceal
@@ -127,7 +117,6 @@ if has("gui_running")
   set guioptions-=T
   set guioptions-=e
   set guitablabel=%M\ %t
-  colorscheme base16-atelier-plateau
   hi Directory guifg=#8ac6f2
   " Searing red very visible cursor
   "hi Cursor guibg=red
