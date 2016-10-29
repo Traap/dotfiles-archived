@@ -247,11 +247,8 @@ function ownUsrLocal { sudo chown -R $(whoami) /usr/local ; }
 # Highly volatile functions
 #----------------------------------------------------------------------
 function x() {
-  git config --global user.name gahoward
-  git config --global user.email gahoward@amgen
-  eval "$(ssh-agent -s)"
-  ssh-add ~/.ssh/fhscore_rsa
-  GitProtocols
+  touch $1-steps.tex
+  touch $1-evidence.tex
 }
 #----------------------------------------------------------------------
 
