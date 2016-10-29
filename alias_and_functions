@@ -51,7 +51,6 @@ elif [[ ${OSTYPE} =~ "linux" ]]; then
 else
     echo "Unknown operating system:" ${OSTYPE}
 fi
-alias ulo='sudo chown -R $(whoami) /usr/local'
 #-------------------------------------------------------------------------------
 # Use vim keybinds
 #-------------------------------------------------------------------------------
@@ -233,16 +232,30 @@ function setvim() {
     ln -sv ${DOT}/settings.vim ${HVN}/vimrc.local
     ln -sv ${DOT}/plugins-hvm.vim ${HVN}/plugins.vim
   else
-    echo "Using Traap Vim."
+    echo "Using Traap's personalization  Vim."
     ln -sv ${HOME}/git/dotfiles/vim ${VIM}
     ln -sv ${HOME}/git/dotfiles/vimrc ${VIMRC}
   fi
 
 }
 #----------------------------------------------------------------------
+# Generating a new SSH key and adding it to the ssh-agent
+# https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+#----------------------------------------------------------------------
+alias ssha='eval "$(ssh-agent -s)"'
+function sshkeys () {
+  ssha
+  ssh-add ~/.ssh/css_rsa
+  ssh-add ~/.ssh/fhscore_rsa
+  ssh-add ~/.ssh/gitlab_rsa
+  ssh-add ~/.ssh/gitlab_rsa
+  ssh-add ~/.ssh/moe_rsa
+  ssh-add ~/.ssh/traap_rsa
+}
+#----------------------------------------------------------------------
 # Brew wants needs me to own usr/local 
 #----------------------------------------------------------------------
-function ownUsrLocal { sudo chown -R $(whoami) /usr/local ; }
+alias ulo='sudo chown -R $(whoami) /usr/local'
 #----------------------------------------------------------------------
 # Highly volatile functions
 #----------------------------------------------------------------------
