@@ -33,6 +33,7 @@ dotfiles =
   ,"vim"
   ,"vimoutlinerrc"
   ,"vimrc"
+  ,"vimrc_background"
   ]
 
 -- | The autoload path relative to ~/git/dotfiles

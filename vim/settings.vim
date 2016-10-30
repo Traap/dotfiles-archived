@@ -95,9 +95,13 @@ set textwidth=80
 set wrap
 " ---------------------------------------------------------------------------}}}
 " {{{ Colors I like using...
-let base16colorspace=256
-set background=dark
-colorscheme base16-harmonic16-dark
+
+if filereadable(expand("~./vimrc_background"))
+  let base16colorspace=256
+"  set background=dark
+  source ~/.vimrc_background
+endif
+
 highlight ColorColumn ctermbg=18
 
 " Use same color behind concealed unicode characters
