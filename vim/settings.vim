@@ -316,7 +316,7 @@ let g:DVB_TrimWS = 1
 " -------------------------------------------------------------------------- }}}
 " {{{ Dispatch
 let g:dispatch_compilers = {
-     \ 'pdlatex': 'tex',
+     \ 'pdflatex': 'tex',
      \ 'haskell': 'cabal install'
      \ }
 " -------------------------------------------------------------------------- }}}
@@ -335,6 +335,7 @@ nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gD :Gvdiff<cr>
+
 " -------------------------------------------------------------------------- }}}
 " {{{ ghcmod-vim
 " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
