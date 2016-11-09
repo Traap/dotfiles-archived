@@ -120,7 +120,7 @@ function ffw() {
 # Use vim to read man pages.
 #-------------------------------------------------------------------------------k
 function man() {
-  vim \
+  vimm \
     -c "Man $1 $2" \
     -c 'silent only' \
     -c 'set tw=78 ts=8 colorcolumn=0 nomod nolist nonu noma norl'

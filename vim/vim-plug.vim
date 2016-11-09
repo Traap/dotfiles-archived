@@ -37,6 +37,7 @@ Plug 'junegunn/vim-easy-align'
 " Allow pane movement to move between vim and tmux
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
+Plug 'sjl/vitality'
 
 " Haskell
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
