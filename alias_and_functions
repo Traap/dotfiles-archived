@@ -15,6 +15,7 @@ function base16Color() {
   source ~/git/dotfiles/color/base16-shell/scripts/base16-$1-$2.sh
   echo "Base16 color: " $1 $2
 }
+
 #-------------------------------------------------------------------------------
 # Operating system specif settings.
 #-------------------------------------------------------------------------------
@@ -57,6 +58,7 @@ elif [[ ${OSTYPE} =~ "linux" ]]; then
 else
     echo "Unknown operating system:" ${OSTYPE}
 fi
+
 #-------------------------------------------------------------------------------
 # Use vim keybinds
 #-------------------------------------------------------------------------------
@@ -123,6 +125,7 @@ function man() {
     -c 'silent only' \
     -c 'set tw=78 ts=8 colorcolumn=0 nomod nolist nonu noma norl'
 }
+
 #-------------------------------------------------------------------------------k
 # Use functions to create pdf document.
 #-------------------------------------------------------------------------------k
@@ -153,6 +156,7 @@ function atex() {
          --output-directory _pdf \
          "$1" ;
 }
+
 #-------------------------------------------------------------------------------
 # Git helpers
 #-------------------------------------------------------------------------------
@@ -194,6 +198,7 @@ elif [[ ${OSTYPE} =~ "linux" ]]; then
     source ~/.bash-git-prompt/gitprompt.sh
   fi
 fi
+
 #----------------------------------------------------------------------
 # Disable features / programs running on OSX.
 #----------------------------------------------------------------------
@@ -223,6 +228,7 @@ function dbh() { stack build hmst-documentation ; }
 function dbt() { stack exec -- doc-build tex ; }
 function dbti(){ stack exec -- env DONT_RERUN_TEX_BUILD=1 doc-build tex;}
 function dbv() { stack build verify && stack exec verify ; }
+
 #----------------------------------------------------------------------
 # Swapp VIM convigurations.
 #----------------------------------------------------------------------
@@ -251,6 +257,7 @@ function setvim() {
   fi
 
 }
+
 #----------------------------------------------------------------------
 # Generating a new SSH key and adding it to the ssh-agent
 # https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
@@ -265,10 +272,12 @@ function sshkeys () {
   ssh-add ~/.ssh/moe_rsa
   ssh-add ~/.ssh/traap_rsa
 }
+
 #----------------------------------------------------------------------
 # Brew wants needs me to own usr/local 
 #----------------------------------------------------------------------
 alias ulo='sudo chown -R $(whoami) /usr/local'
+
 #----------------------------------------------------------------------
 # Base16 Shell 
 #----------------------------------------------------------------------
@@ -283,4 +292,3 @@ function x() {
   touch $1-evidence.tex
 }
 #----------------------------------------------------------------------
-
