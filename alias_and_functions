@@ -41,7 +41,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     alias vimg='vim -g'
     alias vimm='mvim -v'
     alias cc='python3 ${HMST_BIN}/clean-code'
-    if [[ -f $(brew --prefix)/etc/bash_completion}]; then
+    if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
       . $(brew --prefix)/etc/bash_completion
     fi
 elif [[ ${OSTYPE} =~ "linux" ]]; then
@@ -186,7 +186,7 @@ PS1_START='\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;34m\]\h\[\033[01;32m\]:\[\
 PS1_END='\n\[\033[01;36m\]\$\[\033[00m\] '
 export PS1=${PS1_START}${PS1_END}
 if [[ ${OSTYPE} =~ "darwin" ]]; then
-  if [[ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]]; then
+  if [[ -f $(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh ]]; then
     GIT_PROMPT_START=${PS1_START}
     GIT_PROMPT_END=${PS1_END}
     source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
