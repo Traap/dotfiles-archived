@@ -37,9 +37,8 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
       alias fpc0='sshfs fpc:git/smart-device-sw ~/fpc0'
       alias ufpc0='umount ~/fpc0'
     fi
-    alias vim='nvim'
-    alias vimg='vim -g'
-    alias vimm='mvim -v'
+    alias gvim='mvim -g'
+    alias vim='mvim -v'
     alias cc='python3 ${HMST_BIN}/clean-code'
     if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
       . $(brew --prefix)/etc/bash_completion
