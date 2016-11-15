@@ -162,8 +162,21 @@ autocmd BufRead,BufNewFile *.tex,*.bbl,*.bib,*.texx,*.texb,*.cls
 " {{{ Obfuscate screen contents
 nnoremap <F1> mzggg?G`z
 " -------------------------------------------------------------------------- }}}
-" {{{ Delete line 
+" {{{ Delete line and more 
+
+"Delete line
 map - dd
+
+" Save file
+noremap s :w<cr>
+
+" Reformat lines.
+nnoremap Q gqip
+vnoremap Q gq
+
+" Substitute
+nnoremap <c-s> :%s/
+vnoremap <c-s> :s/
 " -------------------------------------------------------------------------- }}}
 " {{{ Quicker access to Ex commands and sourcing.
 nmap ; :
@@ -234,6 +247,31 @@ inoremap <c-l> <c-x><c-l>
 " -------------------------------------------------------------------------- }}}
 " {{{ Execute the current line of text as a shell command.
 noremap <leader>E !!$SHELL<cr>
+" -------------------------------------------------------------------------- }}}
+" {{{ EX | chmod +x " | https://github.com/junegunn/dotfiles/blob/master/vimrc
+command! EX if !empty(expand('%'))
+  \|   write
+  \|   call system('chmod +x '.expand('%'))
+  \|   silent e
+  \| else
+  \|   echohl WarningMsg
+  \|   echo 'Save the file first'
+  \|   echohl None
+  \| endif
+" -------------------------------------------------------------------------- }}}
+" {{{ <Leader>?/! | Google it / Feeling luckey | junegunn/dotfiles
+function! s:goog(pat, lucky)
+  let q = '"'.substitute(a:pat, '["\n]', ' ', 'g').'"'
+  let q = substitute(q, '[[:punct:] ]',
+       \ '\=printf("%%%02X", char2nr(submatch(0)))', 'g')
+  call system(printf('open "https://www.google.com/search?%sq=%s"',
+                   \ a:lucky ? 'btnI&' : '', q))
+endfunction
+
+nnoremap <leader>? :call <SID>goog(expand("<cWORD>"), 0)<cr>
+nnoremap <leader>! :call <SID>goog(expand("<cWORD>"), 1)<cr>
+xnoremap <leader>? "gy:call <SID>goog(@g, 0)<cr>gv
+xnoremap <leader>! "gy:call <SID>goog(@g, 1)<cr>gv
 " -------------------------------------------------------------------------- }}}
 " {{{ Display help in vertical buffer.
 nnoremap <leader>HH :silent vert bo help<cr>
@@ -334,9 +372,8 @@ nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gh :silent vert bo help fugitive<cr>
 nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gp :Gpull<cr>
-nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gs :Gstatus<cr>gg<c-n>
 nnoremap <leader>gD :Gvdiff<cr>
-
 " -------------------------------------------------------------------------- }}}
 " {{{ ghcmod-vim
 " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
@@ -380,6 +417,7 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 " -------------------------------------------------------------------------- }}}
 " {{{ NERDtree
 let NERDTreeShowLineNumbers=1
+let NERDTreeWinPos=1
 nnoremap <silent><leader>nf :NERDTreeFind<CR>
 nnoremap <silent><C-n> :NERDTreeToggle<CR>
 " -------------------------------------------------------------------------- }}}
@@ -445,7 +483,7 @@ let rainbow_conf = {
     \,
     \       },
     \       'html': {
-    \           'parentheses': 
+    \           'parentheses':
     \               ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold']
     \,
     \       },
