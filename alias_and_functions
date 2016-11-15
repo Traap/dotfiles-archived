@@ -266,9 +266,7 @@ function sshkeys () {
   ssha
   ssh-add ~/.ssh/css_rsa
   ssh-add ~/.ssh/fhscore_rsa
-  ssh-add ~/.ssh/gitlab_rsa
-  ssh-add ~/.ssh/gitlab_rsa
-  ssh-add ~/.ssh/moe_rsa
+  ssh-add ~/.ssh/mhp_rsa
   ssh-add ~/.ssh/traap_rsa
 }
 

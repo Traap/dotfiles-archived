@@ -22,6 +22,7 @@ set fileformats=unix,mac,dos
 set history=1000
 set matchtime=3
 set modelines=0
+set mouse=a
 set nocompatible
 set norelativenumber
 set notimeout
@@ -492,6 +493,9 @@ au BufNewFile,BufRead *.hs map <buffer> <leader>Hl :Hoogle<cr>
 " {{{ vimshell
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt = $USER."$ "
+" -------------------------------------------------------------------------- }}}
+" {{{ vitality
+let g:vitality_fix_cursor = 0
 " -------------------------------------------------------------------------- }}}
 " {{{ vimtex
 let g:tex_flavor = 'latex'
