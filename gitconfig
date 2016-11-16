@@ -3,11 +3,14 @@
   co = checkout
   db = branch -d 
   logg   = log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  master = checkout master
+  pf = push --force
+  rbi = rebase -i origin/master
 
 [user]
-	email = gahoward@amgen
+	email = gary.a.howard@mac.com 
 	user = Traap
-	name = gahoward
+	name = Traap 
 
 [core]
 	excludesfile = ~/.gitignore_global
