@@ -18,7 +18,7 @@ Host fpc
     HostName ec2-52-8-13-116.us-west-1.compute.amazonaws.com
     Port 22
 
-Host ds6 
+Host datasci 
     User gahoward
     HostName sci-host-6.amgencss.fpcomplete.com 
     Port 22

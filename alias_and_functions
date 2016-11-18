@@ -33,12 +33,12 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     if [[ ${HOSTNAME} =~ "Stooges" ]]; then
       alias  fpc0='sshfs fpc:git/smart-device-sw /Volumes/Larry/fpc0'
       alias ufpc0='umount /Volumes/Larry/fpc0'
-      alias  ds6='sshfs fpc:git/smart-device-sw /Volumes/Larry/ds6'
+      alias  ds6='sshfs datasci:git/smart-device-sw /Volumes/Larry/ds6'
       alias uds6='umount /Volumes/Larry/ds6'
     else
       alias  fpc0='sshfs fpc:git/smart-device-sw ~/fpc0'
       alias ufpc0='umount ~/fpc0'
-      alias  ds6='sshfs fpc:git/smart-device-sw ~/ds6'
+      alias  ds6='sshfs datasci:git/smart-device-sw ~/ds6'
       alias uds6='umount ~/ds6'
     fi
     alias gvim='mvim -g'
