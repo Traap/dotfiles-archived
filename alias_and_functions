@@ -17,12 +17,11 @@ function base16Color() {
 }
 
 #-------------------------------------------------------------------------------
-# Operating system specif settings.
+# Operating system specific settings.
 #-------------------------------------------------------------------------------
 echo "Operating system: " ${OSTYPE}
 if [[ ${OSTYPE} =~ "darwin" ]]; then
     export CLICOLOR=1
-    export HMST_BIN="${HOME}/git/smart-device-sw/tools/bin"
     export LSCOLORS=GxFxBxDxCxegedabagacad
     export PATH="${HOME}/Library/Haskell/bin:${PATH}"
     export TERM=xterm-256color
@@ -43,24 +42,28 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     fi
     alias gvim='mvim -g'
     alias vim='mvim -v'
-    alias cc='python3 ${HMST_BIN}/clean-code'
     if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
       . $(brew --prefix)/etc/bash_completion
     fi
 elif [[ ${OSTYPE} =~ "linux" ]]; then
-    export HMST_BIN="${HOME}/git/smart-device-sw/tools/bin"
     export PATH="${HOME}/.cabal/bin:${PATH}"
     export TERM=xterm
     alias me='source ~/.bashrc'
     alias la='ls -A --color'
     alias ll='ls -lahG --color'
-    alias cc='python ${HMST_BIN}/clean-code'
     if [[ -f /usr/share/bash-completion/bash-completion ]]; then
       . /usr/share/bash-completion/bash_completion
     fi
 else
     echo "Unknown operating system:" ${OSTYPE}
 fi
+
+#-------------------------------------------------------------------------------
+# HMST project specific settings. 
+#-------------------------------------------------------------------------------
+export HMST_BIN="${HOME}/git/smart-device-sw/tools/bin"
+alias cc='python3 ${HMST_BIN}/clean-code'
+alias pdfmake='${HMST_BIN}/pdfmake'
 
 #-------------------------------------------------------------------------------
 # Use vim keybinds
@@ -122,7 +125,7 @@ function ffw() {
 #-------------------------------------------------------------------------------
 # Use vim to read man pages.
 #-------------------------------------------------------------------------------k
-function man() {
+function manv() {
   vimm \
     -c "Man $1 $2" \
     -c 'silent only' \
