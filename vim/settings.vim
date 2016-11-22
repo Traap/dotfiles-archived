@@ -7,8 +7,7 @@ set tm=2000                                   " Leader key timeout.
 " {{{ SETTINGS SECTION
 " First things ... {{{
 
-" Set things that should come first.  Later autocmd can override the
-" result as needed.
+" Set things that should come first.
 filetype on
 filetype plugin indent on
 " -------------------------------------------------------------------------- }}}
@@ -158,6 +157,7 @@ autocmd BufRead,BufNewFile *.adoc,*adoci,*.txt,*.asciidoc,README
         \ setlocal filetype=asciidoc
 autocmd BufRead,BufNewFile *.tex,*.bbl,*.bib,*.texx,*.texb,*.cls
         \ setlocal filetype=tex
+autocmd BufRead,BufNewFile *.csv setlocal nowrap tw=0
 " -------------------------------------------------------------------------- }}}
 " {{{ Obfuscate screen contents
 nnoremap <F1> mzggg?G`z
