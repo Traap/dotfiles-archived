@@ -1,16 +1,16 @@
 [alias]
 	br = branch
   co = checkout
-  db = branch -d 
+  db = branch -d
   logg   = log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   master = checkout master
   pf = push --force
   rbi = rebase -i origin/master
 
 [user]
-	email = gary.a.howard@mac.com 
+	email = gary.a.howard@mac.com
 	user = Traap
-	name = Traap 
+	name = Traap
 
 [core]
 	excludesfile = ~/.gitignore_global
@@ -25,6 +25,10 @@
 [code]
 	pager = cat
 
+[credential "https://github.com"]
+  username = Traap
+	helper = store
+
 [url "https://git-codecommit.us-east-1.amazonaws.com/v1/repos"]
 	insteadof = mhp:
 
@@ -32,12 +36,3 @@
 	UseHttpPath = true
 	helper = !aws --profile CodeCommitProfile codecommit credential-helper $@
 	username = ghoward
-
-[credential "https://gitlab-dal.devops.amgen.com"]
-  username = gahoward
-	helper = store
-
-[credential "https://github.com"]
-  username = Traap 
-	helper = store
-
