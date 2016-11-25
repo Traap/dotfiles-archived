@@ -113,17 +113,35 @@ hi! link Visual Search
 
 " Establish setting for gui and non-gui vim sessions.
 if has("gui_running")
+
+  " Set searching colors.
   hi search guifg=#ffffff guibg=#e5786d gui=none
+  
   " Don't blink normal mode cursor
   set guicursor=n-v-c:block-Cursor
   set guicursor+=n-v-c:blinkon0
 
+  " Make my cursor very visible. 
+  hi Cursor guibg=cyan
+
   set guioptions-=T
   set guioptions-=e
+  set guioptions-=r
+  set guioptions-=R
+  set guioptions-=l
+  set guioptions-=L
+
+  " Set fonts.
+  if has("gui_macvim")
+    set guifont=Menlo
+  else
+    set guifont=DejaVu\ Sans\ Mono\ 10
+  endif
+
   set guitablabel=%M\ %t
   hi Directory guifg=#8ac6f2
-  " Searing red very visible cursor
-  "hi Cursor guibg=red
+  colorscheme base16-harmonic16-dark
+
 else
   hi search ctermfg=white ctermbg=173 cterm=none
 endif

@@ -32,13 +32,13 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     if [[ ${HOSTNAME} =~ "Stooges" ]]; then
       alias  fpc0='sshfs fpc:git/smart-device-sw /Volumes/Larry/fpc0'
       alias ufpc0='umount /Volumes/Larry/fpc0'
-      alias  ds6='sshfs datasci:git/smart-device-sw /Volumes/Larry/ds6'
-      alias uds6='umount /Volumes/Larry/ds6'
+      alias   ds6='sshfs datasci:git/smart-device-sw /Volumes/Larry/ds6'
+      alias  uds6='umount /Volumes/Larry/ds6'
     else
       alias  fpc0='sshfs fpc:git/smart-device-sw ~/fpc0'
       alias ufpc0='umount ~/fpc0'
-      alias  ds6='sshfs datasci:git/smart-device-sw ~/ds6'
-      alias uds6='umount ~/ds6'
+      alias   ds6='sshfs datasci:git/smart-device-sw ~/ds6'
+      alias  uds6='umount ~/ds6'
     fi
     alias gvim='mvim -g'
     alias vim='mvim -v'
@@ -51,11 +51,18 @@ elif [[ ${OSTYPE} =~ "linux" ]]; then
     alias me='source ~/.bashrc'
     alias la='ls -A --color'
     alias ll='ls -lahG --color'
-    if [[ -f /usr/share/bash-completion/bash-completion ]]; then
+    if [[ -f /usr/share/bash-completion/bash_completion ]]; then
       . /usr/share/bash-completion/bash_completion
     fi
 else
     echo "Unknown operating system:" ${OSTYPE}
+fi
+
+#-------------------------------------------------------------------------------
+# Stack specific settings. 
+#-------------------------------------------------------------------------------
+if [[ -s /usr/local/bin/stack ]]; then
+  eval "$(stack --bash-completion-script stack)"
 fi
 
 #-------------------------------------------------------------------------------
