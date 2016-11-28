@@ -121,9 +121,6 @@ if has("gui_running")
   set guicursor=n-v-c:block-Cursor
   set guicursor+=n-v-c:blinkon0
 
-  " Make my cursor very visible. 
-  hi Cursor guibg=cyan
-
   set guioptions-=T
   set guioptions-=e
   set guioptions-=r
@@ -139,9 +136,11 @@ if has("gui_running")
   endif
 
   set guitablabel=%M\ %t
+  set guifont=Menlo:h13
   hi Directory guifg=#8ac6f2
-  colorscheme base16-harmonic16-dark
 
+  hi Cursor guibg=cyan
+  
 else
   hi search ctermfg=white ctermbg=173 cterm=none
 endif
