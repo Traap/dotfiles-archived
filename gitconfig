@@ -14,7 +14,7 @@
 
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = /usr/local/bin/vim
+	editor = vim
 
 [push]
 	default = simple
@@ -36,3 +36,14 @@
 	UseHttpPath = true
 	helper = !aws --profile CodeCommitProfile codecommit credential-helper $@
 	username = ghoward
+
+[credential "https://gitlab-dal.devops.amgen.com"]
+  username = gahoward
+	helper = store
+
+[credential "https://github.com"]
+  username = Traap 
+	helper = store
+
+[branch]
+	autosetuprebase = always
