@@ -140,6 +140,9 @@ if has("gui_running")
   hi Directory guifg=#8ac6f2
 
   hi Cursor guibg=cyan
+
+  " Colors
+  colorscheme base16-harmonic16-dark
   
 else
   hi search ctermfg=white ctermbg=173 cterm=none
