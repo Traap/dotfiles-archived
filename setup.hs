@@ -22,8 +22,6 @@ dotfiles :: [String]
 dotfiles =
   ["bash_profile"
   ,"bashrc"
-  ,"emacs"
-  ,"emacs.d"
   ,"gitconfig"
   ,"gitignore_global"
   ,"gvimrc"
@@ -36,25 +34,27 @@ dotfiles =
   ,"vimrc_background"
   ]
 
--- | The autoload path relative to ~/git/dotfiles
-apath :: String
-apath = "vim/autoload"
+-- | These are the repos that are cloned.
+data Repo = REPO
+  {tDir :: String   -- the target directory for the clone operation.
+  ,repo :: [String] -- the repositories to clone.
+  }
 
--- | The vim bundles I am using.
-bundles :: String -> [String]
-bundles s = [s ++ "junegunn/vim-plug"]            -- Light weight plugin manager
-
--- | The colors I am using.
-colors :: String -> [String]
-colors s =
-  [s ++ "chriskempson/base16-gnome-terminal"
-  ,s ++ "chriskempson/base16-iterm2"
-  ,s ++ "chriskempson/base16-shell"
-  ]
-
--- | The color path relative to ~/git/dotfiles
-cpath :: String
-cpath = "color"
+repos :: String -> [REPO]
+repos s = 
+  [REPO{tdir="vim/autoload"
+       ,repo=[s ++ "junegunn/vim-plug"]
+       }
+  ,REPO{tdir="color"
+       ,repo=[s ++ "chriskempson/base16-gnome-terminal"
+             ,s ++ "chriskempson/base16-iterm2"
+             ,s ++ "chriskempson/base16-shell"
+             ]
+       }
+  ,REPO{tdir="ssh"
+       ,repo=[s ++ "traap/ssh"]
+       }
+  ] 
 
 -- | Let's move some files around.
 main :: IO ()
@@ -62,13 +62,8 @@ main = do
   -- Step 1: Setup symlinnks.
   mapM_ makeSymbolicLink dotfiles
 
-  -- Step 2: Clone github repos specific to vim.
-  setupDirectory apath
-  cloneRepos $ bundles github
-
-  -- Step 3: Clone github repos specifc to base16 colors.
-  setupDirectory cpath
-  cloneRepos $ colors  github
+  -- Step 2: Clone repositories from github.
+  mapM withDirCloneRepo (repos github) repos
 
 -- | makeSymoblicLink
 makeSymbolicLink :: String -> IO ExitCode
@@ -80,6 +75,12 @@ makeSymbolicLink f = do
   c <- getCurrentDirectory
   let sfile = c ++ "/" ++ takeFileName f
   system $ "ln -vs " ++ sfile ++ " " ++ tfile
+
+-- | 
+withDirCloneRepo :: REPO -> IO ()
+withDirCloneRepos r = do
+  setupDirectory (tdir r)
+  mapM cloneRepo (repo r)
 
 -- | Setup directory.
 setupDirectory :: FilePath -> IO ()
@@ -105,3 +106,4 @@ safelyRemoveDirectory fpath = do
 -- | Clone repos I am interested in using.
 cloneRepos :: [String] -> IO ()
 cloneRepos = mapM_ system
+

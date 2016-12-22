@@ -134,6 +134,9 @@ if has("gui_running")
   else
     set guifont=DejaVu\ Sans\ Mono\ 10
   endif
+  
+  " Colors
+  colorscheme base16-harmonic16-dark
 
   set guitablabel=%M\ %t
   set guifont=Menlo:h13
@@ -141,8 +144,6 @@ if has("gui_running")
 
   hi Cursor guibg=cyan
 
-  " Colors
-  colorscheme base16-harmonic16-dark
   
 else
   hi search ctermfg=white ctermbg=173 cterm=none
@@ -233,7 +234,7 @@ nnoremap =- V`]=
 nnoremap J mzJ`z
 
 " Join an entire paragraph
-nnoremap <leader>J mzvipJ`z
+nnoremap <leader>J myvipJ`ygq<CR>
 " -------------------------------------------------------------------------- }}}
 " {{{ Split line (sister to [J]oin lines)
 " The normal use of S is covered by cc, so don't worry about shadowing it.
