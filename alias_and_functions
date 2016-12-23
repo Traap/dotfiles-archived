@@ -100,15 +100,15 @@ alias ssh='ssh -A'
 #-------------------------------------------------------------------------------
 # Aliases to folders within my Git root.
 #-------------------------------------------------------------------------------
-alias atf='cd ~/git/smart-device-sw/doc/automated-test'
 alias ac='cd ~/git/AllanConsulting'
+alias atf='cd ~/git/smart-dedice-sw/doc/automated-test'
 alias dhf='cd ~/git/smart-device-sw/doc/dhf'
 alias doc='cd ~/git/smart-device-sw/doc'
 alias dot='cd ~/git/dotfiles/'
-alias gh='cd ~/git/GaryHoward'
 alias hh='cd ~/git/HowardHouse'
 alias hmst='cd ~/git/smart-device-sw'
 alias mhp='cd ~/git/mhp_Documentation'
+alias resume='cd ~/git/resume'
 
 #-------------------------------------------------------------------------------
 # A function to grep my command history
