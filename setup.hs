@@ -35,24 +35,24 @@ dotfiles =
   ]
 
 -- | These are the repos that are cloned.
-data Repo = REPO
-  {tDir :: String   -- the target directory for the clone operation.
-  ,repo :: [String] -- the repositories to clone.
-  }
+data Repo = Repo
+  {tdir :: String   -- the target directory for the clone operation.
+  ,url  :: [String] -- the repositories to clone.
+  } deriving (Show)
 
-repos :: String -> [REPO]
+repos :: String -> [Repo]
 repos s = 
-  [REPO{tdir="vim/autoload"
-       ,repo=[s ++ "junegunn/vim-plug"]
+  [Repo{tdir="vim/autoload"
+       ,url=[s ++ "junegunn/vim-plug"]
        }
-  ,REPO{tdir="color"
-       ,repo=[s ++ "chriskempson/base16-gnome-terminal"
-             ,s ++ "chriskempson/base16-iterm2"
-             ,s ++ "chriskempson/base16-shell"
-             ]
+  ,Repo{tdir="color"
+       ,url=[s ++ "chriskempson/base16-gnome-terminal"
+            ,s ++ "chriskempson/base16-iterm2"
+            ,s ++ "chriskempson/base16-shell"
+            ]
        }
-  ,REPO{tdir="ssh"
-       ,repo=[s ++ "traap/ssh"]
+  ,Repo{tdir="ssh"
+       ,url=[s ++ "traap/ssh"]
        }
   ] 
 
@@ -63,7 +63,7 @@ main = do
   mapM_ makeSymbolicLink dotfiles
 
   -- Step 2: Clone repositories from github.
-  mapM withDirCloneRepo (repos github) repos
+  mapM_ withDirCloneRepo (repos github) 
 
 -- | makeSymoblicLink
 makeSymbolicLink :: String -> IO ExitCode
@@ -77,10 +77,10 @@ makeSymbolicLink f = do
   system $ "ln -vs " ++ sfile ++ " " ++ tfile
 
 -- | 
-withDirCloneRepo :: REPO -> IO ()
-withDirCloneRepos r = do
+withDirCloneRepo :: Repo -> IO ()
+withDirCloneRepo r = do
   setupDirectory (tdir r)
-  mapM cloneRepo (repo r)
+  mapM_ cloneRepo (url r)
 
 -- | Setup directory.
 setupDirectory :: FilePath -> IO ()
@@ -104,6 +104,6 @@ safelyRemoveDirectory fpath = do
   Control.Monad.when b $ removeDirectoryRecursive fpath
 
 -- | Clone repos I am interested in using.
-cloneRepos :: [String] -> IO ()
-cloneRepos = mapM_ system
+cloneRepo :: [String] -> IO ()
+cloneRepo = mapM_ system
 
