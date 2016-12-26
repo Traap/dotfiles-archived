@@ -35,26 +35,29 @@ dotfiles =
   ]
 
 -- | These are the repos that are cloned.
-data Repo = Repo
+data Repo = REPO
   {tdir :: String   -- the target directory for the clone operation.
   ,url  :: [String] -- the repositories to clone.
   } deriving (Show)
 
 repos :: String -> [Repo]
-repos s = 
-  [Repo{tdir="vim/autoload"
+repos s =
+  [REPO
+       {tdir="vim/autoload"
        ,url=[s ++ "junegunn/vim-plug"]
        }
-  ,Repo{tdir="color"
+  ,REPO
+       {tdir="color"
        ,url=[s ++ "chriskempson/base16-gnome-terminal"
             ,s ++ "chriskempson/base16-iterm2"
             ,s ++ "chriskempson/base16-shell"
             ]
        }
-  ,Repo{tdir="ssh"
+  ,REPO
+       {tdir="ssh"
        ,url=[s ++ "traap/ssh"]
        }
-  ] 
+  ]
 
 -- | Let's move some files around.
 main :: IO ()
@@ -63,7 +66,7 @@ main = do
   mapM_ makeSymbolicLink dotfiles
 
   -- Step 2: Clone repositories from github.
-  mapM_ withDirCloneRepo (repos github) 
+  mapM_ withDirCloneRepo $ repos github
 
 -- | makeSymoblicLink
 makeSymbolicLink :: String -> IO ExitCode
@@ -76,7 +79,7 @@ makeSymbolicLink f = do
   let sfile = c ++ "/" ++ takeFileName f
   system $ "ln -vs " ++ sfile ++ " " ++ tfile
 
--- | 
+-- | Setup directory to clone repository into.
 withDirCloneRepo :: Repo -> IO ()
 withDirCloneRepo r = do
   setupDirectory (tdir r)
@@ -106,4 +109,3 @@ safelyRemoveDirectory fpath = do
 -- | Clone repos I am interested in using.
 cloneRepo :: [String] -> IO ()
 cloneRepo = mapM_ system
-
