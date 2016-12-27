@@ -130,7 +130,8 @@ if has("gui_running")
 
   " Set fonts.
   if has("gui_macvim")
-    set guifont=Menlo
+"    set guifont=Menlo
+    set guifont=Menlo:h13
   else
     set guifont=DejaVu\ Sans\ Mono\ 10
   endif
@@ -139,7 +140,6 @@ if has("gui_running")
   colorscheme base16-harmonic16-dark
 
   set guitablabel=%M\ %t
-  set guifont=Menlo:h13
   hi Directory guifg=#8ac6f2
 
   hi Cursor guibg=cyan
@@ -398,7 +398,9 @@ nnoremap <leader>gD :Gvdiff<cr>
 " -------------------------------------------------------------------------- }}}
 " {{{ ghcmod-vim
 " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
-let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
+let &l:statusline = '%{empty(getqflist()) 
+      \ ? "[No Errors]" : "[Errors Found]"}' 
+      \ . (empty(&l:statusline) ? &statusline : &l:statusline)
 
 let g:ghcmod_hlint_options = ['--ignore=Redundant $']
 let g:ghcmod_type_highlight = 'ghcmodType'

@@ -62,7 +62,7 @@ repos s =
 -- | Let's move some files around.
 main :: IO ()
 main = do
-  -- Step 1: Setup symlinnks.
+  -- Step 1: Setup symlinks.
   mapM_ makeSymbolicLink dotfiles
 
   -- Step 2: Clone repositories from github.
@@ -83,7 +83,7 @@ makeSymbolicLink f = do
 withDirCloneRepo :: Repo -> IO ()
 withDirCloneRepo r = do
   setupDirectory (tdir r)
-  mapM_ cloneRepo (url r)
+  cloneRepo (url r)
 
 -- | Setup directory.
 setupDirectory :: FilePath -> IO ()
