@@ -386,6 +386,8 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign in motino/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+nmap <bar> gaip*<bar>
 " -------------------------------------------------------------------------- }}}
 " {{{ Fugitive
 nnoremap <leader>gP :Gpush<cr>
