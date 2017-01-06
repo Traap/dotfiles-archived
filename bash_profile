@@ -1,4 +1,3 @@
-#####
 #!/bin/bash
 #----------------------------------------------------------------------
 # Don't do anything when not running interactively.
