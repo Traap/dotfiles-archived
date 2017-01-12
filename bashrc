@@ -10,3 +10,6 @@
 if [ -f ~/git/dotfiles/alias_and_functions ]; then
   source ~/git/dotfiles/alias_and_functions
 fi
+
+# added by travis gem
+[ -f /Users/gary/.travis/travis.sh ] && source /Users/gary/.travis/travis.sh

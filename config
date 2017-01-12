@@ -55,7 +55,7 @@ Host gitlab-dal.devops.amgen.com
 
 # Stooges
 Host stooges
-    HostName 192.168.0.60
+    HostName 192.168.0.27
     User Gary
 
 # All hosts
