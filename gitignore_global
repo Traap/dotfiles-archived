@@ -1,5 +1,5 @@
 # Compiled source #
-###################
+# #################
 *.com
 *.class
 *.dll
@@ -9,7 +9,7 @@
 .shake
 
 # Packages #
-############
+# ##########
 # it's better to unpack these files and commit the raw source
 # git has its own built in compression methods
 *.7z
@@ -22,13 +22,13 @@
 *.zip
 
 # Logs and databases #
-######################
+# ####################
 *.log
 *.sql
 *.sqlite*
 
 # OS generated files #
-######################
+# ####################
 ._.DS_Store
 .DS_Store
 .DS_Store?
@@ -40,7 +40,7 @@ ehthumbs.db
 Thumbs.db
 
 # Editor temporary files #
-##########################
+# ########################
 *.un~
 *#emacs#*
 vim/autoload/
@@ -50,4 +50,12 @@ vim/tmp/
 vim/view/
 vim/.netrwhist
 emacs.d/
+*.swp
 
+# LaTeX files #
+# #############
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.toc

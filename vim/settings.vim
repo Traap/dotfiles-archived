@@ -15,6 +15,7 @@ filetype plugin indent on
 set autoindent
 set autoread
 set autowrite
+set complete=.,w,b,u,t,i,kspell
 set cmdheight=1                               " Height of the command bar.
 set encoding=utf-8
 set fileformats=unix,mac,dos
@@ -173,12 +174,18 @@ iab moer     more
 iab retrun   return
 iab teh      the
 " -------------------------------------------------------------------------  }}}
-" {{{ Auto commands
+" {{{ Auto commands for filetypes.
 autocmd BufRead,BufNewFile *.adoc,*adoci,*.txt,*.asciidoc,README
         \ setlocal filetype=asciidoc
+
 autocmd BufRead,BufNewFile *.tex,*.bbl,*.bib,*.texx,*.texb,*.cls
         \ setlocal filetype=tex
+
 autocmd BufRead,BufNewFile *.csv setlocal nowrap tw=0
+
+autocmd FileType tex inoremap <leader>ul \begin{itemize}<Enter><Enter>\end{itemize}<Enter><Esc>2kA\item<Space>
+autocmd FileType tex nnoremap <leader>ul i\begin{itemize}<Enter><Enter>\end{itemize}<Enter><Esc>2kA\item<Space>
+
 " -------------------------------------------------------------------------- }}}
 " {{{ Obfuscate screen contents
 nnoremap <F1> mzggg?G`z
