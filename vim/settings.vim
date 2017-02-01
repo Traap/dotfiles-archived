@@ -147,11 +147,6 @@ if has("gui_running")
   
 else
   hi search ctermfg=white ctermbg=173 cterm=none
-    if &term =~ "xterm"
-      let &t_SI = "\<Esc>]12;purple\x7"
-      let &t_SR = "\<Esc>]12;red\x7"
-      let &t_EI = "\<Esc>]12;blue\x7"
-    endif
 endif
 
 
