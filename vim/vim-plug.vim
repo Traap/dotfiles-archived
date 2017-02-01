@@ -26,6 +26,7 @@ Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ivalkeen/nerdtree-execute'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Text manipulation
 Plug 'tpope/vim-commentary'

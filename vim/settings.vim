@@ -4,7 +4,7 @@ let g:mapleader = ","
 let maplocalleader = ","
 set tm=2000                                   " Leader key timeout.
 " LEADER SECTION END ------------------------------------------------------- }}}
-" {{{ SETTINGS SECTION
+" {{{ " SETTINGS SECTION
 " First things ... {{{
 
 " Set things that should come first.
@@ -95,7 +95,7 @@ set tabstop=2
 set textwidth=80
 set wrap
 " ---------------------------------------------------------------------------}}}
-" {{{ Colors I like using...
+" {{{ Colors and options specific to vim, gvim, and nvim, and Osx or Linux.
 
 if filereadable(expand("~./vimrc_background"))
   let base16colorspace=256
@@ -131,14 +131,13 @@ if has("gui_running")
 
   " Set fonts.
   if has("gui_macvim")
-"    set guifont=Menlo
     set guifont=Menlo:h13
   else
     set guifont=DejaVu\ Sans\ Mono\ 10
   endif
   
   " Colors
-  colorscheme base16-harmonic16-dark
+  colorscheme base16-solarized-dark
 
   set guitablabel=%M\ %t
   hi Directory guifg=#8ac6f2
@@ -148,6 +147,11 @@ if has("gui_running")
   
 else
   hi search ctermfg=white ctermbg=173 cterm=none
+    if &term =~ "xterm"
+      let &t_SI = "\<Esc>]12;purple\x7"
+      let &t_SR = "\<Esc>]12;red\x7"
+      let &t_EI = "\<Esc>]12;blue\x7"
+    endif
 endif
 
 
