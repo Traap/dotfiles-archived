@@ -303,16 +303,16 @@ BASE16_SHELL=$HOME/git/dotfiles/color/base16-shell/
 # 15sec before timing out.  
 #----------------------------------------------------------------------
 function repeat() {
-  counter=0
-  while [ true ] ; do
-    if [ $? > 0 ] ; then
-      counter=$((counter+1))
+  let passNo=0;
+  while [ true ]; do
+    read -t 1 -n 1
+    if [ $? > 0 ]; then
+      let passNo=$((passNo+1))
       clear
-      echo Repeating [$@]  Ctrl-C to stop.  Pass: $counter
+      printf "Repeating [$@]  Ctrl-C to stop.  Pass: $counter"
       $@
       sleep 5
     fi
-    read -t 1 -n 1
   done
 }
 #----------------------------------------------------------------------

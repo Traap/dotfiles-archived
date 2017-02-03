@@ -595,5 +595,12 @@ let g:vimtex_view_enabled = 1
 function! MyTestHook(status)
   echom a:status
 endfunction
+
+let g:vimtex_quickfix_ignored_warnings = [
+    \ 'Underfull',
+    \ 'Overfull',
+    \ 'specifier changed to',
+    \ ]
+
 " -------------------------------------------------------------------------- }}}
 " BUNDLES SECTION END ------------------------------------------------------ }}}
