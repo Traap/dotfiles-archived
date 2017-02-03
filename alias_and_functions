@@ -306,7 +306,7 @@ function repeat() {
   let passNo=0;
   while [ true ]; do
     read -t 1 -n 1
-    if [ $? > 0 ]; then
+    if [ $? -gt 0 ]; then
       let passNo=$((passNo+1))
       clear
       echo Repeating [$@]  Ctrl-C to stop.  Pass: $passNo

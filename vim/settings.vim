@@ -582,19 +582,14 @@ let g:vimtex_fold_usepackage = 0
 let g:vimtex_format_enabled = 1
 let g:vimtex_imaps_enabled = 0
 let g:vimtex_latexmk_background = 0
-let g:vimtex_latexmk_build_dir = '_biuld'
+let g:vimtex_latexmk_build_dir = '_build'
 let g:vimtex_latexmk_callback = 1
-let g:vimtex_latexmk_callback_hooks = ['MyTestHook']
 let g:vimtex_latexmk_continuous = 1
 let g:vimtex_latexmk_enabled = 1
 let g:vimtex_quickfix_autojump = 0
 let g:vimtex_quickfix_ignore_all_warnings = 0
 let g:vimtex_quickfix_mode = 2
 let g:vimtex_view_enabled = 1
-
-function! MyTestHook(status)
-  echom a:status
-endfunction
 
 let g:vimtex_quickfix_ignored_warnings = [
     \ 'Underfull',
