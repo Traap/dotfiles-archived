@@ -309,10 +309,11 @@ function repeat() {
     if [ $? > 0 ]; then
       let passNo=$((passNo+1))
       clear
-      printf "Repeating [$@]  Ctrl-C to stop.  Pass: $counter"
+      echo Repeating [$@]  Ctrl-C to stop.  Pass: $passNo
       $@
       sleep 5
     fi
   done
 }
+alias rgl='repeat git logg -6'
 #----------------------------------------------------------------------
