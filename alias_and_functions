@@ -20,7 +20,9 @@ function base16Color() {
 # Operating system specific settings.
 #-------------------------------------------------------------------------------
 echo "Operating system: " ${OSTYPE}
+alias gvim='vim -g'
 alias tmux='tmux -2'
+alias vim='vim --servername VIM'
 export TERM=xterm-256color
 
 if [[ ${OSTYPE} =~ "darwin" ]]; then
@@ -43,8 +45,6 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
       alias   ds6='sshfs datasci:git/smart-device-sw ~/ds6'
       alias  uds6='umount ~/ds6'
     fi
-    alias gvim='vim -g'
-    alias vim='vim -v'
     if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
       . $(brew --prefix)/etc/bash_completion
     fi
@@ -53,7 +53,6 @@ elif [[ ${OSTYPE} =~ "linux" ]]; then
     alias me='source ~/.bashrc'
     alias la='ls -A --color'
     alias ll='ls -lahG --color'
-    alias vim='vim --servername VIM'
     if [[ -f /usr/share/bash-completion/bash_completion ]]; then
       . /usr/share/bash-completion/bash_completion
     fi
