@@ -131,16 +131,6 @@ function ffw() {
   find . -name "$ext" -type f -exec grep "$pattern" /dev/null {} +
 }
 
-#-------------------------------------------------------------------------------
-# Use vim to read man pages.
-#-------------------------------------------------------------------------------k
-function manv() {
-  vimm \
-    -c "Man $1 $2" \
-    -c 'silent only' \
-    -c 'set tw=78 ts=8 colorcolumn=0 nomod nolist nonu noma norl'
-}
-
 #-------------------------------------------------------------------------------k
 # Use functions to create pdf document.
 #-------------------------------------------------------------------------------k
@@ -243,35 +233,6 @@ function dbh() { stack build hmst-documentation ; }
 function dbt() { stack exec -- doc-build tex ; }
 function dbti(){ stack exec -- env DONT_RERUN_TEX_BUILD=1 doc-build tex;}
 function dbv() { stack build verify && stack exec verify ; }
-
-#----------------------------------------------------------------------
-# Swapp VIM convigurations.
-#----------------------------------------------------------------------
-function setvim() {
-  echo "Changing Vim configuration."
-  VIM="${HOME}/.vim"
-  VIMRC="${HOME}/.vimrc"
-
-  HVN="${HOME}/.config/haskell-vim-now"
-  DOT="${HOME}/git/dotfiles/vim"
-
-  echo "Removing currnet Vim configuration."
-  rm -v ${VIM}
-  rm -v ${VIMRC}
-
-  if [[ "hvn" = $1 ]]; then
-    echo "Using Haskell Vim Now"
-    ln -sv ${HVN}/.vim ${VIM}
-    ln -sv ${HVN}/.vimrc ${VIMRC}
-    ln -sv ${DOT}/settings.vim ${HVN}/vimrc.local
-    ln -sv ${DOT}/plugins-hvm.vim ${HVN}/plugins.vim
-  else
-    echo "Using Traap's personalization  Vim."
-    ln -sv ${HOME}/git/dotfiles/vim ${VIM}
-    ln -sv ${HOME}/git/dotfiles/vimrc ${VIMRC}
-  fi
-
-}
 
 #----------------------------------------------------------------------
 # Generating a new SSH key and adding it to the ssh-agent
