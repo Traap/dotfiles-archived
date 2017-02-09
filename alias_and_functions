@@ -310,9 +310,23 @@ function repeat() {
       clear
       echo Repeating [$@]  Ctrl-C to stop.  Pass: $passNo
       $@
-      sleep 1
+      sleep 5
     fi
   done
 }
 alias rgl='repeat git logg -6'
 #----------------------------------------------------------------------
+function ide() {
+  cd ~/git/$1
+  tmux new-session \; \
+    split-window -v -p 10 \; \
+    split-window -h -p 50 \; \
+    send-keys 'repeat git logg -6' C-m \; \
+    select-pane -t 1 \; \
+    send-keys 'vim' C-m \; \
+    send-keys 'C-n' C-m \; \
+    send-keys 'C-h' C-m \; \
+    send-keys ',gs' C-m \;
+}
+#----------------------------------------------------------------------
+

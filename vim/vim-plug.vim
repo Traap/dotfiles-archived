@@ -39,6 +39,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'sjl/vitality.vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Haskell
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
@@ -54,14 +55,10 @@ Plug 'vim-scripts/CycleColor'
 Plug 'luochen1990/rainbow'
 
 " LaTeX
-"Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'lervag/vimtex'
 
 " Dispatchers
 Plug 'tpope/vim-dispatch'
-
-" Swift
-Plug 'keith/swift.vim'
 
 " Add plugins to runtimepath
 call plug#end()
