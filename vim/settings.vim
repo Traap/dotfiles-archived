@@ -99,7 +99,6 @@ set wrap
 
 if filereadable(expand("~./vimrc_background"))
   let base16colorspace=256
-"  set background=dark
   source ~/.vimrc_background
 endif
 
@@ -163,6 +162,10 @@ endif
 if &term =~ '256color'
   set t_ut=
 endif
+if exists('$TMUX')
+  set term=screen-256color
+endif
+
 " -------------------------------------------------------------------------- }}}
 " {{{ Automatic spelling corrections.
 
@@ -595,6 +598,8 @@ let g:vimtex_quickfix_ignored_warnings = [
     \ 'Underfull',
     \ 'Overfull',
     \ 'specifier changed to',
+    \ 'Font warning',
+    \ 'Empty glossary'
     \ ]
 
 " -------------------------------------------------------------------------- }}}
