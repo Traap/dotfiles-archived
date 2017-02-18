@@ -1,8 +1,12 @@
 -- | Copyright (c) Gary Allan Howard aka Traap.
--- Distributed under the same terms as Vim itself.  See :help license.
+-- Licsnse BSD-3-Clause
 --
--- This program initializes my HOME directory with symbolic link references to
--- my git/dotfiles folders.
+-- This program is used to bootstrap a development environment.  Bootstrapping
+-- consists of two parts, namely: 1) setup symbolic links to files or
+-- directories that are under version control, and 2) clone GitHub.com
+-- repositories that are needed to personalize bash and vim.
+
+-- | The main entry point.
 module Main (main) where
 
 import Control.Monad
@@ -16,30 +20,43 @@ import System.Process
 github :: String
 github = "git clone http://github.com/"
 
--- | Create a symbolic link for each file name listed in dotfiles.  Files
--- are symlinked from $HOME to $HOME/vim.
-dotfiles :: [String]
-dotfiles =
-  ["bash_profile"
-  ,"bashrc"
-  ,"gitconfig"
-  ,"gitignore_global"
-  ,"gvimrc"
-  ,"inputrc"
-  ,"ssh/config"
-  ,"tmux.conf"
-  ,"vim"
-  ,"vimoutlinerrc"
-  ,"vimrc"
-  ,"vimrc_background"
+-- | The SymLink type defines the target of a symlink operation and identifies
+-- the target type as a file or as a directory.
+data SymLink = SYMLINK
+  {sym  :: String -- the target for the Symlink.
+  ,flag :: Bool -- true when a file; false when a directory.
+  }
+
+-- | The symlinks function creates a list of SymLinks.  Each SymLink represents
+-- a named symbolic link and file or directory target that is symbolically
+-- linked.
+symlinks :: [SymLink]
+symlinks =
+  [SYMLINK{sym="bash_profile",      flag=True}
+  ,SYMLINK{sym="bashrc",            flag=True}
+  ,SYMLINK{sym="gitconfig",         flag=True}
+  ,SYMLINK{sym="gitignore_global",  flag=True}
+  ,SYMLINK{sym="gvimrc",            flag=True}
+  ,SYMLINK{sym="inputrc",           flag=True}
+  ,SYMLINK{sym="ssh",               flag=False}
+  ,SYMLINK{sym="ssh/config",        flag=True}
+  ,SYMLINK{sym="tmux",              flag=False}
+  ,SYMLINK{sym="tmux.conf",         flag=True}
+  ,SYMLINK{sym="vim",               flag=False}
+  ,SYMLINK{sym="vimoutlinerc",      flag=True}
+  ,SYMLINK{sym="vimrc",             flag=True}
+  ,SYMLINK{sym="vimrc_backgroundh", flag=True}
   ]
 
--- | These are the repos that are cloned.
+-- | The Repo type defines target directory for a git-clone operation and the
+-- URL cloned from GitHub.com.
 data Repo = REPO
   {tdir :: String   -- the target directory for the clone operation.
   ,url  :: [String] -- the repositories to clone.
   } deriving (Show)
 
+-- | The repos function creates a list of Repos.  Each Repo represents
+-- a repository cloned from GitHub.com.
 repos :: String -> [Repo]
 repos s =
   [REPO
@@ -59,24 +76,31 @@ repos s =
        }
   ]
 
--- | Let's move some files around.
+-- | Orchestrate creating symbolic links and cloning GitHub.com repositories.
 main :: IO ()
 main = do
-  -- Step 1: Setup symlinks.
-  mapM_ makeSymbolicLink dotfiles
+  -- Step 1: Create symbolic links.
+  mapM_ makeSymbolicLink symlinks
 
   -- Step 2: Clone repositories from github.
   mapM_ withDirCloneRepo $ repos github
 
 -- | makeSymoblicLink
-makeSymbolicLink :: String -> IO ExitCode
-makeSymbolicLink f = do
+makeSymbolicLink :: SymLink -> IO ExitCode
+makeSymbolicLink sl = do
+  -- Concatenate target file name.
   h <- getHomeDirectory
-  let tfile = h ++ "/." ++ f
-  _ <- system $ "rm -rf " ++ tfile
+  let tfile = h ++ "/." ++ sym sl
 
-  c <- getCurrentDirectory
-  let sfile = c ++ "/" ++ takeFileName f
+  -- Concatenate source file name.
+  c <- if flag sl then getCurrentDirectory
+                  else getHomeDirectory
+  let loc = if flag sl then "/"
+      else "/git/"
+      sfile = c ++ loc ++ takeFileName (sym sl)
+
+  -- Remove the target file and create the symbolic link.
+  _ <- system $ "rm -rf" ++ tfile
   system $ "ln -vs " ++ sfile ++ " " ++ tfile
 
 -- | Setup directory to clone repository into.
