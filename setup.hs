@@ -32,19 +32,19 @@ data SymLink = SYMLINK
 -- linked.
 symlinks :: [SymLink]
 symlinks =
-  [SYMLINK{sym="bash_profile",      flag=True}
-  ,SYMLINK{sym="bashrc",            flag=True}
-  ,SYMLINK{sym="gitconfig",         flag=True}
-  ,SYMLINK{sym="gitignore_global",  flag=True}
-  ,SYMLINK{sym="gvimrc",            flag=True}
-  ,SYMLINK{sym="inputrc",           flag=True}
-  ,SYMLINK{sym="ssh",               flag=False}
-  ,SYMLINK{sym="ssh/config",        flag=True}
-  ,SYMLINK{sym="tmux",              flag=False}
-  ,SYMLINK{sym="tmux.conf",         flag=True}
-  ,SYMLINK{sym="vim",               flag=False}
-  ,SYMLINK{sym="vimrc",             flag=True}
-  ,SYMLINK{sym="vimrc_backgroundh", flag=True}
+  [SYMLINK{sym="bash_profile",     flag=True}
+  ,SYMLINK{sym="bashrc",           flag=True}
+  ,SYMLINK{sym="gitconfig",        flag=True}
+  ,SYMLINK{sym="gitignore_global", flag=True}
+  ,SYMLINK{sym="gvimrc",           flag=True}
+  ,SYMLINK{sym="inputrc",          flag=True}
+  ,SYMLINK{sym="ssh",              flag=False}
+  ,SYMLINK{sym="ssh/config",       flag=True}
+  ,SYMLINK{sym="tmux",             flag=False}
+  ,SYMLINK{sym="tmux.conf",        flag=True}
+  ,SYMLINK{sym="vim",              flag=False}
+  ,SYMLINK{sym="vimrc",            flag=True}
+  ,SYMLINK{sym="vimrc_background", flag=True}
   ]
 
 -- | The Repo type defines target directory for a git-clone operation and the
@@ -89,7 +89,7 @@ makeSymbolicLink :: SymLink -> IO ExitCode
 makeSymbolicLink sl = do
   -- Concatenate target file name.
   h <- getHomeDirectory
-  let tfile = h ++ "/." ++ sym sl
+  let tfile = h ++ "/" ++ sym sl
 
   -- Concatenate source file name.
   c <- if flag sl then getCurrentDirectory
@@ -99,7 +99,7 @@ makeSymbolicLink sl = do
       sfile = c ++ loc ++ takeFileName (sym sl)
 
   -- Remove the target file and create the symbolic link.
-  _ <- system $ "rm -rf" ++ tfile
+  _ <- system $ "rm -vrf" ++ tfile
   system $ "ln -vs " ++ sfile ++ " " ++ tfile
 
 -- | Setup directory to clone repository into.
