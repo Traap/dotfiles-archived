@@ -87,16 +87,13 @@ main = do
 -- | makeSymoblicLink
 makeSymbolicLink :: SymLink -> IO ExitCode
 makeSymbolicLink sl = do
-  -- Concatenate target file name.
+  -- Concatenate target file name (ex: ~/.bashrc).
   h <- getHomeDirectory
-  let tfile = h ++ "/" ++ sym sl
+  let tfile = h ++ "/." ++ sym sl
 
-  -- Concatenate source file name.
-  c <- if flag sl then getCurrentDirectory
-                  else getHomeDirectory
-  let loc = if flag sl then "/"
-      else "/git/"
-      sfile = c ++ loc ++ takeFileName (sym sl)
+  -- Concatenate source file name (ex: ~/git/dotfiles/bashrc).
+  c <- getCurrentDirectory
+  let sfile = c ++ "/" ++ takeFileName (sym sl)
 
   -- Remove the target file and create the symbolic link.
   _ <- system $ "rm -vrf" ++ tfile
