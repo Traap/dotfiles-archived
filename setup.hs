@@ -96,10 +96,7 @@ makeSymbolicLink sl = do
   let sfile = c ++ "/" ++ takeFileName (sym sl)
 
   -- Remove the target file and create the symbolic link.
-  putStrLn "tfile: " ++ tfile
-  putStrLn "sFile: " ++ sfile:w
-
-  _ <- system $ "rm -vrf" ++ tfile
+  _ <- system $ "rm -vrf " ++ tfile
   system $ "ln -vs " ++ sfile ++ " " ++ tfile
 
 -- | Setup directory to clone repository into.
