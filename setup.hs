@@ -43,7 +43,6 @@ symlinks =
   ,SYMLINK{sym="tmux",              flag=False}
   ,SYMLINK{sym="tmux.conf",         flag=True}
   ,SYMLINK{sym="vim",               flag=False}
-  ,SYMLINK{sym="vimoutlinerc",      flag=True}
   ,SYMLINK{sym="vimrc",             flag=True}
   ,SYMLINK{sym="vimrc_backgroundh", flag=True}
   ]
