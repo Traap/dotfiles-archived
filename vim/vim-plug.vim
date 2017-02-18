@@ -51,11 +51,13 @@ Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 
 " Colors
 Plug 'chriskempson/base16-vim'
-Plug 'vim-scripts/CycleColor'
 Plug 'luochen1990/rainbow'
 
 " LaTeX
 Plug 'lervag/vimtex'
+
+" Checkers (Lint, Syntat, etc.)
+ Plug 'vim-syntastic/syntastic'
 
 " Dispatchers
 Plug 'tpope/vim-dispatch'
