@@ -125,14 +125,15 @@ makeSymLink sl = do
 -- | Setup directory to clone repository into.
 withDirCloneRepo :: Repo -> IO ()
 withDirCloneRepo r = do
-  setupDirectory (tdir r)
+  setDotFileDirectory
+  setCloneDirectory (tdir r)
   mapM_ cloneRepo (url r)
+  setDotFileDirectory
 
 -- -----------------------------------------------------------------------------
 -- | Setup directory.
-setupDirectory :: FilePath -> IO ()
-setupDirectory fpath = do
-  setDotFileDirectory
+setCloneDirectory :: FilePath -> IO ()
+setCloneDirectory fpath = do
   safelyRemoveDirectory fpath
   createDirectoryIfMissing True fpath
   setCurrentDirectory fpath
