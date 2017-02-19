@@ -295,4 +295,4 @@ function ide() {
 # ------------------------------------------------------------------------------
 # Setup is a shortcut to setup my profile. 
 # ------------------------------------------------------------------------------
-function setup() { dot && stack exec -- runhaskell setup.hs }
+function setup() { dot && stack exec -- runhaskell setup.hs ; }
