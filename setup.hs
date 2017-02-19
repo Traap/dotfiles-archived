@@ -84,17 +84,17 @@ repos s =
 main :: IO ()
 main = do
   -- Step 1: Remove everything we are about to create. 
-  mapM_ deleteSymlink symlinks
+  mapM_ deleteSymLink symlinks
 
   -- Step 2: Clone repositories from github.
   mapM_ withDirCloneRepo $ repos github
 
   -- Step 3: Create symbolic links.
-  mapM_ makeSymbolicLink symlinks
+  mapM_ makeSymLink symlinks
 
 -- | Recursively delete objects referenced by SymLink. 
-deleteSymbolicLink :: SymLink -> IO ExitCode
-deleteSymbolicLink sl = do
+deleteSymLink :: SymLink -> IO ExitCode
+deleteSymLink sl = do
   -- Concatenate target file name (ex: ~/.bashrc).
   h <- getHomeDirectory
   let tfile = h ++ "/." ++ sym sl
@@ -103,8 +103,8 @@ deleteSymbolicLink sl = do
   system $ "rm -vrf " ++ tfile
 
 -- | Create symbolic links for objects referenced by SymLink. 
-makeSymbolicLink :: SymLink -> IO ExitCode
-makeSymbolicLink sl = do
+makeSymLink :: SymLink -> IO ExitCode
+makeSymLink sl = do
   -- Concatenate target file name (ex: ~/.bashrc).
   h <- getHomeDirectory
   let tfile = h ++ "/." ++ sym sl
