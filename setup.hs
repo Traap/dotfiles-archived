@@ -37,19 +37,19 @@ data SymLink = SYMLINK
 -- linked.
 symlinks :: [SymLink]
 symlinks =
-  [SYMLINK{sym="bash_profile",     src=".",           flag=True}
-  ,SYMLINK{sym="bashrc",           src=".",           flag=True}
-  ,SYMLINK{sym="gitconfig",        src=".",           flag=True}
-  ,SYMLINK{sym="gitignore_global", src=".",           flag=True}
-  ,SYMLINK{sym="gvimrc",           src=".",           flag=True}
-  ,SYMLINK{sym="inputrc",          src=".",           flag=True}
-  ,SYMLINK{sym="ssh",              src=".",           flag=False}
-  ,SYMLINK{sym="config",           src=".ssh/config", flag=True}
-  ,SYMLINK{sym="tmux",             src=".",           flag=False}
-  ,SYMLINK{sym="tmux.conf",        src=".",           flag=True}
-  ,SYMLINK{sym="vim",              src=".",           flag=False}
-  ,SYMLINK{sym="vimrc",            src=".",           flag=True}
-  ,SYMLINK{sym="vimrc_background", src=".",           flag=True}
+  [SYMLINK{sym="bash_profile",     src=".",     flag=True}
+  ,SYMLINK{sym="bashrc",           src=".",     flag=True}
+  ,SYMLINK{sym="gitconfig",        src=".",     flag=True}
+  ,SYMLINK{sym="gitignore_global", src=".",     flag=True}
+  ,SYMLINK{sym="gvimrc",           src=".",     flag=True}
+  ,SYMLINK{sym="inputrc",          src=".",     flag=True}
+  ,SYMLINK{sym="ssh",              src=".",     flag=False}
+  ,SYMLINK{sym="config",           src=".ssh/", flag=True}
+  ,SYMLINK{sym="tmux",             src=".",     flag=False}
+  ,SYMLINK{sym="tmux.conf",        src=".",     flag=True}
+  ,SYMLINK{sym="vim",              src=".",     flag=False}
+  ,SYMLINK{sym="vimrc",            src=".",     flag=True}
+  ,SYMLINK{sym="vimrc_background", src=".",     flag=True}
   ]
 
 -- -----------------------------------------------------------------------------
