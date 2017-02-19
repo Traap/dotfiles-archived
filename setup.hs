@@ -25,7 +25,7 @@ github = "git clone http://github.com/"
 data SymLink = SYMLINK
   {sym  :: String -- the target for the Symlink.
   ,flag :: Bool -- true when a file; false when a directory.
-  }
+  } deriving (Show)
 
 -- | The symlinks function creates a list of SymLinks.  Each SymLink represents
 -- a named symbolic link and file or directory target that is symbolically
@@ -47,11 +47,16 @@ symlinks =
   ,SYMLINK{sym="vimrc_background", flag=True}
   ]
 
+data Url = URL
+  { loc  :: String -- the url string.
+  , here :: Bool   -- use . (here) versus url name to clone into.
+  } deriving (Show)
+
 -- | The Repo type defines target directory for a git-clone operation and the
 -- URL cloned from GitHub.com.
 data Repo = REPO
   {tdir :: String   -- the target directory for the clone operation.
-  ,url  :: [String] -- the repositories to clone.
+  ,url  :: [Url] -- the repositories to clone.
   } deriving (Show)
 
 -- | The repos function creates a list of Repos.  Each Repo represents
@@ -60,18 +65,18 @@ repos :: String -> [Repo]
 repos s =
   [REPO
        {tdir="vim/autoload"
-       ,url=[s ++ "junegunn/vim-plug"]
+       ,url=[URL{loc=s ++ "junegunn/vim-plug", here=False}]
        }
   ,REPO
        {tdir="color"
-       ,url=[s ++ "chriskempson/base16-gnome-terminal"
-            ,s ++ "chriskempson/base16-iterm2"
-            ,s ++ "chriskempson/base16-shell"
+       ,url=[URL{loc=s ++ "chriskempson/base16-gnome-terminal", here=False}
+            ,URL{loc=s ++ "chriskempson/base16-iterm2", here=False}
+            ,URL{loc=s ++ "chriskempson/base16-shell", here=False}
             ]
        }
   ,REPO
        {tdir="ssh"
-       ,url=[s ++ "traap/ssh"]
+       ,url=[URL{loc=s ++ "traap/ssh", here=True}]
        }
   ]
 
@@ -103,7 +108,7 @@ makeSymbolicLink sl = do
 withDirCloneRepo :: Repo -> IO ()
 withDirCloneRepo r = do
   setupDirectory (tdir r)
-  cloneRepo (url r)
+  mapM_ cloneRepo (url r)
 
 -- | Setup directory.
 setupDirectory :: FilePath -> IO ()
@@ -127,5 +132,16 @@ safelyRemoveDirectory fpath = do
   Control.Monad.when b $ removeDirectoryRecursive fpath
 
 -- | Clone repos I am interested in using.
-cloneRepo :: [String] -> IO ()
-cloneRepo = mapM_ system
+-- The url cloned has two formats
+-- 1) clone git@github.com:Traap/dotfiles
+--    This invocation creates a new directory named dotfiles and clones into it.
+--
+-- 2) clone git@github.com:Traap/dotfiles .
+--    This invocation clones into the current directory.
+--
+cloneRepo :: Url -> IO ExitCode
+cloneRepo u = do
+  let s = if (here u)
+          then (loc u) ++ " ."
+          else (loc u)
+  system s
