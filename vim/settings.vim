@@ -103,6 +103,7 @@ if filereadable(expand("~./vimrc_background"))
 endif
 
 highlight ColorColumn ctermbg=18
+highlight SignColumn ctermbg=18
 
 " Use same color behind concealed unicode characters
 hi clear Conceal
@@ -116,7 +117,7 @@ if has("gui_running")
 
   " Set searching colors.
   hi search guifg=#ffffff guibg=#e5786d gui=none
-  
+
   " Don't blink normal mode cursor
   set guicursor=n-v-c:block-Cursor
   set guicursor+=n-v-c:blinkon0
@@ -134,7 +135,7 @@ if has("gui_running")
   else
     set guifont=DejaVu\ Sans\ Mono\ 10
   endif
-  
+
   " Colors
   colorscheme base16-solarized-dark
 
@@ -143,7 +144,7 @@ if has("gui_running")
 
   hi Cursor guibg=cyan
 
-  
+
 else
   hi search ctermfg=white ctermbg=173 cterm=none
 endif
@@ -192,7 +193,7 @@ autocmd FileType tex nnoremap <leader>ul i\begin{itemize}<Enter><Enter>\end{item
 " {{{ Obfuscate screen contents
 nnoremap <F1> mzggg?G`z
 " -------------------------------------------------------------------------- }}}
-" {{{ Delete line and more 
+" {{{ Delete line and more
 
 "Delete line
 map - dd
@@ -409,8 +410,8 @@ nnoremap <leader>gD :Gvdiff<cr>
 " -------------------------------------------------------------------------- }}}
 " {{{ ghcmod-vim
 " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
-let &l:statusline = '%{empty(getqflist()) 
-      \ ? "[No Errors]" : "[Errors Found]"}' 
+let &l:statusline = '%{empty(getqflist())
+      \ ? "[No Errors]" : "[Errors Found]"}'
       \ . (empty(&l:statusline) ? &statusline : &l:statusline)
 
 let g:ghcmod_hlint_options = ['--ignore=Redundant $']
@@ -524,6 +525,16 @@ let rainbow_conf = {
     \       'css': 0,
     \   }
     \}
+" -------------------------------------------------------------------------- }}}
+" {{{ Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 " -------------------------------------------------------------------------- }}}
 " {{{ Tmux Runner
 "
