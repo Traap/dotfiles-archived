@@ -1,5 +1,5 @@
 -- | Copyright (c) Gary Allan Howard aka Traap.
--- Licsnse BSD-3-Clause
+-- License BSD-3-Clause
 --
 -- This program is used to bootstrap a development environment.  Bootstrapping
 -- consists of two parts, namely: 1) setup symbolic links to files or
@@ -80,16 +80,29 @@ repos s =
        }
   ]
 
--- | Orchestrate creating symbolic links and cloning GitHub.com repositories.
+-- | Orchestrate cloning GitHub.com repositories and creating symbolic links.
 main :: IO ()
 main = do
-  -- Step 1: Create symbolic links.
-  mapM_ makeSymbolicLink symlinks
+  -- Step 1: Remove everything we are about to create. 
+  mapM_ deleteSymlink symlinks
 
   -- Step 2: Clone repositories from github.
   mapM_ withDirCloneRepo $ repos github
 
--- | makeSymoblicLink
+  -- Step 3: Create symbolic links.
+  mapM_ makeSymbolicLink symlinks
+
+-- | Recursively delete objects referenced by SymLink. 
+deleteSymbolicLink :: SymLink -> IO ExitCode
+deleteSymbolicLink sl = do
+  -- Concatenate target file name (ex: ~/.bashrc).
+  h <- getHomeDirectory
+  let tfile = h ++ "/." ++ sym sl
+
+  -- Remove the target file and create the symbolic link.
+  system $ "rm -vrf " ++ tfile
+
+-- | Create symbolic links for objects referenced by SymLink. 
 makeSymbolicLink :: SymLink -> IO ExitCode
 makeSymbolicLink sl = do
   -- Concatenate target file name (ex: ~/.bashrc).
@@ -141,7 +154,5 @@ safelyRemoveDirectory fpath = do
 --
 cloneRepo :: Url -> IO ExitCode
 cloneRepo u = do
-  let s = if (here u)
-          then (loc u) ++ " ."
-          else (loc u)
+  let s = if here u then loc u ++ " ." else loc u
   system s
