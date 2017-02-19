@@ -88,6 +88,14 @@ repos s =
        {tdir="ssh"
        ,url=[URL{loc=s ++ "traap/ssh", here=True}]
        }
+  ,REPO
+       {tdir="tmux"
+       ,url=[URL{loc=s ++ "traap/tmux", here=True}]
+       }
+  ,REPO
+       {tdir="tmux/plugings/tmp"
+       ,url=[URL{loc=s ++ "tmux-plugins/tpm", here=True}]
+       }
   ]
 
 -- -----------------------------------------------------------------------------
