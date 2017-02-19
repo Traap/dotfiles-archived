@@ -93,7 +93,7 @@ repos s =
        ,url=[URL{loc=s ++ "traap/tmux", here=True}]
        }
   ,REPO
-       {tdir="tmux/plugings/tmp"
+       {tdir="tmux/plugings/tpm"
        ,url=[URL{loc=s ++ "tmux-plugins/tpm", here=True}]
        }
   ]
