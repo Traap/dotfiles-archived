@@ -11,7 +11,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Shougo/vimshell.vim'
 Plug 'Traap/vim-helptags'
 Plug 'beloglazov/vim-online-thesaurus'
-Plug 'bruno-/vim-man'
+Plug 'vim-utils/vim-man'
 Plug 'moll/vim-bbye'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'vim-scripts/gitignore'
@@ -63,4 +63,5 @@ Plug 'lervag/vimtex'
 Plug 'tpope/vim-dispatch'
 
 " Add plugins to runtimepath
+
 call plug#end()

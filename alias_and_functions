@@ -24,6 +24,7 @@ alias gvim='vim -g'
 alias tmux='tmux -2'
 alias vim='vim --servername VIM'
 export TERM=xterm-256color
+alias lw='ll "$(which $1)"'
 
 if [[ ${OSTYPE} =~ "darwin" ]]; then
     export CLICOLOR=1
@@ -32,7 +33,6 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     alias me='source ~/.bash_profile'
     alias la='ls -A'
     alias ll='ls -lahG'
-    alias lw='ll "$(which $1)"'
     if [[ ${HOSTNAME} =~ "Stooges" ]]; then
       alias  fpc0='sshfs fpc:git/smart-device-sw /Volumes/Larry/fpc0'
       alias ufpc0='umount /Volumes/Larry/fpc0'
@@ -259,7 +259,7 @@ BASE16_SHELL=$HOME/git/dotfiles/color/base16-shell/
 
 # ------------------------------------------------------------------------------
 # Repeat a command until a key is pressed.  The read command waits
-# 15sec before timing out.  
+# 1sec before timing out.  
 # ------------------------------------------------------------------------------
 function repeat() {
   let passNo=0;
@@ -281,6 +281,7 @@ alias rgl='repeat git logg -6'
 # ------------------------------------------------------------------------------
 function ide() {
   cd ~/git/$1
+  title $1
   tmux new-session \; \
     split-window -v -p 10 \; \
     split-window -h -p 50 \; \
@@ -295,4 +296,11 @@ function ide() {
 # ------------------------------------------------------------------------------
 # Setup is a shortcut to setup my profile. 
 # ------------------------------------------------------------------------------
-function setup() { dot && stack exec -- runhaskell setup.hs ; }
+function my()  { dot && stack exec -- runhaskell setup.hs ; }
+function lsd() { ls -l  $1 | grep "^d" | awk -F" " '{print $9}' ; }
+function lsdi(){ ls -Al $1 | grep "^d" | awk -F" " '{print $9}' ; }
+function gits(){ 
+  for i in $(lsd); do cd ~/git/${i%%} && git status --short; done; 
+  cd - ;
+}
+

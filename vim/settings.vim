@@ -4,7 +4,7 @@ let g:mapleader = ","
 let maplocalleader = ","
 set tm=2000                                   " Leader key timeout.
 " LEADER SECTION END ------------------------------------------------------- }}}
-" {{{ " SETTINGS SECTION
+"{{{ SETTINGS SECTION
 " First things ... {{{
 
 " Set things that should come first.
@@ -104,6 +104,7 @@ endif
 
 highlight ColorColumn ctermbg=18
 highlight SignColumn ctermbg=18
+set signcolumn=yes
 
 " Use same color behind concealed unicode characters
 hi clear Conceal
@@ -578,7 +579,11 @@ let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt = $USER."$ "
 " -------------------------------------------------------------------------- }}}
 " {{{ vitality
-let g:vitality_fix_cursor = 0
+let g:vitality_fix_cursor = 1
+let g:vitality_normal_cursor = 0
+let g:vitality_insert_cursor = 1
+let g:vitality_fix_focus = 1
+let g:vitality_fix_cursor = 1
 " -------------------------------------------------------------------------- }}}
 " {{{ vimtex
 let g:tex_flavor = 'latex'
