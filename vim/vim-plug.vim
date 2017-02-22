@@ -5,16 +5,19 @@ runtime ~/.vim/autoload/vim-plug/plug.vim
 " Plugin
 call plug#begin('~/.vim/bundle')
 
-" Support bundles
+" Utilities 
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Shougo/vimshell.vim'
 Plug 'Traap/vim-helptags'
 Plug 'beloglazov/vim-online-thesaurus'
-Plug 'vim-utils/vim-man'
+Plug 'christoomey/vim-system-copy'
 Plug 'moll/vim-bbye'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'vim-scripts/gitignore'
+Plug 'vim-utils/vim-man'
+Plug 'vim-utils/vim-most-minimal-folds'
+Plug 'tkhoa2711/vim-togglenumber'
 
 " Git
 Plug 'int3/vim-extradite'

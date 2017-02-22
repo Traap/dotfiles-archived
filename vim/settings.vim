@@ -4,8 +4,8 @@ let g:mapleader = ","
 let maplocalleader = ","
 set tm=2000                                   " Leader key timeout.
 " LEADER SECTION END ------------------------------------------------------- }}}
-"{{{ SETTINGS SECTION
-" First things ... {{{
+" {{{ SETTINGS SECTION
+" {{{ First things ...
 
 " Set things that should come first.
 filetype on
@@ -145,8 +145,9 @@ if has("gui_running")
 
   hi Cursor guibg=cyan
 
-
+  hi Folded guibg=black guifg=blue
 else
+  hi Folded ctermbg=black ctermfg=blue
   hi search ctermfg=white ctermbg=173 cterm=none
 endif
 
@@ -280,7 +281,10 @@ inoremap <c-l> <c-x><c-l>
 " {{{ Execute the current line of text as a shell command.
 noremap <leader>E !!$SHELL<cr>
 " -------------------------------------------------------------------------- }}}
-" {{{ EX | chmod +x " | https://github.com/junegunn/dotfiles/blob/master/vimrc
+" {{{ junegunn:  chmod
+"
+" EX | chmod +x " | https://github.com/junegunn/dotfiles/blob/master/vimrc
+"
 command! EX if !empty(expand('%'))
   \|   write
   \|   call system('chmod +x '.expand('%'))
@@ -291,7 +295,10 @@ command! EX if !empty(expand('%'))
   \|   echohl None
   \| endif
 " -------------------------------------------------------------------------- }}}
-" {{{ <Leader>?/! | Google it / Feeling luckey | junegunn/dotfiles
+" {{{ junegunn: Google it / Feeling Lucky
+"
+" <Leader>?/! | Google it / Feeling luckey | junegunn/dotfiles
+"
 function! s:goog(pat, lucky)
   let q = '"'.substitute(a:pat, '["\n]', ' ', 'g').'"'
   let q = substitute(q, '[[:punct:] ]',
@@ -318,6 +325,25 @@ nnoremap <leader>es :e ~/git/dotfiles/vim/settings.vim<cr>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>.  :e.<cr>
 nnoremap <leader>ad :set filetype=asciidoc<cr>
+" -------------------------------------------------------------------------- }}}
+" {{{ Extremely volatile  
+let opt_DimInactiveWin=0
+hi Inactive ctermfg=108
+fun! ToggleDimInactiveWin()
+    if g:opt_DimInactiveWin
+        autocmd! DimWindows
+        windo syntax clear Inactive
+    else
+        windo syntax region Inactive start='^' end='$'
+        syntax clear Inactive
+        augroup DimWindows
+            autocmd BufEnter * syntax clear Inactive
+            autocmd BufLeave * syntax region Inactive start='^' end='$'
+        augroup end
+    en
+    let g:opt_DimInactiveWin=!g:opt_DimInactiveWin
+endfun
+nnoremap dim :call ToggleDimInactiveWin()<cr>
 " -------------------------------------------------------------------------- }}}
 " SETTINGS SECTION END ----------------------------------------------------- }}}
 " {{{ BUNDLES SECTION
@@ -364,7 +390,7 @@ let g:airline_mode_map = {
     \ }
 
 " -------------------------------------------------------------------------  }}}
-" Bbye (Buffer Bye) for Vim {{{
+" {{{ Bbye (Buffer Bye) for Vim
 nnoremap <leader>q :Bdelete<cr>
 nnoremap <leader>Q :bufdo :Bdelete<cr>
 nnoremap <leader>X :bdelete<cr>
@@ -573,6 +599,9 @@ let g:hoogle_search_count = 20
 au BufNewFile,BufRead *.hs map <buffer> <leader>Hc :Hoogle<cr>
 au BufNewFile,BufRead *.hs map <buffer> <leader>Hh :Hoogle<cr>
 au BufNewFile,BufRead *.hs map <buffer> <leader>Hl :Hoogle<cr>
+" -------------------------------------------------------------------------- }}}
+" {{{ vim-most-minimal-folds
+let g:most_minimal_folds_line_count = 1
 " -------------------------------------------------------------------------- }}}
 " {{{ vimshell
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
