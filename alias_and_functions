@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # ------------------------------------------------------------------------------
 # Set base16 color.  Mom and Dad a simple tribute to my parents.
 # ------------------------------------------------------------------------------
@@ -275,6 +276,7 @@ function repeat() {
   done
 }
 alias rgl='repeat git logg -6'
+alias rgs='repeat git status --short'
 
 # ------------------------------------------------------------------------------
 # Setup Tmux and Vim to make a pseudo IDE.
@@ -284,13 +286,17 @@ function ide() {
   title $1
   tmux new-session \; \
     split-window -v -p 10 \; \
-    split-window -h -p 50 \; \
+    split-window -h -p 40 \; \
     send-keys 'repeat git logg -6' C-m \; \
+    select-pane -t 2 \; \
+    split-window -h -p 40 \; \
+    send-keys 'repeat git status --short' C-m \; \
     select-pane -t 1 \; \
     send-keys 'vim' C-m \; \
     send-keys 'C-n' C-m \; \
     send-keys 'C-h' C-m \; \
-    send-keys ',gs' C-m \;
+    send-keys ',gs' C-m \; \
+    send-keys 'C-k' C-m \;
 }
 
 # ------------------------------------------------------------------------------
@@ -303,4 +309,3 @@ function gits(){
   for i in $(lsd); do cd ~/git/${i%%} && git status --short; done; 
   cd - ;
 }
-
