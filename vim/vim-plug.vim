@@ -5,17 +5,17 @@ runtime ~/.vim/autoload/vim-plug/plug.vim
 " Plugin
 call plug#begin('~/.vim/bundle')
 
-" Utilities 
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'Shougo/vimshell.vim'
-Plug 'Traap/vim-helptags'
-Plug 'beloglazov/vim-online-thesaurus'
+" Finders
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ivalkeen/nerdtree-execute'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'haya14busa/incsearch.vim'
+
+" Buffers
 Plug 'christoomey/vim-system-copy'
 Plug 'moll/vim-bbye'
 Plug 'vim-scripts/bufexplorer.zip'
-Plug 'vim-scripts/gitignore'
-Plug 'vim-utils/vim-man'
 Plug 'vim-utils/vim-most-minimal-folds'
 Plug 'tkhoa2711/vim-togglenumber'
 
@@ -23,13 +23,10 @@ Plug 'tkhoa2711/vim-togglenumber'
 Plug 'int3/vim-extradite'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
+Plug 'vim-scripts/gitignore'
 
 " Bars, pannels and files
 Plug 'bling/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ivalkeen/nerdtree-execute'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Text manipulation
 Plug 'tpope/vim-commentary'
@@ -38,11 +35,13 @@ Plug 'tpope/vim-unimpaired'
 Plug 'traap/vim-dragvisuals'
 Plug 'junegunn/vim-easy-align'
 
-" Allow pane movement to move between vim and tmux
+" Tmux 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
-Plug 'sjl/vitality.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+
+" Iterm2
+Plug 'sjl/vitality.vim'
 
 " Haskell
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
@@ -59,11 +58,23 @@ Plug 'luochen1990/rainbow'
 " LaTeX
 Plug 'lervag/vimtex'
 
-" Checkers (Lint, Syntat, etc.)
+" Checkers (Lint, Syntax, etc.)
  Plug 'vim-syntastic/syntastic'
 
 " Dispatchers
 Plug 'tpope/vim-dispatch'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/vimshell.vim'
+
+" Yaml
+Plug 'mkasa/neco-yaml-kwalify-schema'
+Plug 'Shougo/neocomplete.vim'
+Plug 'sunaku/kwalify'
+
+" Help
+Plug 'Traap/vim-helptags'
+Plug 'beloglazov/vim-online-thesaurus'
+Plug 'vim-utils/vim-man'
 
 " Add plugins to runtimepath
 

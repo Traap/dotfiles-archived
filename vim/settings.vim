@@ -326,7 +326,7 @@ nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>.  :e.<cr>
 nnoremap <leader>ad :set filetype=asciidoc<cr>
 " -------------------------------------------------------------------------- }}}
-" {{{ Extremely volatile  
+" {{{ Extremely volatile
 let opt_DimInactiveWin=0
 hi Inactive ctermfg=108
 fun! ToggleDimInactiveWin()
@@ -471,6 +471,19 @@ let g:cabal_indent_selection = 2
 " -------------------------------------------------------------------------- }}}
 " {{{ Helptags
 noremap<leader>ph :Helptags<cr>:echo 'Helptags done!'<cr>
+" -------------------------------------------------------------------------- }}}
+" {{{ incsearch.vim
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 " -------------------------------------------------------------------------- }}}
 " {{{ neco-ghc
 let g:haskell_completion_ghc = 0              " Disabled for neco-ghc
