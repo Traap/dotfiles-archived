@@ -24,6 +24,7 @@ Plug 'int3/vim-extradite'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'vim-scripts/gitignore'
+Plug 'jaxbot/github-issues.vim'
 
 " Bars, pannels and files
 Plug 'bling/vim-airline'
@@ -75,6 +76,9 @@ Plug 'sunaku/kwalify'
 Plug 'Traap/vim-helptags'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'vim-utils/vim-man'
+
+" Grammar
+Plug 'rhysd/vim-grammarous'
 
 " Add plugins to runtimepath
 

@@ -435,6 +435,9 @@ nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gs :Gstatus<cr>gg<c-n>
 nnoremap <leader>gD :Gvdiff<cr>
 " -------------------------------------------------------------------------- }}}
+" {{{ github-issues
+let g:github_access_token = "a61ea234cd6662ad2988dc6cf57dd763b74af462"
+" -------------------------------------------------------------------------- }}}
 " {{{ ghcmod-vim
 " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
 let &l:statusline = '%{empty(getqflist())
@@ -629,36 +632,36 @@ let g:vitality_fix_cursor = 1
 " -------------------------------------------------------------------------- }}}
 " {{{ vimtex
 let g:tex_flavor = 'latex'
-let g:vimtex_complete_enabled = 1
-let g:vimtex_disable_version_warning = 1
-let g:vimtex_enable = 1
-let g:vimtex_fold_comments = 0
-let g:vimtex_fold_documentclass = 0
-let g:vimtex_fold_enabled = 0
-let g:vimtex_fold_envs = 0
-let g:vimtex_fold_levelmarker = '*'
-let g:vimtex_fold_manual = 0
-let g:vimtex_fold_preamble = 0
-let g:vimtex_fold_usepackage = 0
-let g:vimtex_format_enabled = 1
-let g:vimtex_imaps_enabled = 0
-let g:vimtex_latexmk_background = 0
+" let g:vimtex_complete_enabled = 1
+" let g:vimtex_disable_version_warning = 1
+" let g:vimtex_enable = 1
+" let g:vimtex_fold_comments = 0
+" let g:vimtex_fold_documentclass = 0
+" let g:vimtex_fold_enabled = 0
+" let g:vimtex_fold_envs = 0
+" let g:vimtex_fold_levelmarker = '*'
+" let g:vimtex_fold_manual = 0
+" let g:vimtex_fold_preamble = 0
+" let g:vimtex_fold_usepackage = 0
+" let g:vimtex_format_enabled = 1
+" let g:vimtex_imaps_enabled = 0
+" let g:vimtex_latexmk_background = 0
 let g:vimtex_latexmk_build_dir = '_build'
-let g:vimtex_latexmk_callback = 1
-let g:vimtex_latexmk_continuous = 1
-let g:vimtex_latexmk_enabled = 1
-let g:vimtex_quickfix_autojump = 0
-let g:vimtex_quickfix_ignore_all_warnings = 0
-let g:vimtex_quickfix_mode = 2
-let g:vimtex_view_enabled = 1
+" let g:vimtex_latexmk_callback = 1
+" let g:vimtex_latexmk_continuous = 1
+" let g:vimtex_latexmk_enabled = 1
+" let g:vimtex_quickfix_autojump = 0
+" let g:vimtex_quickfix_ignore_all_warnings = 0
+" let g:vimtex_quickfix_mode = 2
+" let g:vimtex_view_enabled = 1
 
-let g:vimtex_quickfix_ignored_warnings = [
-    \ 'Underfull',
-    \ 'Overfull',
-    \ 'specifier changed to',
-    \ 'Font warning',
-    \ 'Empty glossary'
-    \ ]
+" let g:vimtex_quickfix_ignored_warnings = [
+"     \ 'Underfull',
+"     \ 'Overfull',
+"     \ 'specifier changed to',
+"     \ 'Font warning',
+"     \ 'Empty glossary'
+"     \ ]
 
 " -------------------------------------------------------------------------- }}}
 " BUNDLES SECTION END ------------------------------------------------------ }}}
