@@ -1,3 +1,0 @@
-#!/bin/bash
-~/.tmux/plugins/tpm/bin/update_plugins all
-$(which vim) "+PlugInstall!" "+PlugClean" "+qall"
