@@ -10,10 +10,10 @@ function dad() {
   base16Color $1 light
 }
 function ct() {
-  cd ~/git/dotfiles/color/base16-shell && ./colortest && cd -
+  cd ~/git/color/base16-shell && ./colortest && cd -
 }
 function base16Color() {
-  source ~/git/dotfiles/color/base16-shell/scripts/base16-$1-$2.sh
+  source ~/git/color/base16-shell/scripts/base16-$1-$2.sh
   echo "Base16 color: " $1 $2
 }
 
@@ -103,14 +103,14 @@ alias ssh='ssh -A'
 # Aliases to folders within my Git root.
 # ------------------------------------------------------------------------------
 alias ac='cd ~/git/AllanConsulting'
-alias atf='cd ~/git/smart-dedice-sw/doc/automated-test'
-alias dhf='cd ~/git/smart-device-sw/doc/dhf'
-alias doc='cd ~/git/smart-device-sw/doc'
+alias bootd='cd ~/git/bootstrap'
+alias color='cd ~/git/color'
 alias dot='cd ~/git/dotfiles/'
 alias hh='cd ~/git/HowardHouse'
-alias hmst='cd ~/git/smart-device-sw'
-alias mhp='cd ~/git/mhp_Documentation'
 alias resume='cd ~/git/resume'
+alias sshd='cd ~/git/ssh'
+alias tmuxd='cd ~/git/tmux'
+alias vimd='cd ~/git/vim'
 
 # ------------------------------------------------------------------------------
 # A function to grep my command history
@@ -255,7 +255,7 @@ alias ulo='sudo chown -R $(whoami) /usr/local'
 # ------------------------------------------------------------------------------
 # Base16 Shell 
 # ------------------------------------------------------------------------------
-BASE16_SHELL=$HOME/git/dotfiles/color/base16-shell/                                     
+BASE16_SHELL=$HOME/git/color/base16-shell/                                     
 [[ -n $PS1 ]] && [[ -s $BASE16_SHELL/profile_helper.sh ]] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # ------------------------------------------------------------------------------
