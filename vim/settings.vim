@@ -437,6 +437,8 @@ nnoremap <leader>gD :Gvdiff<cr>
 " -------------------------------------------------------------------------- }}}
 " {{{ github-issues
 let g:github_access_token = "a61ea234cd6662ad2988dc6cf57dd763b74af462"
+let g:github_issues_no_omni = 1
+let g:gissues_lazy_load = 1
 " -------------------------------------------------------------------------- }}}
 " {{{ ghcmod-vim
 " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
