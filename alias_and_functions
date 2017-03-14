@@ -279,27 +279,6 @@ alias rgl='repeat git logg -6'
 alias rgs='repeat git status --short'
 
 # ------------------------------------------------------------------------------
-# Setup Tmux and Vim to make a pseudo IDE.
-# ------------------------------------------------------------------------------
-function ide() {
-  cd ~/git/$1
-  title $1
-  tmux new-session \; \
-    split-window -v -p 10 \; \
-    split-window -h -p 40 \; \
-    send-keys 'repeat git logg -6' C-m \; \
-    select-pane -t 2 \; \
-    split-window -h -p 40 \; \
-    send-keys 'repeat git status --short' C-m \; \
-    select-pane -t 1 \; \
-    send-keys 'vim' C-m \; \
-    send-keys 'C-n' C-m \; \
-    send-keys 'C-h' C-m \; \
-    send-keys ',gs' C-m \; \
-    send-keys 'C-k' C-m \;
-}
-
-# ------------------------------------------------------------------------------
 # Setup is a shortcut to setup my profile. 
 # ------------------------------------------------------------------------------
 function my()  { dot && stack exec -- runhaskell setup.hs ; }
