@@ -1,4 +1,4 @@
-#!/bin/bash
+#se!/bin/bash
 
 # ------------------------------------------------------------------------------
 # Set base16 color.  Mom and Dad a simple tribute to my parents.
@@ -7,7 +7,7 @@ function mom() {
   base16Color $1 dark
 }
 function dad() {
-  base16Color $1 light
+  base16Color $1 lightgvs
 }
 function ct() {
   cd ~/git/color/base16-shell && ./colortest && cd -
@@ -279,9 +279,14 @@ alias rgl='repeat git logg -6'
 alias rgs='repeat git status --short'
 
 # ------------------------------------------------------------------------------
-# Setup is a shortcut to setup my profile. 
+# JAVA. 
 # ------------------------------------------------------------------------------
-function my()  { dot && stack exec -- runhaskell setup.hs ; }
+CLASSPATH=build/classes/main:build/classes/test
+export CLASSPATH
+
+# ------------------------------------------------------------------------------
+# Functions I am experimenting with. 
+# ------------------------------------------------------------------------------
 function lsd() { ls -l  $1 | grep "^d" | awk -F" " '{print $9}' ; }
 function lsdi(){ ls -Al $1 | grep "^d" | awk -F" " '{print $9}' ; }
 function gits(){ 
