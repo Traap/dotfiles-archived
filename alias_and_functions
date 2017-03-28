@@ -285,6 +285,16 @@ CLASSPATH=build/classes/main:build/classes/test
 export CLASSPATH
 
 # ------------------------------------------------------------------------------
+# Git, Vim and Tmux maddness. 
+# ------------------------------------------------------------------------------
+function vimt() {
+  cd ${HOME}/git/$1
+  title $1
+  tmux new-session -A -s $1 \; \
+    send-keys 'vim' C-m \;
+}
+
+# ------------------------------------------------------------------------------
 # Functions I am experimenting with. 
 # ------------------------------------------------------------------------------
 function lsd() { ls -l  $1 | grep "^d" | awk -F" " '{print $9}' ; }
