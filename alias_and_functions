@@ -49,7 +49,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
       . $(brew --prefix)/etc/bash_completion
     fi
 elif [[ ${OSTYPE} =~ "linux" ]]; then
-    export PATH="${HOME}/.cabal/bin:${PATH}"
+    export PATH="${HOME}/2013.1/:${HOME}/.cabal/bin:${PATH}"
     alias me='source ~/.bashrc'
     alias la='ls -A --color'
     alias ll='ls -lahG --color'
@@ -303,3 +303,11 @@ function gits(){
   for i in $(lsd); do cd ~/git/${i%%} && git status --short; done; 
   cd - ;
 }
+
+# ------------------------------------------------------------------------------
+# Perforce defaults. 
+# ------------------------------------------------------------------------------
+export P4HOST=localhost
+export P4PORT=1666
+export P4ROOT=${HOME}/p4root
+export P4CLIENT=Gary:on:Ryder
