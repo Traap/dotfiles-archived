@@ -1,4 +1,4 @@
-#se!/bin/bash
+#!/bin/bash
 
 # ------------------------------------------------------------------------------
 # Set base16 color.  Mom and Dad a simple tribute to my parents.
@@ -18,15 +18,18 @@ function base16Color() {
 }
 
 # ------------------------------------------------------------------------------
-# Operating system specific settings.
+# A few helper aliases. 
 # ------------------------------------------------------------------------------
-echo "Operating system: " ${OSTYPE}
 alias gvim='vim -g'
 alias tmux='tmux -2'
 alias vim='vim --servername VIM'
 export TERM=xterm-256color
 alias lw='ll "$(which $1)"'
 
+# ------------------------------------------------------------------------------
+# Operating system specific settings.
+# ------------------------------------------------------------------------------
+echo "Operating system: " ${OSTYPE}
 if [[ ${OSTYPE} =~ "darwin" ]]; then
     export CLICOLOR=1
     export LSCOLORS=GxFxBxDxCxegedabagacad
@@ -49,7 +52,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
       . $(brew --prefix)/etc/bash_completion
     fi
 elif [[ ${OSTYPE} =~ "linux" ]]; then
-    export PATH="${HOME}/2013.1/:${HOME}/.cabal/bin:${PATH}"
+    export PATH="${HOME}/.cabal/bin:${PATH}"
     alias me='source ~/.bashrc'
     alias la='ls -A --color'
     alias ll='ls -lahG --color'
@@ -58,6 +61,20 @@ elif [[ ${OSTYPE} =~ "linux" ]]; then
     fi
 else
     echo "Unknown operating system:" ${OSTYPE}
+fi
+
+# ------------------------------------------------------------------------------
+# iTerm2 shell integration. 
+# ------------------------------------------------------------------------------
+if [[ -f ${HOME}/.iterm2_shell_integration.bash ]]; then
+  source ${HOME}/.iterm2_shell_integration.bash
+fi
+
+# ------------------------------------------------------------------------------
+# Travis integration 
+# ------------------------------------------------------------------------------
+if [[ -f ${HOME}.travis/travis.sh ]] then
+  source ${HOME}.travis/travis.sh
 fi
 
 # ------------------------------------------------------------------------------
@@ -303,7 +320,12 @@ function gits(){
   for i in $(lsd); do cd ~/git/${i%%} && git status --short; done; 
   cd - ;
 }
-
+function cxx() {
+  ${HOME}/git/cxxtest/bin/cxxtestgen --error-printer -o Test$1.cpp Test$1.h
+  g++ -w -o Test$1 Test$1.cpp
+  ./Test$1
+  rm Test$1.cpp
+}
 # ------------------------------------------------------------------------------
 # Perforce defaults. 
 # ------------------------------------------------------------------------------
