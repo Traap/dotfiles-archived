@@ -52,7 +52,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
       . $(brew --prefix)/etc/bash_completion
     fi
 elif [[ ${OSTYPE} =~ "linux" ]]; then
-    export PATH="${HOME}/.cabal/bin:${PATH}"
+    export PATH="${HOME}/.cabal/bin:/HOME/.linuxbrew/bin:${PATH}"
     alias me='source ~/.bashrc'
     alias la='ls -A --color'
     alias ll='ls -lahG --color'
