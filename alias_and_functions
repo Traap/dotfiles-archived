@@ -34,7 +34,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     export CLICOLOR=1
     export LSCOLORS=GxFxBxDxCxegedabagacad
     export PATH="${HOME}/Library/Haskell/bin:${PATH}"
-    alias me='source ~/.bash_profile'
+    alias me='clear && source ~/.bash_profile'
     alias la='ls -A'
     alias ll='ls -lahG'
     if [[ ${HOSTNAME} =~ "Stooges" ]]; then
@@ -53,7 +53,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     fi
 elif [[ ${OSTYPE} =~ "linux" ]]; then
     export PATH="${HOME}/.cabal/bin:${HOME}/.linuxbrew/bin:${PATH}"
-    alias me='source ~/.bashrc'
+    alias me='clear && source ~/.bashrc'
     alias la='ls -A --color'
     alias ll='ls -lahG --color'
     if [[ -f /usr/share/bash-completion/bash_completion ]]; then
@@ -177,6 +177,9 @@ function atex() {
          --interaction=batchmode \
          --output-directory _pdf \
          "$1" ;
+}
+function docbld() {
+  rake --rakefile ${HOME}/git/rakefile/Rakefile $1
 }
 
 # ------------------------------------------------------------------------------
@@ -312,14 +315,30 @@ function vimt() {
 }
 
 # ------------------------------------------------------------------------------
-# Functions I am experimenting with. 
+# Check the porcelain state of my git repositories. 
 # ------------------------------------------------------------------------------
 function lsd() { ls -l  $1 | grep "^d" | awk -F" " '{print $9}' ; }
-function lsdi(){ ls -Al $1 | grep "^d" | awk -F" " '{print $9}' ; }
-function gits(){ 
-  for i in $(lsd); do cd ~/git/${i%%} && git status --short; done; 
-  cd - ;
+function gits(){
+  dir=$(pwd)
+  cd ${HOME}/git > /dev/null;
+  for i in $(lsd); do
+    d=${HOME}/git/${i%%}
+    if [[ -d "${d}/.git" ]]; then
+      cd ${d} > /dev/null
+      if [[ -n $(git status --porcelain) ]]; then
+        echo "*** ${d} ***";
+        git status --short;
+        echo;
+        cd - > /dev/null;
+      fi
+    fi
+  done; 
+  cd $dir
 }
+
+# ------------------------------------------------------------------------------
+# Cxx helper function to simplify CxxTest use for C++ software. 
+# ------------------------------------------------------------------------------
 function cxx() {
   ${HOME}/git/cxxtest/bin/cxxtestgen --error-printer -o Test$1.cpp Test$1.h
   g++ -w -o Test$1 Test$1.cpp
@@ -340,4 +359,3 @@ if [[ ${OSTYPE} =~ "linux" ]]; then
     alias p4d='${P4DISK}/2013.1/p4d'
   fi
 fi
-
