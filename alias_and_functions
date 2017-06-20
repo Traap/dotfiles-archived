@@ -179,7 +179,7 @@ function atex() {
          "$1" ;
 }
 function docbld() {
-  rake --rakefile ${HOME}/git/rakefile/Rakefile $1
+  rake --rakefile ${HOME}/git/docbld/Rakefile $1
 }
 
 # ------------------------------------------------------------------------------
@@ -361,4 +361,6 @@ fi
 # ------------------------------------------------------------------------------
 # Read Unix man pages faster. 
 # ------------------------------------------------------------------------------
-export PATH="$PATH:$HOME/.vim/bundle/vim-superman/bin"
+if [[ -f ${HOME}/.vim/bundle/vim-superman/bin ]]; then
+  export PATH="$PATH:$HOME/.vim/bundle/vim-superman/bin"
+fi
