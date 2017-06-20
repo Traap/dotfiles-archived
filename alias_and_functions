@@ -261,9 +261,6 @@ function dbv() { stack build verify && stack exec verify ; }
 alias ssha='eval "$(ssh-agent -s)"'
 function sshkeys () {
   ssha
-  ssh-add ~/.ssh/css_rsa
-  ssh-add ~/.ssh/fhscore_rsa
-  ssh-add ~/.ssh/mhp_rsa
   ssh-add ~/.ssh/traap_rsa
 }
 
@@ -345,6 +342,7 @@ function cxx() {
   ./Test$1
   rm Test$1.cpp
 }
+
 # ------------------------------------------------------------------------------
 # Perforce defaults. 
 # ------------------------------------------------------------------------------
@@ -359,3 +357,8 @@ if [[ ${OSTYPE} =~ "linux" ]]; then
     alias p4d='${P4DISK}/2013.1/p4d'
   fi
 fi
+
+# ------------------------------------------------------------------------------
+# Read Unix man pages faster. 
+# ------------------------------------------------------------------------------
+export PATH="$PATH:$HOME/.vim/bundle/vim-superman/bin"
