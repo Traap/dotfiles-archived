@@ -364,3 +364,8 @@ fi
 if [[ -f ${HOME}/.vim/bundle/vim-superman/bin ]]; then
   export PATH="$PATH:$HOME/.vim/bundle/vim-superman/bin"
 fi
+
+# ------------------------------------------------------------------------------
+# Set my default editor. 
+# ------------------------------------------------------------------------------
+export EDITOR=vim
