@@ -51,8 +51,12 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
       . $(brew --prefix)/etc/bash_completion
     fi
-elif [[ ${OSTYPE} =~ "linux" ]]; then
-    export PATH="${HOME}/.cabal/bin:/home/linuxbrew/.linuxbrew/bin:${PATH}"
+elif [[ ${OSTYPE} =~ "linux" ]] || [[ ${OSTYPE} =~ "msys" ]]; then
+    if [[ ${OSTYPE} =~ "linux" ]]; then
+      export PATH="${HOME}/.cabal/bin:/home/linuxbrew/.linuxbrew/bin:${PATH}"
+    elif [[ ${OSTYPE} =~ "msys" ]]; then
+      export PATH="/c/texlive/2017/bin/win32:${PATH}"
+    fi
     alias me='clear && source ~/.bashrc'
     alias la='ls -A --color'
     alias ll='ls -lahG --color'
@@ -189,6 +193,9 @@ function gce() {
   if [[ "amgen" = $1 ]]; then
     git config --local user.name gahoward
     git config --local user.email gahoward@amgen.com
+  elif [[ "edx" = $1 ]]; then
+    git config --local user.name gary.howard 
+    git config --local user.email gary.howard@endotronicx.com 
   elif [[ "mhp" = $1 ]]; then
     git config --local user.name ghoward
     git config --local user.email gahoward@mhealthpharma.com
@@ -196,7 +203,7 @@ function gce() {
     git config --local user.name Traap
     git config --local user.email gary.a.howard@mac.com
   else
-    echo "Usage: gce [amgen|mhp|traap]"
+    echo "Usage: gce [amgen|edx|mhp|traap]"
     echo "Found: " $1
   fi
   git config --local --get user.name
@@ -216,7 +223,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     GIT_PROMPT_END=${PS1_END}
     source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
   fi
-elif [[ ${OSTYPE} =~ "linux" ]]; then
+elif [[ ${OSTYPE} =~ "linux" ]] || [[ ${OSTYPE} =~ "msys" ]]; then
   if [[ -f ~/.bash-git-prompt/gitprompt.sh ]]; then
     GIT_PROMPT_START=${PS1_START}
     GIT_PROMPT_END=${PS1_END}
