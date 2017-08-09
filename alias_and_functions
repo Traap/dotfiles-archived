@@ -18,7 +18,7 @@ function base16Color() {
 }
 
 # ------------------------------------------------------------------------------
-# A few helper aliases. 
+# A few helper aliases.
 # ------------------------------------------------------------------------------
 alias gvim='vim -g'
 alias tmux='tmux -2'
@@ -60,6 +60,8 @@ elif [[ ${OSTYPE} =~ "linux" ]] || [[ ${OSTYPE} =~ "msys" ]]; then
     alias me='clear && source ~/.bashrc'
     alias la='ls -A --color'
     alias ll='ls -lahG --color'
+    d=.dircolors
+    test -r $d && eval "$(dircolors $d)"
     if [[ -f /usr/share/bash-completion/bash_completion ]]; then
       . /usr/share/bash-completion/bash_completion
     fi
@@ -68,28 +70,28 @@ else
 fi
 
 # ------------------------------------------------------------------------------
-# iTerm2 shell integration. 
+# iTerm2 shell integration.
 # ------------------------------------------------------------------------------
 if [[ -f ${HOME}/.iterm2_shell_integration.bash ]]; then
   source ${HOME}/.iterm2_shell_integration.bash
 fi
 
 # ------------------------------------------------------------------------------
-# Travis integration 
+# Travis integration
 # ------------------------------------------------------------------------------
 if [[ -f ${HOME}.travis/travis.sh ]]; then
   source ${HOME}.travis/travis.sh
 fi
 
 # ------------------------------------------------------------------------------
-# Stack specific settings. 
+# Stack specific settings.
 # ------------------------------------------------------------------------------
 if [[ -s /usr/local/bin/stack ]]; then
   eval "$(stack --bash-completion-script stack)"
 fi
 
 # ------------------------------------------------------------------------------
-# HMST project specific settings. 
+# HMST project specific settings.
 # ------------------------------------------------------------------------------
 export HMST_BIN="${HOME}/git/smart-device-sw/tools/bin"
 alias cc='python3 ${HMST_BIN}/clean-code'
@@ -194,8 +196,8 @@ function gce() {
     git config --local user.name gahoward
     git config --local user.email gahoward@amgen.com
   elif [[ "edx" = $1 ]]; then
-    git config --local user.name gary.howard 
-    git config --local user.email gary.howard@endotronicx.com 
+    git config --local user.name gary.howard
+    git config --local user.email gary.howard@endotronicx.com
   elif [[ "mhp" = $1 ]]; then
     git config --local user.name ghoward
     git config --local user.email gahoward@mhealthpharma.com
@@ -276,19 +278,19 @@ function sshkeys () {
 }
 
 # ------------------------------------------------------------------------------
-# Brew wants needs me to own usr/local 
+# Brew wants needs me to own usr/local
 # ------------------------------------------------------------------------------
 alias ulo='sudo chown -R $(whoami) /usr/local'
 
 # ------------------------------------------------------------------------------
-# Base16 Shell 
+# Base16 Shell
 # ------------------------------------------------------------------------------
-BASE16_SHELL=$HOME/git/color/base16-shell/                                     
+BASE16_SHELL=$HOME/git/color/base16-shell/
 [[ -n $PS1 ]] && [[ -s $BASE16_SHELL/profile_helper.sh ]] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # ------------------------------------------------------------------------------
 # Repeat a command until a key is pressed.  The read command waits
-# 1sec before timing out.  
+# 1sec before timing out.
 # ------------------------------------------------------------------------------
 function repeat() {
   let passNo=0;
@@ -307,13 +309,13 @@ alias rgl='repeat git logg -6'
 alias rgs='repeat git status --short'
 
 # ------------------------------------------------------------------------------
-# JAVA. 
+# JAVA.
 # ------------------------------------------------------------------------------
 CLASSPATH=build/classes/main:build/classes/test
 export CLASSPATH
 
 # ------------------------------------------------------------------------------
-# Git, Vim and Tmux maddness. 
+# Git, Vim and Tmux maddness.
 # ------------------------------------------------------------------------------
 function vimt() {
   cd ${HOME}/git/$1
@@ -323,7 +325,7 @@ function vimt() {
 }
 
 # ------------------------------------------------------------------------------
-# Check the porcelain state of my git repositories. 
+# Check the porcelain state of my git repositories.
 # ------------------------------------------------------------------------------
 function lsd() { ls -l  $1 | grep "^d" | awk -F" " '{print $9}' ; }
 function gits(){
@@ -340,12 +342,12 @@ function gits(){
         cd - > /dev/null;
       fi
     fi
-  done; 
+  done;
   cd $dir
 }
 
 # ------------------------------------------------------------------------------
-# Cxx helper function to simplify CxxTest use for C++ software. 
+# Cxx helper function to simplify CxxTest use for C++ software.
 # ------------------------------------------------------------------------------
 function cxx() {
   ${HOME}/git/cxxtest/bin/cxxtestgen --error-printer -o Test$1.cpp Test$1.h
@@ -355,7 +357,7 @@ function cxx() {
 }
 
 # ------------------------------------------------------------------------------
-# Perforce defaults. 
+# Perforce defaults.
 # ------------------------------------------------------------------------------
 if [[ ${OSTYPE} =~ "linux" ]]; then
   if [[ ${HOSTNAME} =~ "Ryder" ]]; then
@@ -370,13 +372,13 @@ if [[ ${OSTYPE} =~ "linux" ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# Read Unix man pages faster. 
+# Read Unix man pages faster.
 # ------------------------------------------------------------------------------
 if [[ -f ${HOME}/.vim/bundle/vim-superman/bin ]]; then
   export PATH="$PATH:$HOME/.vim/bundle/vim-superman/bin"
 fi
 
 # ------------------------------------------------------------------------------
-# Set my default editor. 
+# Set my default editor.
 # ------------------------------------------------------------------------------
 export EDITOR=vim
