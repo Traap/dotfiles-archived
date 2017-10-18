@@ -1,2 +1,10 @@
-BoldAsFont=-1
+BoldAsFont=no
+BoldAsColour=yes
+CopyAsRTF=no
+CursorBlinks=no
+CursorColour=255,128,128
+CursorType=block
 FontHeight=11
+Scrollbar=none
+Term=xterm-256-color
+Transparency=low
