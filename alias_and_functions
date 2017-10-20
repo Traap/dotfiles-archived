@@ -53,6 +53,7 @@ elif [[ ${OSTYPE} =~ "linux" ]] || [[ ${OSTYPE} =~ "cygwin" ]]; then
       export PATH="${HOME}/.cabal/bin:/home/linuxbrew/.linuxbrew/bin:${PATH}"
     elif [[ ${OSTYPE} =~ "cygwin" ]]; then
       export PATH="/cygdrive/c/texlive/2017/bin/win32:~/.gem/ruby/2.3.0/bin:${PATH}"
+      alias ra='cygstart --open' 
     fi
     alias me='clear && source ~/.bashrc'
     alias la='ls -A --color'
@@ -127,6 +128,7 @@ alias ac='cd ~/git/AllanConsulting'
 alias bootd='cd ~/git/bootstrap'
 alias color='cd ~/git/color'
 alias dot='cd ~/git/dotfiles/'
+alias fk='cd ~/git/fk/'
 alias hh='cd ~/git/HowardHouse'
 alias resume='cd ~/git/resume'
 alias sshd='cd ~/git/ssh'
@@ -329,7 +331,11 @@ function vimt() {
 # ------------------------------------------------------------------------------
 # Check the porcelain state of my git repositories.
 # ------------------------------------------------------------------------------
-function lsd() { ls -l  $1 | grep "^d" | awk -F" " '{print $9}' ; }
+if [[ ${OSTYPE} =~ "cygwin" ]]; then
+  function lsd() { ls -l  $1 | grep "^d" | awk -F" " '{print $10}' ; }
+else
+  function lsd() { ls -l  $1 | grep "^d" | awk -F" " '{print $9}' ; }
+fi 
 function gits(){
   dir=$(pwd)
   cd ${HOME}/git > /dev/null;
