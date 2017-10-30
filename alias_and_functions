@@ -342,9 +342,9 @@ function gits(){
   for i in $(lsd); do
     d=${HOME}/git/${i%%}
     if [[ -d "${d}/.git" ]]; then
+      echo "*** ${d} ***";
       cd ${d} > /dev/null
       if [[ -n $(git status --porcelain) ]]; then
-        echo "*** ${d} ***";
         git status --short;
         echo;
         cd - > /dev/null;
