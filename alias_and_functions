@@ -52,7 +52,7 @@ elif [[ ${OSTYPE} =~ "linux" ]] || [[ ${OSTYPE} =~ "cygwin" ]]; then
     if [[ ${OSTYPE} =~ "linux" ]]; then
       export PATH="${HOME}/.cabal/bin:/home/linuxbrew/.linuxbrew/bin:${PATH}"
     elif [[ ${OSTYPE} =~ "cygwin" ]]; then
-      export PATH="/cygdrive/c/texlive/2017/bin/win32:~/.gem/ruby/2.3.0/bin:${PATH}"
+      export PATH="/cygdrive/c/texlive/2017/bin/win32:~/bin:${PATH}"
       alias ra='cygstart --open' 
     fi
     alias me='clear && source ~/.bashrc'
