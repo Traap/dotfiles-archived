@@ -337,11 +337,7 @@ function vimt() {
 # ------------------------------------------------------------------------------
 # Check the porcelain state of my git repositories.
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "cygwin" ]]; then
-  function lsd() { ls -l  $1 | grep "^d" | awk -F" " '{print $10}' ; }
-else
-  function lsd() { ls -l  $1 | grep "^d" | awk -F" " '{print $9}' ; }
-fi 
+function lsd() { ls -l | grep "^d" | awk -F" " '{print $9}' ; }
 function gits(){
   dir=$(pwd)
   cd ${HOME}/git > /dev/null;
