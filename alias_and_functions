@@ -337,7 +337,7 @@ function vimt() {
 # ------------------------------------------------------------------------------
 # Check the porcelain state of my git repositories.
 # ------------------------------------------------------------------------------
-function lsd() { ls -l | grep "^d" | awk -F" " '{print $9}' ; }
+function lsd() { ls -d /* | tr -d '/' ; }
 function gits(){
   dir=$(pwd)
   cd ${HOME}/git > /dev/null;
