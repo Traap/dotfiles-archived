@@ -405,6 +405,24 @@ if [[ -f ${HOME}/.sdkman/bin/sdkman-init.sh ]]; then
 fi
 
 # ------------------------------------------------------------------------------
+# Build Amber 
+# ------------------------------------------------------------------------------
+function bldamber() {
+  clear && cd ${HOME}/git/amber \
+     && bundle install \
+     && bundle exec rake \
+     && bundle exec rake install \
+     && amber --version
+}
+
+# ------------------------------------------------------------------------------
+# Add a newcomponent emend can process. 
+# ------------------------------------------------------------------------------
+function newcomponent() {
+  ${HOME}/git/emend/bin/newcomponent  
+}
+
+# ------------------------------------------------------------------------------
 # Set my default editor.
 # ------------------------------------------------------------------------------
 export EDITOR=vim
