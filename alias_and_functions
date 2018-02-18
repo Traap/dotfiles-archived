@@ -184,16 +184,8 @@ function atex() {
          "$1" ;
 }
 
-DOCBLDPATH=${HOME}/git/docbld $1
-export DOCBLDPATH
-function docbld() {
-  rake --rakefile ${DOCBLDPATH}/Rakefile $1
-}
-function newdoc() {
-  ${DOCBLDPATH}/bin/newdoc $1 $2 $3
-}
 
-# ------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------t-
 # Git helpers
 # ------------------------------------------------------------------------------
 function gce() {
@@ -415,10 +407,35 @@ function bldamber() {
 }
 
 # ------------------------------------------------------------------------------
-# Add a newcomponent emend can process. 
+# a docbld functions 
 # ------------------------------------------------------------------------------
+DOCBLDPATH=${HOME}/git/docbld
+export DOCBLDPATH
+
+function docbld() {
+  rake --rakefile ${DOCBLDPATH}/Rakefile $1
+}
+function newdoc() {
+  ${DOCBLDPATH}/bin/newdoc $1 $2 $3
+}
+# ------------------------------------------------------------------------------
+# emend function.
+# ------------------------------------------------------------------------------
+EMENDPATH=${HOME}/git/emend
+export EMENDPATH
+
 function newcomponent() {
-  ${HOME}/git/emend/bin/newcomponent $@
+  ${EMENDPATH}/bin/newcomponent $@
+}
+
+# ------------------------------------------------------------------------------
+# amber function.
+# ------------------------------------------------------------------------------
+AMBERPATH=${HOME}/git/amber
+export AMBERPATH
+
+function newfactoryitem() {
+  ${AMBERPATH}/bin/newfactoryitem $@
 }
 
 # ------------------------------------------------------------------------------
