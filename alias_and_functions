@@ -98,7 +98,7 @@ alias pdfmake='${HMST_BIN}/pdfmake'
 # ------------------------------------------------------------------------------
 # Use vim or emacs keybindings.  Troubleshoot tmux + vim + vim-keybindings.
 # ------------------------------------------------------------------------------
-set -o emacs
+set -o emacs 
 
 # ------------------------------------------------------------------------------
 # Haskell and Cabal
@@ -361,10 +361,15 @@ function cxx() {
 # Start Vim with clientserver when it is compiled in. 
 # ------------------------------------------------------------------------------
 function vimCheck() {
-  if [[ -n $(vim -h | grep servername) ]]; then
+  if [[ -n $(vim --version | grep servername) ]]; then
     alias vim='vim --servername VIM'
   fi
 }
+
+function vimu() {
+  vim -u NORC $@
+}
+
 # ------------------------------------------------------------------------------
 # Perforce defaults.
 # ------------------------------------------------------------------------------

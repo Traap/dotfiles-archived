@@ -7,4 +7,4 @@ CursorType=block
 FontHeight=11
 Scrollbar=none
 Term=xterm-256-color
-Transparency=off
+Transparency=medium
