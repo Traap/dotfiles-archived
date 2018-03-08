@@ -52,7 +52,7 @@ elif [[ ${OSTYPE} =~ "linux" ]] || [[ ${OSTYPE} =~ "cygwin" ]]; then
       export PATH="${HOME}/.cabal/bin:/home/linuxbrew/.linuxbrew/bin:${PATH}"
     elif [[ ${OSTYPE} =~ "cygwin" ]]; then
       export PATH="/cygdrive/c/texlive/2017/bin/win32:~/.gem/ruby/2.3.0/bin:${PATH}"
-      alias ra='cygstart --open' 
+      alias ra='cygstart --open'
     fi
     alias me='clear && source ~/.bashrc'
     alias la='ls -A --color'
@@ -98,7 +98,7 @@ alias pdfmake='${HMST_BIN}/pdfmake'
 # ------------------------------------------------------------------------------
 # Use vim or emacs keybindings.  Troubleshoot tmux + vim + vim-keybindings.
 # ------------------------------------------------------------------------------
-set -o emacs 
+set -o emacs
 
 # ------------------------------------------------------------------------------
 # Haskell and Cabal
@@ -196,7 +196,7 @@ function gce() {
     git config --local user.name gary.howard
     git config --local user.email gary.howard@endotronicx.com
   elif [[ "fk" = $1 ]]; then
-    git config --local user.name gahoward 
+    git config --local user.name gahoward
     git config --local user.email gary.howard@fresenius-kabi.com
   elif [[ "mhp" = $1 ]]; then
     git config --local user.name ghoward
@@ -358,7 +358,7 @@ function cxx() {
 }
 
 # ------------------------------------------------------------------------------
-# Start Vim with clientserver when it is compiled in. 
+# Start Vim with clientserver when it is compiled in.
 # ------------------------------------------------------------------------------
 function vimCheck() {
   if [[ -n $(vim --version | grep servername) ]]; then
@@ -393,7 +393,7 @@ if [[ -f ${HOME}/.vim/bundle/vim-superman/bin/vman ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# sdkman 
+# sdkman
 # ------------------------------------------------------------------------------
 if [[ -f ${HOME}/.sdkman/bin/sdkman-init.sh ]]; then
   export SDKMAN_DIR="${HOME}/.sdkman"
@@ -401,7 +401,7 @@ if [[ -f ${HOME}/.sdkman/bin/sdkman-init.sh ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# Build Amber 
+# Build Amber
 # ------------------------------------------------------------------------------
 function bldamber() {
   clear && cd ${HOME}/git/amber \
@@ -412,7 +412,7 @@ function bldamber() {
 }
 
 # ------------------------------------------------------------------------------
-# Build Amber 
+# Build Amber
 # ------------------------------------------------------------------------------
 function bldemend() {
   clear && cd ${HOME}/git/emend \
@@ -423,7 +423,7 @@ function bldemend() {
 }
 
 # ------------------------------------------------------------------------------
-# a docbld functions 
+# a docbld functions
 # ------------------------------------------------------------------------------
 DOCBLDPATH=${HOME}/git/docbld
 export DOCBLDPATH
@@ -452,6 +452,19 @@ export AMBERPATH
 
 function newfactoryitem() {
   ${AMBERPATH}/bin/newfactoryitem $@
+}
+
+function check-test-output() {
+  echo grep -rw --include=\s*.* test-output/ -e $1
+  grep -rw --include=\s*.* test-output/ -e $1
+}
+
+function pass() {
+  check-test-output PASS
+}
+
+function fail() {
+  check-test-output FAIL
 }
 
 # ------------------------------------------------------------------------------
