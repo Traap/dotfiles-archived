@@ -316,16 +316,6 @@ CLASSPATH=build/classes/main:build/classes/test
 export CLASSPATH
 
 # ------------------------------------------------------------------------------
-# Git, Vim and Tmux maddness.
-# ------------------------------------------------------------------------------
-function vimt() {
-  cd ${HOME}/git/$1
-  title $1
-  tmux new-session -A -s $1 \; \
-    send-keys 'vim' C-m \;
-}
-
-# ------------------------------------------------------------------------------
 # Check the porcelain state of my git repositories.
 # ------------------------------------------------------------------------------
 function lsd() { ls -d * | tr -d '/' ; }
@@ -341,6 +331,12 @@ function gits(){
         git status --short;
         echo;
         cd - > /dev/null;
+      else
+        if [[ "pull" == $1 ]]; then
+          git pull
+          echo;
+          cd - > /dev/null;
+        fi
       fi
     fi
   done;
@@ -401,25 +397,27 @@ if [[ -f ${HOME}/.sdkman/bin/sdkman-init.sh ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# Build Amber
+# Build gem 
 # ------------------------------------------------------------------------------
-function bldamber() {
-  clear && cd ${HOME}/git/amber \
+function bldgem() {
+  clear && cd $1 \
      && bundle install \
      && bundle exec rake \
      && bundle exec rake install \
      && amber --version
+}
+# ------------------------------------------------------------------------------
+# Build Amber
+# ------------------------------------------------------------------------------
+function bldamber() {
+  bldgem ${HOME}/git/amber
 }
 
 # ------------------------------------------------------------------------------
 # Build Amber
 # ------------------------------------------------------------------------------
 function bldemend() {
-  clear && cd ${HOME}/git/emend \
-     && bundle install \
-     && bundle exec rake \
-     && bundle exec rake install \
-     && emend --version
+  bldgem ${HOME}/git/emend
 }
 
 # ------------------------------------------------------------------------------
