@@ -465,6 +465,21 @@ function fail() {
   check-test-output FAIL
 }
 
+function validate-git-client() {
+  cd ${HOME}/git/tool-validation/git-client
+  rm -rf _build/ test-ouput/
+  amber --nodryrun --environment --verbose --plan=command-line
+  docbld
+}
+
+function validate-git-gui() {
+  cd ${HOME}/git/tool-validation/git-client
+  rm -rf _build/ test-ouput/
+  amber --nodryrun --environment --verbose --plan=command-line \
+        --language=en --browser=Chrome
+  docbld
+}
+
 # ------------------------------------------------------------------------------
 # Set my default editor.
 # ------------------------------------------------------------------------------
