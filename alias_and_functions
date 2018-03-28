@@ -47,7 +47,9 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
       . $(brew --prefix)/etc/bash_completion
     fi
-elif [[ ${OSTYPE} =~ "linux" ]] || [[ ${OSTYPE} =~ "cygwin" ]]; then
+elif [[ ${OSTYPE} =~ "linux" ]] \
+  || [[ ${OSTYPE} =~ "cygwin" ]] \
+  || [[ ${OSTYPE} =~ "msys" ]] ; then
     if [[ ${OSTYPE} =~ "linux" ]]; then
       export PATH="${HOME}/.cabal/bin:/home/linuxbrew/.linuxbrew/bin:${PATH}"
     elif [[ ${OSTYPE} =~ "cygwin" ]]; then
@@ -478,6 +480,15 @@ function validate-git-gui() {
   amber --nodryrun --environment --verbose --plan=command-line \
         --language=en --browser=Chrome
   docbld
+}
+
+# ------------------------------------------------------------------------------
+# spath function. 
+# ------------------------------------------------------------------------------
+function spath() {
+  echo $PATH | sed -n 1'p' | tr ':' '\n' | while read word; do
+    echo $word
+  done
 }
 
 # ------------------------------------------------------------------------------
