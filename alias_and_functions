@@ -55,6 +55,8 @@ elif [[ ${OSTYPE} =~ "linux" ]] \
     elif [[ ${OSTYPE} =~ "cygwin" ]]; then
       export PATH="~/.gem/ruby/2.3.0/bin:${PATH}"
       alias ra='cygstart --open'
+    elif [[ ${OSTYPE} =~ "msys" ]]; then
+      export PATH="~/.gem/ruby/2.3.0/bin:${PATH}"
     fi
     alias me='clear && source ~/.bashrc'
     alias la='ls -A --color'
