@@ -369,6 +369,7 @@ function vimCheck() {
 function vimu() {
   vim -u NORC $@
 }
+vimCheck
 
 # ------------------------------------------------------------------------------
 # Perforce defaults.
