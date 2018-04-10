@@ -55,6 +55,8 @@ elif [[ ${OSTYPE} =~ "linux" ]] \
     elif [[ ${OSTYPE} =~ "cygwin" ]]; then
       export PATH="~/.gem/ruby/2.3.0/bin:${PATH}"
       alias ra='cygstart --open'
+      export HOMEDRIVE="C:"
+      export HOMESHARE=${HOME}
     elif [[ ${OSTYPE} =~ "msys" ]]; then
       export PATH="~/.gem/ruby/2.3.0/bin:${PATH}"
     fi
@@ -276,10 +278,17 @@ function dbv() { stack build verify && stack exec verify ; }
 # Generating a new SSH key and adding it to the ssh-agent
 # https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 # ------------------------------------------------------------------------------
-alias ssha='eval "$(ssh-agent -s)"'
-function sshkeys () {
-  ssha
+function sshkeys (){
+  eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/traap_rsa
+}
+
+function sshlist() {
+  ps | awk '/ssh-agent/'
+}
+
+function sshkill() {
+  for pid in $(ps -ef | awk '/ssh-agent/ {print $2}'); do kill -9 $pid; done
 }
 
 # ------------------------------------------------------------------------------
@@ -369,7 +378,10 @@ function vimCheck() {
 function vimu() {
   vim -u NORC $@
 }
-vimCheck
+if [[ ${OSTYPE} =~ "darwin" ]]; then
+  echo "doing vimCheck"
+  vimCheck
+fi
 
 # ------------------------------------------------------------------------------
 # Perforce defaults.
