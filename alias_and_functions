@@ -385,7 +385,6 @@ function vimu() {
   vim -u NORC $@
 }
 if [[ ${OSTYPE} =~ "darwin" ]]; then
-  echo "doing vimCheck"
   vimCheck
 fi
 
@@ -429,18 +428,25 @@ function bldgem() {
      && bundle exec rake install \
      && amber --version
 }
-# ------------------------------------------------------------------------------
-# Build Amber
-# ------------------------------------------------------------------------------
-function bldamber() {
-  bldgem ${HOME}/git/amber
-}
 
 # ------------------------------------------------------------------------------
-# Build Amber
+# Build something I know about. 
 # ------------------------------------------------------------------------------
-function bldemend() {
-  bldgem ${HOME}/git/emend
+function bld() {
+  case $1 in 
+    amber)
+      bldgem ${HOME}/git/amber
+      ;;
+    emend)
+      bldgem ${HOME}/git/emend
+      ;;
+    daryn)
+      bldgem ${HOME}/git/daryn
+      ;;
+    *)
+      echo "bld: $1 not supported."
+      echo "Usage: bld {amber|emend|daryn}"
+  esac
 }
 
 # ------------------------------------------------------------------------------
@@ -455,6 +461,7 @@ function docbld() {
 function newdoc() {
   ${DOCBLDPATH}/bin/newdoc $1 $2 $3
 }
+
 # ------------------------------------------------------------------------------
 # emend function.
 # ------------------------------------------------------------------------------
