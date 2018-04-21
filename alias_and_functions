@@ -53,7 +53,7 @@ elif [[ ${OSTYPE} =~ "linux" ]] \
     if [[ ${OSTYPE} =~ "linux" ]]; then
       export PATH="${HOME}/.cabal/bin:/home/linuxbrew/.linuxbrew/bin:${PATH}"
     elif [[ ${OSTYPE} =~ "cygwin" ]]; then
-      export PATH="~/.gem/ruby/2.3.0/bin:${PATH}"
+      export PATH="~/bin:${PATH}"
       alias ra='cygstart --open'
       export HOMEDRIVE="C:"
       export HOMESHARE=${HOME}
@@ -287,6 +287,7 @@ function dbv() { stack build verify && stack exec verify ; }
 function sshkeys (){
   eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/traap_rsa
+  ssh-add ~/.ssh/fkbb_rsa
 }
 
 function sshlist() {
