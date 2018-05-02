@@ -1,38 +1,97 @@
+#!/bin/bash
+# ------------------------------------------------------------------------------
+# Bash scripting cheatsheet => https://devhints.io/bash
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Stooges: Honorning Lary, Moe, and Curley ... Nyuk, nyuk, nyuk.
+# ------------------------------------------------------------------------------
+echo "Operating system: " ${OSTYPE}
+
 # ------------------------------------------------------------------------------
 # Set base16 color.  Mom and Dad a simple tribute to my parents.
 # ------------------------------------------------------------------------------
 function mom() {
   base16Color $1 dark
 }
+
 function dad() {
   base16Color $1 light
 }
+
 function ct() {
   cd ~/git/color/base16-shell && ./colortest && cd -
 }
+
 function base16Color() {
   source ~/git/color/base16-shell/scripts/base16-$1-$2.sh
   echo "Base16 color: " $1 $2
 }
 
 # ------------------------------------------------------------------------------
-# A few helper aliases.
+# A function to check for the existiance of a program on my path.
 # ------------------------------------------------------------------------------
-alias tmux='tmux -2'
+function programExists() {
+  which "$1" &> /dev/null ;
+}
+
+# ------------------------------------------------------------------------------
+# 256 colors. 
+# ------------------------------------------------------------------------------
 export TERM=xterm-256color
-alias lad='ls -lad .*'
 
 # ------------------------------------------------------------------------------
 # Operating system specific settings.
 # ------------------------------------------------------------------------------
-echo "Operating system: " ${OSTYPE}
 if [[ ${OSTYPE} =~ "darwin" ]]; then
-    export CLICOLOR=1
-    export LSCOLORS=GxFxBxDxCxegedabagacad
-    export PATH="${HOME}/Library/Haskell/bin:${PATH}"
-    alias me='clear && source ~/.bash_profile'
-    alias la='ls -A'
-    alias ll='ls -lahG'
+  export CLICOLOR=1
+  export LSCOLORS=GxFxBxDxCxegedabagacad
+  alias me='clear && source ~/.bash_profile'
+  alias la='ls -A'
+  alias ll='ls -lahG'
+elif [[ ${OSTYPE} =~ "linux" ]] \
+  || [[ ${OSTYPE} =~ "cygwin" ]] \
+  || [[ ${OSTYPE} =~ "msys" ]] ; then
+  if [[ ${OSTYPE} =~ "cygwin" ]]; then
+    export PATH="~/bin:${PATH}"
+    alias ra='cygstart --open'
+    export HOMEDRIVE="C:"
+    export HOMESHARE=${HOME}
+  elif [[ ${OSTYPE} =~ "msys" ]]; then
+    export PATH="~/.gem/ruby/2.3.0/bin:${PATH}"
+  fi
+  alias me='clear && source ~/.bashrc'
+  alias la='ls -A --color'
+  alias ls='ls --color=auto'
+  alias ll='ls -lahG --color'
+  d=.dircolors
+  test -r $d && eval "$(dircolors $d)"
+  if [[ -f /usr/share/bash-completion/bash_completion ]]; then
+    . /usr/share/bash-completion/bash_completion
+  fi
+else
+    echo "Unknown operating system:" ${OSTYPE}
+fi
+
+# ------------------------------------------------------------------------------
+# Emacs keybindings.  Troubleshoot tmux + vim + vim-keybindings.
+# ------------------------------------------------------------------------------
+set -o emacs
+
+# ------------------------------------------------------------------------------
+# Brew => https://brew.sh/
+# ------------------------------------------------------------------------------
+if programExists brew; then
+  if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+fi
+
+# ------------------------------------------------------------------------------
+# Fuse => https://osxfuse.github.io/
+# ------------------------------------------------------------------------------
+if programExists sshfs; then
+  if [[ ${OSTYPE} =~ "darwin" ]]; then
     if [[ ${HOSTNAME} =~ "Stooges" ]]; then
       alias  fpc0='sshfs fpc:git/smart-device-sw /Volumes/Larry/fpc0'
       alias ufpc0='umount /Volumes/Larry/fpc0'
@@ -44,41 +103,43 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
       alias   ds6='sshfs datasci:git/smart-device-sw ~/ds6'
       alias  uds6='umount ~/ds6'
     fi
-    if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
-      . $(brew --prefix)/etc/bash_completion
-    fi
-elif [[ ${OSTYPE} =~ "linux" ]] \
-  || [[ ${OSTYPE} =~ "cygwin" ]] \
-  || [[ ${OSTYPE} =~ "msys" ]] ; then
-    if [[ ${OSTYPE} =~ "linux" ]]; then
-      export PATH="${HOME}/.cabal/bin:/home/linuxbrew/.linuxbrew/bin:${PATH}"
-    elif [[ ${OSTYPE} =~ "cygwin" ]]; then
-      export PATH="~/bin:${PATH}"
-      alias ra='cygstart --open'
-      export HOMEDRIVE="C:"
-      export HOMESHARE=${HOME}
-    elif [[ ${OSTYPE} =~ "msys" ]]; then
-      export PATH="~/.gem/ruby/2.3.0/bin:${PATH}"
-    fi
-    alias me='clear && source ~/.bashrc'
-    alias la='ls -A --color'
-    alias ls='ls --color=auto'
-    alias ll='ls -lahG --color'
-    d=.dircolors
-    test -r $d && eval "$(dircolors $d)"
-    if [[ -f /usr/share/bash-completion/bash_completion ]]; then
-      . /usr/share/bash-completion/bash_completion
-    fi
-else
-    echo "Unknown operating system:" ${OSTYPE}
+  fi
 fi
 
 # ------------------------------------------------------------------------------
-# iTerm2 shell integration.
+# Haskell and Cabal (Glasgow Haskell Compiler).
+# ------------------------------------------------------------------------------
+if programExists ghc; then 
+  export PATH="${HOME}/.cabal/bin:${PATH}"
+  export PATH="${HOME}/Library/Haskell/bin:${PATH}"
+  alias ci='cabal install'
+  alias cif='cabal install --force-reinstalls'
+  alias cemacs='emacs -Q -l ~/git/emacs-haskell-config/init.el'
+  alias cls='clear'gg
+fi
+
+# ------------------------------------------------------------------------------
+# iTerm2 shell integration => https://www.iterm2.com/
 # ------------------------------------------------------------------------------
 if [[ -f ${HOME}/.iterm2_shell_integration.bash ]]; then
   source ${HOME}/.iterm2_shell_integration.bash
 fi
+
+# ------------------------------------------------------------------------------
+# Ruby Gem => https://rubygems.org/kk 
+# ------------------------------------------------------------------------------
+if programExists gem; then
+  export GEM_HOME=~/.gem
+  export GEM_PATH=~/.gem/bin
+  export PATH="${PATH}:${GEM_PATH}"
+fi
+
+# ------------------------------------------------------------------------------
+# Tmux setup. 
+# ------------------------------------------------------------------------------
+if programExists tmux; then
+  alias tmux='tmux -2'
+fi 
 
 # ------------------------------------------------------------------------------
 # Travis integration
@@ -95,26 +156,6 @@ if [[ -s /usr/local/bin/stack ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# HMST project specific settings.
-# ------------------------------------------------------------------------------
-export HMST_BIN="${HOME}/git/smart-device-sw/tools/bin"
-alias cc='python3 ${HMST_BIN}/clean-code'
-alias pdfmake='${HMST_BIN}/pdfmake'
-
-# ------------------------------------------------------------------------------
-# Use vim or emacs keybindings.  Troubleshoot tmux + vim + vim-keybindings.
-# ------------------------------------------------------------------------------
-set -o emacs
-
-# ------------------------------------------------------------------------------
-# Haskell and Cabal
-# ------------------------------------------------------------------------------
-alias ci='cabal install'
-alias cif='cabal install --force-reinstalls'
-alias cemacs='emacs -Q -l ~/git/emacs-haskell-config/init.el'
-alias cls='clear'
-
-# ------------------------------------------------------------------------------
 # General purpose aliases.
 # ------------------------------------------------------------------------------
 alias decrypt='~/git/dotfiles/decrypt'
@@ -124,6 +165,7 @@ alias encrypt='~/git/dotfiles/encrypt'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias h='history'
+alias lad='ls -lad .*'
 alias ssh='ssh -A'
 
 # ------------------------------------------------------------------------------
