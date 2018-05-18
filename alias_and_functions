@@ -20,11 +20,11 @@ function dad() {
 }
 
 function ct() {
-  cd ~/git/color/base16-shell && ./colortest && cd -
+  cd ${HOME}/git/color/base16-shell && ./colortest && cd -
 }
 
 function base16Color() {
-  source ~/git/color/base16-shell/scripts/base16-$1-$2.sh
+  source ${HOME}/git/color/base16-shell/scripts/base16-$1-$2.sh
   echo "Base16 color: " $1 $2
 }
 
@@ -53,12 +53,9 @@ elif [[ ${OSTYPE} =~ "linux" ]] \
   || [[ ${OSTYPE} =~ "cygwin" ]] \
   || [[ ${OSTYPE} =~ "msys" ]] ; then
   if [[ ${OSTYPE} =~ "cygwin" ]]; then
-    export PATH="~/bin:${PATH}"
     alias ra='cygstart --open'
     export HOMEDRIVE="C:"
     export HOMESHARE=${HOME}
-  elif [[ ${OSTYPE} =~ "msys" ]]; then
-    export PATH="~/.gem/ruby/2.3.0/bin:${PATH}"
   fi
   alias me='clear && source ~/.bashrc'
   alias la='ls -A --color'
@@ -98,10 +95,10 @@ if programExists sshfs; then
       alias   ds6='sshfs datasci:git/smart-device-sw /Volumes/Larry/ds6'
       alias  uds6='umount /Volumes/Larry/ds6'
     else
-      alias  fpc0='sshfs fpc:git/smart-device-sw ~/fpc0'
-      alias ufpc0='umount ~/fpc0'
-      alias   ds6='sshfs datasci:git/smart-device-sw ~/ds6'
-      alias  uds6='umount ~/ds6'
+      alias  fpc0='sshfs fpc:git/smart-device-sw ${HOME}/fpc0'
+      alias ufpc0='umount ${HOME}/fpc0'
+      alias   ds6='sshfs datasci:git/smart-device-sw ${HOME}/ds6'
+      alias  uds6='umount ${HOME}/ds6'
     fi
   fi
 fi
@@ -114,7 +111,7 @@ if programExists ghc; then
   export PATH="${HOME}/Library/Haskell/bin:${PATH}"
   alias ci='cabal install'
   alias cif='cabal install --force-reinstalls'
-  alias cemacs='emacs -Q -l ~/git/emacs-haskell-config/init.el'
+  alias cemacs='emacs -Q -l ${HOME}/git/emacs-haskell-config/init.el'
   alias cls='clear'gg
 fi
 
@@ -129,8 +126,8 @@ fi
 # Ruby Gem => https://rubygems.org/kk 
 # ------------------------------------------------------------------------------
 if programExists gem; then
-  export GEM_HOME=~/.gem
-  export GEM_PATH=~/.gem/bin
+  export GEM_HOME=${HOME}/.gem
+  export GEM_PATH=${HOME}/.gem/bin
   export PATH="${PATH}:${GEM_PATH}"
 fi
 
@@ -158,10 +155,10 @@ fi
 # ------------------------------------------------------------------------------
 # General purpose aliases.
 # ------------------------------------------------------------------------------
-alias decrypt='~/git/dotfiles/decrypt'
+alias decrypt='${HOME}/git/dotfiles/decrypt'
 alias ec='emacsclient -c'
 alias egrep='egrep --color=auto'
-alias encrypt='~/git/dotfiles/encrypt'
+alias encrypt='${HOME}/git/dotfiles/encrypt'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias h='history'
@@ -171,16 +168,16 @@ alias ssh='ssh -A'
 # ------------------------------------------------------------------------------
 # Aliases to folders within my Git root.
 # ------------------------------------------------------------------------------
-alias ac='cd ~/git/AllanConsulting'
-alias bootd='cd ~/git/bootstrap'
-alias color='cd ~/git/color'
-alias dot='cd ~/git/dotfiles/'
-alias fk='cd ~/git/fk/'
-alias hh='cd ~/git/HowardHouse'
-alias resume='cd ~/git/resume'
-alias sshd='cd ~/git/ssh'
-alias tmuxd='cd ~/git/tmux'
-alias vimd='cd ~/git/vim'
+alias ac='cd ${HOME}/git/AllanConsulting'
+alias bootd='cd ${HOME}/git/bootstrap'
+alias color='cd ${HOME}/git/color'
+alias dot='cd ${HOME}/git/dotfiles/'
+alias fk='cd ${HOME}/git/fk/'
+alias hh='cd ${HOME}/git/HowardHouse'
+alias resume='cd ${HOME}/git/resume'
+alias sshd='cd ${HOME}/git/ssh'
+alias tmuxd='cd ${HOME}/git/tmux'
+alias vimd='cd ${HOME}/git/vim'
 
 # ------------------------------------------------------------------------------
 # A function to grep my command history
@@ -286,9 +283,9 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
   fi
 elif [[ ${OSTYPE} =~ "linux" ]] || [[ ${OSTYPE} =~ "cygwin" ]]; then
-  if [[ -f ~/.bash-git-prompt/gitprompt.sh ]]; then
+  if [[ -f ${HOME}/.bash-git-prompt/gitprompt.sh ]]; then
     prompt
-    source ~/.bash-git-prompt/gitprompt.sh
+    source ${HOME}/.bash-git-prompt/gitprompt.sh
   fi
 fi
 
@@ -328,8 +325,8 @@ function dbv() { stack build verify && stack exec verify ; }
 # ------------------------------------------------------------------------------
 function sshkeys (){
   eval "$(ssh-agent -s)"
-  ssh-add ~/.ssh/traap_rsa
-  ssh-add ~/.ssh/fkbb_rsa
+  ssh-add ${HOME}/.ssh/traap_rsa
+  ssh-add ${HOME}/.ssh/fkbb_rsa
 }
 
 function sshlist() {
@@ -468,8 +465,7 @@ function bldgem() {
   clear && cd $1 \
      && bundle install \
      && bundle exec rake \
-     && bundle exec rake install \
-     && amber --version
+     && bundle exec rake install
 }
 
 # ------------------------------------------------------------------------------
