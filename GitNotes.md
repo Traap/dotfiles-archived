@@ -62,7 +62,8 @@ git add .
 
 #### Add a single untracked file
 ```bash
-git add filename
+touch c
+git add c 
 ```
 
 #### Update stage area with comments and push to remote.
