@@ -79,15 +79,15 @@ git checkout master
 
 ### Initialize global git configuration options.
 ```bash
-git config  --global  user.name Traap
-git config  --global  user.email gary.a.howard@mac.com
+git config  --global user.name Traap
+git config  --global user.email gary.a.howard@mac.com
 git config  --global push.default simple
 ```
 
 ### Initialize local git configuration options.
 ```bash
-git config  --global  user.name fred
-git config  --global  user.email fred.flinstone@bedrock.net
+git config  --global user.name fred
+git config  --global user.email fred.flinstone@bedrock.net
 git config  --global push.default simple
 ```
 
