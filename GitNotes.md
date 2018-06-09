@@ -25,7 +25,7 @@ cd ~/git/foo
 git init
 ```
 
-### Examples use [dotfiles](https://github.com/Traap/dotifles.git] as illustrations.
+### Examples use [dotfiles](https://github.com/Traap/dotifles.git) as illustrations.
 #### Cloning a git repository is done normally once or to start over.
 ```bash
 rm -rf git/dotfiles
