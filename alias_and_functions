@@ -374,27 +374,49 @@ export CLASSPATH
 # Check the porcelain state of my git repositories.
 # ------------------------------------------------------------------------------
 function lsd() { ls -d * | tr -d '/' ; }
+
+function repo() {
+  case $1 in
+    git)
+      repoName=git
+      ;;
+    bb)
+      repoName=bb
+      ;;
+    *)
+      repoName=git
+  esac
+  echo $repoName
+}
+
+function gitPull() {
+  if [[ "pull" == $1 ]]; then
+    if [[ -z $(git status --porcelain) ]]; then
+      git pull
+      echo
+    fi
+  fi
+}
+
 function gits(){
+  # Save current directory.
   dir=$(pwd)
-  cd ${HOME}/git > /dev/null;
+
+  repoName=$(repo $1)
+  cd ${HOME}/${repoName} > /dev/null;
+
   for i in $(lsd); do
-    d=${HOME}/git/${i%%}
+    d=${HOME}/${repoName}/${i%%}
     if [[ -d "${d}/.git" ]]; then
       echo "*** ${d} ***";
       cd ${d} > /dev/null
-      if [[ -n $(git status --porcelain) ]]; then
-        git status --short;
-        echo;
-        cd - > /dev/null;
-      else
-        if [[ "pull" == $1 ]]; then
-          git pull
-          echo;
-          cd - > /dev/null;
-        fi
-      fi
+      git status --short;
+      gitPull $2
+      cd - > /dev/null;
     fi
   done;
+
+  # Restore current director.
   cd $dir
 }
 
