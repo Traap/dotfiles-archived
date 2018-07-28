@@ -1,0 +1,88 @@
+#!/bin/bash
+useLoop() {
+  pwd=$(pwd)
+  echo '------------------------------------------------------------------------'
+  echo 'AUTODOCPATH' "["$AUTODOCPATH"]"
+  echo '        pwd' "["$pwd"]"
+  echo '------------------------------------------------------------------------'
+  echo 'while loop'
+  echo $pwd | sed -n 1'p' | tr '/' ' ' | while read word; do
+    echo $word
+  done
+
+  echo $AUTODOCPATH | sed -n 1'p' | tr '/' ' ' | while read word; do
+    echo $word
+  done
+  echo '------------------------------------------------------------------------'
+}
+
+useInLine() {
+  echo 'inline'
+  adp=$(echo $AUTODOCPATH | sed -n 1'p' | tr '/' ' ')
+  cwd=$(echo $pwd | sed -n 1'p' | tr '/' ' ')
+  echo 'adp' "["$adp"]"
+  echo 'cwd' "["$cwd"]"
+  echo '------------------------------------------------------------------------'
+  echo 'Word count'
+  adpCnt=$(echo $adp | wc -w)
+  cwdCnt=$(echo $cwd | wc -w)
+  echo 'adpCnt' "["$adpCnt"]"
+  echo 'cwdCnt' "["$cwdCnt"]"
+  echo '------------------------------------------------------------------------'
+}
+
+findAutoDoc(){
+  echo $AUTODOCPATH | sed -n 1'p' | tr '/' '\n' | \
+  while read word; do
+    if [ -n $word ]; then
+      let idx++
+      w[idx]=$word
+      echo $idx " : " ${w[$idx]}
+      if [[ $word =~ "autodoc" ]]; then
+        echo $idx
+        echo ${w[*]}
+      fi
+    fi
+  done
+}
+
+# useLoop
+# useInline
+# x=$(findAutoDoc)
+# echo '$x['$x']'
+#
+findAutoDoc
+
+exit
+
+# ------------------------------------------------------
+$AUTODOCPATH
+ x | y | v           x | y |v
+ 0 | 0 | cygdrive    0 | 0 |cygdrive
+ 0 | 1 | c           0 | 1 |c
+ 0 | 2 | Users       0 | 2 |Users
+ 0 | 3 | gahoward    0 | 3 |gahoward
+ 0 | 4 | git         1 | 4 |bb
+ 0 | 5 | autodoc     1 | 5 |dhf
+                     1 | 6 |report
+                     1 | 7 |data
+$cwd                 
+ y | x  | v
+ 0 | 0  | cygdrive
+ 0 | 1  | c
+ 0 | 2  | Users
+ 0 | 3  | gahoward
+ 2 | 4  | Download
+ 2 | 5  | a
+ 2 | 6  | b
+ 2 | 7  | c
+ 2 | 8  | d
+ 2 | 9  | e
+ 2 | 10 | f
+ 2 | 11 | g
+ 2 | 12 | h
+ 2 | 13 | i
+ 2 | 14 | j
+ 2 | 15 | k
+
+

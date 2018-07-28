@@ -507,6 +507,12 @@ function bld() {
 }
 
 # ------------------------------------------------------------------------------
+# Autodoc location 
+# ------------------------------------------------------------------------------
+AUTODOCPATH="${HOME}/git/autodoc"
+export AUTODOCPATH 
+
+# ------------------------------------------------------------------------------
 # a docbld functions
 # ------------------------------------------------------------------------------
 DOCBLDPATH=${HOME}/git/docbld
@@ -516,7 +522,7 @@ function docbld() {
   rake --rakefile ${DOCBLDPATH}/Rakefile $1
 }
 function newdoc() {
-  ${DOCBLDPATH}/bin/newdoc $1 $2 $3
+  ${DOCBLDPATH}/bin/newdoc "$@"
 }
 function newdata() {
   ${DOCBLDPATH}/bin/newdata
