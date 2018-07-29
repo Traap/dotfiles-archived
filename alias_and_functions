@@ -319,19 +319,35 @@ function dbv() { stack build verify && stack exec verify ; }
 # Generating a new SSH key and adding it to the ssh-agent
 # https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 # ------------------------------------------------------------------------------
-function sshkeys (){
-  eval "$(ssh-agent -s)"
-  ssh-add ${HOME}/.ssh/traap_rsa
-  ssh-add ${HOME}/.ssh/fkbb_rsa
+function sshkey (){
+  if [[ -f ${HOME}/.ssh/$1_rsa ]]; then
+    eval "$(ssh-agent -s)"
+    ssh-add ${HOME}/.ssh/$1_rsa
+  else
+    echo ${HOME}/.ssh/$1_rsa does not exist.
+  fi
 }
 
 function sshlist() {
-  ps | awk '/ssh-agent/'
+  ps -e | awk '/ssh-agent/'
 }
 
 function sshkill() {
   for pid in $(ps -ef | awk '/ssh-agent/ {print $2}'); do kill -9 $pid; done
 }
+
+function sshstart() {
+  if programExists /etc/init.d/ssh; then
+    sudo /etc/init.d/ssh start
+  fi
+}
+
+function sshstop() {
+  if programExists /etc/init.d/ssh; then
+    sudo /etc/init.d/ssh stop
+  fi
+}
+
 
 # ------------------------------------------------------------------------------
 # Brew wants needs me to own usr/local
