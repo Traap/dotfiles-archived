@@ -11,27 +11,27 @@ echo "Operating system: " ${OSTYPE}
 # ------------------------------------------------------------------------------
 # Set base16 color.  Mom and Dad a simple tribute to my parents.
 # ------------------------------------------------------------------------------
-function mom() {
+mom() {
   base16Color $1 dark
 }
 
-function dad() {
+dad() {
   base16Color $1 light
 }
 
-function ct() {
+ct() {
   cd ${HOME}/git/color/base16-shell && ./colortest && cd -
 }
 
-function base16Color() {
+base16Color() {
   source ${HOME}/git/color/base16-shell/scripts/base16-$1-$2.sh
   echo "Base16 color: " $1 $2
 }
 
 # ------------------------------------------------------------------------------
-# A function to check for the existiance of a program on my path.
+# A to check for the existiance of a program on my path.
 # ------------------------------------------------------------------------------
-function programExists() {
+programExists() {
   which "$1" &> /dev/null ;
 }
 
@@ -102,6 +102,11 @@ if programExists sshfs; then
     fi
   fi
 fi
+
+# ------------------------------------------------------------------------------
+# command-line fuzzy finder. 
+# ------------------------------------------------------------------------------
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # ------------------------------------------------------------------------------
 # Haskell and Cabal (Glasgow Haskell Compiler).
@@ -182,20 +187,20 @@ alias tmuxd='cd ${HOME}/git/tmux'
 alias vimd='cd ${HOME}/git/vim'
 
 # ------------------------------------------------------------------------------
-# A function to grep my command history
+# A to grep my command history
 # ------------------------------------------------------------------------------
-function hg() {
+hg() {
   history | grep "$1"
 }
 
 # ------------------------------------------------------------------------------
 # File & String related functions
 # ------------------------------------------------------------------------------
-function ff()  {
+ff()  {
   find . -type f -iname "$1" -print ;
 }
-function ffr() { find . -name "$1" -delete -ls ; }
-function ffw() {
+ffr() { find . -name "$1" -delete -ls ; }
+ffw() {
   local ext=$1 pattern=$2
   find . -name "$ext" -type f -exec grep "$pattern" /dev/null {} +
 }
@@ -203,7 +208,7 @@ function ffw() {
 # ------------------------------------------------------------------------------k
 # Use functions to create pdf document.
 # ------------------------------------------------------------------------------k
-function adoc() {
+adoc() {
   f=$(basename "$1")
   f="${f%.*}"
   time asciidoctor \
@@ -214,21 +219,21 @@ function adoc() {
          --out-file _build/"$f".pdf \
          "$1" ;
 }
-function a2l() {
+a2l() {
   time \
     asciidoctor-latex \
          --no-header-footer \
          --safe-mode=secure \
          "$1" ;
 }
-function atex() {
+atex() {
   latexmk -pdf -quiet -silent -cd "$1" ;
 }
 
 # ----------------------------------------------------------------------------t-
 # Git helpers
 # ------------------------------------------------------------------------------
-function gce() {
+gce() {
   if [[ "amgen" = $1 ]]; then
     git config --local user.name gahoward
     git config --local user.email gahoward@amgen.com
@@ -252,7 +257,7 @@ function gce() {
   git config --local --get user.email
 }
 
-function resetBranch() {
+resetBranch() {
   git reset --hard $1
   if [[ $? -eq 0 ]]; then
     git push --force
@@ -267,7 +272,7 @@ PS1_START='\[\033[01;32m\]\u\[\033[01;33m\]@\[\033[01;35m\]\h\[\033[01;32m\]:\[\
 PS1_END='\n\[\033[01;36m\]\$\[\033[00m\] '
 export PS1=${PS1_START}${PS1_END}
 
-function prompt() {
+prompt() {
   GIT_PROMPT_ONLY_IN_REPO=1
   GIT_PROMPT_START=${PS1_START}
   GIT_PROMPT_END=${PS1_END}
@@ -288,38 +293,38 @@ fi
 # ------------------------------------------------------------------------------
 # Disable features / programs running on OSX.
 # ------------------------------------------------------------------------------
-function msa() { Launchctl remove com.microsoft.SyncServicesAgent ; }
-function pah() { defaults write -g ApplePressAndHoldEnable -bool false ; }
+msa() { Launchctl remove com.microsoft.SyncServicesAgent ; }
+pah() { defaults write -g ApplePressAndHoldEnable -bool false ; }
 
 # ------------------------------------------------------------------------------
 # Set terminal title.
 # ------------------------------------------------------------------------------
-function title() { echo -n -e "\033]0;$1\007"; }
+title() { echo -n -e "\033]0;$1\007"; }
 
 # ------------------------------------------------------------------------------
 # Docker machine and stack commands
 # ------------------------------------------------------------------------------
-function sdm() {
+sdm() {
   docker-machine env
   eval "$(docker-machine env default)"
   docker-machine start
 }
-function docker-gc() {
+docker-gc() {
   docker ps --no-trunc -aq | xargs docker rm
   docker images -f "dangling=true" -q | xargs docker rmi
 }
-function dba() { stack exec -- doc-build; }
-function dbc() { stack exec -- doc-build clean ; }
-function dbh() { stack build hmst-documentation ; }
-function dbt() { stack exec -- doc-build tex ; }
-function dbti(){ stack exec -- env DONT_RERUN_TEX_BUILD=1 doc-build tex;}
-function dbv() { stack build verify && stack exec verify ; }
+dba() { stack exec -- doc-build; }
+dbc() { stack exec -- doc-build clean ; }
+dbh() { stack build hmst-documentation ; }
+dbt() { stack exec -- doc-build tex ; }
+dbti(){ stack exec -- env DONT_RERUN_TEX_BUILD=1 doc-build tex;}
+dbv() { stack build verify && stack exec verify ; }
 
 # ------------------------------------------------------------------------------
 # Generating a new SSH key and adding it to the ssh-agent
 # https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 # ------------------------------------------------------------------------------
-function sshkey (){
+sshkey (){
   if [[ -f ${HOME}/.ssh/$1_rsa ]]; then
     eval "$(ssh-agent -s)"
     ssh-add ${HOME}/.ssh/$1_rsa
@@ -328,21 +333,21 @@ function sshkey (){
   fi
 }
 
-function sshlist() {
+sshlist() {
   ps -e | awk '/ssh-agent/'
 }
 
-function sshkill() {
+sshkill() {
   for pid in $(ps -ef | awk '/ssh-agent/ {print $2}'); do kill -9 $pid; done
 }
 
-function sshstart() {
+sshstart() {
   if programExists /etc/init.d/ssh; then
     sudo /etc/init.d/ssh start
   fi
 }
 
-function sshstop() {
+sshstop() {
   if programExists /etc/init.d/ssh; then
     sudo /etc/init.d/ssh stop
   fi
@@ -364,7 +369,7 @@ BASE16_SHELL=$HOME/git/color/base16-shell/
 # Repeat a command until a key is pressed.  The read command waits
 # 1sec before timing out.
 # ------------------------------------------------------------------------------
-function repeat() {
+repeat() {
   let passNo=0;
   while [ true ]; do
     read -t 1 -n 1
@@ -389,9 +394,9 @@ export CLASSPATH
 # ------------------------------------------------------------------------------
 # Check the porcelain state of my git repositories.
 # ------------------------------------------------------------------------------
-function lsd() { ls -d * | tr -d '/' ; }
+lsd() { ls -d * | tr -d '/' ; }
 
-function repo() {
+repo() {
   case $1 in
     git)
       repoName=git
@@ -405,7 +410,7 @@ function repo() {
   echo $repoName
 }
 
-function gitPull() {
+gitPull() {
   if [[ "pull" == $1 ]]; then
     if [[ -z $(git status --porcelain) ]]; then
       git pull
@@ -414,7 +419,7 @@ function gitPull() {
   fi
 }
 
-function gits(){
+gits(){
   # Save current directory.
   dir=$(pwd)
 
@@ -437,9 +442,9 @@ function gits(){
 }
 
 # ------------------------------------------------------------------------------
-# Cxx helper function to simplify CxxTest use for C++ software.
+# Cxx helper to simplify CxxTest use for C++ software.
 # ------------------------------------------------------------------------------
-function cxx() {
+cxx() {
   ${HOME}/git/cxxtest/bin/cxxtestgen --error-printer -o Test$1.cpp Test$1.h
   g++ -w -o Test$1 Test$1.cpp
   ./Test$1
@@ -449,13 +454,13 @@ function cxx() {
 # ------------------------------------------------------------------------------
 # Start Vim with clientserver when it is compiled in.
 # ------------------------------------------------------------------------------
-function vimCheck() {
+vimCheck() {
   if [[ -n $(vim --version | grep servername) ]]; then
     alias vim='vim --servername VIM'
   fi
 }
 
-function vimu() {
+vimu() {
   vim -u NORC $@
 }
 if [[ ${OSTYPE} =~ "darwin" ]]; then
@@ -495,7 +500,7 @@ fi
 # ------------------------------------------------------------------------------
 # Build gem 
 # ------------------------------------------------------------------------------
-function bldgem() {
+bldgem() {
   clear && cd $1 \
      && bundle install \
      && bundle exec rake \
@@ -505,7 +510,7 @@ function bldgem() {
 # ------------------------------------------------------------------------------
 # Build something I know about. 
 # ------------------------------------------------------------------------------
-function bld() {
+bld() {
   case $1 in 
     amber)
       bldgem ${HOME}/git/amber
@@ -534,13 +539,13 @@ export AUTODOCPATH
 DOCBLDPATH=${HOME}/git/docbld
 export DOCBLDPATH
 
-function docbld() {
+docbld() {
   rake --rakefile ${DOCBLDPATH}/Rakefile $1
 }
-function newdoc() {
+newdoc() {
   ${DOCBLDPATH}/bin/newdoc "$@"
 }
-function newdata() {
+newdata() {
   ${DOCBLDPATH}/bin/newdata
 }
 
@@ -550,7 +555,7 @@ function newdata() {
 EMENDPATH=${HOME}/git/emend
 export EMENDPATH
 
-function newcomponent() {
+newcomponent() {
   ${EMENDPATH}/bin/newcomponent $@
 }
 
@@ -560,31 +565,31 @@ function newcomponent() {
 AMBERPATH=${HOME}/git/amber
 export AMBERPATH
 
-function newfactoryitem() {
+newfactoryitem() {
   ${AMBERPATH}/bin/newfactoryitem $@
 }
 
-function check-test-output() {
+check-test-output() {
   echo grep -rw --include=\s*.* test-output/ -e $1
   grep -rw --include=\s*.* test-output/ -e $1
 }
 
-function pass() {
+pass() {
   check-test-output PASS
 }
 
-function fail() {
+fail() {
   check-test-output FAIL
 }
 
-function validate-git-client() {
+validate-git-client() {
   cd ${HOME}/git/tool-validation/git-client
   rm -rf _build/ test-ouput/
   amber --nodryrun --environment --verbose --plan=command-line
   docbld
 }
 
-function validate-git-gui() {
+validate-git-gui() {
   cd ${HOME}/git/tool-validation/git-client
   rm -rf _build/ test-ouput/
   amber --nodryrun --environment --verbose --plan=command-line \
@@ -595,19 +600,19 @@ function validate-git-gui() {
 # ------------------------------------------------------------------------------
 # spath function. 
 # ------------------------------------------------------------------------------
-function spath() {
+spath() {
   echo $PATH | sed -n 1'p' | tr ':' '\n' | while read word; do
     echo $word
   done
 }
 
 # ------------------------------------------------------------------------------
-# master function moves me to master and shows me a few commits. 
+# master moves me to master and shows me a few commits. 
 # ------------------------------------------------------------------------------
-function br() {
+br() {
   git co $1
 }
-function master() {
+master() {
   br master
   clear
   git logg -15

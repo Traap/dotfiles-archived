@@ -1,0 +1,23 @@
+$eval(which ruby)
+[distro.exe] /?
+chmod 600 config
+chmod 600 gitconfig 
+chmod 644 .sudo_as_admin_successful 
+chmod 644 myln
+echo $HOST
+echo $HOSTFILE
+echo $HOSTNAME
+echo $HOSTTYPE
+echo $INPUTRC
+echo $MACHTYPE
+echo $UID
+ifconfig
+ipconfig
+lsb_release -a
+ps -3
+service --status-all
+sudo apt-get install openssh-server
+sudo apt-get purge openssh-server
+sudo apt-get update
+sudo service ssh --full-restart
+sudo vim /etc/ssh/sshd_config 
