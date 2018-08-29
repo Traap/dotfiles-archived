@@ -121,6 +121,13 @@ if programExists ghc; then
 fi
 
 # ------------------------------------------------------------------------------
+# latexrun is defined when present. 
+# ------------------------------------------------------------------------------
+if [[ -f ${HOME}/git/latexrun/latexrun ]]; then
+  alias latexrun='${HOME}/git/latexrun/latexrun'
+fi 
+
+# ------------------------------------------------------------------------------
 # iTerm2 shell integration => https://www.iterm2.com/
 # ------------------------------------------------------------------------------
 if [[ -f ${HOME}/.iterm2_shell_integration.bash ]]; then
