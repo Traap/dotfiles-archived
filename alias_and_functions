@@ -165,6 +165,19 @@ if [[ -s /usr/local/bin/stack ]]; then
 fi
 
 # ------------------------------------------------------------------------------
+# neovim-remote This package provides an executable called nvr which resolves
+# these cases:
+# 1) Controlling nvim processes from the shell. Opening files in other terminal 
+#    windows.
+# 2) Open files from with :terminal without starting a nested vim process.
+# 
+# https://github.com/mhinz/neovim-remote.
+# ------------------------------------------------------------------------------
+if [[ -f ${HOME}/.local/bin/nvr ]]; then
+  export PATH="${HOME}/.local/bin:${PATH}"
+fi
+
+# ------------------------------------------------------------------------------
 # General purpose aliases.
 # ------------------------------------------------------------------------------
 alias decrypt='${HOME}/git/dotfiles/decrypt'
@@ -359,7 +372,6 @@ sshstop() {
     sudo /etc/init.d/ssh stop
   fi
 }
-
 
 # ------------------------------------------------------------------------------
 # Brew wants needs me to own usr/local
