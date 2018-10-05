@@ -552,9 +552,12 @@ bld() {
     daryn)
       bldgem ${HOME}/git/daryn
       ;;
+    cwa)
+      bldgem ${HOME}/bb/corewebapp
+      ;;
     *)
       echo "bld: $1 not supported."
-      echo "Usage: bld {amber|emend|daryn}"
+      echo "Usage: bld {amber|daryn|cwa|emend}"
   esac
 }
 
