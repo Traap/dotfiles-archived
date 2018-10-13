@@ -135,12 +135,21 @@ if [[ -f ${HOME}/.iterm2_shell_integration.bash ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# Ruby Gem => https://rubygems.org/kk 
+# Ruby Gem => https://rubygems.org/
 # ------------------------------------------------------------------------------
 if programExists gem; then
   export GEM_HOME=${HOME}/.gem
   export GEM_PATH=${HOME}/.gem/bin
   export PATH="${PATH}:${GEM_PATH}"
+fi
+
+# ------------------------------------------------------------------------------
+# Ruby specific to msys and choco
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "msys" ]]; then
+  if [[ -d /c/tools/ruby25/bin ]]; then
+    export PATH="/c/tools/ruby25/bin:${PATH}"
+  fi
 fi
 
 # ------------------------------------------------------------------------------
@@ -313,8 +322,10 @@ fi
 # ------------------------------------------------------------------------------
 # Disable features / programs running on OSX.
 # ------------------------------------------------------------------------------
-msa() { Launchctl remove com.microsoft.SyncServicesAgent ; }
-pah() { defaults write -g ApplePressAndHoldEnable -bool false ; }
+if [[ ${OSTYPE} =~ "darwin" ]]; then
+  msa() { Launchctl remove com.microsoft.SyncServicesAgent ; }
+  pah() { defaults write -g ApplePressAndHoldEnable -bool false ; }
+fi
 
 # ------------------------------------------------------------------------------
 # Set terminal title.
@@ -374,9 +385,11 @@ sshstop() {
 }
 
 # ------------------------------------------------------------------------------
-# Brew wants needs me to own usr/local
+# Brew wants me to own usr/local
 # ------------------------------------------------------------------------------
-alias ulo='sudo chown -R $(whoami) /usr/local'
+if [[ ${OSTYPE} =~ "darwin" ]]; then
+  alias ulo='sudo chown -R $(whoami) /usr/local'
+fi
 
 # ------------------------------------------------------------------------------
 # Base16 Shell
@@ -562,38 +575,6 @@ bld() {
 }
 
 # ------------------------------------------------------------------------------
-# Autodoc location 
-# ------------------------------------------------------------------------------
-AUTODOCPATH="${HOME}/git/autodoc"
-export AUTODOCPATH 
-
-# ------------------------------------------------------------------------------
-# a docbld functions
-# ------------------------------------------------------------------------------
-DOCBLDPATH=${HOME}/git/docbld
-export DOCBLDPATH
-
-docbld() {
-  rake --rakefile ${DOCBLDPATH}/Rakefile $1
-}
-newdoc() {
-  ${DOCBLDPATH}/bin/newdoc "$@"
-}
-newdata() {
-  ${DOCBLDPATH}/bin/newdata
-}
-
-# ------------------------------------------------------------------------------
-# emend function.
-# ------------------------------------------------------------------------------
-EMENDPATH=${HOME}/git/emend
-export EMENDPATH
-
-newcomponent() {
-  ${EMENDPATH}/bin/newcomponent $@
-}
-
-# ------------------------------------------------------------------------------
 # amber function.
 # ------------------------------------------------------------------------------
 AMBERPATH=${HOME}/git/amber
@@ -632,7 +613,46 @@ validate-git-gui() {
 }
 
 # ------------------------------------------------------------------------------
-# spath function. 
+# Autodoc location 
+# ------------------------------------------------------------------------------
+AUTODOCPATH="${HOME}/git/autodoc"
+export AUTODOCPATH 
+
+# ------------------------------------------------------------------------------
+# docbld functions
+# ------------------------------------------------------------------------------
+DOCBLDPATH=${HOME}/git/docbld
+export DOCBLDPATH
+
+docbld() {
+  rake --rakefile ${DOCBLDPATH}/Rakefile $1
+}
+newdoc() {
+  ${DOCBLDPATH}/bin/newdoc "$@"
+}
+newdata() {
+  ${DOCBLDPATH}/bin/newdata
+}
+
+# ------------------------------------------------------------------------------
+# emend function.
+# ------------------------------------------------------------------------------
+EMENDPATH=${HOME}/git/emend
+export EMENDPATH
+
+newcomponent() {
+  ${EMENDPATH}/bin/newcomponent $@
+}
+
+# ------------------------------------------------------------------------------
+# GIT_HOME is needed for test automation framework. 
+# ------------------------------------------------------------------------------
+if [[ -d ${HOME}/bb ]]; then
+  export GIT_HOME=${HOME}/bb
+fi
+
+# ------------------------------------------------------------------------------
+# spath function tells me each part of my current path.
 # ------------------------------------------------------------------------------
 spath() {
   echo $PATH | sed -n 1'p' | tr ':' '\n' | while read word; do
