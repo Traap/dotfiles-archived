@@ -9,6 +9,20 @@
 echo "Operating system: " ${OSTYPE}
 
 # ------------------------------------------------------------------------------
+# Windows 10 Subsystem for Linux ... 
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "linux" ]]; then
+  if [[ ${HOSTNAME} =~ "Gandolf" ]]; then
+    PATH="/usr/local/sbin"
+    PATH="${PATH}:/usr/local/bin"
+    PATH="${PATH}:/usr/sbin"
+    PATH="${PATH}:/usr/bin"
+    PATH="${PATH}:/sbin"
+    PATH="${PATH}:/bin"
+  fi
+fi
+
+# ------------------------------------------------------------------------------
 # Set base16 color.  Mom and Dad a simple tribute to my parents.
 # ------------------------------------------------------------------------------
 mom() {
