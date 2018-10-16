@@ -12,7 +12,7 @@ echo "Operating system: " ${OSTYPE}
 # Windows 10 Subsystem for Linux ... 
 # ------------------------------------------------------------------------------
 if [[ ${OSTYPE} =~ "linux" ]]; then
-  if [[ ${HOSTNAME} =~ "Gandolf" ]]; then
+  if [[ ${HOSTNAME} =~ "xGandolf" ]]; then
     PATH="/usr/local/sbin"
     PATH="${PATH}:/usr/local/bin"
     PATH="${PATH}:/usr/sbin"
@@ -583,6 +583,9 @@ bld() {
       ;;
     cwa)
       bldgem ${HOME}/bb/corewebapp
+      ;;
+    autoexample)
+      bldgem ${HOME}/bb/autoexample
       ;;
     *)
       echo "bld: $1 not supported."
