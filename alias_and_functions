@@ -504,8 +504,8 @@ cxx() {
 # Start Vim with clientserver when it is compiled in.
 # ------------------------------------------------------------------------------
 vimCheck() {
-  if [[ -n $(vim --version | grep servername) ]]; then
-    alias vim='vim --servername VIM'
+  if [[ -n $(vim --version | grep clientserver) ]]; then
+    alias vimx='vim --servername VIM'
   fi
 }
 
@@ -517,6 +517,16 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
   vimCheck
 fi
 
+# ------------------------------------------------------------------------------
+# Adjust path for Legolas computer. 
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "darwin" ]]; then
+  if [[ ${HOSTNAME} =~ "Legolas" ]]; then
+    if [[ -d ${HOME}/bin ]]; then
+      export PATH="${HOME}/bin:${PATH}"
+    fi
+  fi
+fi
 # ------------------------------------------------------------------------------
 # Perforce defaults.
 # ------------------------------------------------------------------------------
