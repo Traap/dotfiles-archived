@@ -5,3 +5,4 @@ CursorType=block
 Scrollbar=none
 Term=xterm-256color
 Font=Lucida Sans Typewriter
+OpaqueWhenFocused=no

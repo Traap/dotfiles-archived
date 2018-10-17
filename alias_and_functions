@@ -9,10 +9,10 @@
 echo "Operating system: " ${OSTYPE}
 
 # ------------------------------------------------------------------------------
-# Windows 10 Subsystem for Linux ... 
+# Windows 10 Subsystem for Linux ...
 # ------------------------------------------------------------------------------
 if [[ ${OSTYPE} =~ "linux" ]]; then
-  if [[ ${HOSTNAME} =~ "xGandolf" ]]; then
+  if [[ ${HOSTNAME} =~ "Gandolf" ]]; then
     PATH="/usr/local/sbin"
     PATH="${PATH}:/usr/local/bin"
     PATH="${PATH}:/usr/sbin"
@@ -23,7 +23,7 @@ if [[ ${OSTYPE} =~ "linux" ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# Set base16 color.  Mom and Dad a simple tribute to my parents.
+# Set base16 color.  Mom and Dad functions are a simple tribute to my parents.
 # ------------------------------------------------------------------------------
 mom() {
   base16Color $1 dark
@@ -43,14 +43,28 @@ base16Color() {
 }
 
 # ------------------------------------------------------------------------------
-# A to check for the existiance of a program on my path.
+# A to check for the esistence of a program on my path.
 # ------------------------------------------------------------------------------
 programExists() {
   which "$1" &> /dev/null ;
 }
 
 # ------------------------------------------------------------------------------
-# 256 colors. 
+# A to check for the esistence of a file.
+# ------------------------------------------------------------------------------
+fileExists() {
+  [[ -f "$1" ]]
+}
+
+# ------------------------------------------------------------------------------
+# A to check for the esistence of a directory.
+# ------------------------------------------------------------------------------
+dirExists() {
+  [[ -d "$1" ]]
+}
+
+# ------------------------------------------------------------------------------
+# 256 colors.
 # ------------------------------------------------------------------------------
 export TERM=xterm-256color
 
@@ -77,7 +91,7 @@ elif [[ ${OSTYPE} =~ "linux" ]] \
   alias ll='ls -lahG --color'
   d=.dircolors
   test -r $d && eval "$(dircolors $d)"
-  if [[ -f /usr/share/bash-completion/bash_completion ]]; then
+  if fileExists /usr/share/bash-completion/bash_completion; then
     . /usr/share/bash-completion/bash_completion
   fi
 else
@@ -118,14 +132,14 @@ if programExists sshfs; then
 fi
 
 # ------------------------------------------------------------------------------
-# command-line fuzzy finder. 
+# command-line fuzzy finder.
 # ------------------------------------------------------------------------------
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # ------------------------------------------------------------------------------
 # Haskell and Cabal (Glasgow Haskell Compiler).
 # ------------------------------------------------------------------------------
-if programExists ghc; then 
+if programExists ghc; then
   export PATH="${HOME}/.cabal/bin:${PATH}"
   export PATH="${HOME}/Library/Haskell/bin:${PATH}"
   alias ci='cabal install'
@@ -135,16 +149,16 @@ if programExists ghc; then
 fi
 
 # ------------------------------------------------------------------------------
-# latexrun is defined when present. 
+# latexrun is defined when present.
 # ------------------------------------------------------------------------------
-if [[ -f ${HOME}/git/latexrun/latexrun ]]; then
+if fileExists ${HOME}/git/latexrun/latexrun; then
   alias latexrun='${HOME}/git/latexrun/latexrun'
-fi 
+fi
 
 # ------------------------------------------------------------------------------
 # iTerm2 shell integration => https://www.iterm2.com/
 # ------------------------------------------------------------------------------
-if [[ -f ${HOME}/.iterm2_shell_integration.bash ]]; then
+if fileExists ${HOME}/.iterm2_shell_integration.bash; then
   source ${HOME}/.iterm2_shell_integration.bash
 fi
 
@@ -167,16 +181,16 @@ if [[ ${OSTYPE} =~ "msys" ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# Tmux setup. 
+# Tmux setup.
 # ------------------------------------------------------------------------------
 if programExists tmux; then
   alias tmux='tmux -2'
-fi 
+fi
 
 # ------------------------------------------------------------------------------
 # Travis integration
 # ------------------------------------------------------------------------------
-if [[ -f ${HOME}.travis/travis.sh ]]; then
+if fileExists ${HOME}.travis/travis.sh; then
   source ${HOME}.travis/travis.sh
 fi
 
@@ -190,13 +204,13 @@ fi
 # ------------------------------------------------------------------------------
 # neovim-remote This package provides an executable called nvr which resolves
 # these cases:
-# 1) Controlling nvim processes from the shell. Opening files in other terminal 
+# 1) Controlling nvim processes from the shell. Opening files in other terminal
 #    windows.
 # 2) Open files from with :terminal without starting a nested vim process.
-# 
+#
 # https://github.com/mhinz/neovim-remote.
 # ------------------------------------------------------------------------------
-if [[ -f ${HOME}/.local/bin/nvr ]]; then
+if fileExists ${HOME}/.local/bin/nvr; then
   export PATH="${HOME}/.local/bin:${PATH}"
 fi
 
@@ -246,31 +260,6 @@ ffr() { find . -name "$1" -delete -ls ; }
 ffw() {
   local ext=$1 pattern=$2
   find . -name "$ext" -type f -exec grep "$pattern" /dev/null {} +
-}
-
-# ------------------------------------------------------------------------------k
-# Use functions to create pdf document.
-# ------------------------------------------------------------------------------k
-adoc() {
-  f=$(basename "$1")
-  f="${f%.*}"
-  time asciidoctor \
-         --trace \
-         --require asciidoctor-pdf \
-         --backend pdf \
-         --attribute pdf-style=$HOME/git/dotfiles/asciidoctor/basic-theme.yml \
-         --out-file _build/"$f".pdf \
-         "$1" ;
-}
-a2l() {
-  time \
-    asciidoctor-latex \
-         --no-header-footer \
-         --safe-mode=secure \
-         "$1" ;
-}
-atex() {
-  latexmk -pdf -quiet -silent -cd "$1" ;
 }
 
 # ----------------------------------------------------------------------------t-
@@ -326,7 +315,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     prompt
     source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
   fi
-elif [[ ${OSTYPE} =~ "linux" ]] || 
+elif [[ ${OSTYPE} =~ "linux" ]] ||
      [[ ${OSTYPE} =~ "cygwin" ]] ||
      [[ ${OSTYPE} =~ "msys" ]]; then
   if [[ -f ${HOME}/.bash-git-prompt/gitprompt.sh ]]; then
@@ -372,7 +361,7 @@ dbv() { stack build verify && stack exec verify ; }
 # https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 # ------------------------------------------------------------------------------
 sshkey (){
-  if [[ -f ${HOME}/.ssh/$1_rsa ]]; then
+  if fileExists ${HOME}/.ssh/$1_rsa; then
     eval "$(ssh-agent -s)"
     ssh-add ${HOME}/.ssh/$1_rsa
   else
@@ -523,6 +512,7 @@ vimCheck() {
 vimu() {
   vim -u NORC $@
 }
+
 if [[ ${OSTYPE} =~ "darwin" ]]; then
   vimCheck
 fi
@@ -558,7 +548,7 @@ if [[ -f ${HOME}/.sdkman/bin/sdkman-init.sh ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# Build gem 
+# Build gem
 # ------------------------------------------------------------------------------
 bldgem() {
   clear && cd $1 \
@@ -568,10 +558,10 @@ bldgem() {
 }
 
 # ------------------------------------------------------------------------------
-# Build something I know about. 
+# Build something I know about.
 # ------------------------------------------------------------------------------
 bld() {
-  case $1 in 
+  case $1 in
     amber)
       bldgem ${HOME}/git/amber
       ;;
@@ -632,10 +622,10 @@ validate-git-gui() {
 }
 
 # ------------------------------------------------------------------------------
-# Autodoc location 
+# Autodoc location
 # ------------------------------------------------------------------------------
 AUTODOCPATH="${HOME}/git/autodoc"
-export AUTODOCPATH 
+export AUTODOCPATH
 
 # ------------------------------------------------------------------------------
 # docbld functions
@@ -664,7 +654,7 @@ newcomponent() {
 }
 
 # ------------------------------------------------------------------------------
-# GIT_HOME is needed for test automation framework. 
+# GIT_HOME is needed for test automation framework.
 # ------------------------------------------------------------------------------
 if [[ -d ${HOME}/bb ]]; then
   export GIT_HOME=${HOME}/bb
@@ -680,7 +670,7 @@ spath() {
 }
 
 # ------------------------------------------------------------------------------
-# master moves me to master and shows me a few commits. 
+# master moves me to master and shows me a few commits.
 # ------------------------------------------------------------------------------
 br() {
   git co $1
