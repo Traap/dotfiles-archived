@@ -581,8 +581,8 @@ bld() {
     daryn)
       bldgem ${HOME}/git/daryn
       ;;
-    cwa)
-      bldgem ${HOME}/bb/corewebapp
+    ametrine)
+      bldgem ${HOME}/bb/ametrine
       ;;
     autoexample)
       bldgem ${HOME}/bb/autoexample
