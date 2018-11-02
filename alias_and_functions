@@ -616,6 +616,11 @@ fail() {
   check-test-output FAIL
 }
 
+iur() {
+  echo grep -rw --include=\*.yaml factory/ -e 'IUR' 
+  grep -rw --include=\*.yaml factory/ -e 'IUR' 
+}
+
 validate-git-client() {
   cd ${HOME}/git/tool-validation/git-client
   rm -rf _build/ test-ouput/
