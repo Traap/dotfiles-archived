@@ -1,0 +1,70 @@
+#!/bin/bash
+# ------------------------------------------------------------------------------
+# I define my path here. My goal is to append the path in alphabetical order.
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Windows 10 Subsystem for Linux ...
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "linux" ]]; then
+  if [[ ${HOSTNAME} =~ "Gandolf" ]]; then
+    PATH="/usr/local/sbin"
+    PATH="${PATH}:/usr/local/bin"
+    PATH="${PATH}:/usr/sbin"
+    PATH="${PATH}:/usr/bin"
+    PATH="${PATH}:/sbin"
+    PATH="${PATH}:/bin"
+  fi
+fi
+
+# ------------------------------------------------------------------------------
+# Haskell and Cabal (Glasgow Haskell Compiler).
+# ------------------------------------------------------------------------------
+if programExists ghc; then
+  export PATH="${HOME}/.cabal/bin:${PATH}"
+  export PATH="${HOME}/Library/Haskell/bin:${PATH}"
+  alias ci='cabal install'
+  alias cif='cabal install --force-reinstalls'
+  alias cemacs='emacs -Q -l ${HOME}/git/emacs-haskell-config/init.el'
+  alias cls='clear'gg
+fi
+
+# ------------------------------------------------------------------------------
+# neovim-remote This package provides an executable called nvr which resolves
+# these cases:
+# 1) Controlling nvim processes from the shell. Opening files in other terminal
+#    windows.
+# 2) Open files from with :terminal without starting a nested vim process.
+#
+# https://github.com/mhinz/neovim-remote.
+# ------------------------------------------------------------------------------
+nvrPath=${HOME}/.local/bin
+if dirExists ${nvrPath}; then
+  export PATH="${PATH}:${nvrPath}"
+fi
+
+# ------------------------------------------------------------------------------
+# Ruby Gem => https://rubygems.org/
+# ------------------------------------------------------------------------------
+if programExists gem; then
+  export GEM_HOME=${HOME}/.gem
+  export GEM_PATH=${HOME}/.gem/bin
+  export PATH="${PATH}:${GEM_PATH}"
+fi
+
+# ------------------------------------------------------------------------------
+# Ruby specific to Chocolaety Tools Location (ctl). 
+# ------------------------------------------------------------------------------
+rubyPath=/c/tools/ruby25/bin
+if dirExists ${rubyPath}; then
+  export PATH="${PATH}:${rubyPath}"
+fi
+
+# ------------------------------------------------------------------------------
+# MiKTeX 
+# ------------------------------------------------------------------------------
+miktexPath=/c/Program\ Files/MiKTeX\ 2.9/miktex/bin/x64
+if dirExists "${miktexPath}"; then
+  export PATH="${PATH}:${miktexPath}"
+fi
+
