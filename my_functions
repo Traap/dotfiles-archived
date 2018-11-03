@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # ------------------------------------------------------------------------------
 # Set base16 color.  Mom and Dad functions are a simple tribute to my parents.
 # ------------------------------------------------------------------------------
@@ -15,252 +14,36 @@ ct() {
   cd ${HOME}/git/color/base16-shell && ./colortest && cd -
 }
 
-base16Color() {
-  source ${HOME}/git/color/base16-shell/scripts/base16-$1-$2.sh
-  echo "Base16 color: " $1 $2
-}
-
 # ------------------------------------------------------------------------------
-# A to check for the esistence of a program on my path.
+# A check for the esistence of a program on my path.
 # ------------------------------------------------------------------------------
 programExists() {
   which "$1" &> /dev/null ;
 }
 
 # ------------------------------------------------------------------------------
-# A to check for the esistence of a file.
+# A check for the esistence of a file.
 # ------------------------------------------------------------------------------
 fileExists() {
   [[ -f "$1" ]]
 }
 
 # ------------------------------------------------------------------------------
-# A to check for the esistence of a directory.
+# A check for the esistence of a directory.
 # ------------------------------------------------------------------------------
 dirExists() {
   [[ -d "$1" ]]
 }
 
 # ------------------------------------------------------------------------------
-# 256 colors.
+# Append to my path 
 # ------------------------------------------------------------------------------
-export TERM=xterm-256color
-
-# ------------------------------------------------------------------------------
-# Operating system specific settings.
-# ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "darwin" ]]; then
-  export CLICOLOR=1
-  export LSCOLORS=GxFxBxDxCxegedabagacad
-  alias me='clear && source ~/.bash_profile'
-  alias la='ls -A'
-  alias ll='ls -lahG'
-elif [[ ${OSTYPE} =~ "linux" ]] \
-  || [[ ${OSTYPE} =~ "cygwin" ]] \
-  || [[ ${OSTYPE} =~ "msys" ]] ; then
-  if [[ ${OSTYPE} =~ "cygwin" ]]; then
-    alias ra='cygstart --open'
-    export HOMEDRIVE="C:"
-    export HOMESHARE=${HOME}
-  fi
-  alias me='clear && source ~/.bashrc'
-  alias la='ls -A --color'
-  alias ls='ls --color=auto'
-  alias ll='ls -lahG --color'
-  d=.dircolors
-  test -r $d && eval "$(dircolors $d)"
-  if fileExists /usr/share/bash-completion/bash_completion; then
-    . /usr/share/bash-completion/bash_completion
-  fi
-else
-    echo "Unknown operating system:" ${OSTYPE}
-fi
-
-# ------------------------------------------------------------------------------
-# Emacs keybindings.  Troubleshoot tmux + vim + vim-keybindings.
-# ------------------------------------------------------------------------------
-set -o emacs
-
-# ------------------------------------------------------------------------------
-# Brew => https://brew.sh/
-# ------------------------------------------------------------------------------
-if programExists brew; then
-  if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
-    . $(brew --prefix)/etc/bash_completion
-  fi
-fi
-
-# ------------------------------------------------------------------------------
-# Fuse => https://osxfuse.github.io/
-# ------------------------------------------------------------------------------
-if programExists sshfs; then
-  if [[ ${OSTYPE} =~ "darwin" ]]; then
-    if [[ ${HOSTNAME} =~ "Stooges" ]]; then
-      alias  fpc0='sshfs fpc:git/smart-device-sw /Volumes/Larry/fpc0'
-      alias ufpc0='umount /Volumes/Larry/fpc0'
-      alias   ds6='sshfs datasci:git/smart-device-sw /Volumes/Larry/ds6'
-      alias  uds6='umount /Volumes/Larry/ds6'
-    else
-      alias  fpc0='sshfs fpc:git/smart-device-sw ${HOME}/fpc0'
-      alias ufpc0='umount ${HOME}/fpc0'
-      alias   ds6='sshfs datasci:git/smart-device-sw ${HOME}/ds6'
-      alias  uds6='umount ${HOME}/ds6'
-    fi
-  fi
-fi
-
-# ------------------------------------------------------------------------------
-# command-line fuzzy finder.
-# ------------------------------------------------------------------------------
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# ------------------------------------------------------------------------------
-# latexrun is defined when present.
-# ------------------------------------------------------------------------------
-if fileExists ${HOME}/git/latexrun/latexrun; then
-  alias latexrun='${HOME}/git/latexrun/latexrun'
-fi
-
-# ------------------------------------------------------------------------------
-# iTerm2 shell integration => https://www.iterm2.com/
-# ------------------------------------------------------------------------------
-if fileExists ${HOME}/.iterm2_shell_integration.bash; then
-  source ${HOME}/.iterm2_shell_integration.bash
-fi
-
-
-# ------------------------------------------------------------------------------
-# Tmux setup.
-# ------------------------------------------------------------------------------
-if programExists tmux; then
-  alias tmux='tmux -2'
-fi
-
-# ------------------------------------------------------------------------------
-# Travis integration
-# ------------------------------------------------------------------------------
-if fileExists ${HOME}.travis/travis.sh; then
-  source ${HOME}.travis/travis.sh
-fi
-
-# ------------------------------------------------------------------------------
-# Stack specific settings.
-# ------------------------------------------------------------------------------
-if [[ -s /usr/local/bin/stack ]]; then
-  eval "$(stack --bash-completion-script stack)"
-fi
-
-# ------------------------------------------------------------------------------
-# General purpose aliases.
-# ------------------------------------------------------------------------------
-alias decrypt='${HOME}/git/dotfiles/decrypt'
-alias ec='emacsclient -c'
-alias egrep='egrep --color=auto'
-alias encrypt='${HOME}/git/dotfiles/encrypt'
-alias fgrep='fgrep --color=auto'
-alias grep='grep --color=auto'
-alias h='history'
-alias lad='ls -lad .*'
-alias ssh='ssh -A'
-
-# ------------------------------------------------------------------------------
-# Aliases to folders within my Git root.
-# ------------------------------------------------------------------------------
-alias ac='cd ${HOME}/git/AllanConsulting'
-alias bb='cd ${HOME}/bb'
-alias bootd='cd ${HOME}/git/bootstrap'
-alias color='cd ${HOME}/git/color'
-alias dot='cd ${HOME}/git/dotfiles/'
-alias fk='cd ${HOME}/git/fk/'
-alias gd='cd ${HOME}/git'
-alias hh='cd ${HOME}/git/HowardHouse'
-alias resume='cd ${HOME}/git/resume'
-alias sshd='cd ${HOME}/git/ssh'
-alias tmuxd='cd ${HOME}/git/tmux'
-alias vimd='cd ${HOME}/git/vim'
-
-# ------------------------------------------------------------------------------
-# A to grep my command history
-# ------------------------------------------------------------------------------
-hg() {
-  history | grep "$1"
-}
-
-# ------------------------------------------------------------------------------
-# File & String related functions
-# ------------------------------------------------------------------------------
-ff()  {
-  find . -type f -iname "$1" -print ;
-}
-
-ffr() { find . -name "$1" -delete -ls ; }
-
-ffw() {
-  local ext=$1 pattern=$2
-  find . -name "$ext" -type f -exec grep "$pattern" /dev/null {} +
-}
-
-# ----------------------------------------------------------------------------t-
-# Git helpers
-# ------------------------------------------------------------------------------
-gce() {
-  if [[ "amgen" = $1 ]]; then
-    git config --local user.name gahoward
-    git config --local user.email gahoward@amgen.com
-  elif [[ "edx" = $1 ]]; then
-    git config --local user.name gary.howard
-    git config --local user.email gary.howard@endotronicx.com
-  elif [[ "fk" = $1 ]]; then
-    git config --local user.name gahoward
-    git config --local user.email gary.howard@fresenius-kabi.com
-  elif [[ "mhp" = $1 ]]; then
-    git config --local user.name ghoward
-    git config --local user.email gahoward@mhealthpharma.com
-  elif [[ "traap" = $1 ]]; then
-    git config --local user.name Traap
-    git config --local user.email gary.a.howard@mac.com
-  else
-    echo "Usage: gce [amgen|edx|fk|mhp|traap]"
-    echo "Found: " $1
-  fi
-  git config --local --get user.name
-  git config --local --get user.email
-}
-
-resetBranch() {
-  git reset --hard $1
-  if [[ $? -eq 0 ]]; then
-    git push --force
+appendToPath() {
+  if dirExists "$1"; then
+    export PATH="${PATH}:$1"
   fi
 }
 
-# ------------------------------------------------------------------------------
-# Prompt
-# ------------------------------------------------------------------------------
-# see https://github.com/magicmonty/bash-git-prompt
-PS1_START='\[\033[01;32m\]\u\[\033[01;33m\]@\[\033[01;35m\]\h\[\033[01;32m\]:\[\033[01;36m\]\w'
-PS1_END='\n\[\033[01;36m\]\$\[\033[00m\] '
-export PS1=${PS1_START}${PS1_END}
-
-prompt() {
-  GIT_PROMPT_ONLY_IN_REPO=1
-  GIT_PROMPT_START=${PS1_START}
-  GIT_PROMPT_END=${PS1_END}
-}
-
-if [[ ${OSTYPE} =~ "darwin" ]]; then
-  if [[ -f $(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh ]]; then
-    prompt
-    source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
-  fi
-elif [[ ${OSTYPE} =~ "linux" ]] ||
-     [[ ${OSTYPE} =~ "cygwin" ]] ||
-     [[ ${OSTYPE} =~ "msys" ]]; then
-  if [[ -f ${HOME}/.bash-git-prompt/gitprompt.sh ]]; then
-    prompt
-    source ${HOME}/.bash-git-prompt/gitprompt.sh
-  fi
-fi
 
 # ------------------------------------------------------------------------------
 # Disable features / programs running on OSX.
@@ -330,13 +113,6 @@ sshstop() {
 }
 
 # ------------------------------------------------------------------------------
-# Brew wants me to own usr/local
-# ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "darwin" ]]; then
-  alias ulo='sudo chown -R $(whoami) /usr/local'
-fi
-
-# ------------------------------------------------------------------------------
 # Base16 Shell
 # ------------------------------------------------------------------------------
 BASE16_SHELL=$HOME/git/color/base16-shell/
@@ -360,15 +136,6 @@ repeat() {
     fi
   done
 }
-
-alias rgl='repeat git logg -6'
-alias rgs='repeat git status --short'
-
-# ------------------------------------------------------------------------------
-# JAVA.
-# ------------------------------------------------------------------------------
-CLASSPATH=build/classes/main:build/classes/test
-export CLASSPATH
 
 # ------------------------------------------------------------------------------
 # Check the porcelain state of my git repositories.
@@ -460,16 +227,6 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# Adjust path for Legolas computer. 
-# ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "darwin" ]]; then
-  if [[ ${HOSTNAME} =~ "Legolas" ]]; then
-    if [[ -d ${HOME}/bin ]]; then
-      export PATH="${HOME}/bin:${PATH}"
-    fi
-  fi
-fi
-# ------------------------------------------------------------------------------
 # Perforce defaults.
 # ------------------------------------------------------------------------------
 if [[ ${OSTYPE} =~ "linux" ]]; then
@@ -479,8 +236,6 @@ if [[ ${OSTYPE} =~ "linux" ]]; then
     export P4PORT=1666
     export P4ROOT=${P4DISK}/p4root
     export P4CLIENT=Gary:on:Ryder
-    alias p4='${P4DISK}/2013.1/p4'
-    alias p4d='${P4DISK}/2013.1/p4d'
   fi
 fi
 
@@ -634,6 +389,7 @@ spath() {
 br() {
   git co $1
 }
+
 master() {
   br master
   clear
@@ -641,6 +397,353 @@ master() {
 }
 
 # ------------------------------------------------------------------------------
-# Set my default editor.
+# Grep my history for a prior command I used. 
 # ------------------------------------------------------------------------------
-export EDITOR=vim
+hg() {
+  history | grep "$1"
+}
+
+# ------------------------------------------------------------------------------
+# File & String related functions
+# ------------------------------------------------------------------------------
+ff()  {
+  find . -type f -iname "$1" -print ;
+}
+
+ffr() { find . -name "$1" -delete -ls ; }
+
+ffw() {
+  local ext=$1 pattern=$2
+  find . -name "$ext" -type f -exec grep "$pattern" /dev/null {} +
+}
+
+# ----------------------------------------------------------------------------t-
+# Git helpers
+# ------------------------------------------------------------------------------
+gce() {
+  if [[ "amgen" = $1 ]]; then
+    git config --local user.name gahoward
+    git config --local user.email gahoward@amgen.com
+  elif [[ "edx" = $1 ]]; then
+    git config --local user.name gary.howard
+    git config --local user.email gary.howard@endotronicx.com
+  elif [[ "fk" = $1 ]]; then
+    git config --local user.name gahoward
+    git config --local user.email gary.howard@fresenius-kabi.com
+  elif [[ "mhp" = $1 ]]; then
+    git config --local user.name ghoward
+    git config --local user.email gahoward@mhealthpharma.com
+  elif [[ "traap" = $1 ]]; then
+    git config --local user.name Traap
+    git config --local user.email gary.a.howard@mac.com
+  else
+    echo "Usage: gce [amgen|edx|fk|mhp|traap]"
+    echo "Found: " $1
+  fi
+  git config --local --get user.name
+  git config --local --get user.email
+}
+
+resetBranch() {
+  git reset --hard $1
+  if [[ $? -eq 0 ]]; then
+    git push --force
+  fi
+}
+
+# ------------------------------------------------------------------------------
+# Disable features / programs running on OSX.
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "darwin" ]]; then
+  msa() { Launchctl remove com.microsoft.SyncServicesAgent ; }
+  pah() { defaults write -g ApplePressAndHoldEnable -bool false ; }
+fi
+
+# ------------------------------------------------------------------------------
+# Set terminal title.
+# ------------------------------------------------------------------------------
+title() { echo -n -e "\033]0;$1\007"; }
+
+# ------------------------------------------------------------------------------
+# Docker machine and stack commands
+# ------------------------------------------------------------------------------
+sdm() {
+  docker-machine env
+  eval "$(docker-machine env default)"
+  docker-machine start
+}
+
+docker-gc() {
+  docker ps --no-trunc -aq | xargs docker rm
+  docker images -f "dangling=true" -q | xargs docker rmi
+}
+
+dba() { stack exec -- doc-build; }
+dbc() { stack exec -- doc-build clean ; }
+dbh() { stack build hmst-documentation ; }
+dbt() { stack exec -- doc-build tex ; }
+dbti(){ stack exec -- env DONT_RERUN_TEX_BUILD=1 doc-build tex;}
+dbv() { stack build verify && stack exec verify ; }
+
+# ------------------------------------------------------------------------------
+# Generating a new SSH key and adding it to the ssh-agent
+# https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+# ------------------------------------------------------------------------------
+sshkey (){
+  if fileExists ${HOME}/.ssh/$1_rsa; then
+    eval "$(ssh-agent -s)"
+    ssh-add ${HOME}/.ssh/$1_rsa
+  else
+    echo ${HOME}/.ssh/$1_rsa does not exist.
+  fi
+}
+
+sshlist() {
+  ps -e | awk '/ssh-agent/'
+}
+
+sshkill() {
+  for pid in $(ps -ef | awk '/ssh-agent/ {print $2}'); do kill -9 $pid; done
+}
+
+sshstart() {
+  if programExists /etc/init.d/ssh; then
+    sudo /etc/init.d/ssh start
+  fi
+}
+
+sshstop() {
+  if programExists /etc/init.d/ssh; then
+    sudo /etc/init.d/ssh stop
+  fi
+}
+
+# ------------------------------------------------------------------------------
+# Repeat a command until a key is pressed.  The read command waits
+# 1sec before timing out.
+# ------------------------------------------------------------------------------
+repeat() {
+  let passNo=0;
+  while [ true ]; do
+    read -t 1 -n 1
+    if [ $? -gt 0 ]; then
+      let passNo=$((passNo+1))
+      clear
+      echo Repeating [$@]  Ctrl-C to stop.  Pass: $passNo
+      $@
+      sleep 5
+    fi
+  done
+}
+
+# ------------------------------------------------------------------------------
+# Check the porcelain state of my git repositories.
+# ------------------------------------------------------------------------------
+lsd() { ls -d * | tr -d '/' ; }
+
+repo() {
+  case $1 in
+    git)
+      repoName=git
+      ;;
+    bb)
+      repoName=bb
+      ;;
+    *)
+      repoName=git
+  esac
+  echo $repoName
+}
+
+gitPull() {
+  if [[ "pull" == $1 ]]; then
+    if [[ -z $(git status --porcelain) ]]; then
+      git pull
+      echo
+    fi
+  fi
+}
+
+gitSetUserAndEmail(){
+  if [[ "pull" == $2 ]]; then
+    if [[ "bb" == $1  ]]; then
+      gce fk
+    else
+      gce traap
+    fi
+  fi
+}
+
+gits(){
+  # Save current directory.
+  dir=$(pwd)
+
+  repoName=$(repo $1)
+  cd ${HOME}/${repoName} > /dev/null;
+
+  for i in $(lsd); do
+    d=${HOME}/${repoName}/${i%%}
+    if [[ -d "${d}/.git" ]]; then
+      echo "*** ${d} ***";
+      cd ${d} > /dev/null
+      git status --short --branch;
+      echo ""
+      gitPull $2
+      gitSetUserAndEmail $1 $2
+      cd - > /dev/null;
+    fi
+  done;
+
+  # Restore current director.
+  cd $dir
+}
+
+# ------------------------------------------------------------------------------
+# Cxx helper to simplify CxxTest use for C++ software.
+# ------------------------------------------------------------------------------
+cxx() {
+  ${HOME}/git/cxxtest/bin/cxxtestgen --error-printer -o Test$1.cpp Test$1.h
+  g++ -w -o Test$1 Test$1.cpp
+  ./Test$1
+  rm Test$1.cpp
+}
+
+# ------------------------------------------------------------------------------
+# Start Vim with clientserver when it is compiled in.
+# ------------------------------------------------------------------------------
+vimCheck() {
+  if [[ -n $(vim --version | grep clientserver) ]]; then
+    alias vimx='vim --servername VIM'
+  fi
+}
+
+vimu() {
+  vim -u NORC $@
+}
+
+if [[ ${OSTYPE} =~ "darwin" ]]; then
+  vimCheck
+fi
+
+# ------------------------------------------------------------------------------
+# amber function.
+# ------------------------------------------------------------------------------
+AMBERPATH=${HOME}/git/amber
+export AMBERPATH
+
+newfactoryitem() {
+  ${AMBERPATH}/bin/newfactoryitem $@
+}
+
+check-test-output() {
+  echo grep -rw --include=\s*.* test-output/ -e $1
+  grep -rw --include=\s*.* test-output/ -e $1
+}
+
+pass() {
+  check-test-output PASS
+}
+
+fail() {
+  check-test-output FAIL
+}
+
+iur() {
+  echo grep -rw --include=\*.yaml factory/ -e 'IUR' 
+  grep -rw --include=\*.yaml factory/ -e 'IUR' 
+}
+
+validate-git-client() {
+  cd ${HOME}/git/tool-validation/git-client
+  rm -rf _build/ test-ouput/
+  amber --nodryrun --environment --verbose --plan=command-line
+  docbld
+}
+
+validate-git-gui() {
+  cd ${HOME}/git/tool-validation/git-client
+  rm -rf _build/ test-ouput/
+  amber --nodryrun --environment --verbose --plan=command-line \
+        --language=en --browser=Chrome
+  docbld
+}
+
+# ------------------------------------------------------------------------------
+# Build gem
+# ------------------------------------------------------------------------------
+bldgem() {
+  clear && cd $1 \
+     && bundle install \
+     && bundle exec rake \
+     && bundle exec rake install
+}
+
+# ------------------------------------------------------------------------------
+# Build something I know about.
+# ------------------------------------------------------------------------------
+bld() {
+  case $1 in
+    amber)
+      bldgem ${HOME}/git/amber
+      ;;
+    emend)
+      bldgem ${HOME}/git/emend
+      ;;
+    daryn)
+      bldgem ${HOME}/git/daryn
+      ;;
+    ametrine)
+      bldgem ${HOME}/bb/ametrine
+      ;;
+    autoexample)
+      bldgem ${HOME}/bb/autoexample
+      ;;
+    *)
+      echo "bld: $1 not supported."
+      echo "Usage: bld {amber|daryn|cwa|emend}"
+  esac
+}
+
+# ------------------------------------------------------------------------------
+# docbld functions
+# ------------------------------------------------------------------------------
+docbld() {
+  rake --rakefile ${DOCBLDPATH}/Rakefile $1
+}
+
+newdoc() {
+  ${DOCBLDPATH}/bin/newdoc "$@"
+}
+
+newdata() {
+  ${DOCBLDPATH}/bin/newdata
+}
+
+# ------------------------------------------------------------------------------
+# emend function.
+# ------------------------------------------------------------------------------
+newcomponent() {
+  ${EMENDPATH}/bin/newcomponent $@
+}
+
+# ------------------------------------------------------------------------------
+# spath function tells me each part of my current path.
+# ------------------------------------------------------------------------------
+spath() {
+  echo $PATH | sed -n 1'p' | tr ':' '\n' | while read word; do
+    echo $word
+  done
+}
+
+# ------------------------------------------------------------------------------
+# master moves me to master and shows me a few commits.
+# ------------------------------------------------------------------------------
+br() {
+  git co $1
+}
+
+master() {
+  br master
+  clear
+  git logg -15
+}

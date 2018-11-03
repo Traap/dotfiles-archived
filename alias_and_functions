@@ -13,4 +13,8 @@ echo "Operating system: " ${OSTYPE}
 # ------------------------------------------------------------------------------
 dotfiles=${HOME}/git/dotfiles
 source ${dotfiles}/my_functions
+source ${dotfiles}/my_exports
+source ${dotfiles}/my_aliases
 source ${dotfiles}/my_paths
+source ${dotfiles}/my_completions
+source ${dotfiles}/my_prompt

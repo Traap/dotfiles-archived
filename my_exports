@@ -1,0 +1,80 @@
+#!/bin/bash
+# ------------------------------------------------------------------------------
+# 256 colors.
+# ------------------------------------------------------------------------------
+export TERM=xterm-256color
+
+# ------------------------------------------------------------------------------
+# Operating system specific settings.
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "darwin" ]]; then
+  export CLICOLOR=1
+  export LSCOLORS=GxFxBxDxCxegedabagacad
+elif [[ ${OSTYPE} =~ "linux" ]] \
+  || [[ ${OSTYPE} =~ "cygwin" ]] \
+  || [[ ${OSTYPE} =~ "msys" ]] ; then
+  if [[ ${OSTYPE} =~ "cygwin" ]]; then
+    export HOMEDRIVE="C:"
+    export HOMESHARE=${HOME}
+  fi
+else
+    echo "Unknown operating system:" ${OSTYPE}
+fi
+
+# ------------------------------------------------------------------------------
+# amber location. 
+# ------------------------------------------------------------------------------
+AMBERPATH=${HOME}/git/amber
+export AMBERPATH
+
+# ------------------------------------------------------------------------------
+# Autodoc location
+# ------------------------------------------------------------------------------
+AUTODOCPATH="${HOME}/git/autodoc"
+export AUTODOCPATH
+
+# ------------------------------------------------------------------------------
+# docbld functions
+# ------------------------------------------------------------------------------
+DOCBLDPATH=${HOME}/git/docbld
+export DOCBLDPATH
+
+# ------------------------------------------------------------------------------
+# emend function.
+# ------------------------------------------------------------------------------
+EMENDPATH=${HOME}/git/emend
+export EMENDPATH
+
+# ------------------------------------------------------------------------------ 
+# Ruby Gem
+# ------------------------------------------------------------------------------
+if programExists gem; then
+  export GEM_HOME=${HOME}/.gem
+  export GEM_PATH=${HOME}/.gem/bin
+fi
+
+# ------------------------------------------------------------------------------
+# GIT_HOME is needed for test automation framework.
+# ------------------------------------------------------------------------------
+if dirExists ${HOME}/bb; then
+  export GIT_HOME=${HOME}/bb
+fi
+
+# ------------------------------------------------------------------------------
+# JAVA.
+# ------------------------------------------------------------------------------
+CLASSPATH=build/classes/main:build/classes/test
+export CLASSPATH
+
+# ------------------------------------------------------------------------------
+# Perforce defaults.
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "linux" ]]; then
+  if [[ ${HOSTNAME} =~ "Ryder" ]]; then
+    export P4DISK=/Volumes/Larry
+    export P4HOST=localhost
+    export P4PORT=1666
+    export P4ROOT=${P4DISK}/p4root
+    export P4CLIENT=Gary:on:Ryder
+  fi
+fi

@@ -1,0 +1,154 @@
+#!/bin/bash
+
+# ------------------------------------------------------------------------------
+# Operating system specific settings.
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "darwin" ]]; then
+  alias me='clear && source ~/.bash_profile'
+  alias la='ls -A'
+  alias ll='ls -lahG'
+elif [[ ${OSTYPE} =~ "linux" ]] \
+  || [[ ${OSTYPE} =~ "cygwin" ]] \
+  || [[ ${OSTYPE} =~ "msys" ]] ; then
+  if [[ ${OSTYPE} =~ "cygwin" ]]; then
+    alias ra='cygstart --open'
+  fi
+  alias me='clear && source ~/.bashrc'
+  alias la='ls -A --color'
+  alias ls='ls --color=auto'
+  alias ll='ls -lahG --color'
+  d=.dircolors
+  test -r $d && eval "$(dircolors $d)"
+  if fileExists /usr/share/bash-completion/bash_completion; then
+    . /usr/share/bash-completion/bash_completion
+  fi
+else
+    echo "Unknown operating system:" ${OSTYPE}
+fi
+
+# ------------------------------------------------------------------------------
+# Emacs keybindings.  Troubleshoot tmux + vim + vim-keybindings.
+# ------------------------------------------------------------------------------
+set -o emacs
+
+# ------------------------------------------------------------------------------
+# Haskell and Cabal (Glasgow Haskell Compiler).
+# ------------------------------------------------------------------------------
+if programExists ghc; then
+  alias ci='cabal install'
+  alias cif='cabal install --force-reinstalls'
+  alias cemacs='emacs -Q -l ${HOME}/git/emacs-haskell-config/init.el'
+  alias cls='clear'
+fi
+
+# ------------------------------------------------------------------------------
+# Fuse => https://osxfuse.github.io/
+# ------------------------------------------------------------------------------
+if programExists sshfs; then
+  if [[ ${OSTYPE} =~ "darwin" ]]; then
+    if [[ ${HOSTNAME} =~ "Stooges" ]]; then
+      alias  fpc0='sshfs fpc:git/smart-device-sw /Volumes/Larry/fpc0'
+      alias ufpc0='umount /Volumes/Larry/fpc0'
+      alias   ds6='sshfs datasci:git/smart-device-sw /Volumes/Larry/ds6'
+      alias  uds6='umount /Volumes/Larry/ds6'
+    else
+      alias  fpc0='sshfs fpc:git/smart-device-sw ${HOME}/fpc0'
+      alias ufpc0='umount ${HOME}/fpc0'
+      alias   ds6='sshfs datasci:git/smart-device-sw ${HOME}/ds6'
+      alias  uds6='umount ${HOME}/ds6'
+    fi
+  fi
+fi
+
+# ------------------------------------------------------------------------------
+# command-line fuzzy finder.
+# ------------------------------------------------------------------------------
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# ------------------------------------------------------------------------------
+# latexrun is defined when present.
+# ------------------------------------------------------------------------------
+if fileExists ${HOME}/git/latexrun/latexrun; then
+  alias latexrun='${HOME}/git/latexrun/latexrun'
+fi
+
+# ------------------------------------------------------------------------------
+# Tmux setup.
+# ------------------------------------------------------------------------------
+if programExists tmux; then
+  alias tmux='tmux -2'
+fi
+
+# ------------------------------------------------------------------------------
+# General purpose aliases.
+# ------------------------------------------------------------------------------
+alias decrypt='${HOME}/git/dotfiles/decrypt'
+alias ec='emacsclient -c'
+alias egrep='egrep --color=auto'
+alias encrypt='${HOME}/git/dotfiles/encrypt'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias h='history'
+alias lad='ls -lad .*'
+alias ssh='ssh -A'
+
+# ------------------------------------------------------------------------------
+# Aliases to folders within my Git root.
+# ------------------------------------------------------------------------------
+alias ac='cd ${HOME}/git/AllanConsulting'
+alias bb='cd ${HOME}/bb'
+alias bootd='cd ${HOME}/git/bootstrap'
+alias color='cd ${HOME}/git/color'
+alias dot='cd ${HOME}/git/dotfiles/'
+alias fk='cd ${HOME}/git/fk/'
+alias gd='cd ${HOME}/git'
+alias hh='cd ${HOME}/git/HowardHouse'
+alias resume='cd ${HOME}/git/resume'
+alias sshd='cd ${HOME}/git/ssh'
+alias tmuxd='cd ${HOME}/git/tmux'
+alias vimd='cd ${HOME}/git/vim'
+
+# ------------------------------------------------------------------------------
+# Brew wants me to own usr/local
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "darwin" ]]; then
+  alias ulo='sudo chown -R $(whoami) /usr/local'
+fi
+
+# ------------------------------------------------------------------------------
+# Base16 Shell
+# ------------------------------------------------------------------------------
+BASE16_SHELL=$HOME/git/color/base16-shell/
+[[ -n $PS1 ]] && [[ -s $BASE16_SHELL/profile_helper.sh ]] && \
+  eval "$($BASE16_SHELL/profile_helper.sh)"
+
+# ------------------------------------------------------------------------------
+# Repeat command are used when I enable my resume editor. 
+# ------------------------------------------------------------------------------
+alias rgl='repeat git logg -6'
+alias rgs='repeat git status --short'
+
+# ------------------------------------------------------------------------------
+# Perforce defaults.
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "linux" ]]; then
+  if [[ ${HOSTNAME} =~ "Ryder" ]]; then
+    alias p4='${P4DISK}/2013.1/p4'
+    alias p4d='${P4DISK}/2013.1/p4d'
+  fi
+fi
+
+# ------------------------------------------------------------------------------
+# Perforce
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "linux" ]]; then
+  if [[ ${HOSTNAME} =~ "Ryder" ]]; then
+    alias p4='${P4DISK}/2013.1/p4'
+    alias p4d='${P4DISK}/2013.1/p4d'
+  fi
+fi
+
+# ------------------------------------------------------------------------------
+# Set my default editor.
+# ------------------------------------------------------------------------------
+export EDITOR=vim
