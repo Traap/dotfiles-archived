@@ -96,6 +96,16 @@ sshlist() {
   ps -e | awk '/ssh-agent/'
 }
 
+sshwork() {
+  eval "$(ssh-agent -s)"
+  ssh-add ${HOME}/.ssh/traap_rsa ${HOME}/.ssh/fkbb_rsa
+
+}
+
+sshme() {
+  echo "My ssh-agent PID ${SSH_AGENT_PID}"
+}
+
 sshkill() {
   for pid in $(ps -ef | awk '/ssh-agent/ {print $2}'); do kill -9 $pid; done
 }
