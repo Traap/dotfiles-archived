@@ -38,7 +38,6 @@ if programExists ghc; then
   alias ci='cabal install'
   alias cif='cabal install --force-reinstalls'
   alias cemacs='emacs -Q -l ${HOME}/git/emacs-haskell-config/init.el'
-  alias cls='clear'
 fi
 
 # ------------------------------------------------------------------------------
@@ -82,6 +81,7 @@ fi
 # ------------------------------------------------------------------------------
 # General purpose aliases.
 # ------------------------------------------------------------------------------
+alias cls='clear'
 alias decrypt='${HOME}/git/dotfiles/decrypt'
 alias ec='emacsclient -c'
 alias egrep='egrep --color=auto'
@@ -130,16 +130,6 @@ alias rgs='repeat git status --short'
 
 # ------------------------------------------------------------------------------
 # Perforce defaults.
-# ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "linux" ]]; then
-  if [[ ${HOSTNAME} =~ "Ryder" ]]; then
-    alias p4='${P4DISK}/2013.1/p4'
-    alias p4d='${P4DISK}/2013.1/p4d'
-  fi
-fi
-
-# ------------------------------------------------------------------------------
-# Perforce
 # ------------------------------------------------------------------------------
 if [[ ${OSTYPE} =~ "linux" ]]; then
   if [[ ${HOSTNAME} =~ "Ryder" ]]; then
