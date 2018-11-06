@@ -708,6 +708,12 @@ bld() {
     autoexample)
       bldgem ${HOME}/bb/autoexample
       ;;
+    auto-dxt)
+      bldgem ${HOME}/bb/auto-dxt
+      ;;
+    auto-vmm)
+      bldgem ${HOME}/bb/auto-vmm
+      ;;
     *)
       echo "bld: $1 not supported."
       echo "Usage: bld {amber|daryn|cwa|emend}"
