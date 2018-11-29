@@ -11,7 +11,7 @@ dad() {
 }
 
 ct() {
-${HOME}/git/color/base16-shell && ./colortest && cd -
+ cd ${HOME}/git/color/base16-shell && ./colortest && cd -
 }
 
 # ------------------------------------------------------------------------------
