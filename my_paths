@@ -1,34 +1,8 @@
 #!/bin/bash
 # ------------------------------------------------------------------------------
-# I define my path here. My goal is to append the path in alphabetical order.
+# I define my path here. My goal it to take complete control of my path. 
 # ------------------------------------------------------------------------------
-
-# ------------------------------------------------------------------------------
-# Windows 10 Subsystem for Linux ...
-# ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "linux" ]]; then
-  if [[ ${HOSTNAME} =~ "Gandolf" ]]; then
-    PATH=""
-    appendToPath /usr/local/sbin
-    appendToPath /usr/local/bin
-    appendToPath /usr/local/bin
-    appendToPath /usr/sbin
-    appendToPath /usr/bin
-    appendToPath /sbin
-    appendToPath /bin
-  fi
-fi
-
-# ------------------------------------------------------------------------------
-# Adjust path for Legolas computer. 
-# ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "darwin" ]]; then
-  if [[ ${HOSTNAME} =~ "Legolas" ]]; then
-    if [[ -d ${HOME}/bin ]]; then
-      appendToPath ${HOME}/bin
-    fi
-  fi
-fi
+PATH=${HOME}
 
 # ------------------------------------------------------------------------------
 # Append directories to path.
@@ -42,3 +16,28 @@ appendToPath /c/Program\ Files/MiKTeX\ 2.9/miktex/bin/x64
 appendToPath /c/ProgramData/chocolatey/bin
 appendToPath /c/tools/ruby25/bin
 appendToPath /c/ProgramData/chocolatey/lib/fzf/tools
+
+# ------------------------------------------------------------------------------
+# Linux style machines. 
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "linux" ]]  \
+|| [[ ${OSTYPE} =~ "msys" ]]; then 
+    appendToPath /usr/local/sbin
+    appendToPath /usr/local/bin
+    appendToPath /usr/sbin
+    appendToPath /usr/bin
+    appendToPath /sbin
+    appendToPath /bin
+fi
+
+# ------------------------------------------------------------------------------
+# Adjust path for Legolas computer. 
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "darwin" ]]; then
+  if [[ ${HOSTNAME} =~ "Legolas" ]]; then
+    if [[ -d ${HOME}/bin ]]; then
+      appendToPath ${HOME}/bin
+    fi
+  fi
+fi
+
