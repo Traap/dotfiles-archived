@@ -20,7 +20,8 @@ appendToPath /c/ProgramData/chocolatey/lib/fzf/tools
 # ------------------------------------------------------------------------------
 # Linux style machines. 
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "linux" ]]  \
+if [[ ${OSTYPE} =~ "darwin" ]]  \
+|| [[ ${OSTYPE} =~ "linux" ]] \
 || [[ ${OSTYPE} =~ "msys" ]]; then 
     appendToPath /usr/local/sbin
     appendToPath /usr/local/bin
