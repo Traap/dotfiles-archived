@@ -250,13 +250,6 @@ if [[ ${OSTYPE} =~ "linux" ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# Read Unix man pages faster.
-# ------------------------------------------------------------------------------
-if [[ -f ${HOME}/.vim/bundle/vim-superman/bin/vman ]]; then
-  export PATH="$PATH:$HOME/.vim/bundle/vim-superman/bin"
-fi
-
-# ------------------------------------------------------------------------------
 # sdkman
 # ------------------------------------------------------------------------------
 if [[ -f ${HOME}/.sdkman/bin/sdkman-init.sh ]]; then
@@ -352,7 +345,14 @@ export AUTODOCPATH
 # ------------------------------------------------------------------------------
 # docbld functions
 # ------------------------------------------------------------------------------
-DOCBLDPATH=${HOME}/git/docbld
+if dirExists ${HOME}/git/docbld; then
+  DOCBLDPATH=${HOME}/git/docbld
+elif dirExists ${HOME}/bb/docbld; then
+    DOCBLDPATH=${HOME}/bb/docbld
+else
+  echo "WARNING: docbld is not installed."
+  DOCBLDPATH=""
+fi
 export DOCBLDPATH
 
 docbld() {

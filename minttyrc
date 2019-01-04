@@ -1,8 +1,8 @@
 BoldAsFont=-1
 FontHeight=11
-Transparency=high
+Transparency=low
 CursorType=block
 Scrollbar=none
 Term=xterm-256color
-Font=Lucida Sans Typewriter
+Font=Lucida Console
 OpaqueWhenFocused=no

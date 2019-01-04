@@ -1,0 +1,16 @@
+ln -s -v git/dotfiles/bash_logout .bash_logout
+ln -s -v git/dotfiles/bash_profile .bash_profile 
+ln -s -v git/dotfiles/bashrc .bashrc 
+ln -s -v git/dotfiles/dircolors .dircolors 
+ln -s -v git/dotfiles/inputrc .inputrc 
+ln -s -v git/dotfiles/minttyrc .minttyrc 
+ln -s -v git/mutt-office365 .mutt 
+ln -s -v git/mutt-office365/muttrc .muttrc 
+ln -s -v git/ssh .ssh
+ln -s -v git/ssh/config.vim .config.vim 
+ln -s -v git/ssh/gitignore_global .gitignore_global 
+ln -s -v git/tmux .tmux 
+ln -s -v git/tmux/tmux.conf .tmux.conf 
+ln -s -v git/vim .vim 
+ln -s -v git/vim/vimrc .vimrc 
+ln -s -v git/vim/vimrc_background .vimrc_background 
