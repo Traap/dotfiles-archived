@@ -1,43 +1,44 @@
 #!/bin/bash
 # ------------------------------------------------------------------------------
-# I define my path here. My goal it to take complete control of my path. 
+# I define my path here. My goal it to take complete control of my path.
 # ------------------------------------------------------------------------------
 PATH=${HOME}
 
 # ------------------------------------------------------------------------------
-# Append directories to path.
-# ------------------------------------------------------------------------------
-appendToPath ${GEM_PATH}
-appendToPath ${HOME}/.cabal/bin
-appendToPath ${HOME}/.local/bin
-appendToPath ${HOME}/Library/Haskell/bin
-appendToPath $HOME/.vim/bundle/vim-superman/bin
-appendToPath /c/Program\ Files/MiKTeX\ 2.9/miktex/bin/x64
-appendToPath /c/ProgramData/chocolatey/bin
-appendToPath /c/tools/ruby25/bin
-appendToPath /c/ProgramData/chocolatey/lib/fzf/tools
-
-# ------------------------------------------------------------------------------
-# Linux style machines. 
+# Linux style machines.
 # ------------------------------------------------------------------------------
 if [[ ${OSTYPE} =~ "darwin" ]]  \
 || [[ ${OSTYPE} =~ "linux" ]] \
-|| [[ ${OSTYPE} =~ "msys" ]]; then 
+|| [[ ${OSTYPE} =~ "msys" ]]; then
     appendToPath /usr/local/sbin
     appendToPath /usr/local/bin
     appendToPath /usr/sbin
     appendToPath /usr/bin
     appendToPath /sbin
     appendToPath /bin
+    appendToPath ${HOME}.vim/bundle/vim-superman/bin
+fi
+# ------------------------------------------------------------------------------
+# Append directories to path.
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "msys" ]]; then
+  appendToPath /c/Program\ Files/MiKTeX\ 2.9/miktex/bin/x64
+  appendToPath /c/ProgramData/chocolatey/bin
+  appendToPath /c/tools/ruby25/bin
+  appendToPath /c/ProgramData/chocolatey/lib/fzf/tools
 fi
 
 # ------------------------------------------------------------------------------
-# Adjust path for Legolas computer. 
+# Adjust path for Legolas computer.
 # ------------------------------------------------------------------------------
 if [[ ${OSTYPE} =~ "darwin" ]]; then
   if [[ ${HOSTNAME} =~ "Legolas" ]]; then
     if [[ -d ${HOME}/bin ]]; then
+      appendToPath ${GEM_PATH}
       appendToPath ${HOME}/bin
+      appendToPath ${HOME}/.cabal/bin
+      appendToPath ${HOME}/Library/Haskell/bin
+      appendToPath ${HOME}/.local/bin
     fi
   fi
 fi
