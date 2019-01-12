@@ -6,3 +6,5 @@ Scrollbar=none
 Term=xterm-256color
 Font=Lucida Console
 OpaqueWhenFocused=no
+CursorBlinks=no
+RightClickAction=paste

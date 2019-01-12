@@ -2,7 +2,10 @@
 # ------------------------------------------------------------------------------
 # I define my path here. My goal it to take complete control of my path.
 # ------------------------------------------------------------------------------
-# PATH=${HOME}
+if [[ ${OSTYPE} =~ "linux" ]]; then
+  PATH=${HOME}
+  appendToPath ${HOME}/.gem/bin
+fi
 
 # ------------------------------------------------------------------------------
 # Linux style machines.
