@@ -24,26 +24,41 @@ fi
 # ------------------------------------------------------------------------------
 # amber location. 
 # ------------------------------------------------------------------------------
-AMBERPATH=${HOME}/git/amber
-export AMBERPATH
+if dirExists ${HOME}/git/amber; then
+  AMBERPATH=${HOME}/git/amber
+  export AMBERPATH
+fi
 
 # ------------------------------------------------------------------------------
-# Autodoc location
+# autodoc location.
 # ------------------------------------------------------------------------------
-AUTODOCPATH="${HOME}/git/autodoc"
-export AUTODOCPATH
+if dirExists ${HOME}/git/autodoc; then
+  AUTODOCPATH=${HOME}/git/autodoc
+  export AUTODOCPATH
+fi
 
 # ------------------------------------------------------------------------------
-# docbld functions
+# docbld location.
 # ------------------------------------------------------------------------------
-DOCBLDPATH=${HOME}/git/docbld
-export DOCBLDPATH
+if dirExists ${HOME}/git/docbld; then
+  DOCBLDPATH=${HOME}/git/docbld
+  export DOCBLDPATH
+fi
 
 # ------------------------------------------------------------------------------
-# emend function.
+# Vim clipboard for Linux. 
 # ------------------------------------------------------------------------------
-EMENDPATH=${HOME}/git/emend
-export EMENDPATH
+if [[ ${OSTYPE} =~ "linux" ]]; then
+  export DISPLAY=localhost:0.0
+fi
+
+# ------------------------------------------------------------------------------
+# emend location. 
+# ------------------------------------------------------------------------------
+if dirExists ${HOME}/git/emend; then
+  EMENDPATH=${HOME}/git/emend
+  export EMENDPATH
+fi
 
 # ------------------------------------------------------------------------------ 
 # Ruby Gem
@@ -63,8 +78,10 @@ fi
 # ------------------------------------------------------------------------------
 # JAVA.
 # ------------------------------------------------------------------------------
-CLASSPATH=build/classes/main:build/classes/test
-export CLASSPATH
+if dirExists ${HOME}/build/lclasses/main; then
+  CLASSPATH=build/classes/main:build/classes/test
+  export CLASSPATH
+fi
 
 # ------------------------------------------------------------------------------
 # Perforce defaults.
