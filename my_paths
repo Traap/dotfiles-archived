@@ -2,9 +2,12 @@
 # ------------------------------------------------------------------------------
 # I define my path here. My goal it to take complete control of my path.
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "linux" ]]; then
+if [[ ${OSTYPE} =~ "linux" ]] \
+|| [[ ${OSTYPE} =~ "msys" ]]; then
   PATH=${HOME}
-  appendToPath ${HOME}/.gem/bin
+  if [[ $OSTYPE} =~ "linux" ]]; then
+    appendToPath ${HOME}/.gem/bin
+  fi
 fi
 
 # ------------------------------------------------------------------------------
