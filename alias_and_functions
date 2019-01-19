@@ -4,6 +4,17 @@
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
+# Lock my Windows environment variables.  Don't ask, Don't tell!!!
+# ------------------------------------------------------------------------------
+if [[ ${HOSTNAME} =~ "USLZ" ]]; then
+  export HOME=/c/Users/${USERNAME}
+  export HOMEDRIVE=/c
+  export HOMEPATH=/c/Users/${USERNAME}
+  export GIT_HOME=/c/Users/${USERNAME}/git
+  export HOMESHARE=/c
+fi
+
+# ------------------------------------------------------------------------------
 # Stooges: Honorning Lary, Moe, and Curley ... Nyuk, nyuk, nyuk.
 # ------------------------------------------------------------------------------
 echo "Operating system: " ${OSTYPE}

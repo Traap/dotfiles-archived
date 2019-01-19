@@ -96,10 +96,19 @@ sshlist() {
   ps -e | awk '/ssh-agent/'
 }
 
-sshwork() {
+sshbb() {
   eval "$(ssh-agent -s)"
-  ssh-add ${HOME}/.ssh/traap_rsa ${HOME}/.ssh/fkbb_rsa
+  ssh-add ${HOME}/.ssh/fkbb_rsa
+}
 
+sshgh() {
+  eval "$(ssh-agent -s)"
+  ssh-add ${HOME}/.ssh/traap_rsa 
+}
+
+sshwork() {
+  sshgh
+  sshbb
 }
 
 sshme() {
@@ -317,7 +326,7 @@ fail() {
 }
 
 requirements() {
-  echo grep -rw --include=\*.yaml factory/ -e 'requirement:' 
+  echo "grep -rw --include=\*.yaml factory/ -e 'requirement:'"
   grep -rw --include=\*.yaml factory/ -e 'requirement:' 
 }
 
