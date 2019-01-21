@@ -34,16 +34,33 @@ fi
 # ------------------------------------------------------------------------------
 if dirExists ${HOME}/git/autodoc; then
   AUTODOCPATH=${HOME}/git/autodoc
-  export AUTODOCPATH
+elif dirExists ${HOME}/bb/autodoc; then
+  AUTODOCPATH=${HOME}/bb/autodoc
+else
+  echo "WARNING: autodoc is not installed."
+  AUTODOCPATH=""
 fi
+export AUTODOCPATH
 
 # ------------------------------------------------------------------------------
-# docbld location.
+# docbld location and function.  These must go together.
 # ------------------------------------------------------------------------------
 if dirExists ${HOME}/git/docbld; then
   DOCBLDPATH=${HOME}/git/docbld
-  export DOCBLDPATH
+elif dirExists ${HOME}/bb/docbld; then
+    DOCBLDPATH=${HOME}/bb/docbld
+else
+  echo "WARNING: docbld is not installed."
+  DOCBLDPATH=""
 fi
+export DOCBLDPATH
+
+if [[ -d ${DOCBLDPATH} ]]; then
+  docbld() {
+    rake --rakefile ${DOCBLDPATH}/Rakefile $1
+  }
+fi
+
 
 # ------------------------------------------------------------------------------
 # Vim clipboard for Linux. 
@@ -53,15 +70,23 @@ if [[ ${OSTYPE} =~ "linux" ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# emend location. 
+# emend location and function.  These must go together.
 # ------------------------------------------------------------------------------
 if dirExists ${HOME}/git/emend; then
   EMENDPATH=${HOME}/git/emend
-  export EMENDPATH
+else
+  EMENDPATH=""
+fi
+export EMENDPATH
+
+if [[ -d ${EMENDPATH} ]]; then
+  newcomponent() {
+    ${EMENDPATH}/bin/newcomponent $@
+  }
 fi
 
 # ------------------------------------------------------------------------------ 
-# Ruby Gem
+# Ruby Gem locations.
 # ------------------------------------------------------------------------------
 if programExists gem; then
   export GEM_HOME=${HOME}/.gem
@@ -76,11 +101,30 @@ if dirExists ${HOME}/bb; then
 fi
 
 # ------------------------------------------------------------------------------
-# JAVA.
+# JAVA locations.
 # ------------------------------------------------------------------------------
 if dirExists ${HOME}/build/lclasses/main; then
   CLASSPATH=build/classes/main:build/classes/test
   export CLASSPATH
+fi
+
+# ------------------------------------------------------------------------------
+# newdoc location and functions.  These must go together.
+# ------------------------------------------------------------------------------
+if dirExists ${HOME}/git/newdoc; then
+  NEWDOCPATH=${HOME}/git/newdoc
+elif dirExists ${HOME}/bb/newdoc; then
+    NEWDOCPATH=${home}/bb/newdoc
+else
+  echo "WARNING: newdoc is not installed."
+  NEWDOCPATH=""
+fi
+export NEWDOCPATH
+
+if [[ -d ${NEWDOCPATH} ]]; then
+  newdoc() {
+    ${NEWDOCPATH}/newdoc "$@"
+  }
 fi
 
 # ------------------------------------------------------------------------------

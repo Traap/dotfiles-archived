@@ -346,61 +346,11 @@ validate-git-gui() {
 }
 
 # ------------------------------------------------------------------------------
-# Autodoc location
-# ------------------------------------------------------------------------------
-AUTODOCPATH="${HOME}/git/autodoc"
-export AUTODOCPATH
-
-# ------------------------------------------------------------------------------
-# docbld functions
-# ------------------------------------------------------------------------------
-if dirExists ${HOME}/git/docbld; then
-  DOCBLDPATH=${HOME}/git/docbld
-elif dirExists ${HOME}/bb/docbld; then
-    DOCBLDPATH=${HOME}/bb/docbld
-else
-  echo "WARNING: docbld is not installed."
-  DOCBLDPATH=""
-fi
-export DOCBLDPATH
-
-docbld() {
-  rake --rakefile ${DOCBLDPATH}/Rakefile $1
-}
-
-# ------------------------------------------------------------------------------
-# emend function.
-# ------------------------------------------------------------------------------
-EMENDPATH=${HOME}/git/emend
-export EMENDPATH
-
-newcomponent() {
-  ${EMENDPATH}/bin/newcomponent $@
-}
-
-# ------------------------------------------------------------------------------
 # GIT_HOME is needed for test automation framework.
 # ------------------------------------------------------------------------------
 if [[ -d ${HOME}/bb ]]; then
   export GIT_HOME=${HOME}/bb
 fi
-
-# ------------------------------------------------------------------------------
-# newdoc functions
-# ------------------------------------------------------------------------------
-if dirExists ${HOME}/git/newdoc; then
-  NEWDOCPATH=${HOME}/git/newdoc
-elif dirExists ${HOME}/bb/newdoc; then
-    NEWDOCPATH=${home}/bb/newdoc
-else
-  echo "WARNING: newdoc is not installed."
-  NEWDOCPATH=""
-fi
-export newdocPATH
-
-newdoc() {
-  ${NEWDOCPATH}/newdoc "$@"
-}
 
 # ------------------------------------------------------------------------------
 # spath function tells me each part of my current path.

@@ -1,6 +1,6 @@
 BoldAsFont=-1
 FontHeight=11
-Transparency=high
+Transparency=medium
 CursorType=block
 Scrollbar=none
 Term=xterm-256color
