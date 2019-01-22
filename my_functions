@@ -44,7 +44,6 @@ appendToPath() {
   fi
 }
 
-
 # ------------------------------------------------------------------------------
 # Disable features / programs running on OSX.
 # ------------------------------------------------------------------------------
@@ -282,7 +281,7 @@ bldgem() {
 bld() {
   case $1 in
     amber)
-      bldgem ${HOME}/git/amber
+      bldgem ${AMBERPATH}/amber
       ;;
     emend)
       bldgem ${HOME}/git/emend
@@ -305,13 +304,6 @@ bld() {
 # ------------------------------------------------------------------------------
 # amber function.
 # ------------------------------------------------------------------------------
-AMBERPATH=${HOME}/git/amber
-export AMBERPATH
-
-newfactoryitem() {
-  ${AMBERPATH}/bin/newfactoryitem $@
-}
-
 check-test-output() {
   echo grep -rw --include=\s*.* test-output/ -e $1
   grep -rw --include=\s*.* test-output/ -e $1

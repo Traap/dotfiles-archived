@@ -25,17 +25,28 @@ fi
 # amber location. 
 # ------------------------------------------------------------------------------
 if dirExists ${HOME}/git/amber; then
-  AMBERPATH=${HOME}/git/amber
-  export AMBERPATH
+   AMBERPATH=${HOME}/git/amber
+elif dirExists ${HOME}/bb/amber; then
+     AMBERPATH=${HOME}/bb/amber
+else
+  AMBERPATH=""
+  echo "WARNING: amber is not installed."
+fi
+export AMBERPATH
+
+if [[ -d ${AMBERPATH} ]]; then
+  newfactoryitem() {
+    ${AMBERPATH}/bin/newfactoryitem $@
+  }
 fi
 
 # ------------------------------------------------------------------------------
 # autodoc location.
 # ------------------------------------------------------------------------------
-if dirExists ${HOME}/git/autodoc; then
+if  dirExists ${HOME}/git/autodoc; then
   AUTODOCPATH=${HOME}/git/autodoc
 elif dirExists ${HOME}/bb/autodoc; then
-  AUTODOCPATH=${HOME}/bb/autodoc
+   AUTODOCPATH=${HOME}/bb/autodoc
 else
   echo "WARNING: autodoc is not installed."
   AUTODOCPATH=""
