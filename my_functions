@@ -281,7 +281,7 @@ bldgem() {
 bld() {
   case $1 in
     amber)
-      bldgem ${AMBERPATH}/amber
+      bldgem ${AMBERPATH}
       ;;
     emend)
       bldgem ${HOME}/git/emend
