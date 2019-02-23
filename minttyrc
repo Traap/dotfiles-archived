@@ -8,3 +8,4 @@ Font=Lucida Console
 OpaqueWhenFocused=no
 CursorBlinks=no
 RightClickAction=paste
+Rows=25

@@ -30,7 +30,7 @@ fi
 if [[ ${OSTYPE} =~ "msys" ]]; then
   appendToPath /c/Program\ Files/MiKTeX\ 2.9/miktex/bin/x64
   appendToPath /c/ProgramData/chocolatey/bin
-  appendToPath /c/tools/ruby26/bin
+  appendToPath /c/tools/ruby25/bin
   appendToPath /c/ProgramData/chocolatey/lib/fzf/tools
 fi
 
