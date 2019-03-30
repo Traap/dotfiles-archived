@@ -5,9 +5,6 @@
 if [[ ${OSTYPE} =~ "linux" ]] \
 || [[ ${OSTYPE} =~ "msys" ]]; then
   PATH=${HOME}
-  if [[ $OSTYPE} =~ "linux" ]]; then
-    appendToPath ${HOME}/.gem/bin
-  fi
 fi
 
 # ------------------------------------------------------------------------------
@@ -22,16 +19,22 @@ if [[ ${OSTYPE} =~ "darwin" ]]  \
     appendToPath /usr/bin
     appendToPath /sbin
     appendToPath /bin
+    appendToPath ${GEM_PATH}/bin
     appendToPath ${HOME}/.vim/bundle/vim-superman/bin
+    appendToPath ${HOME}/bin
 fi
 # ------------------------------------------------------------------------------
 # Append directories to path.
 # ------------------------------------------------------------------------------
 if [[ ${OSTYPE} =~ "msys" ]]; then
+  appendToPath /mingw64/bin
   appendToPath /c/Program\ Files/MiKTeX\ 2.9/miktex/bin/x64
   appendToPath /c/ProgramData/chocolatey/bin
   appendToPath /c/tools/ruby25/bin
   appendToPath /c/ProgramData/chocolatey/lib/fzf/tools
+  appendToPath /c/Strawberry/c/bin
+  appendToPath /c/Strawberry/perl/site/bin
+  appendToPath /c/Strawberry/perl/bin
 fi
 
 # ------------------------------------------------------------------------------
@@ -40,8 +43,6 @@ fi
 if [[ ${OSTYPE} =~ "darwin" ]]; then
   if [[ ${HOSTNAME} =~ "Legolas" ]]; then
     if [[ -d ${HOME}/bin ]]; then
-      appendToPath ${GEM_PATH}
-      appendToPath ${HOME}/bin
       appendToPath ${HOME}/.cabal/bin
       appendToPath ${HOME}/Library/Haskell/bin
       appendToPath ${HOME}/.local/bin
