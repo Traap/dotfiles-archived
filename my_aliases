@@ -27,9 +27,9 @@ else
 fi
 
 # ------------------------------------------------------------------------------
-# Emacs keybindings.  Troubleshoot tmux + vim + vim-keybindings.
+# Vim keybindings.  Troubleshoot tmux + vim + vim-keybindings.
 # ------------------------------------------------------------------------------
-set -o emacs
+set -o vi
 
 # ------------------------------------------------------------------------------
 # Haskell and Cabal (Glasgow Haskell Compiler).
