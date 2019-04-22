@@ -425,5 +425,5 @@ resetBranch() {
 # cj is a function that I rewrite all the time to simplify my life.
 # ------------------------------------------------------------------------------ 
 cj(){
-  newdoc --dir=report/$1 --file=$1 --title=$1 $2 $3
+  newdoc --dir=$1/$2 --file=$2 --title=$2 $3 $4
 }
