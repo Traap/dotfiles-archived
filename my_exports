@@ -26,8 +26,8 @@ fi
 # ------------------------------------------------------------------------------
 if dirExists ${HOME}/git/amber; then
    AMBERPATH=${HOME}/git/amber
-elif dirExists ${HOME}/bb/amber; then
-     AMBERPATH=${HOME}/bb/amber
+elif dirExists ${HOME}/soup/amber; then
+     AMBERPATH=${HOME}/soup/amber
 else
   AMBERPATH=""
   echo "WARNING: amber is not installed."
@@ -45,8 +45,8 @@ fi
 # ------------------------------------------------------------------------------
 if  dirExists ${HOME}/git/autodoc; then
   AUTODOCPATH=${HOME}/git/autodoc
-elif dirExists ${HOME}/bb/autodoc; then
-   AUTODOCPATH=${HOME}/bb/autodoc
+elif dirExists ${HOME}/soup/autodoc; then
+   AUTODOCPATH=${HOME}/soup/autodoc
 else
   echo "WARNING: autodoc is not installed."
   AUTODOCPATH=""
@@ -58,8 +58,8 @@ export AUTODOCPATH
 # ------------------------------------------------------------------------------
 if dirExists ${HOME}/git/docbld; then
   DOCBLDPATH=${HOME}/git/docbld
-elif dirExists ${HOME}/bb/docbld; then
-    DOCBLDPATH=${HOME}/bb/docbld
+elif dirExists ${HOME}/soup/docbld; then
+    DOCBLDPATH=${HOME}/soup/docbld
 else
   echo "WARNING: docbld is not installed."
   DOCBLDPATH=""
@@ -101,7 +101,7 @@ fi
 # ------------------------------------------------------------------------------
 if programExists gem; then
   export GEM_HOME=${HOME}/.gem
-  export GEM_PATH=${HOME}/.gem/bin
+  export GEM_PATH=${GEM_HOME}/ruby/2.6.0/bin
 fi
 
 # ------------------------------------------------------------------------------
@@ -126,8 +126,8 @@ fi
 # ------------------------------------------------------------------------------
 if dirExists ${HOME}/git/newdoc; then
   NEWDOCPATH=${HOME}/git/newdoc
-elif dirExists ${HOME}/bb/newdoc; then
-    NEWDOCPATH=${home}/bb/newdoc
+elif dirExists ${HOME}/soup/newdoc; then
+    NEWDOCPATH=${home}/soup/newdoc
 else
   echo "WARNING: newdoc is not installed."
   NEWDOCPATH=""

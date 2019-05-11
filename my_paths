@@ -19,9 +19,11 @@ if [[ ${OSTYPE} =~ "darwin" ]]  \
     appendToPath /usr/bin
     appendToPath /sbin
     appendToPath /bin
-    appendToPath ${GEM_PATH}/bin
+    appendToPath ~/.gem/bin
+    appendToPath ${GEM_PATH}
     appendToPath ${HOME}/.vim/bundle/vim-superman/bin
     appendToPath ${HOME}/bin
+    appendToPath ${HOME}.cargo/bin
 fi
 # ------------------------------------------------------------------------------
 # Append directories to path.
