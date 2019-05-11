@@ -1,8 +1,0 @@
-#!/bin/bash
-echo "********************************"
-echo "                   Count:" '$#' "["$#"]"
-echo "                 Program:" '$0' "["$0"]"
-echo "     Positional (quoted):" '$@' "["$@"]"
-echo " Positional (not quoted):" '$*' "["$*"]"
-echo "             Exit Status:" '$?' "["$?"]"
-echo "********************************"
