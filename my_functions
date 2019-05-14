@@ -165,8 +165,8 @@ repo() {
     git)
       repoName=git
       ;;
-    bb)
-      repoName=bb
+    soup)
+      repoName=soup
       ;;
     *)
       repoName=git
