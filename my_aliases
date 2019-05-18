@@ -153,6 +153,24 @@ if [[ ${OSTYPE} =~ "linux" ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# Set my default editor.
+# File I edit frequently. 
 # ------------------------------------------------------------------------------
-export EDITOR=vim
+alias ,ea='${EDITOR} ${HOME}/git/dotfiles/alias_and_functions'
+alias ,eb='${EDITOR} ${HOME}/git/dotfiles/bashrc'
+alias ,ec='${EDITOR} ${HOME}/git/ssh/config.vim'
+alias ,ed='${EDITOR} ${HOME}/git/vim/custom-dictionary.utf-8.add'
+alias ,eg='${EDITOR} ${HOME}/git/ssh/gitconfig'
+alias ,ep='${EDITOR} ${HOME}/git/vim/vim-plug.vim'
+alias ,es='${EDITOR} ${HOME}/git/vim/settings.vim'
+alias ,et='${EDITOR} ${HOME}/git/tmux/tmux.conf'
+alias ,ev='${EDITOR} ${HOME}/git/vim/vimrc'
+
+alias ,ma='${EDITOR} ${HOME}/git/dotfiles/my_aliases'
+alias ,mc='${EDITOR} ${HOME}/git/dotfiles/my_completions'
+alias ,me='${EDITOR} ${HOME}/git/dotfiles/my_exports'
+alias ,mf='${EDITOR} ${HOME}/git/dotfiles/my_functions'
+alias ,mp='${EDITOR} ${HOME}/git/dotfiles/my_paths'
+alias ,mt='${EDITOR} ${HOME}/git/dotfiles/my_prompt'
+
+alias ,i3='${EDITOR} ${HOME}/git/dotfiles/i3-config'
+alias ,xi='${EDITOR} ${HOME}/git/dotfiles/xinitrc'

@@ -29,8 +29,3 @@ source ${dotfiles}/my_aliases
 source ${dotfiles}/my_paths
 source ${dotfiles}/my_completions
 source ${dotfiles}/my_prompt
-
-# ------------------------------------------------------------------------------
-# A command-line fuzzy finder 
-# ------------------------------------------------------------------------------
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash

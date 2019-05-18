@@ -15,6 +15,13 @@ else
 fi
 
 # ------------------------------------------------------------------------------
+# fzf - A command-line fuzzy finder 
+# ------------------------------------------------------------------------------
+if fileExists ${HOME}/git/dotfiles/fzf.bash; then
+  source ${HOME}/git/dotfiles/fzf.bash
+fi
+
+# ------------------------------------------------------------------------------
 # iTerm2 shell integration => https://www.iterm2.com/
 # ------------------------------------------------------------------------------
 if fileExists ${HOME}/.iterm2_shell_integration.bash; then
@@ -34,4 +41,3 @@ fi
 if [[ -s /usr/local/bin/stack ]]; then
   eval "$(stack --bash-completion-script stack)"
 fi
-

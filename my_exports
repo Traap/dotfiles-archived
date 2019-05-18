@@ -2,7 +2,9 @@
 # ------------------------------------------------------------------------------
 # 256 colors.
 # ------------------------------------------------------------------------------
-export TERM=xterm-256color
+export BROWSER=firefox
+export TERMINAL=st
+export TERM=st-256color
 
 # ------------------------------------------------------------------------------
 # Operating system specific settings.
@@ -72,13 +74,10 @@ if [[ -d ${DOCBLDPATH} ]]; then
   }
 fi
 
-
 # ------------------------------------------------------------------------------
-# Vim clipboard for Linux.
+# Default editor.
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "linux" ]]; then
-  export DISPLAY=localhost:0.0
-fi
+export EDITOR=vim
 
 # ------------------------------------------------------------------------------
 # emend location and function.  These must go together.
@@ -94,14 +93,6 @@ if [[ -d ${EMENDPATH} ]]; then
   newcomponent() {
     ${EMENDPATH}/bin/newcomponent $@
   }
-fi
-
-# ------------------------------------------------------------------------------
-# Ruby Gem locations.
-# ------------------------------------------------------------------------------
-if programExists gem; then
-  export GEM_HOME=${HOME}/.gem
-  export GEM_PATH=${GEM_HOME}/ruby/2.6.0/bin
 fi
 
 # ------------------------------------------------------------------------------
@@ -151,4 +142,20 @@ if [[ ${OSTYPE} =~ "linux" ]]; then
     export P4ROOT=${P4DISK}/p4root
     export P4CLIENT=Gary:on:Ryder
   fi
+fi
+
+# ------------------------------------------------------------------------------
+# Ruby Gem locations.
+# ------------------------------------------------------------------------------
+if programExists gem; then
+  export GEM_HOME=${HOME}/.gem
+  export GEM_PATH=${GEM_HOME}/ruby/2.6.0/bin
+fi
+
+# ------------------------------------------------------------------------------
+# X11 display type. 
+# ------------------------------------------------------------------------------
+if [[ ${OSTYPE} =~ "linux" ]]; then
+  # export DISPLAY=localhost:0.0
+  export DISPLAY=:0
 fi
