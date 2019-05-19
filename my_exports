@@ -3,8 +3,12 @@
 # 256 colors.
 # ------------------------------------------------------------------------------
 export BROWSER=firefox
+#
 export TERMINAL=st
 export TERM=st-256color
+#
+# export TERMINAL=i3-sensible-terminal
+# export TERM=xterm-256color
 
 # ------------------------------------------------------------------------------
 # Operating system specific settings.
@@ -103,6 +107,11 @@ if dirExists ${HOME}/git; then
 else
   echo "WARNING: ${HOME}/git does not exists."
 fi
+
+# ------------------------------------------------------------------------------
+# HISTCONTROL 
+# ------------------------------------------------------------------------------
+export HISTCONTROL=ignoreboth:erasedups
 
 # ------------------------------------------------------------------------------
 # JAVA locations.

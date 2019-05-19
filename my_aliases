@@ -82,6 +82,7 @@ fi
 # General purpose aliases.
 # ------------------------------------------------------------------------------
 alias cls='clear'
+alias cp='cp -v'
 alias decrypt='${HOME}/git/dotfiles/decrypt'
 alias ec='emacsclient -c'
 alias egrep='egrep --color=auto'
@@ -99,6 +100,7 @@ alias gs='clear && git status'
 alias gsuo='git push --set-upstream origin' 
 alias h='history'
 alias lad='ls -lad .*'
+alias mv='mv -v'
 alias s='source'
 alias sa='source ${HOME}/git/dotfiles/my_aliases'
 alias se='source ${HOME}/git/dotfiles/my_exports'

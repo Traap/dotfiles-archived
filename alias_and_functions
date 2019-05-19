@@ -3,6 +3,12 @@
 # Bash scripting cheatsheet => https://devhints.io/bash
 # ------------------------------------------------------------------------------
 
+# Disable ctrl-s and ctrl-q
+stty -ixon 
+
+# Infanite history
+HISTSIZE= HISTFILESIZE=
+
 # ------------------------------------------------------------------------------
 # Lock my Windows environment variables.  Don't ask, Don't tell!!!
 # ------------------------------------------------------------------------------
