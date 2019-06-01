@@ -1,3 +1,5 @@
-#!/bin/bash
-#xcompmgr -o .90 &
+#!/bin/sh
+
+[ -f "$HOME/.xprofile" ] && . $HOME/.xprofile
+
 exec i3

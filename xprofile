@@ -1,0 +1,17 @@
+# Set backgound
+setbg &
+
+# Bind keys
+#sxhkd &
+
+# Speed xrate up
+xset r reate 300 50 &
+
+# Remove mouse when idle
+unclutter &
+
+# Transparancy
+xcompmgr &
+
+# Notifications
+dunst &
