@@ -3,10 +3,10 @@
 # 256 colors.
 # ------------------------------------------------------------------------------
 export BROWSER=firefox
-#
-export TERMINAL=st
+export FILE=ranger
 export TERM=st-256color
-#
+export TERMINAL=st
+
 # export TERMINAL=i3-sensible-terminal
 # export TERM=xterm-256color
 
