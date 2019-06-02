@@ -1,0 +1,70 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+
+# Bookmarks:
+
+# TUI:
+al
+q0
+v1
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/home/gary
+	..
+0
+d/home
+	gary
+2
+d/home/gary/git/dotfiles
+	..
+0
+d/home/gary/git
+	color
+3
+d/home/gary/git/color
+	..
+0
+d/home/gary/git
+	color
+3
+d/home/gary/git/dotfiles
+	xprofile
+25
+d/home/gary/git/dotfiles/local/bin/cron
+	newsup
+5
+
+# Right window history (oldest to newest):
+D/home/gary
+	..
+0
+D/home/gary/git/dotfiles
+	..
+0
+D/home/gary/git/dotfiles/local/bin/cron
+	
+0
+
+# Command line history (oldest to newest):
+:h
+:set number
+:only
+:help
+:q
+
+# Search history (oldest to newest):
+
+# Prompt history (oldest to newest):
+
+# Local filter history (oldest to newest):
+
+# Registers:
+
+# Directory stack (oldest to newest):
+
+# Trash content:

@@ -2,7 +2,7 @@
 setbg &
 
 # Bind keys
-#sxhkd &
+sxhkd &
 
 # Speed xrate up
 xset r reate 300 50 &
