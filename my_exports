@@ -155,11 +155,12 @@ fi
 
 # ------------------------------------------------------------------------------
 # Ruby Gem locations.
+# 2019.06.13 converting Arch Linux to rbenv
 # ------------------------------------------------------------------------------
-if programExists gem; then
-  export GEM_HOME=${HOME}/.gem
-  export GEM_PATH=${GEM_HOME}/ruby/2.6.0/bin
-fi
+# if programExists gem; then
+#   export GEM_HOME=${HOME}/.gem
+#   export GEM_PATH=${GEM_HOME}/ruby/2.6.0/bin
+# fi
 
 # ------------------------------------------------------------------------------
 # X11 display type. 

@@ -2,10 +2,10 @@
 # ------------------------------------------------------------------------------
 # I define my path here. My goal it to take complete control of my path.
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "linux" ]] \
-|| [[ ${OSTYPE} =~ "msys" ]]; then
-  PATH=${HOME}
-fi
+# if [[ ${OSTYPE} =~ "linux" ]] \
+# || [[ ${OSTYPE} =~ "msys" ]]; then
+#   PATH=${HOME}
+# fi
 
 # ------------------------------------------------------------------------------
 # Linux style machines.
@@ -13,24 +13,26 @@ fi
 if [[ ${OSTYPE} =~ "darwin" ]]  \
 || [[ ${OSTYPE} =~ "linux" ]] \
 || [[ ${OSTYPE} =~ "msys" ]]; then
-    appendToPath /usr/local/sbin
-    appendToPath /usr/local/bin
-    appendToPath /usr/sbin
-    appendToPath /usr/bin
+    # appendToPath /usr/local/sbin
+    # appendToPath /usr/local/bin
+    # appendToPath /usr/sbin
+    # appendToPath /usr/bin
     appendToPath /usr/bin/site_perl
     appendToPath /usr/bin/vendor_perl
     appendToPath /usr/bin/core_perl
-    appendToPath /sbin
-    appendToPath /bin
+    # appendToPath /sbin
+    # appendToPath /bin
     appendToPath ${HOME}/.local/bin
     appendToPath ${HOME}/.local/bin/cron
     appendToPath ${HOME}/.local/bin/i3cmds
     appendToPath ${HOME}/.local/bin/statusbar
     appendToPath ${HOME}/.local/bin/tools
     appendToPath ${HOME}/.vim/bundle/vim-superman/bin
-    appendToPath ${GEM_PATH}
-    appendToPath ${HOME}/.cargo/bin
-    appendToPath ${HOME}/.gem/bin
+    # appendToPath ${GEM_PATH}
+    # appendToPath ${HOME}/.cargo/bin
+    # appendToPath ${HOME}/.gem/bin
+
+    eval "$(rbenv init -)"
 fi
 # ------------------------------------------------------------------------------
 # Append directories to path.
