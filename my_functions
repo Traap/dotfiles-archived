@@ -138,6 +138,13 @@ BASE16_SHELL=$HOME/git/color/base16-shell/
   eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # ------------------------------------------------------------------------------
+# Make okular shup on Windows. 
+# ------------------------------------------------------------------------------
+okular() {
+  /c/ProgramData/chocolatey/bin/okular.exe $1 > /dev/null 2>&1
+}
+
+# ------------------------------------------------------------------------------
 # Repeat a command until a key is pressed.  The read command waits
 # 1sec before timing out.
 # ------------------------------------------------------------------------------

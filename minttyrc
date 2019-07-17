@@ -1,6 +1,6 @@
 BoldAsFont=-1
 FontHeight=11
-Transparency=medium
+Transparency=high
 CursorType=block
 Scrollbar=none
 Term=xterm-256color
@@ -9,3 +9,4 @@ OpaqueWhenFocused=no
 CursorBlinks=no
 RightClickAction=paste
 Rows=25
+CursorColour=255,128,192
