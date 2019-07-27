@@ -117,6 +117,10 @@ sshme() {
 sshkill() {
   for pid in $(ps -ef | awk '/ssh-agent/ {print $2}'); do kill -9 $pid; done
 }
+latexmkkill() {
+  for pid in $(ps -ef | awk '/latexmk/ {print $2}'); do kill -9 $pid; done
+  for pid in $(ps -ef | awk '/perl/ {print $2}'); do kill -9 $pid; done
+}
 
 sshstart() {
   if programExists /etc/init.d/ssh; then
