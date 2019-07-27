@@ -1,8 +1,12 @@
 #!/bin/bash
 # ------------------------------------------------------------------------------
+# Stooges: Honorning Lary, Moe, and Curley ... Nyuk, nyuk, nyuk.
+# ------------------------------------------------------------------------------
+echo ${HOSTNAME} "on" ${OSTYPE}
+
+# ------------------------------------------------------------------------------
 # Bash scripting cheatsheet => https://devhints.io/bash
 # ------------------------------------------------------------------------------
-
 # Disable ctrl-s and ctrl-q
 stty -ixon 
 
@@ -19,11 +23,6 @@ if [[ ${HOSTNAME} =~ "USLZ" ]]; then
   export GIT_HOME=/c/Users/${USERNAME}/git
   export HOMESHARE=/c
 fi
-
-# ------------------------------------------------------------------------------
-# Stooges: Honorning Lary, Moe, and Curley ... Nyuk, nyuk, nyuk.
-# ------------------------------------------------------------------------------
-echo "Operating system: " ${OSTYPE}
 
 # ------------------------------------------------------------------------------
 # Define functions and paths for this shell. 

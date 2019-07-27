@@ -4,11 +4,12 @@
 # ------------------------------------------------------------------------------
 export BROWSER=firefox
 export FILE=ranger
-export TERM=st-256color
-export TERMINAL=st
-
-# export TERMINAL=i3-sensible-terminal
-# export TERM=xterm-256color
+if [[ ${HOSTNAME} =~ "Sweetheart" ]]; then
+  export TERM=st-256color
+  export TERMINAL=st
+else
+  export TERM=xterm-256color
+fi
 
 # ------------------------------------------------------------------------------
 # Operating system specific settings.
@@ -166,6 +167,9 @@ fi
 # X11 display type. 
 # ------------------------------------------------------------------------------
 if [[ ${OSTYPE} =~ "linux" ]]; then
-  # export DISPLAY=localhost:0.0
-  export DISPLAY=:0
+  if [[ ${HOSTNAME} =~ "Gandolf" ]]; then
+    export DISPLAY=localhost:0.0
+  else
+    export DISPLAY=:0.0
+  fi
 fi
