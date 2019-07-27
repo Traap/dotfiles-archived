@@ -435,8 +435,12 @@ pm() {
 }
 
 # ------------------------------------------------------------------------------
-# cj is a function that I rewrite all the time to simplify my life.
+# cj & gh are functions that I rewrite all the time to simplify my life.
 # ------------------------------------------------------------------------------ 
 cj(){
   newdoc --dir=$1/$2 --file=$2 --title=$2 $3 $4
+}
+
+gh(){
+  clear && docbld clobber && docbld texx && ll && okular $1
 }
