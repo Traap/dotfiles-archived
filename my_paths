@@ -4,7 +4,7 @@
 # ------------------------------------------------------------------------------
 # if [[ ${OSTYPE} =~ "linux" ]] \
 # || [[ ${OSTYPE} =~ "msys" ]]; then
-#   PATH=${HOME}
+   PATH=${HOME}
 # fi
 
 # ------------------------------------------------------------------------------
@@ -13,29 +13,28 @@
 if [[ ${OSTYPE} =~ "darwin" ]]  \
 || [[ ${OSTYPE} =~ "linux" ]] \
 || [[ ${OSTYPE} =~ "msys" ]]; then
-    # appendToPath /usr/local/sbin
-    # appendToPath /usr/local/bin
-    # appendToPath /usr/sbin
-    # appendToPath /usr/bin
-    appendToPath /usr/bin/site_perl
-    appendToPath /usr/bin/vendor_perl
-    appendToPath /usr/bin/core_perl
-    # appendToPath /sbin
-    # appendToPath /bin
+    appendToPath /usr/local/sbin
+    appendToPath /usr/local/bin
+    appendToPath /usr/sbin
+    appendToPath /usr/bin
+    appendToPath /bin
     appendToPath ${HOME}/.local/bin
     appendToPath ${HOME}/.local/bin/cron
     appendToPath ${HOME}/.local/bin/i3cmds
     appendToPath ${HOME}/.local/bin/statusbar
     appendToPath ${HOME}/.local/bin/tools
+    appendToPath ${HOME}/.rbenv/bin
     appendToPath ${HOME}/.vim/bundle/vim-superman/bin
-    # appendToPath ${GEM_PATH}
-    # appendToPath ${HOME}/.cargo/bin
-    # appendToPath ${HOME}/.gem/bin
-
-    eval "$(rbenv init -)"
+    appendToPath /usr/bin/site_perl
+    appendToPath /usr/bin/vendor_perl
+    appendToPath /usr/bin/core_perl
+    if dirExists ${HOME}/.rbenv/bin; then 
+      eval "$(rbenv init -)"
+    fi
 fi
+
 # ------------------------------------------------------------------------------
-# Append directories to path.
+# msys style machines 
 # ------------------------------------------------------------------------------
 if [[ ${OSTYPE} =~ "msys" ]]; then
   appendToPath /mingw64/bin
@@ -60,4 +59,3 @@ if [[ ${OSTYPE} =~ "darwin" ]]; then
     fi
   fi
 fi
-
