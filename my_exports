@@ -4,7 +4,7 @@
 # ------------------------------------------------------------------------------
 export BROWSER=firefox
 export FILE=ranger
-if [[ ${HOSTNAME} =~ "Sweetheart" ]]; then
+if hostName "Sweetheart"; then
   export TERM=st-256color
   export TERMINAL=st
 else
@@ -12,20 +12,11 @@ else
 fi
 
 # ------------------------------------------------------------------------------
-# Operating system specific settings.
+# Darwin CLI and LS colors.
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "darwin" ]]; then
+if osType "darwin"; then
   export CLICOLOR=1
   export LSCOLORS=GxFxBxDxCxegedabagacad
-elif [[ ${OSTYPE} =~ "linux" ]] \
-  || [[ ${OSTYPE} =~ "cygwin" ]] \
-  || [[ ${OSTYPE} =~ "msys" ]] ; then
-  if [[ ${OSTYPE} =~ "cygwin" ]]; then
-    export HOMEDRIVE="C:"
-    export HOMESHARE=${HOME}
-  fi
-else
-    echo "Unknown operating system:" ${OSTYPE}
 fi
 
 # ------------------------------------------------------------------------------
@@ -82,7 +73,11 @@ fi
 # ------------------------------------------------------------------------------
 # Default editor.
 # ------------------------------------------------------------------------------
-export EDITOR=vim
+if programExists nvim; then
+  export EDITOR=nvim
+else
+  export EDITOR=vim
+fi
 
 # ------------------------------------------------------------------------------
 # emend location and function.  These must go together.
@@ -128,7 +123,7 @@ fi
 if dirExists ${HOME}/git/newdoc; then
   NEWDOCPATH=${HOME}/git/newdoc
 elif dirExists ${HOME}/soup/newdoc; then
-    NEWDOCPATH=${home}/soup/newdoc
+    NEWDOCPATH=${HOME}/soup/newdoc
 else
   echo "WARNING: newdoc is not installed."
   NEWDOCPATH=""
@@ -144,8 +139,8 @@ fi
 # ------------------------------------------------------------------------------
 # Perforce defaults.
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "linux" ]]; then
-  if [[ ${HOSTNAME} =~ "Ryder" ]]; then
+if programExists p4d; then
+  if hostName "Ryder"; then
     export P4DISK=/Volumes/Larry
     export P4HOST=localhost
     export P4PORT=1666
@@ -155,21 +150,23 @@ if [[ ${OSTYPE} =~ "linux" ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# Ruby Gem locations.
-# 2019.06.13 converting Arch Linux to rbenv
-# ------------------------------------------------------------------------------
-# if programExists gem; then
-#   export GEM_HOME=${HOME}/.gem
-#   export GEM_PATH=${GEM_HOME}/ruby/2.6.0/bin
-# fi
-
-# ------------------------------------------------------------------------------
 # X11 display type. 
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "linux" ]]; then
-  if [[ ${HOSTNAME} =~ "Gandolf" ]]; then
+if osType "linux"; then
+  if hostName "Gandolf"; then
     export DISPLAY=localhost:0.0
   else
     export DISPLAY=:0.0
   fi
+fi
+
+# ------------------------------------------------------------------------------
+# Lock my Windows environment variables.  Don't ask, Don't tell!!!
+# ------------------------------------------------------------------------------
+if hostName "USLZ"; then
+  export HOME=/c/Users/${USERNAME}
+  export HOMEDRIVE=/c
+  export HOMEPATH=/c/Users/${USERNAME}
+  export GIT_HOME=/c/Users/${USERNAME}/git
+  export HOMESHARE=/c
 fi

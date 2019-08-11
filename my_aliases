@@ -3,16 +3,13 @@
 # ------------------------------------------------------------------------------
 # Operating system specific settings.
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "darwin" ]]; then
+if osType "darwin"; then
   alias me='clear && source ~/.bash_profile'
   alias la='ls -A'
   alias ll='ls -lahG'
-elif [[ ${OSTYPE} =~ "linux" ]] \
-  || [[ ${OSTYPE} =~ "cygwin" ]] \
-  || [[ ${OSTYPE} =~ "msys" ]] ; then
-  if [[ ${OSTYPE} =~ "cygwin" ]]; then
-    alias ra='cygstart --open'
-  fi
+elif osType "linux" \
+  || osType "cygwin" \
+  || osType "msys"; then
   alias me='clear && source ~/.bashrc'
   alias la='ls -A --color'
   alias ls='ls --color=auto'
@@ -44,8 +41,8 @@ fi
 # Fuse => https://osxfuse.github.io/
 # ------------------------------------------------------------------------------
 if programExists sshfs; then
-  if [[ ${OSTYPE} =~ "darwin" ]]; then
-    if [[ ${HOSTNAME} =~ "Stooges" ]]; then
+  if osType "darwin"; then
+    if hostName "Stooges"; then
       alias  fpc0='sshfs fpc:git/smart-device-sw /Volumes/Larry/fpc0'
       alias ufpc0='umount /Volumes/Larry/fpc0'
       alias   ds6='sshfs datasci:git/smart-device-sw /Volumes/Larry/ds6'
@@ -127,7 +124,7 @@ alias vimd='cd ${HOME}/git/vim'
 # ------------------------------------------------------------------------------
 # Brew wants me to own usr/local
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "darwin" ]]; then
+if osType "darwin"; then
   alias ulo='sudo chown -R $(whoami) /usr/local'
 fi
 
@@ -140,8 +137,8 @@ alias rgs='repeat git status --short'
 # ------------------------------------------------------------------------------
 # Perforce defaults.
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "linux" ]]; then
-  if [[ ${HOSTNAME} =~ "Ryder" ]]; then
+if osType =~ "linux"; then
+  if hostName =~ "Ryder"; then
     alias p4='${P4DISK}/2013.1/p4'
     alias p4d='${P4DISK}/2013.1/p4d'
   fi

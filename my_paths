@@ -1,6 +1,7 @@
 #!/bin/bash 
 # ------------------------------------------------------------------------------
-# I define my path here. My goal it to take complete control of my path.
+# My goal it to take complete control of my path when I am having issues
+# setting up darwin, linux, or msys.
 # ------------------------------------------------------------------------------
 # if [[ ${OSTYPE} =~ "linux" ]] \
 # || [[ ${OSTYPE} =~ "msys" ]]; then

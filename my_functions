@@ -15,24 +15,38 @@ ct() {
 }
 
 # ------------------------------------------------------------------------------
-# A check for the esistence of a program on my path.
+# A check for the existence of a directory.
 # ------------------------------------------------------------------------------
-programExists() {
-  which "$1" &> /dev/null ;
+dirExists() {
+  [[ -d "$1" ]]
 }
 
 # ------------------------------------------------------------------------------
-# A check for the esistence of a file.
+# A check for the existence of a file.
 # ------------------------------------------------------------------------------
 fileExists() {
   [[ -f "$1" ]]
 }
 
 # ------------------------------------------------------------------------------
-# A check for the esistence of a directory.
+# A check for the host name. 
 # ------------------------------------------------------------------------------
-dirExists() {
-  [[ -d "$1" ]]
+hostName() {
+ [[ ${HOSTNAME} =~ "$1" ]]   
+}
+
+# ------------------------------------------------------------------------------
+# A check for the existence of a program on my path.
+# ------------------------------------------------------------------------------
+programExists() {
+  which "$1" &> /dev/null ;
+}
+
+# ------------------------------------------------------------------------------
+# A check for the operating system type. 
+# ------------------------------------------------------------------------------
+osType() {
+ [[ ${OSTYPE} =~ "$1" ]]   
 }
 
 # ------------------------------------------------------------------------------
@@ -47,7 +61,8 @@ appendToPath() {
 # ------------------------------------------------------------------------------
 # Disable features / programs running on OSX.
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "darwin" ]]; then
+# if [[ ${OSTYPE} =~ "darwin" ]]; then
+if osType =~ "darwin"; then
   msa() { Launchctl remove com.microsoft.SyncServicesAgent ; }
   pah() { defaults write -g ApplePressAndHoldEnable -bool false ; }
 fi
@@ -142,7 +157,7 @@ BASE16_SHELL=$HOME/git/color/base16-shell/
   eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # ------------------------------------------------------------------------------
-# Make okular shup on Windows. 
+# Make okular shut up on Windows. 
 # ------------------------------------------------------------------------------
 okular() {
   /c/ProgramData/chocolatey/bin/okular.exe $1 > /dev/null 2>&1
@@ -242,7 +257,7 @@ cxx() {
 }
 
 # ------------------------------------------------------------------------------
-# Start Vim with clientserver when it is compiled in.
+# Start Vim with client server when it is compiled in.
 # ------------------------------------------------------------------------------
 vimCheck() {
   if [[ -n $(vim --version | grep clientserver) ]]; then
@@ -304,14 +319,11 @@ bld() {
       bldgem ${HOME}/git/daryn
       ;;
     ametrine)
-      bldgem ${HOME}/bb/ametrine
-      ;;
-    autoexample)
-      bldgem ${HOME}/bb/autoexample
+      bldgem ${HOME}/git/ametrine
       ;;
     *)
       echo "bld: $1 not supported."
-      echo "Usage: bld {amber|daryn|cwa|emend}"
+      echo "Usage: bld [amber | daryn | emend| ametrine ]"
   esac
 }
 
