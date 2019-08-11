@@ -137,8 +137,8 @@ alias rgs='repeat git status --short'
 # ------------------------------------------------------------------------------
 # Perforce defaults.
 # ------------------------------------------------------------------------------
-if osType =~ "linux"; then
-  if hostName =~ "Ryder"; then
+if osType "linux"; then
+  if hostName "Ryder"; then
     alias p4='${P4DISK}/2013.1/p4'
     alias p4d='${P4DISK}/2013.1/p4d'
   fi

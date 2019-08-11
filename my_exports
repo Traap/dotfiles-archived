@@ -4,7 +4,7 @@
 # ------------------------------------------------------------------------------
 export BROWSER=firefox
 export FILE=ranger
-if hostName "Sweetheart"; then
+if hostName "Sweatheart"; then
   export TERM=st-256color
   export TERMINAL=st
 else
@@ -34,7 +34,7 @@ export AMBERPATH
 
 if [[ -d ${AMBERPATH} ]]; then
   newfactoryitem() {
-    ${AMBERPATH}/bin/newfactoryitem $@
+    ${AMBERPATH}/bin/newfactoryitem "$@"
   }
 fi
 
@@ -91,7 +91,7 @@ export EMENDPATH
 
 if [[ -d ${EMENDPATH} ]]; then
   newcomponent() {
-    ${EMENDPATH}/bin/newcomponent $@
+    ${EMENDPATH}/bin/newcomponent "$@"
   }
 fi
 

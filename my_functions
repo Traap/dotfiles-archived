@@ -259,18 +259,18 @@ cxx() {
 # ------------------------------------------------------------------------------
 # Start Vim with client server when it is compiled in.
 # ------------------------------------------------------------------------------
-vimCheck() {
-  if [[ -n $(vim --version | grep clientserver) ]]; then
-    alias vimx='vim --servername VIM'
-  fi
+vim() {
+  $EDITOR "$@"
 }
 
 vimu() {
-  vim -u NORC $@
+  $EDITOR -u NORC "$@"
 }
 
 if [[ ${OSTYPE} =~ "darwin" ]]; then
-  vimCheck
+  if [[ -n $(vim --version | grep clientserver) ]]; then
+    alias vimx='$EDITOR --servername VIM'
+  fi
 fi
 
 # ------------------------------------------------------------------------------
