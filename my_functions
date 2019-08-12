@@ -189,7 +189,7 @@ lsd() { ls -d * | tr -d '/' ; }
 repo() {
   case $1 in
     bb)
-      repoName=bb
+      repoName=git
       ;;
     git)
       repoName=git
