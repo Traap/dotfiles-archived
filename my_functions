@@ -461,5 +461,5 @@ cj(){
 }
 
 gh(){
-  clear && docbld clobber && docbld texx && ll && okular $1
+  clear && docbld clobber && docbld texx && ll && zathura $1
 }
