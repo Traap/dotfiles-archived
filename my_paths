@@ -1,24 +1,10 @@
 #!/bin/bash 
 # ------------------------------------------------------------------------------
-# My goal it to take complete control of my path when I am having issues
-# setting up darwin, linux, or msys.
-# ------------------------------------------------------------------------------
-# if [[ ${OSTYPE} =~ "linux" ]] \
-# || [[ ${OSTYPE} =~ "msys" ]]; then
-#   PATH=${HOME}
-# fi
-
-# ------------------------------------------------------------------------------
 # Linux style machines.
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "darwin" ]]  \
-|| [[ ${OSTYPE} =~ "linux" ]] \
-|| [[ ${OSTYPE} =~ "msys" ]]; then
-    appendToPath /usr/local/sbin
-    appendToPath /usr/local/bin
-    appendToPath /usr/sbin
-    appendToPath /usr/bin
-    appendToPath /bin
+if osType "darwin" \
+|| osType "linux"  \
+|| osType "msys"; then
     appendToPath ${HOME}/.local/bin
     appendToPath ${HOME}/.local/bin/cron
     appendToPath ${HOME}/.local/bin/i3cmds
@@ -26,10 +12,7 @@ if [[ ${OSTYPE} =~ "darwin" ]]  \
     appendToPath ${HOME}/.local/bin/tools
     appendToPath ${HOME}/.rbenv/bin
     appendToPath ${HOME}/.vim/bundle/vim-superman/bin
-    appendToPath /usr/bin/site_perl
-    appendToPath /usr/bin/vendor_perl
-    appendToPath /usr/bin/core_perl
-    if dirExists ${HOME}/.rbenv/bin; then 
+    if programExists rbenv; then
       eval "$(rbenv init -)"
     fi
 fi
@@ -37,7 +20,7 @@ fi
 # ------------------------------------------------------------------------------
 # msys style machines 
 # ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "msys" ]]; then
+if osType "msys"; then
   appendToPath /mingw64/bin
   appendToPath /c/Program\ Files/MiKTeX\ 2.9/miktex/bin/x64
   appendToPath /c/ProgramData/chocolatey/bin
@@ -46,17 +29,4 @@ if [[ ${OSTYPE} =~ "msys" ]]; then
   appendToPath /c/Strawberry/c/bin
   appendToPath /c/Strawberry/perl/site/bin
   appendToPath /c/Strawberry/perl/bin
-fi
-
-# ------------------------------------------------------------------------------
-# Adjust path for Legolas computer.
-# ------------------------------------------------------------------------------
-if [[ ${OSTYPE} =~ "darwin" ]]; then
-  if [[ ${HOSTNAME} =~ "Legolas" ]]; then
-    if [[ -d ${HOME}/bin ]]; then
-      appendToPath ${HOME}/.cabal/bin
-      appendToPath ${HOME}/Library/Haskell/bin
-      appendToPath ${HOME}/.local/bin
-    fi
-  fi
 fi

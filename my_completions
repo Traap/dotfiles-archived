@@ -17,8 +17,8 @@ fi
 # ------------------------------------------------------------------------------
 # fzf - A command-line fuzzy finder 
 # ------------------------------------------------------------------------------
-if fileExists ${HOME}/git/dotfiles/fzf.bash; then
-  source ${HOME}/git/dotfiles/fzf.bash
+if fileExists ${HOME}/.fzf.bash; then
+  source ${HOME}/.fzf.bash
 fi
 
 # ------------------------------------------------------------------------------
