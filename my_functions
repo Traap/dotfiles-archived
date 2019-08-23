@@ -455,10 +455,14 @@ pm() {
 # ------------------------------------------------------------------------------
 # cj & gh are functions that I rewrite all the time to simplify my life.
 # ------------------------------------------------------------------------------ 
-cj(){
+cj() {
   newdoc --dir=$1/$2 --file=$2 --title=$2 $3 $4
 }
 
-gh(){
+gh() {
   clear && docbld clobber && docbld texx && ll && zathura $1
+}
+
+pdf() {
+    latexmk -pdf -synctex=1 -verbose -file-line-error -cd $1 
 }
