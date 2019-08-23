@@ -61,7 +61,6 @@ appendToPath() {
 # ------------------------------------------------------------------------------
 # Disable features / programs running on OSX.
 # ------------------------------------------------------------------------------
-# if [[ ${OSTYPE} =~ "darwin" ]]; then
 if osType =~ "darwin"; then
   msa() { Launchctl remove com.microsoft.SyncServicesAgent ; }
   pah() { defaults write -g ApplePressAndHoldEnable -bool false ; }

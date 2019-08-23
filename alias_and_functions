@@ -17,9 +17,9 @@ HISTSIZE= HISTFILESIZE=
 # Define functions and paths for this shell. 
 # ------------------------------------------------------------------------------
 dotfiles=${HOME}/git/dotfiles
-source ${dotfiles}/my_functions
-source ${dotfiles}/my_exports
-source ${dotfiles}/my_aliases
-source ${dotfiles}/my_paths
-source ${dotfiles}/my_completions
-source ${dotfiles}/my_prompt
+
+my_array=("functions" "exports" "aliases" "paths" "completions" "prompt" )
+for m in ${my_array[@]}; do
+  x=$dotfiles/my_$m
+  source $x
+done

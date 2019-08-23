@@ -2,7 +2,7 @@
 # ------------------------------------------------------------------------------
 # Brew => https://brew.sh/
 # ------------------------------------------------------------------------------
-if programExists brew; then
+if osType "darwin"; then
   if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
     . $(brew --prefix)/etc/bash_completion
   fi
@@ -24,8 +24,10 @@ fi
 # ------------------------------------------------------------------------------
 # iTerm2 shell integration => https://www.iterm2.com/
 # ------------------------------------------------------------------------------
-if fileExists ${HOME}/.iterm2_shell_integration.bash; then
-  source ${HOME}/.iterm2_shell_integration.bash
+if osType "darwin"; then
+  if fileExists ${HOME}/.iterm2_shell_integration.bash; then
+    source ${HOME}/.iterm2_shell_integration.bash
+  fi
 fi
 
 # ------------------------------------------------------------------------------
@@ -38,6 +40,6 @@ fi
 # ------------------------------------------------------------------------------
 # Stack specific settings.
 # ------------------------------------------------------------------------------
-if [[ -s /usr/local/bin/stack ]]; then
+if fileExists /usr/local/bin/stack; then
   eval "$(stack --bash-completion-script stack)"
 fi

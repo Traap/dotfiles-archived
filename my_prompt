@@ -13,17 +13,17 @@ prompt() {
   GIT_PROMPT_END=${PS1_END}
 }
 
-if [[ ${OSTYPE} =~ "darwin" ]]; then
+if [[ ${OSTYPE} =~ "linux" ]] ||
+   [[ ${OSTYPE} =~ "cygwin" ]] ||
+   [[ ${OSTYPE} =~ "msys" ]]; then
+  if fileExists ${HOME}/.bash-git-prompt/gitprompt.sh; then
+    prompt
+    source ${HOME}/.bash-git-prompt/gitprompt.sh
+  fi
+elif [[ ${OSTYPE} =~ "darwin" ]]; then
   if [[ -f $(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh ]]; then
     prompt
     source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
-  fi
-elif [[ ${OSTYPE} =~ "linux" ]] ||
-     [[ ${OSTYPE} =~ "cygwin" ]] ||
-     [[ ${OSTYPE} =~ "msys" ]]; then
-  if [[ -f ${HOME}/.bash-git-prompt/gitprompt.sh ]]; then
-    prompt
-    source ${HOME}/.bash-git-prompt/gitprompt.sh
   fi
 fi
 

@@ -73,10 +73,10 @@ fi
 # ------------------------------------------------------------------------------
 # Default editor.
 # ------------------------------------------------------------------------------
-if programExists nvim; then
-  export EDITOR=$(which nvim)
+if fileExists /usr/bin/nvim; then
+  export EDITOR=/usr/bin/nvim
 else
-  export EDITOR=$(which vim)
+  export EDITOR=/usr/bin/vim
 fi
 
 # ------------------------------------------------------------------------------
@@ -139,7 +139,7 @@ fi
 # ------------------------------------------------------------------------------
 # Perforce defaults.
 # ------------------------------------------------------------------------------
-if programExists p4d; then
+if fileExists usr/bin/p4d; then
   if hostName "Ryder"; then
     export P4DISK=/Volumes/Larry
     export P4HOST=localhost

@@ -31,7 +31,7 @@ set -o vi
 # ------------------------------------------------------------------------------
 # Haskell and Cabal (Glasgow Haskell Compiler).
 # ------------------------------------------------------------------------------
-if programExists ghc; then
+if fileExists /usr/bin/ghc; then
   alias ci='cabal install'
   alias cif='cabal install --force-reinstalls'
   alias cemacs='emacs -Q -l ${HOME}/git/emacs-haskell-config/init.el'
@@ -40,19 +40,17 @@ fi
 # ------------------------------------------------------------------------------
 # Fuse => https://osxfuse.github.io/
 # ------------------------------------------------------------------------------
-if programExists sshfs; then
-  if osType "darwin"; then
-    if hostName "Stooges"; then
-      alias  fpc0='sshfs fpc:git/smart-device-sw /Volumes/Larry/fpc0'
-      alias ufpc0='umount /Volumes/Larry/fpc0'
-      alias   ds6='sshfs datasci:git/smart-device-sw /Volumes/Larry/ds6'
-      alias  uds6='umount /Volumes/Larry/ds6'
-    else
-      alias  fpc0='sshfs fpc:git/smart-device-sw ${HOME}/fpc0'
-      alias ufpc0='umount ${HOME}/fpc0'
-      alias   ds6='sshfs datasci:git/smart-device-sw ${HOME}/ds6'
-      alias  uds6='umount ${HOME}/ds6'
-    fi
+if osType "darwin"; then
+  if hostName "Stooges"; then
+    alias  fpc0='sshfs fpc:git/smart-device-sw /Volumes/Larry/fpc0'
+    alias ufpc0='umount /Volumes/Larry/fpc0'
+    alias   ds6='sshfs datasci:git/smart-device-sw /Volumes/Larry/ds6'
+    alias  uds6='umount /Volumes/Larry/ds6'
+  else
+    alias  fpc0='sshfs fpc:git/smart-device-sw ${HOME}/fpc0'
+    alias ufpc0='umount ${HOME}/fpc0'
+    alias   ds6='sshfs datasci:git/smart-device-sw ${HOME}/ds6'
+    alias  uds6='umount ${HOME}/ds6'
   fi
 fi
 
@@ -66,7 +64,7 @@ fi
 # ------------------------------------------------------------------------------
 # Tmux setup.
 # ------------------------------------------------------------------------------
-if programExists tmux; then
+if fileExists /usr/bin/tmux; then
   alias tmux='tmux -2'
 fi
 
