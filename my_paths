@@ -12,7 +12,7 @@ if osType "darwin" \
     appendToPath ${HOME}/.local/bin/tools
     appendToPath ${HOME}/.rbenv/bin
     appendToPath ${HOME}/.vim/bundle/vim-superman/bin
-    if programExists rbenv; then
+    if fileExists /usr/bin/rbenv; then
       eval "$(rbenv init -)"
     fi
 fi
