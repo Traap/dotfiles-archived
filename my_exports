@@ -4,7 +4,7 @@
 # ------------------------------------------------------------------------------
 export BROWSER=firefox
 export FILE=ranger
-if hostName "Sweatheart"; then
+if hostName "Sweetheart"; then
   export TERM=st-256color
   export TERMINAL=st
 else
