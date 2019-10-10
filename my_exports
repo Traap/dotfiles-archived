@@ -41,8 +41,8 @@ fi
 # ------------------------------------------------------------------------------
 # autodoc location.
 # ------------------------------------------------------------------------------
-if  dirExists ${HOME}/git/autodoc2; then
-  AUTODOCPATH=${HOME}/git/autodoc2
+if  dirExists ${HOME}/git/autodoc; then
+  AUTODOCPATH=${HOME}/git/autodoc
 elif dirExists ${HOME}/soup/autodoc; then
    AUTODOCPATH=${HOME}/soup/autodoc
 else
