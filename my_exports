@@ -75,6 +75,8 @@ fi
 # ------------------------------------------------------------------------------
 if fileExists /usr/bin/nvim; then
   export EDITOR=/usr/bin/nvim
+elif fileExists /usr/local/bin/nvim; then
+  export EDITOR=/usr/local/bin/nvim
 else
   export EDITOR=/usr/bin/vim
 fi
