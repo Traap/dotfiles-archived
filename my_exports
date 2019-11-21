@@ -73,7 +73,9 @@ fi
 # ------------------------------------------------------------------------------
 # Default editor.
 # ------------------------------------------------------------------------------
-if fileExists /usr/bin/nvim; then
+if fileExists /usr/bin/vim; then
+  export EDITOR=/usr/bin/vim
+elif fileExists /usr/bin/nvim; then
   export EDITOR=/usr/bin/nvim
 elif fileExists /usr/local/bin/nvim; then
   export EDITOR=/usr/local/bin/nvim
