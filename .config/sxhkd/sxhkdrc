@@ -1,0 +1,27 @@
+# {{{ Super (OS) + letter key
+super + Return
+  $TERMINAL
+
+super + w
+  $BROWSER
+# -------------------------------------------------------------------------- }}}
+# {{{ super + shift + letter key
+super + shift + a 
+  prompt "Leave Xorg?" "killall Xorg"
+
+super + shift + b 
+  prompt "Shutdown computer?" "sudo -A shutdown -h now"
+
+super + shift + c 
+  prompt "Reboot computer?" "sudo -A reboot"
+
+super + shift + w
+  $TERMINAL -e sudo nmtui
+
+# -------------------------------------------------------------------------- }}}
+# {{{ super + contrl + letter key
+
+# -------------------------------------------------------------------------- }}}
+# {{{ alt (option) + letter key
+
+# -------------------------------------------------------------------------- }}}

@@ -1,8 +1,8 @@
 # Set backgound
-setbg &
+xwallpaper --zoom ~/.config/xwallpaper/wallpaper.png &
 
-# Bind keys
-sxhkd &
+# Transparancy
+xcompmgr &
 
 # Speed xrate up
 xset r reate 300 50 &
@@ -10,8 +10,8 @@ xset r reate 300 50 &
 # Remove mouse when idle
 unclutter &
 
-# Transparancy
-xcompmgr &
+# Bind keys
+sxhkd &
 
 # Notifications
 dunst &
