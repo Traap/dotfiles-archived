@@ -1,6 +1,10 @@
-# {{{ Super (OS) + letter key
+# Super is the OS key: Apple, Windows, Lunux, etc.
+# {{{ super + letter key
 super + Return
   $TERMINAL
+
+super + r
+  i3-msg -q restart 
 
 super + w
   $BROWSER
@@ -22,6 +26,6 @@ super + shift + w
 # {{{ super + contrl + letter key
 
 # -------------------------------------------------------------------------- }}}
-# {{{ alt (option) + letter key
+# {{{ super + alt (option) + letter key
 
 # -------------------------------------------------------------------------- }}}

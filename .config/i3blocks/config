@@ -1,11 +1,11 @@
 command=~/git/scripts/statusbar/$BLOCK_NAME
-separator_block_width=7
 markup=pango
+separator_block_width=7
 
 [battery]
 command=battery BAT0
+label=♻
 interval=60
-markup=pango
 
 [ip-address]
 interval=10
@@ -25,7 +25,6 @@ label=💻
 [volume]
 interval=10
 signal=10
-
 
 [clock]
 label=📅

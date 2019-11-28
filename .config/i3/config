@@ -10,7 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # #---Basic Definitions---# #
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 gaps inner 5 
 gaps outer 5 
 set $term --no-startup-id $TERMINAL
@@ -44,9 +44,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-# start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+q kill
@@ -174,8 +171,8 @@ bindsym $mod+r mode "resize"
 bar {
 #  font pango:mono 10
   font pango:Inconsolata, Icons 11
-#  separator_symbol ":|:"
-  status_command i3blocks
+#  status_command 2>/tmp/i3blocks.error i3blocks -vvv -c ~/.config/i3/config | tee /tmp/i3blocks.out
+  status_command 3blocks
   position top
   mode dock
   modifier None 
