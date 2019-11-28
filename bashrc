@@ -10,6 +10,3 @@
 if [ -f ~/git/dotfiles/alias_and_functions ]; then
   source ~/git/dotfiles/alias_and_functions
 fi
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-

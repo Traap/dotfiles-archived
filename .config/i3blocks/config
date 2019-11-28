@@ -30,8 +30,8 @@ signal=10
 label=📅
 interval=60
 
-[internet]
-interval=10
-
-[help]
-interval=once
+#[internet]
+#interval=10
+#
+#[help]
+#interval=once

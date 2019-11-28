@@ -4,19 +4,19 @@ super + Return
   $TERMINAL
 
 super + r
-  i3-msg -q restart 
+  i3-msg -q restart
 
 super + w
   $BROWSER
 # -------------------------------------------------------------------------- }}}
 # {{{ super + shift + letter key
-super + shift + a 
+super + shift + a
   prompt "Leave Xorg?" "killall Xorg"
 
-super + shift + b 
+super + shift + b
   prompt "Shutdown computer?" "sudo -A shutdown -h now"
 
-super + shift + c 
+super + shift + c
   prompt "Reboot computer?" "sudo -A reboot"
 
 super + shift + w
@@ -27,5 +27,18 @@ super + shift + w
 
 # -------------------------------------------------------------------------- }}}
 # {{{ super + alt (option) + letter key
+super + alt + b
+  $TERMINAL -e $EDITOR ~/.config/i3blocks/config
 
+super + alt + e
+  $TERMINAL -e $EDITOR /tmp/i3blocks.error 
+
+super + alt + i
+  $TERMINAL -e $EDITOR ~/.config/i3/config
+
+super + alt + o
+  $TERMINAL -e $EDITOR /tmp/i3blocks.out
+
+super + alt + s
+  $TERMINAL -e $EDITOR ~/.config/sxhkd/sxhkdrc
 # -------------------------------------------------------------------------- }}}
