@@ -1,5 +1,4 @@
-# Super is the OS key: Apple, Windows, Lunux, etc.
-# {{{ super + letter key
+# Super is the OS key: Apple, Windows, Lunux, etc.  # {{{ super + letter key
 super + Return
   $TERMINAL
 
