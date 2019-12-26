@@ -5,18 +5,18 @@
 # -------------------------------------------------------------------------- }}}
 # {{{ super + letter key
 # super + Return
-#   $TERMINAL
+  $TERMINAL
 
 # super + r
-#   i3-msg -q restart
+   i3-msg -q restart
 
 super + w
-#  $BROWSER
-  firefox 
+  $BROWSER
+
 # -------------------------------------------------------------------------- }}}
 # {{{ super + shift + letter key
 super + shift + a
-  prompt "Leave Xorg?" "killall Xorg"
+  prompt "Leave Xorg?" "killall Xorg"jkkjk
 
 super + shift + b
   prompt "Shutdown computer?" "sudo -A shutdown -h now"
@@ -52,7 +52,6 @@ super + ctrl + o
   $TERMINAL -e $EDITOR /tmp/i3blocks.out
 
 super + ctrl + s
-  #$TERMINAL -e $EDITOR ~/.config/sxhkd/sxhkdrc
-  termite -e vim ~/.config/sxhkd/sxhkdrc
+  $TERMINAL -e $EDITOR ~/.config/sxhkd/sxhkdrc
 
 # -------------------------------------------------------------------------- }}}

@@ -21,7 +21,7 @@ cl() {
   git clone git@github.com:"$1"
 }
 
-ct() {
+clt() {
   git clone git@github.com:Traap/"$1"
 }
 
