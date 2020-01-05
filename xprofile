@@ -1,5 +1,5 @@
 # Set backgound
-xwallpaper --zoom ~/.config/xwallpaper/wallpaper.png &
+# xwallpaper --zoom ~/.config/xwallpaper/wallpaper.png &
 
 # Transparancy
 xcompmgr &
@@ -11,7 +11,6 @@ xset r rate 300 50 &
 unclutter &
 
 # Bind keys
-#sxhkd &
 sxhkd > /tmp/sxhkd.log 2>&1 &
 
 # Notifications

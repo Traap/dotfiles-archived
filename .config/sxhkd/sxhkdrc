@@ -1,22 +1,24 @@
-# super is the OS key: Apple, Windows, Lunux, etc.  
-#
-# {{{ Define my modifier key. 
-
+# super is the OS key: Apple, Windows, Lunux, etc.
+# {{{ Define my modifier key.
 # -------------------------------------------------------------------------- }}}
 # {{{ super + letter key
-# super + Return
-  $TERMINAL
+super + Return
+  termite
 
-# super + r
+super + r
    i3-msg -q restart
 
+super + t 
+  Thunar 
+
 super + w
-  $BROWSER
+  firefox
 
 # -------------------------------------------------------------------------- }}}
 # {{{ super + shift + letter key
 super + shift + a
-  prompt "Leave Xorg?" "killall Xorg"jkkjk
+  i3-msg -q exit 
+"  prompt "Leave Xorg?" "killall Xorg"
 
 super + shift + b
   prompt "Shutdown computer?" "sudo -A shutdown -h now"
@@ -25,7 +27,7 @@ super + shift + c
   prompt "Reboot computer?" "sudo -A reboot"
 
 super + shift + w
-  $TERMINAL -e sudo nmtui
+  termite -e sudo nmtui
 
 super + shift + s
   termite -e vim /home/traap/.config/sxhkd/sxhkdrc
@@ -39,19 +41,18 @@ super + shift + i
 # -------------------------------------------------------------------------- }}}
 # {{{ super + ctrl + letter key
 super + ctrl + b
-  #$TERMINAL -e $EDITOR ~/.config/i3blocks/config
-  termite -e vim /home/traap/.config/i3blocks/config
+  termite -e vim ~/.config/i3blocks/config
 
 super + ctrl + e
-  $TERMINAL -e $EDITOR /tmp/i3blocks.error 
+  termite -e vim /tmp/i3blocks.error
 
 super + ctrl + i
-  $TERMINAL -e $EDITOR ~/.config/i3/config
+  termite -e vim ~/.config/i3/config
 
 super + ctrl + o
-  $TERMINAL -e $EDITOR /tmp/i3blocks.out
+  termite -e vim /tmp/i3blocks.out
 
 super + ctrl + s
-  $TERMINAL -e $EDITOR ~/.config/sxhkd/sxhkdrc
-
+  termite ; \
+  vim /home/traap/.config/sxhkd/sxhkdrc
 # -------------------------------------------------------------------------- }}}

@@ -2,8 +2,11 @@ command=~/git/scripts/statusbar/$BLOCK_NAME
 markup=pango
 separator_block_width=7
 
+#[temperature]
+#label=♻
+#interval=60
+
 [battery]
-command=battery BAT0
 label=♻
 interval=60
 

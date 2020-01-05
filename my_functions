@@ -33,6 +33,18 @@ dirExists() {
 }
 
 # ------------------------------------------------------------------------------
+# Start and stop lightdm (display manager) 
+# ------------------------------------------------------------------------------
+dmn() {
+  sudo systemctl disable lightdm
+  sudo systemctl stop    lightdm
+}
+
+dmy() {
+  sudo systemctl enable lightdm
+  sudo systemctl start  lightdm
+}
+# ------------------------------------------------------------------------------
 # A check for the existence of a file.
 # ------------------------------------------------------------------------------
 fileExists() {
