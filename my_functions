@@ -129,7 +129,7 @@ sshkey(){
 }
 
 sshlist() {
-  ps -e | awk '/ssh-agent/'
+  ps aux | awk /ssh-agent/
 }
 
 sshbb() {
@@ -152,11 +152,12 @@ sshme() {
 }
 
 sshkill() {
-  for pid in $(ps -ef | awk '/ssh-agent/ {print $2}'); do kill -9 $pid; done
+  for pid in $(ps aux | awk '/ssh-agent/ {print $2}'); do kill -9 $pid; done
 }
+
 latexmkkill() {
-  for pid in $(ps -ef | awk '/latexmk/ {print $2}'); do kill -9 $pid; done
-  for pid in $(ps -ef | awk '/perl/ {print $2}'); do kill -9 $pid; done
+  for pid in $(ps aux | awk '/latexmk/ {print $2}'); do kill -9 $pid; done
+  for pid in $(ps aux | awk '/perl/ {print $2}'); do kill -9 $pid; done
 }
 
 sshstart() {

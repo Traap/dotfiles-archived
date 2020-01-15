@@ -5,13 +5,8 @@
 if osType "darwin" \
 || osType "linux"  \
 || osType "msys"; then
-    appendToPath ${HOME}/.local/bin
-    appendToPath ${HOME}/.local/bin/cron
-    appendToPath ${HOME}/.local/bin/i3cmds
-    appendToPath ${HOME}/.local/bin/statusbar
-    appendToPath ${HOME}/.local/bin/tools
-    appendToPath ${HOME}/git/scripts/statusbar
-    appendToPath ${HOME}/git/scripts/utilities
+    # appendToPath ${HOME}/git/scripts/statusbar
+    # appendToPath ${HOME}/git/scripts/utilities
     appendToPath ${HOME}/.vim/bundle/vim-superman/bin
     appendToPath ${HOME}/.rbenv/bin
     eval "$(rbenv init -)"
