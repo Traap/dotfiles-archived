@@ -7,6 +7,6 @@
 #----------------------------------------------------------------------
 # Source my dotfiles personalized environment.
 #----------------------------------------------------------------------
-if [ -f ~/git/dotfiles/alias_and_functions ]; then
-  source ~/git/dotfiles/alias_and_functions
+if [ -f ~/git/dotfiles/bashrc-personal ]; then
+  source ~/git/dotfiles/bashrc-personal
 fi
