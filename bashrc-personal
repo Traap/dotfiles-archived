@@ -13,6 +13,9 @@ stty -ixon
 # Infanite history
 HISTSIZE= HISTFILESIZE=
 
+# Turn off numlock
+numlockx off
+
 # ------------------------------------------------------------------------------
 # Define functions and paths for this shell. 
 # ------------------------------------------------------------------------------
