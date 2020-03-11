@@ -9,9 +9,16 @@ if osType "darwin" \
     # appendToPath ${HOME}/git/scripts/utilities
     appendToPath ${HOME}/.bin
     appendToPath ${HOME}/.vim/bundle/vim-superman/bin
+fi
+
+# ------------------------------------------------------------------------------
+# Linux only machines.
+# ------------------------------------------------------------------------------
+if osType "linux"; then
     appendToPath ${HOME}/.rbenv/bin
     eval "$(rbenv init -)"
 fi
+
 
 # ------------------------------------------------------------------------------
 # msys style machines 
@@ -20,7 +27,7 @@ if osType "msys"; then
   appendToPath /mingw64/bin
   appendToPath /c/Program\ Files/MiKTeX\ 2.9/miktex/bin/x64
   appendToPath /c/ProgramData/chocolatey/bin
-  appendToPath /c/tools/ruby25/bin
+  appendToPath /c/tools/ruby27/bin
   appendToPath /c/ProgramData/chocolatey/bin
   appendToPath /c/ProgramData/chocolatey/lib/fzf/tools
   appendToPath /c/Strawberry/c/bin

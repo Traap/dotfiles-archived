@@ -14,7 +14,7 @@ stty -ixon
 HISTSIZE= HISTFILESIZE=
 
 # Turn off numlock
-numlockx off
+[[ ${OSTYPE} =~ "linux" ]] && numlockx off
 
 # ------------------------------------------------------------------------------
 # Define functions and paths for this shell. 
