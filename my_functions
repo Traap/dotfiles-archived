@@ -132,14 +132,10 @@ sshlist() {
   ps aux | awk /ssh-agent/
 }
 
-sshbb() {
-  eval "$(ssh-agent -s)"
-  ssh-add ${HOME}/.ssh/fkbb_rsa
-}
 
 sshgh() {
-  eval "$(ssh-agent -s)"
-  ssh-add ${HOME}/.ssh/traap_rsa 
+  eval "$(ssh-agent -s)" > /dev/null
+  ssh-add ${HOME}/.ssh/slyder > /dev/null 
 }
 
 sshwork() {
