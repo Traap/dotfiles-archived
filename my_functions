@@ -134,8 +134,8 @@ sshlist() {
 
 
 sshgh() {
-  eval "$(ssh-agent -s)" > /dev/null
-  ssh-add ${HOME}/.ssh/slyder > /dev/null 
+  eval "$(ssh-agent -s)"
+  ssh-add ${HOME}/.ssh/slyder
 }
 
 sshwork() {
