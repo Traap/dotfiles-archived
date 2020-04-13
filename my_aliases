@@ -153,7 +153,6 @@ alias ,ec='${EDITOR} ${HOME}/git/ssh/config.vim'
 alias ,ed='${EDITOR} ${HOME}/git/vim/custom-dictionary.utf-8.add'
 alias ,eg='${EDITOR} ${HOME}/git/ssh/gitconfig'
 alias ,ep='${EDITOR} ${HOME}/git/vim/plug.vim'
-alias ,es='${EDITOR} ${HOME}/git/vim/settings.vim'
 alias ,et='${EDITOR} ${HOME}/git/tmux/tmux.conf'
 alias ,ev='${EDITOR} ${HOME}/git/vim/vimrc'
 
