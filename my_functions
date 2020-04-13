@@ -15,17 +15,6 @@ ct() {
 }
 
 # ------------------------------------------------------------------------------
-# git clone wrappers. 
-# ------------------------------------------------------------------------------j
-cl() {
-  git clone git@github.com:"$1"
-}
-
-clt() {
-  git clone git@github.com:Traap/"$1"
-}
-
-# ------------------------------------------------------------------------------
 # A check for the existence of a directory.
 # ------------------------------------------------------------------------------
 dirExists() {
@@ -201,71 +190,6 @@ repeat() {
 }
 
 # ------------------------------------------------------------------------------
-# Check the porcelain state of my git repositories.
-# ------------------------------------------------------------------------------
-lsd() { ls -d * | tr -d '/' ; }
-
-repo() {
-  case $1 in
-    bb)
-      repoName=git
-      ;;
-    git)
-      repoName=git
-      ;;
-    soup)
-      repoName=soup
-      ;;
-    *)
-      repoName=git
-  esac
-  echo $repoName
-}
-
-gitPull() {
-  if [[ "pull" == $1 ]]; then
-    if [[ -z $(git status --porcelain) ]]; then
-      git pull
-      echo
-    fi
-  fi
-}
-
-gitSetUserAndEmail(){
-  if [[ "pull" == $2 ]]; then
-    if [[ "bb" == $1  ]]; then
-      gce fk
-    else
-      gce traap
-    fi
-  fi
-}
-
-gits(){
-  # Save current directory.
-  dir=$(pwd)
-
-  repoName=$(repo $1)
-  cd ${HOME}/${repoName} > /dev/null;
-
-  for i in $(lsd); do
-    d=${HOME}/${repoName}/${i%%}
-    if [[ -d "${d}/.git" ]]; then
-      echo "*** ${d} ***";
-      cd ${d} > /dev/null
-      git status --short --branch;
-      echo ""
-      gitPull $2
-      gitSetUserAndEmail $1 $2
-      cd - > /dev/null;
-    fi
-  done;
-
-  # Restore current director.
-  cd $dir
-}
-
-# ------------------------------------------------------------------------------
 # Cxx helper to simplify CxxTest use for C++ software.
 # ------------------------------------------------------------------------------
 cxx() {
@@ -432,39 +356,6 @@ ffw() {
   find . -name "$ext" -type f -exec grep "$pattern" /dev/null {} +
 }
 
-# ----------------------------------------------------------------------------t-
-# Git helpers
-# ------------------------------------------------------------------------------
-gce() {
-  if [[ "amgen" = $1 ]]; then
-    git config --local user.name gahoward
-    git config --local user.email gahoward@amgen.com
-  elif [[ "edx" = $1 ]]; then
-    git config --local user.name gary.howard
-    git config --local user.email gary.howard@endotronicx.com
-  elif [[ "fk" = $1 ]]; then
-    git config --local user.name gahoward
-    git config --local user.email gary.howard@fresenius-kabi.com
-  elif [[ "mhp" = $1 ]]; then
-    git config --local user.name ghoward
-    git config --local user.email gahoward@mhealthpharma.com
-  elif [[ "traap" = $1 ]]; then
-    git config --local user.name Traap
-    git config --local user.email gary.a.howard@mac.com
-  else
-    echo "Usage: gce [amgen|edx|fk|mhp|traap]"
-    echo "Found: " $1
-  fi
-  git config --local --get user.name
-  git config --local --get user.email
-}
-
-resetBranch() {
-  git reset --hard $1
-  if [[ $? -eq 0 ]]; then
-    git push --force
-  fi
-}
 # ------------------------------------------------------------------------------
 # pm 
 # ------------------------------------------------------------------------------ 
