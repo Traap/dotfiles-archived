@@ -22,7 +22,7 @@ dirExists() {
 }
 
 # ------------------------------------------------------------------------------
-# Start and stop lightdm (display manager) 
+# Start and stop lightdm (display manager)
 # ------------------------------------------------------------------------------
 dmn() {
   sudo systemctl disable lightdm
@@ -41,10 +41,10 @@ fileExists() {
 }
 
 # ------------------------------------------------------------------------------
-# A check for the host name. 
+# A check for the host name.
 # ------------------------------------------------------------------------------
 hostName() {
- [[ ${HOSTNAME} =~ "$1" ]]   
+ [[ ${HOSTNAME} =~ "$1" ]]
 }
 
 # ------------------------------------------------------------------------------
@@ -55,14 +55,14 @@ programExists() {
 }
 
 # ------------------------------------------------------------------------------
-# A check for the operating system type. 
+# A check for the operating system type.
 # ------------------------------------------------------------------------------
 osType() {
- [[ ${OSTYPE} =~ "$1" ]]   
+ [[ ${OSTYPE} =~ "$1" ]]
 }
 
 # ------------------------------------------------------------------------------
-# Append to my path 
+# Append to my path
 # ------------------------------------------------------------------------------
 appendToPath() {
   if dirExists "$1"; then
@@ -137,7 +137,12 @@ sshme() {
 }
 
 sshkill() {
-  for pid in $(ps aux | awk '/ssh-agent/ {print $2}'); do kill -9 $pid; done
+  if osType =~ "msys"; then
+    col=1
+  else
+    col=2
+  fi
+  for pid in $(ps aux | awk '/ssh-agent/ {print $col}'); do kill -9 $pid; done
 }
 
 latexmkkill() {
@@ -165,7 +170,7 @@ BASE16_SHELL=$HOME/git/color/base16-shell/
   eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # ------------------------------------------------------------------------------
-# Make okular shut up on Windows. 
+# Make okular shut up on Windows.
 # ------------------------------------------------------------------------------
 okular() {
   /c/ProgramData/chocolatey/bin/okular.exe $1 > /dev/null 2>&1
@@ -288,7 +293,7 @@ fail() {
 
 requirements() {
   echo "grep -rw --include=\*.yaml factory/ -e 'requirement:'"
-  grep -rw --include=\*.yaml factory/ -e 'requirement:' 
+  grep -rw --include=\*.yaml factory/ -e 'requirement:'
 }
 
 validate-git-client() {
@@ -336,7 +341,7 @@ master() {
 }
 
 # ------------------------------------------------------------------------------
-# Grep my history for a prior command I used. 
+# Grep my history for a prior command I used.
 # ------------------------------------------------------------------------------
 hg() {
   history | grep "$1"
@@ -357,15 +362,15 @@ ffw() {
 }
 
 # ------------------------------------------------------------------------------
-# pm 
-# ------------------------------------------------------------------------------ 
+# pm
+# ------------------------------------------------------------------------------
 pm() {
   sudo pacman --noconfirm -Sy $1
 }
 
 # ------------------------------------------------------------------------------
 # cj & gh are functions that I rewrite all the time to simplify my life.
-# ------------------------------------------------------------------------------ 
+# ------------------------------------------------------------------------------
 cj() {
   newdoc --dir=$1/$2 --file=$2 --title=$2 $3 $4
 }
@@ -375,5 +380,5 @@ gh() {
 }
 
 pdf() {
-    latexmk -pdf -synctex=1 -verbose -file-line-error -cd $1 
+    latexmk -pdf -synctex=1 -verbose -file-line-error -cd $1
 }
