@@ -348,7 +348,8 @@ hg() {
 }
 
 # ------------------------------------------------------------------------------
- File & String related functions
+# File & String related functions
+# ------------------------------------------------------------------------------
 
 ff()  {
   find . -type f -iname "$1" -print ;
@@ -380,5 +381,5 @@ gh() {
 }
 
 pdf() {
-    latexmk -pdf -synctex=1 -verbose -file-line-error -cd $1
+  latexmk -pdf -synctex=1 -verbose -file-line-error -cd $1
 }
