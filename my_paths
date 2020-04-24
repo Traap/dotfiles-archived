@@ -7,7 +7,7 @@ if osType "darwin" \
 || osType "msys"; then
     # appendToPath ${HOME}/git/scripts/statusbar
     # appendToPath ${HOME}/git/scripts/utilities
-    prependToPath ${HOME}/.bin
+    prependToPath ${HOME}/git/dotfiles/bin
     prependToPath ${HOME}/.vim/bundle/vim-superman/bin
 fi
 
