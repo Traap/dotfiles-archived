@@ -2,7 +2,8 @@
 #                  
 #
 
-$eval(which ruby)
+# What ruby do I have installed.
+which ruby
 
 # .ssh
 cd ~/.ssh
@@ -19,12 +20,12 @@ echo $MACHTYPE
 echo $UID
 
 # When I need an ssh server.
-sudo apt-get install openssh-server
-sudo apt-get purge openssh-server
-sudo apt-get update
+# sudo apt-get install openssh-server
+# sudo apt-get purge openssh-server
+# sudo apt-get update
 
 # Start the server.
-sudo service ssh --full-restart
+# sudo service ssh --full-restart
 
 # Examine file.
-sudo vim /etc/ssh/sshd_config 
+# sudo vim /etc/ssh/sshd_config 

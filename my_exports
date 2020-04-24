@@ -170,11 +170,7 @@ fi
 # X11 display type. 
 # ------------------------------------------------------------------------------
 if osType "linux"; then
-  if hostName "Gandolf"; then
-    export DISPLAY=localhost:0.0
-  else
-    export DISPLAY=:0.0
-  fi
+  export DISPLAY=:0
 fi
 
 # ------------------------------------------------------------------------------
